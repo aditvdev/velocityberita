@@ -17,9 +17,7 @@ if ( ! function_exists( 'justg_custom_header_setup' ) ) {
 	function justg_custom_header_setup() {
 
 		/**
-		 * Filter UnderStrap custom-header support arguments.
 		 *
-		 * @since UnderStrap 0.5.2
 		 *
 		 * @param array $args {
 		 *     An array of custom-header support arguments.
