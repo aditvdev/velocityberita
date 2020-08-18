@@ -13,9 +13,9 @@ if ( ! isset( $content_width ) ) {
 	$content_width = 640; /* pixels */
 }
 
-add_action( 'after_setup_theme', 'understrap_setup' );
+add_action( 'after_setup_theme', 'justg_setup' );
 
-if ( ! function_exists( 'understrap_setup' ) ) {
+if ( ! function_exists( 'justg_setup' ) ) {
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
 	 *
@@ -23,14 +23,14 @@ if ( ! function_exists( 'understrap_setup' ) ) {
 	 * runs before the init hook. The init hook is too late for some features, such
 	 * as indicating support for post thumbnails.
 	 */
-	function understrap_setup() {
+	function justg_setup() {
 		/*
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
 		 * If you're building a theme based on understrap, use a find and replace
-		 * to change 'understrap' to the name of your theme in all the template files
+		 * to change 'justg' to the name of your theme in all the template files
 		 */
-		load_theme_textdomain( 'understrap', get_template_directory() . '/languages' );
+		load_theme_textdomain( 'justg', get_template_directory() . '/languages' );
 
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
@@ -96,7 +96,7 @@ if ( ! function_exists( 'understrap_setup' ) ) {
 		add_theme_support(
 			'custom-background',
 			apply_filters(
-				'understrap_custom_background_args',
+				'justg_custom_background_args',
 				array(
 					'default-color' => 'ffffff',
 					'default-image' => '',
@@ -111,15 +111,15 @@ if ( ! function_exists( 'understrap_setup' ) ) {
 		add_theme_support( 'responsive-embeds' );
 
 		// Check and setup theme default settings.
-		understrap_setup_theme_default_settings();
+		justg_setup_theme_default_settings();
 
 	}
 }
 
 
-add_filter( 'excerpt_more', 'understrap_custom_excerpt_more' );
+add_filter( 'excerpt_more', 'justg_custom_excerpt_more' );
 
-if ( ! function_exists( 'understrap_custom_excerpt_more' ) ) {
+if ( ! function_exists( 'justg_custom_excerpt_more' ) ) {
 	/**
 	 * Removes the ... from the excerpt read more link
 	 *
@@ -127,7 +127,7 @@ if ( ! function_exists( 'understrap_custom_excerpt_more' ) ) {
 	 *
 	 * @return string
 	 */
-	function understrap_custom_excerpt_more( $more ) {
+	function justg_custom_excerpt_more( $more ) {
 		if ( ! is_admin() ) {
 			$more = '';
 		}
@@ -135,9 +135,9 @@ if ( ! function_exists( 'understrap_custom_excerpt_more' ) ) {
 	}
 }
 
-add_filter( 'wp_trim_excerpt', 'understrap_all_excerpts_get_more_link' );
+add_filter( 'wp_trim_excerpt', 'justg_all_excerpts_get_more_link' );
 
-if ( ! function_exists( 'understrap_all_excerpts_get_more_link' ) ) {
+if ( ! function_exists( 'justg_all_excerpts_get_more_link' ) ) {
 	/**
 	 * Adds a custom read more link to all excerpts, manually or automatically generated
 	 *
@@ -145,11 +145,11 @@ if ( ! function_exists( 'understrap_all_excerpts_get_more_link' ) ) {
 	 *
 	 * @return string
 	 */
-	function understrap_all_excerpts_get_more_link( $post_excerpt ) {
+	function justg_all_excerpts_get_more_link( $post_excerpt ) {
 		if ( ! is_admin() ) {
-			$post_excerpt = $post_excerpt . ' [...]<p><a class="btn btn-secondary understrap-read-more-link" href="' . esc_url( get_permalink( get_the_ID() ) ) . '">' . __(
+			$post_excerpt = $post_excerpt . ' [...]<p><a class="btn btn-secondary justg-read-more-link" href="' . esc_url( get_permalink( get_the_ID() ) ) . '">' . __(
 				'Read More...',
-				'understrap'
+				'justg'
 			) . '</a></p>';
 		}
 		return $post_excerpt;
