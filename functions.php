@@ -24,9 +24,12 @@ $justg_includes = array(
 	'/woocommerce.php',                     // Load WooCommerce functions.
 	'/editor.php',                          // Load Editor functions.
 	'/deprecated.php',                      // Load deprecated functions.
-	'/kirki/kirki.php',                     // Load kirki
-	'/kirki.php',							// Setup Kirki
-	'aq_resizer.php',						// load aq_resizer
+	// '/kirki/kirki.php',                     // Load kirki
+	// '/kirki.php',							// Setup Kirki
+	'/aq_resizer.php',						// load aq_resizer
+	'/merlin/vendor/autoload.php',		// merlin
+	'/merlin/class-merlin.php',			// merlin
+	'/merlin-config.php',				// merlin
 );
 
 foreach ( $justg_includes as $file ) {
