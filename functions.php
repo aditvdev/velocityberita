@@ -26,6 +26,7 @@ $justg_includes = array(
 	'/deprecated.php',                      // Load deprecated functions.
 	'/kirki/kirki.php',                     // Load kirki
 	'/kirki.php',							// Setup Kirki
+	'aq_resizer.php',						// load aq_resizer
 );
 
 foreach ( $justg_includes as $file ) {
