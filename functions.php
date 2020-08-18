@@ -2,7 +2,7 @@
 /**
  * UnderStrap functions and definitions
  *
- * @package UnderStrap
+ * @package justg
  */
 
 // Exit if accessed directly.

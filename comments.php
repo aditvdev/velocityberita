@@ -5,7 +5,7 @@
  * The area of the page that contains both current comments
  * and the comment form.
  *
- * @package UnderStrap
+ * @package justg
  */
 
 // Exit if accessed directly.
@@ -34,7 +34,7 @@ if ( post_password_required() ) {
 			if ( 1 === (int) $comments_number ) {
 				printf(
 					/* translators: %s: post title */
-					esc_html_x( 'One thought on &ldquo;%s&rdquo;', 'comments title', 'understrap' ),
+					esc_html_x( 'One thought on &ldquo;%s&rdquo;', 'comments title', 'justg' ),
 					'<span>' . get_the_title() . '</span>'
 				);
 			} else {
@@ -61,17 +61,17 @@ if ( post_password_required() ) {
 
 			<nav class="comment-navigation" id="comment-nav-above">
 
-				<h1 class="sr-only"><?php esc_html_e( 'Comment navigation', 'understrap' ); ?></h1>
+				<h1 class="sr-only"><?php esc_html_e( 'Comment navigation', 'justg' ); ?></h1>
 
 				<?php if ( get_previous_comments_link() ) { ?>
 					<div class="nav-previous">
-						<?php previous_comments_link( __( '&larr; Older Comments', 'understrap' ) ); ?>
+						<?php previous_comments_link( __( '&larr; Older Comments', 'justg' ) ); ?>
 					</div>
 				<?php } ?>
 
 				<?php	if ( get_next_comments_link() ) { ?>
 					<div class="nav-next">
-						<?php next_comments_link( __( 'Newer Comments &rarr;', 'understrap' ) ); ?>
+						<?php next_comments_link( __( 'Newer Comments &rarr;', 'justg' ) ); ?>
 					</div>
 				<?php } ?>
 
@@ -96,17 +96,17 @@ if ( post_password_required() ) {
 
 			<nav class="comment-navigation" id="comment-nav-below">
 
-				<h1 class="sr-only"><?php esc_html_e( 'Comment navigation', 'understrap' ); ?></h1>
+				<h1 class="sr-only"><?php esc_html_e( 'Comment navigation', 'justg' ); ?></h1>
 
 				<?php if ( get_previous_comments_link() ) { ?>
 					<div class="nav-previous">
-						<?php previous_comments_link( __( '&larr; Older Comments', 'understrap' ) ); ?>
+						<?php previous_comments_link( __( '&larr; Older Comments', 'justg' ) ); ?>
 					</div>
 				<?php } ?>
 
 				<?php	if ( get_next_comments_link() ) { ?>
 					<div class="nav-next">
-						<?php next_comments_link( __( 'Newer Comments &rarr;', 'understrap' ) ); ?>
+						<?php next_comments_link( __( 'Newer Comments &rarr;', 'justg' ) ); ?>
 					</div>
 				<?php } ?>
 

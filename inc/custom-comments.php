@@ -2,7 +2,7 @@
 /**
  * Comment layout
  *
- * @package UnderStrap
+ * @package justg
  */
 
 // Exit if accessed directly.
@@ -99,7 +99,7 @@ if ( ! function_exists( 'understrap_comment_form_comments_closed' ) ) {
 	function understrap_comment_form_comments_closed() {
 		if ( get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) {
 			?>
-			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'understrap' ); ?></p>
+			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'justg' ); ?></p>
 			<?php
 		}
 	}

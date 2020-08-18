@@ -2,7 +2,7 @@
 /**
  * Post rendering content according to caller of get_template_part
  *
- * @package UnderStrap
+ * @package justg
  */
 
 // Exit if accessed directly.
@@ -39,7 +39,7 @@ defined( 'ABSPATH' ) || exit;
 		<?php
 		wp_link_pages(
 			array(
-				'before' => '<div class="page-links">' . __( 'Pages:', 'understrap' ),
+				'before' => '<div class="page-links">' . __( 'Pages:', 'justg' ),
 				'after'  => '</div>',
 			)
 		);

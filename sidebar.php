@@ -2,7 +2,7 @@
 /**
  * The sidebar containing the main widget area
  *
- * @package UnderStrap
+ * @package justg
  */
 
 // Exit if accessed directly.

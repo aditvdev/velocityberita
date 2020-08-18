@@ -2,7 +2,7 @@
 /**
  * Left sidebar check
  *
- * @package UnderStrap
+ * @package justg
  */
 
 // Exit if accessed directly.

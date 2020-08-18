@@ -2,7 +2,7 @@
 /**
  * Add WooCommerce support
  *
- * @package UnderStrap
+ * @package justg
  */
 
 // Exit if accessed directly.

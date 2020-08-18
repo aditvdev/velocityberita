@@ -2,7 +2,7 @@
 /**
  * Theme basic setup
  *
- * @package UnderStrap
+ * @package justg
  */
 
 // Exit if accessed directly.
@@ -46,7 +46,7 @@ if ( ! function_exists( 'understrap_setup' ) ) {
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
 			array(
-				'primary' => __( 'Primary Menu', 'understrap' ),
+				'primary' => __( 'Primary Menu', 'justg' ),
 			)
 		);
 

@@ -4,7 +4,7 @@
  *
  * This file is centrally included from `wp-content/mu-plugins/wpcom-theme-compat.php`.
  *
- * @package UnderStrap
+ * @package justg
  */
 
 // Exit if accessed directly.

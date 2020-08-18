@@ -2,7 +2,7 @@
 /**
  * Custom header setup
  *
- * @package UnderStrap
+ * @package justg
  */
 
 // Exit if accessed directly.
@@ -51,7 +51,7 @@ if ( ! function_exists( 'understrap_custom_header_setup' ) ) {
 				'default-image' => array(
 					'url'           => '%s/img/header.jpg',
 					'thumbnail_url' => '%s/img/header.jpg',
-					'description'   => __( 'Default Header Image', 'understrap' ),
+					'description'   => __( 'Default Header Image', 'justg' ),
 				),
 			)
 		);
