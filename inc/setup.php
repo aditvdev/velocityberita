@@ -27,7 +27,10 @@ if ( ! function_exists( 'justg_setup' ) ) {
 
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
-
+		
+		add_theme_support( 'fl-theme-builder-headers' );
+		add_theme_support( 'fl-theme-builder-footers' );
+		add_theme_support( 'fl-theme-builder-parts' );
 		/*
 		 * Let WordPress manage the document title.
 		 * By adding theme support, we declare that this theme does not use a
@@ -135,13 +138,6 @@ function justg_header_footer_render() {
 }
 add_action( 'wp', 'justg_header_footer_render' );
 
-add_action( 'after_setup_theme', 'justg_builder_support' );
-function justg_builder_support() {
-  add_theme_support( 'fl-theme-builder-headers' );
-  add_theme_support( 'fl-theme-builder-footers' );
-  add_theme_support( 'fl-theme-builder-parts' );
-}
-
 add_filter( 'fl_theme_builder_part_hooks', 'justg_register_part_hooks' );
 function justg_register_part_hooks() {
   return array(
@@ -169,16 +165,48 @@ function justg_register_part_hooks() {
   );
 }
 
-function justg_dynamic_favicon(){
-	$favicon = get_theme_mod( 'favicon_url', '' );
-	echo "<link rel='shortcut icon' href='$favicon' sizes='32x32' type='image/x-icon'>";
+
+function justg_head(){
+    $favicon = get_theme_mod( 'favicon_url', '' );
+    echo "<link rel='shortcut icon' href='$favicon' sizes='32x32' type='image/x-icon'>";
+   
+    $link_setting = get_theme_mod( 'link_setting' );
+    $link_color   = $link_setting['link'];
+    $hover_color  = $link_setting['hover'];
+    $active_color = $link_setting['active'];
+    
+    ?>
+    <style>
+    a, a:link, a:visited {
+        color: <?php echo $link_color; ?>;
+    }
+    a:hover {
+        color: <?php echo $hover_color; ?>;
+    }
+    a:active {
+        color: <?php echo $active_color; ?>;
+    }
+    .btn-primary {
+        background-color: <?php echo $link_color; ?>;
+        border-color: <?php echo $link_color; ?>;
+    }
+    .btn-primary:hover {
+        background-color: <?php echo $hover_color; ?>;
+        border-color: <?php echo $hover_color; ?>;
+    }
+    .btn-primary:active {
+        background-color: <?php echo $active_color; ?>;
+        border-color: <?php echo $active_color; ?>;
+    }
+    </style>
+    <?php
 }
-add_action( 'wp_head', 'justg_dynamic_favicon' );
- 
+add_action( 'wp_head', 'justg_head' );
+
 function justg_customizer( $wp_customize ) {
-	$wp_customize->remove_panel( 'widgets' );
-	$wp_customize->remove_section("colors");
-	$wp_customize->remove_section("background_image");
-	$wp_customize->remove_section("static_front_page");
+    $wp_customize->remove_panel( 'widgets' );
+    $wp_customize->remove_section("colors");
+    $wp_customize->remove_section("background_image");
+    $wp_customize->remove_section("static_front_page");
 }
 add_action( 'customize_register', 'justg_customizer' );
