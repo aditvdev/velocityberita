@@ -25,8 +25,12 @@ Kirki::add_section( 'global_section', array(
 	'title'    => __( 'Pengaturan Umum', 'justg' ),
 	'priority' => 10,
 ) );
+Kirki::add_section( 'header_section', array(
+	'title'    => __( 'Pengaturan Header', 'justg' ),
+	'priority' => 10,
+) );
 
-// Add Field (setting & control defined as one).
+// Add field to global section
 Kirki::add_field( 'justg_config', [
 	'type'        => 'image',
 	'settings'    => 'favicon_url',
@@ -106,7 +110,7 @@ Kirki::add_field( 'justg_config', [
 	'description' => esc_html__( '', 'justg' ),
 	'section'     => 'global_section',
 	'default'     => [
-		'background-color'      => 'rgba(255,255,255,1)',
+		'background-color'      => '#F5F5F5',
 		'background-image'      => '',
 		'background-repeat'     => 'repeat',
 		'background-position'   => 'center center',
@@ -117,6 +121,40 @@ Kirki::add_field( 'justg_config', [
 	'output'      => [
 		[
 			'element' => 'body',
+		],
+	],
+] );
+
+// Add field to header section
+Kirki::add_field( 'justg_config', [
+	'type'        => 'image',
+	'settings'    => 'logo',
+	'label'       => esc_html__( 'Logo', 'justg' ),
+	'description' => esc_html__( '', 'justg' ),
+	'section'     => 'header_section',
+	'default'     => '',
+] );
+
+Kirki::add_field( 'justg_config', [
+	'type'        => 'typography',
+	'settings'    => 'typography_setting',
+	'label'       => esc_html__( 'Typography Umum', 'justg' ),
+	'section'     => 'header_section',
+	'default'     => [
+		'font-family'    => 'Roboto',
+		'variant'        => 'regular',
+		'font-size'      => '16px',
+		'line-height'    => '1.5',
+		'letter-spacing' => '0',
+		'color'          => '#333333',
+		'text-transform' => 'uppercase',
+		'text-align'     => 'left',
+	],
+	'priority'    => 10,
+	'transport'   => 'auto',
+	'output'      => [
+		[
+			'element' => '#main-menu',
 		],
 	],
 ] );
