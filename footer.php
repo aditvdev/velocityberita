@@ -13,9 +13,7 @@ defined( 'ABSPATH' ) || exit;
 $container = get_theme_mod( 'justg_container_type' );
 ?>
 
-<?php get_template_part( 'sidebar-templates/sidebar', 'footerfull' ); ?>
-
-<?php wp_footer(); ?>
+<?php do_action('justg_do_footer'); ?>
 
 </div><!-- #page we need this extra closing tag here -->
 
