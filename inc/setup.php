@@ -109,42 +109,62 @@ if ( ! function_exists( 'justg_setup' ) ) {
 	}
 }
 
+function justg_header_footer_render() {
 
-add_filter( 'excerpt_more', 'justg_custom_excerpt_more' );
+	if ( ! class_exists( 'FLThemeBuilderLayoutData' ) ) {
+		return;
+	}
 
-if ( ! function_exists( 'justg_custom_excerpt_more' ) ) {
-	/**
-	 * Removes the ... from the excerpt read more link
-	 *
-	 * @param string $more The excerpt.
-	 *
-	 * @return string
-	 */
-	function justg_custom_excerpt_more( $more ) {
-		if ( ! is_admin() ) {
-			$more = '';
-		}
-		return $more;
+	// Get the header ID.
+	$header_ids = FLThemeBuilderLayoutData::get_current_page_header_ids();
+
+	// If we have a header, remove the theme header and hook in Theme Builder's.
+	if ( ! empty( $header_ids ) ) {
+		remove_action( 'justg_do_header', 'justg_the_header_content' );
+		add_action( 'justg_do_header', 'FLThemeBuilderLayoutRenderer::render_header' );
+	}
+
+	// Get the footer ID.
+	$footer_ids = FLThemeBuilderLayoutData::get_current_page_footer_ids();
+
+	// If we have a footer, remove the theme footer and hook in Theme Builder's.
+	if ( ! empty( $footer_ids ) ) {
+		remove_action( 'justg_do_footer', 'justg_the_footer_content' );
+		add_action( 'justg_do_footer', 'FLThemeBuilderLayoutRenderer::render_footer' );
 	}
 }
+add_action( 'wp', 'justg_header_footer_render' );
 
-add_filter( 'wp_trim_excerpt', 'justg_all_excerpts_get_more_link' );
+add_action( 'after_setup_theme', 'justg_builder_support' );
+function justg_builder_support() {
+  add_theme_support( 'fl-theme-builder-headers' );
+  add_theme_support( 'fl-theme-builder-footers' );
+  add_theme_support( 'fl-theme-builder-parts' );
+}
 
-if ( ! function_exists( 'justg_all_excerpts_get_more_link' ) ) {
-	/**
-	 * Adds a custom read more link to all excerpts, manually or automatically generated
-	 *
-	 * @param string $post_excerpt Posts's excerpt.
-	 *
-	 * @return string
-	 */
-	function justg_all_excerpts_get_more_link( $post_excerpt ) {
-		if ( ! is_admin() ) {
-			$post_excerpt = $post_excerpt . ' [...]<p><a class="btn btn-secondary justg-read-more-link" href="' . esc_url( get_permalink( get_the_ID() ) ) . '">' . __(
-				'Read More...',
-				'justg'
-			) . '</a></p>';
-		}
-		return $post_excerpt;
-	}
+add_filter( 'fl_theme_builder_part_hooks', 'justg_register_part_hooks' );
+function justg_register_part_hooks() {
+  return array(
+    array(
+      'label' => 'Header',
+      'hooks' => array(
+        'justg_before_header' => 'Before Header',
+        'justg_after_header'  => 'After Header',
+      )
+    ),
+    array(
+      'label' => 'Content',
+      'hooks' => array(
+        'justg_before_content' => 'Before Content',
+        'justg_after_content'  => 'After Content',
+      )
+    ),
+    array(
+      'label' => 'Footer',
+      'hooks' => array(
+        'justg_before_footer' => 'Before Footer',
+        'justg_after_footer'  => 'After Footer',
+      )
+    )
+  );
 }
