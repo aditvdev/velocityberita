@@ -27,7 +27,7 @@ if ( ! function_exists( 'justg_setup' ) ) {
 
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
-		
+
 		add_theme_support( 'fl-theme-builder-headers' );
 		add_theme_support( 'fl-theme-builder-footers' );
 		add_theme_support( 'fl-theme-builder-parts' );
@@ -204,7 +204,7 @@ function justg_head(){
 add_action( 'wp_head', 'justg_head' );
 
 function justg_customizer( $wp_customize ) {
-    $wp_customize->remove_panel( 'widgets' );
+    // $wp_customize->remove_panel( 'widgets' );
     $wp_customize->remove_section("colors");
     $wp_customize->remove_section("background_image");
     $wp_customize->remove_section("static_front_page");
