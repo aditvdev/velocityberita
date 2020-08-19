@@ -14,7 +14,7 @@ function justg_the_header_content() {
         <header class="py-3 bg-white">	
         	<div id="wrapper-navbar" itemscope itemtype="http://schema.org/WebSite">
         	    <div class=" container mx-auto row">
-        	        <div class="col-3 col-md-2">
+        	        <div class="col-5 col-md-2">
 					<?php if($logo) {
 						$title = '<img src="'.$logo.'">';
 					} else {
@@ -23,10 +23,10 @@ function justg_the_header_content() {
 					?>
                         <a class="navbar-brand" rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url"><?php echo $title ?></a>
         	        </div>
-        	        <div class="col-9 col-md-10">
+        	        <div class="col-7 col-md-10">
                 		<nav class="navbar navbar-expand-md">
-                				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="<?php esc_attr_e( 'Toggle navigation', 'justg'); ?>">
-                					<span class="navbar-toggler-icon"></span>
+                				<button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="<?php esc_attr_e( 'Toggle navigation', 'justg'); ?>">
+									<i class="fa fa-align-right" aria-hidden="true"></i>
                 				</button>
                 
                 				<!-- The WordPress Menu goes here -->

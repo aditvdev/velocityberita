@@ -204,7 +204,7 @@ function justg_head(){
 add_action( 'wp_head', 'justg_head' );
 
 function justg_customizer( $wp_customize ) {
-    $wp_customize->remove_panel( 'widgets' );
+    // $wp_customize->remove_panel( 'widgets' );
     $wp_customize->remove_section("colors");
     $wp_customize->remove_section("background_image");
     $wp_customize->remove_section("static_front_page");
