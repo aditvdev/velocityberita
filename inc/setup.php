@@ -168,3 +168,17 @@ function justg_register_part_hooks() {
     )
   );
 }
+
+function justg_dynamic_favicon(){
+	$favicon = get_theme_mod( 'favicon_url', '' );
+	echo "<link rel='shortcut icon' href='$favicon' sizes='32x32' type='image/x-icon'>";
+}
+add_action( 'wp_head', 'justg_dynamic_favicon' );
+ 
+function justg_customizer( $wp_customize ) {
+	$wp_customize->remove_panel( 'widgets' );
+	$wp_customize->remove_section("colors");
+	$wp_customize->remove_section("background_image");
+	$wp_customize->remove_section("static_front_page");
+}
+add_action( 'customize_register', 'justg_customizer' );
