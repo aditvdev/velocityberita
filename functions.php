@@ -27,9 +27,6 @@ $justg_includes = array(
 	// '/kirki/kirki.php',                     // Load kirki
 	// '/kirki.php',							// Setup Kirki
 	'/aq_resizer.php',						// load aq_resizer
-	'/merlin/vendor/autoload.php',		// merlin
-	'/merlin/class-merlin.php',			// merlin
-	'/merlin-config.php',				// merlin
 );
 
 foreach ( $justg_includes as $file ) {
