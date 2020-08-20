@@ -25,7 +25,7 @@ $container = get_theme_mod( 'justg_container_type' );
 
 			<main class="site-main" id="main">
 
-				<header class="page-header author-header">
+				<header class="page-header author-header p-4 bg-white mb-1">
 
 					<?php
 					if ( get_query_var( 'author_name' ) ) {
@@ -62,6 +62,8 @@ $container = get_theme_mod( 'justg_container_type' );
 					<h2><?php echo esc_html__( 'Posts by', 'justg' ) . ' ' . esc_html( $curauth->nickname ); ?>:</h2>
 
 				</header><!-- .page-header -->
+
+				<div class="p-4 bg-white mb-1">
 					<!-- The Loop -->
 					<?php
 					if ( have_posts() ) {
@@ -86,7 +88,7 @@ $container = get_theme_mod( 'justg_container_type' );
 					}
 					?>
 					<!-- End Loop -->
-
+				</div>
 			</main><!-- #main -->
 
 			<!-- The pagination component -->

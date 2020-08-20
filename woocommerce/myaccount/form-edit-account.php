@@ -12,7 +12,7 @@
  *
  * @see https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce/Templates
- * @version 3.6.1
+ * @version 3.5.0
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -66,12 +66,11 @@ do_action( 'woocommerce_before_edit_account_form' ); ?>
 
 	<p>
 		<?php wp_nonce_field( 'save_account_details', 'save-account-details-nonce' ); ?>
-		<button type="submit" class="btn btn-outline-primary" name="save_account_details" value="<?php esc_attr_e( 'Save changes', 'justg' ); ?>"><?php esc_html_e( 'Save changes', 'justg' ); ?></button>
+		<button type="submit" class="woocommerce-Button button" name="save_account_details" value="<?php esc_attr_e( 'Save changes', 'justg' ); ?>"><?php esc_html_e( 'Save changes', 'justg' ); ?></button>
 		<input type="hidden" name="action" value="save_account_details" />
 	</p>
 
 	<?php do_action( 'woocommerce_edit_account_form_end' ); ?>
 </form>
 
-<?php
-do_action( 'woocommerce_after_edit_account_form' );
+<?php do_action( 'woocommerce_after_edit_account_form' ); ?>

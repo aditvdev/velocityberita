@@ -11,14 +11,11 @@
  * the readme will list any important changes.
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
- * @author  WooThemes
  * @package WooCommerce/Templates
- * @version 3.6.1
+ * @version 2.6.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
-}
+defined( 'ABSPATH' ) || exit;
 
 $customer_id = get_current_user_id();
 
@@ -50,21 +47,25 @@ $col    = 1;
 </p>
 
 <?php if ( ! wc_ship_to_billing_address_only() && wc_shipping_enabled() ) : ?>
-	<div class="u-columns woocommerce-Addresses col2-set addresses">
+	<div class="u-columns woocommerce-Addresses row addresses">
 <?php endif; ?>
 
 <?php foreach ( $get_addresses as $name => $address_title ) : ?>
+	<?php
+		$address = wc_get_account_formatted_address( $name );
+		$col     = $col * -1;
+		$oldcol  = $oldcol * -1;
+	?>
 
-	<div class="u-column woocommerce-Address">
+	<div class="u-column<?php echo $col < 0 ? 1 : 2; ?> col-<?php echo $oldcol < 0 ? 1 : 2; ?> woocommerce-Address">
 		<header class="woocommerce-Address-title title">
 			<h3><?php echo esc_html( $address_title ); ?></h3>
-			<a href="<?php echo esc_url( wc_get_endpoint_url( 'edit-address', $name ) ); ?>" class="edit"><?php esc_html_e( 'Edit', 'justg' ); ?></a>
+			<a href="<?php echo esc_url( wc_get_endpoint_url( 'edit-address', $name ) ); ?>" class="edit"><?php echo $address ? esc_html__( 'Edit', 'justg' ) : esc_html__( 'Add', 'justg' ); ?></a>
 		</header>
 		<address>
-		<?php
-			$address = wc_get_account_formatted_address( $name );
-			echo $address ? wp_kses_post( $address ) : esc_html_e( 'You have not set up this type of address yet.', 'justg' );
-		?>
+			<?php
+				echo $address ? wp_kses_post( $address ) : esc_html_e( 'You have not set up this type of address yet.', 'justg' );
+			?>
 		</address>
 	</div>
 

@@ -29,7 +29,7 @@ $container = get_theme_mod( 'justg_container_type' );
 
 					<header class="page-header">
 
-							<h1 class="page-title">
+							<h1 class="page-title p-4 bg-white mb-1">
 								<?php
 								printf(
 									/* translators: %s: query term */

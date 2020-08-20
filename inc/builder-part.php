@@ -9,18 +9,24 @@
 defined( 'ABSPATH' ) || exit;
 
 function justg_the_header_content() {
-    // if ( ! function_exists( 'justg_the_header_content' ) ) :
+	$logo = get_theme_mod( 'logo', '' );
     ?>
-        <header>	
+        <header class="py-2 bg-white">	
         	<div id="wrapper-navbar" itemscope itemtype="http://schema.org/WebSite">
-        	    <div class=" container mx-auto row">
-        	        <div class="col-3 col-md-2">
-                        <a class="navbar-brand" rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url"><?php bloginfo( 'name' ); ?></a>
+        	    <div class=" container mx-auto row align-items-center">
+        	        <div class="col-5 col-md-3">
+					<?php if($logo) {
+						$title = '<img src="'.$logo.'">';
+					} else {
+						$title = bloginfo( 'name' );
+					}
+					?>
+                        <a class="navbar-brand" rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url"><?php echo $title ?></a>
         	        </div>
-        	        <div class="col-9 col-md-10">
+        	        <div class="col-7 col-md-9">
                 		<nav class="navbar navbar-expand-md">
-                				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="<?php esc_attr_e( 'Toggle navigation', 'justg'); ?>">
-                					<span class="navbar-toggler-icon"></span>
+                				<button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="<?php esc_attr_e( 'Toggle navigation', 'justg'); ?>">
+									<i class="fa fa-align-right" aria-hidden="true"></i>
                 				</button>
                 
                 				<!-- The WordPress Menu goes here -->
@@ -43,7 +49,6 @@ function justg_the_header_content() {
         	</div><!-- #wrapper-navbar end -->
         </header>
     <?php
-    // endif;
 }
 add_action( 'justg_do_header', 'justg_the_header_content' );
 
@@ -51,7 +56,7 @@ function justg_the_footer_content() {
     // if ( ! function_exists( 'justg_the_footer_content' ) ) :
     ?>
     
-        <div class="wrapper" id="wrapper-footer">
+        <div class="wrapper bg-dark text-white" id="wrapper-footer">
         
         	<div class="container">
         

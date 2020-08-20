@@ -92,7 +92,7 @@ if ( ! function_exists( 'justg_post_nav' ) ) {
 			return;
 		}
 		?>
-		<nav class="container navigation post-navigation">
+		<nav class="container navigation post-navigation p-4 bg-white mb-1">
 			<h2 class="sr-only"><?php esc_html_e( 'Post navigation', 'justg' ); ?></h2>
 			<div class="row nav-links justify-content-between">
 				<?php
