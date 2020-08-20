@@ -14,7 +14,7 @@ if ( ! function_exists( 'justg_woocommerce_support' ) ) {
 	 * Declares WooCommerce theme support.
 	 */
 	function justg_woocommerce_support() {
-		add_theme_support( 'woocommerce' );
+		add_theme_support( 'justg' );
 
 		// Add Product Gallery support.
 		add_theme_support( 'wc-product-gallery-lightbox' );

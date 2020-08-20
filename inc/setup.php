@@ -210,3 +210,18 @@ function justg_customizer( $wp_customize ) {
     $wp_customize->remove_section("static_front_page");
 }
 add_action( 'customize_register', 'justg_customizer' );
+
+/**
+ * woocomerce
+ */
+add_filter( 'woocommerce_breadcrumb_defaults', 'jk_woocommerce_breadcrumbs' );
+function jk_woocommerce_breadcrumbs() {
+    return array(
+            'delimiter'   => ' &#47; ',
+            'wrap_before' => '<nav class="woocommerce-breadcrumb p-4 bg-white mb-1" itemprop="breadcrumb">',
+            'wrap_after'  => '</nav>',
+            'before'      => '',
+            'after'       => '',
+            'home'        => _x( 'Home', 'breadcrumb', 'justg' ),
+        );
+}
