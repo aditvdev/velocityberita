@@ -14,7 +14,7 @@ if ( ! function_exists( 'justg_woocommerce_support' ) ) {
 	 * Declares WooCommerce theme support.
 	 */
 	function justg_woocommerce_support() {
-		add_theme_support( 'justg' );
+		add_theme_support( 'woocommerce' );
 
 		// Add Product Gallery support.
 		add_theme_support( 'wc-product-gallery-lightbox' );
@@ -161,4 +161,16 @@ if ( ! is_admin() && ! function_exists( 'wc_review_ratings_enabled' ) ) {
 	function wc_review_ratings_enabled() {
 		return wc_reviews_enabled() && 'yes' === get_option( 'woocommerce_enable_review_rating' );
 	}
+}
+
+add_filter( 'woocommerce_breadcrumb_defaults', 'jk_woocommerce_breadcrumbs' );
+function jk_woocommerce_breadcrumbs() {
+    return array(
+            'delimiter'   => ' &#47; ',
+            'wrap_before' => '<nav class="woocommerce-breadcrumb p-4 bg-white mb-1" itemprop="breadcrumb">',
+            'wrap_after'  => '</nav>',
+            'before'      => '',
+            'after'       => '',
+            'home'        => _x( 'Home', 'breadcrumb', 'justg' ),
+        );
 }
