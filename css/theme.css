@@ -453,6 +453,7 @@ pre {
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
+  outline: 0;
   margin-left: auto; }
   @media (min-width: 576px) {
     .container {

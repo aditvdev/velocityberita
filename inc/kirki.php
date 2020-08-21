@@ -137,8 +137,8 @@ Kirki::add_field( 'justg_config', [
 
 Kirki::add_field( 'justg_config', [
 	'type'        => 'typography',
-	'settings'    => 'typography_setting',
-	'label'       => esc_html__( 'Typography Umum', 'justg' ),
+	'settings'    => 'menu_setting',
+	'label'       => esc_html__( 'Menu Typography', 'justg' ),
 	'section'     => 'header_section',
 	'default'     => [
 		'font-family'    => 'Roboto',
