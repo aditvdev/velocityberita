@@ -167,10 +167,27 @@ add_filter( 'woocommerce_breadcrumb_defaults', 'jk_woocommerce_breadcrumbs' );
 function jk_woocommerce_breadcrumbs() {
     return array(
             'delimiter'   => ' &#47; ',
-            'wrap_before' => '<nav class="woocommerce-breadcrumb p-4 bg-white mb-1" itemprop="breadcrumb">',
+            'wrap_before' => '<nav class="woocommerce-breadcrumb" itemprop="breadcrumb">',
             'wrap_after'  => '</nav>',
             'before'      => '',
             'after'       => '',
             'home'        => _x( 'Home', 'breadcrumb', 'justg' ),
         );
+}
+
+add_filter( 'wp_nav_menu_items', 'am_append_cart_icon', 10, 2 );
+function am_append_cart_icon( $items, $args ) {
+	$cart_item_count = is_object( WC()->cart ) ? WC()->cart->get_cart_contents_count() : '0';
+	$cart_count_span = '';
+	if ( $cart_item_count ) {
+		$cart_count_span = '<span class="count">'.$cart_item_count.'</span>';
+	}
+	$cart_link = '<li class="cart menu-item menu-item-type-post_type menu-item-object-page menu-item-57 nav-item">';
+	$cart_link .= '<a class="nav-link" href="' . get_permalink( wc_get_page_id( 'cart' ) ) . '"><i class="fa fa-shopping-bag"></i>'.$cart_count_span.'</a>';
+	$cart_link .= '</li>';
+
+	// Add the cart link to the end of the menu.
+	$items = $items . $cart_link;
+	
+	return $items;
 }

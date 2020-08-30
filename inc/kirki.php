@@ -29,6 +29,10 @@ Kirki::add_section( 'header_section', array(
 	'title'    => __( 'Pengaturan Header', 'justg' ),
 	'priority' => 10,
 ) );
+Kirki::add_section( 'block_section', array(
+	'title'    => __( 'Pengaturan Block', 'justg' ),
+	'priority' => 10,
+) );
 
 // Add field to global section
 Kirki::add_field( 'justg_config', [
@@ -155,6 +159,54 @@ Kirki::add_field( 'justg_config', [
 	'output'      => [
 		[
 			'element' => '#main-menu',
+		],
+	],
+] );
+
+// Add field to block section
+Kirki::add_field( 'justg_config', [
+	'type'        => 'background',
+	'settings'    => 'background_block_setting',
+	'label'       => esc_html__( 'Background Block', 'justg' ),
+	'description' => esc_html__( 'Atur background (widget, heading, article, dll)', 'justg' ),
+	'section'     => 'block_section',
+	'default'     => [
+		'background-color'      => '#ffffff',
+		'background-image'      => '',
+		'background-repeat'     => 'repeat',
+		'background-position'   => 'center center',
+		'background-size'       => 'cover',
+		'background-attachment' => 'scroll',
+	],
+	'transport'   => 'auto',
+	'output'      => [
+		[
+			'element' => array('.block-customizer'),
+		],
+	],
+] );
+
+Kirki::add_field( 'justg_config', [
+	'type'        => 'dimensions',
+	'settings'    => 'dimensions_block_setting',
+	'label'       => esc_html__( 'Margin Block', 'kirki' ),
+	'description' => esc_html__( 'Atur Jarak Block (widget, heading, article, dll)', 'kirki' ),
+	'section'     => 'block_section',
+	'default'     => [
+		'padding-top'    => '2em',
+		'padding-bottom' => '2em',
+		'padding-left'   => '2em',
+		'padding-right'  => '2em',
+
+		'margin-top'    => '0em',
+		'margin-bottom' => '2em',
+		'margin-left'   => '0em',
+		'margin-right'  => '0em',
+	],
+	'transport'   => 'auto',
+	'output'      => [
+		[
+			'element' => array('.block-customizer'),
 		],
 	],
 ] );

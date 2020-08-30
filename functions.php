@@ -21,6 +21,7 @@ $justg_includes = array(
 	'/jetpack.php',                         // Load Jetpack compatibility file.
 	'/class-wp-bootstrap-navwalker.php',    // Load custom WordPress nav walker.
 	'/woocommerce.php',                     // Load WooCommerce functions.
+	'/cart.php',                     // Load WooCommerce functions.
 	'/editor.php',                          // Load Editor functions.
 	'/deprecated.php',                      // Load deprecated functions.
 	'/shortcode.php',						// load shortcode functions.

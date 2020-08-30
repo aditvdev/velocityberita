@@ -25,7 +25,7 @@ $container = get_theme_mod( 'justg_container_type' );
 
 			<main class="site-main" id="main">
 
-				<header class="page-header author-header p-4 bg-white mb-1">
+				<header class="page-header author-header block-customizer">
 
 					<?php
 					if ( get_query_var( 'author_name' ) ) {
@@ -63,7 +63,7 @@ $container = get_theme_mod( 'justg_container_type' );
 
 				</header><!-- .page-header -->
 
-				<div class="p-4 bg-white mb-1">
+				<div class="block-customizer">
 					<!-- The Loop -->
 					<?php
 					if ( have_posts() ) {
