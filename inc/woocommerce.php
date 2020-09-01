@@ -175,13 +175,13 @@ function jk_woocommerce_breadcrumbs() {
         );
 }
 
+// Add cart in menu 
 add_filter( 'wp_nav_menu_items', 'am_append_cart_icon', 10, 2 );
 function am_append_cart_icon( $items, $args ) {
 	$cart_item_count = is_object( WC()->cart ) ? WC()->cart->get_cart_contents_count() : '0';
-	$cart_count_span = '';
-	if ( $cart_item_count ) {
-		$cart_count_span = '<span class="count">'.$cart_item_count.'</span>';
-	}
+
+	$cart_count_span = '<span class="counter" id="cart-count">'.$cart_item_count.'</span>';
+
 	$cart_link = '<li class="cart menu-item menu-item-type-post_type menu-item-object-page menu-item-57 nav-item">';
 	$cart_link .= '<a class="nav-link" href="' . get_permalink( wc_get_page_id( 'cart' ) ) . '"><i class="fa fa-shopping-bag"></i>'.$cart_count_span.'</a>';
 	$cart_link .= '</li>';
@@ -191,3 +191,14 @@ function am_append_cart_icon( $items, $args ) {
 	
 	return $items;
 }
+
+// Add refresh cart count
+add_filter( 'woocommerce_add_to_cart_fragments', 'refresh_cart_count', 50, 1 );
+function refresh_cart_count( $fragments ){
+	$cart_item_count = is_object( WC()->cart ) ? WC()->cart->get_cart_contents_count() : '0';
+    $fragments['#cart-count'] = '<span class="counter" id="cart-count">'.$cart_item_count.'</span>';
+    return $fragments;
+}
+
+// Disable css default woocomerce
+// add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
