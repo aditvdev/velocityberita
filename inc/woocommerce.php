@@ -163,8 +163,8 @@ if ( ! is_admin() && ! function_exists( 'wc_review_ratings_enabled' ) ) {
 	}
 }
 
-add_filter( 'woocommerce_breadcrumb_defaults', 'jk_woocommerce_breadcrumbs' );
-function jk_woocommerce_breadcrumbs() {
+add_filter( 'woocommerce_breadcrumb_defaults', 'justg_woocommerce_breadcrumbs' );
+function justg_woocommerce_breadcrumbs() {
     return array(
             'delimiter'   => ' &#47; ',
             'wrap_before' => '<nav class="woocommerce-breadcrumb" itemprop="breadcrumb">',
@@ -176,8 +176,8 @@ function jk_woocommerce_breadcrumbs() {
 }
 
 // Add cart in menu 
-add_filter( 'wp_nav_menu_items', 'am_append_cart_icon', 10, 2 );
-function am_append_cart_icon( $items, $args ) {
+add_filter( 'wp_nav_menu_items', 'justg_append_cart_icon', 10, 2 );
+function justg_append_cart_icon( $items, $args ) {
 	$cart_item_count = is_object( WC()->cart ) ? WC()->cart->get_cart_contents_count() : '0';
 
 	$cart_count_span = '<span class="counter" id="cart-count">'.$cart_item_count.'</span>';
@@ -193,8 +193,8 @@ function am_append_cart_icon( $items, $args ) {
 }
 
 // Add refresh cart count
-add_filter( 'woocommerce_add_to_cart_fragments', 'refresh_cart_count', 50, 1 );
-function refresh_cart_count( $fragments ){
+add_filter( 'woocommerce_add_to_cart_fragments', 'justg_refresh_cart_count', 50, 1 );
+function justg_refresh_cart_count( $fragments ){
 	$cart_item_count = is_object( WC()->cart ) ? WC()->cart->get_cart_contents_count() : '0';
     $fragments['#cart-count'] = '<span class="counter" id="cart-count">'.$cart_item_count.'</span>';
     return $fragments;

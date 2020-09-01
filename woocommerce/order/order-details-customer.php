@@ -23,8 +23,8 @@ $show_shipping = ! wc_ship_to_billing_address_only() && $order->needs_shipping_a
 
 	<?php if ( $show_shipping ) : ?>
 
-	<section class="woocommerce-columns woocommerce-columns--2 woocommerce-columns--addresses row addresses">
-		<div class="woocommerce-column woocommerce-column--1 woocommerce-column--billing-address col-md-6">
+	<section class="woocommerce-columns woocommerce-columns--addresses row addresses">
+		<div class="woocommerce-column woocommerce-column--billing-address col-md-6">
 
 	<?php endif; ?>
 

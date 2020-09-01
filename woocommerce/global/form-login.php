@@ -43,12 +43,12 @@ if ( is_user_logged_in() ) {
 	<?php do_action( 'woocommerce_login_form' ); ?>
 
 	<p class="form-row">
-		<label class="woocommerce-form__label woocommerce-form__label-for-checkbox woocommerce-form-login__rememberme">
+		<label class="w-100 woocommerce-form__label woocommerce-form__label-for-checkbox woocommerce-form-login__rememberme">
 			<input class="woocommerce-form__input woocommerce-form__input-checkbox" name="rememberme" type="checkbox" id="rememberme" value="forever" /> <span><?php esc_html_e( 'Remember me', 'justg' ); ?></span>
 		</label>
 		<?php wp_nonce_field( 'woocommerce-login', 'woocommerce-login-nonce' ); ?>
 		<input type="hidden" name="redirect" value="<?php echo esc_url( $redirect ); ?>" />
-		<button type="submit" class="woocommerce-button button woocommerce-form-login__submit" name="login" value="<?php esc_attr_e( 'Login', 'justg' ); ?>"><?php esc_html_e( 'Login', 'justg' ); ?></button>
+		<button type="submit" class="btn btn-primary btn-block woocommerce-button button woocommerce-form-login__submit" name="login" value="<?php esc_attr_e( 'Login', 'justg' ); ?>"><?php esc_html_e( 'Login', 'justg' ); ?></button>
 	</p>
 	<p class="lost_password">
 		<a href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php esc_html_e( 'Lost your password?', 'justg' ); ?></a>

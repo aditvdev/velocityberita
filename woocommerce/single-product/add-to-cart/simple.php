@@ -47,7 +47,7 @@ if ( $product->is_in_stock() ) : ?>
 		do_action( 'woocommerce_after_add_to_cart_quantity' );
 		?>
 
-		<button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" class="single_add_to_cart_button alt btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> Beli</button>
+		<button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" class="single_add_to_cart_button alt btn bg-dark rounded-0 text-white btn-sm"><i class="fa fa-cart-plus"></i> Beli</button>
 
 		<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
 	</form>
