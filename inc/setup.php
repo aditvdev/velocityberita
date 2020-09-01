@@ -165,44 +165,6 @@ function justg_register_part_hooks() {
   );
 }
 
-
-function justg_head(){
-    $favicon = get_theme_mod( 'favicon_url', '' );
-    echo "<link rel='shortcut icon' href='$favicon' sizes='32x32' type='image/x-icon'>";
-   
-    $link_setting = get_theme_mod( 'link_setting' );
-    $link_color   = $link_setting['link'];
-    $hover_color  = $link_setting['hover'];
-    $active_color = $link_setting['active'];
-    
-    ?>
-    <style>
-    a, a:link, a:visited {
-        color: <?php echo $link_color; ?>;
-    }
-    a:hover {
-        color: <?php echo $hover_color; ?>;
-    }
-    a:active {
-        color: <?php echo $active_color; ?>;
-    }
-    .btn-primary {
-        background-color: <?php echo $link_color; ?>;
-        border-color: <?php echo $link_color; ?>;
-    }
-    .btn-primary:hover {
-        background-color: <?php echo $hover_color; ?>;
-        border-color: <?php echo $hover_color; ?>;
-    }
-    .btn-primary:active {
-        background-color: <?php echo $active_color; ?>;
-        border-color: <?php echo $active_color; ?>;
-    }
-    </style>
-    <?php
-}
-add_action( 'wp_head', 'justg_head' );
-
 function justg_customizer( $wp_customize ) {
     // $wp_customize->remove_panel( 'widgets' );
     $wp_customize->remove_section("colors");
