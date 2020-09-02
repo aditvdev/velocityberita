@@ -21,11 +21,11 @@ $justg_includes = array(
 	'/jetpack.php',                         // Load Jetpack compatibility file.
 	'/class-wp-bootstrap-navwalker.php',    // Load custom WordPress nav walker.
 	'/woocommerce.php',                     // Load WooCommerce functions.
-	'/cart.php',                     // Load WooCommerce functions.
 	'/editor.php',                          // Load Editor functions.
+	'/customizer.php',                      // Customizer.
 	'/deprecated.php',                      // Load deprecated functions.
 	'/shortcode.php',						// load shortcode functions.
-	'/builder-part.php',                     // Load kirki.
+	'/builder-part.php',                    // Load kirki.
 	'/kirki/kirki.php',                     // Load kirki.
 	'/kirki.php',							// Setup Kirki.
 	'/aq_resizer.php',						// load aq_resizer functions.

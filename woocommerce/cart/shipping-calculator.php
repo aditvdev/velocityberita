@@ -52,7 +52,7 @@ do_action( 'woocommerce_before_shipping_calculator' ); ?>
 				} elseif ( is_array( $states ) ) {
 					?>
 					<span>
-						<select name="calc_shipping_state" class="state_select" id="calc_shipping_state" data-placeholder="<?php esc_attr_e( 'State / County', 'justg' ); ?>">
+						<select name="calc_shipping_state" class="state_select form-control form-control-sm" id="calc_shipping_state" data-placeholder="<?php esc_attr_e( 'State / County', 'justg' ); ?>">
 							<option value=""><?php esc_html_e( 'Select an option&hellip;', 'justg' ); ?></option>
 							<?php
 							foreach ( $states as $ckey => $cvalue ) {

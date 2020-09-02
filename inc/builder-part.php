@@ -18,10 +18,10 @@ function justg_the_header_content() {
 					<?php if($logo) {
 						$title = '<img src="'.$logo.'">';
 					} else {
-						$title = bloginfo( 'name' );
+						$title = get_bloginfo( 'name' );
 					}
 					?>
-                        <a class="navbar-brand" rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url"><?php echo $title ?></a>
+                        <a class="navbar-brand" rel="home" href="<?php echo get_site_url(); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url"><?php echo $title ?></a>
         	        </div>
         	        <div class="col-7 col-md-9">
                 		<nav class="navbar navbar-expand-md">

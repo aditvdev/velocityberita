@@ -1,6 +1,6 @@
 <?php
 /**
- * Rest in peace
+ * Silence is golden.
  *
  * @package justg
  */
