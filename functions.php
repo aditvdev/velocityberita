@@ -23,7 +23,6 @@ $justg_includes = array(
 	'/woocommerce.php',                     // Load WooCommerce functions.
 	'/editor.php',                          // Load Editor functions.
 	'/customizer.php',                      // Customizer.
-	'/welcome.php',                      	// Welcome page.
 	'/deprecated.php',                      // Load deprecated functions.
 	'/shortcode.php',						// load shortcode functions.
 	'/builder-part.php',                    // Load kirki.

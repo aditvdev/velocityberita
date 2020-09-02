@@ -200,5 +200,42 @@ function justg_refresh_cart_count( $fragments ){
     return $fragments;
 }
 
-// Disable css default woocomerce
-// add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
+//Unset checkout fields
+add_filter( 'woocommerce_checkout_fields' , 'justg_override_checkout_fields' );
+function justg_override_checkout_fields( $fields ) {
+	 unset($fields['billing']['billing_country']);
+	 unset($fields['billing']['billing_company']);
+     return $fields;
+}
+
+/**
+ * Change the checkout city field to a dropdown field.
+ */
+function justg_city_dropdown( $fields ) {
+
+	// Helpers to define the $url path
+    //$protocol = is_ssl() ? 'https' : 'http';
+	$directory = trailingslashit( get_template_directory_uri() );
+	
+	// Get the contents of the JSON file 
+	$getJsonCity = file_get_contents("{$directory}woocommerce/data/city.json");
+	// Convert to array 
+	$arrayCity = json_decode($getJsonCity, true);
+
+	$cities = array();
+	foreach($arrayCity as $city){
+		$cities[$city['city_id']] = $city['city_name'];
+	}
+
+	$city_args = wp_parse_args( array(
+		'type' => 'select',
+		'options' => array_combine( $cities, $cities ),
+	), $fields['shipping']['shipping_city'] );
+
+	$fields['shipping']['shipping_city'] = $city_args;
+	$fields['billing']['billing_city'] = $city_args;
+
+	return $fields;
+
+}
+add_filter( 'woocommerce_checkout_fields', 'justg_city_dropdown' );

@@ -31,7 +31,7 @@ if ( ! wc_coupons_enabled() ) { // @codingStandardsIgnoreLine.
 	<p><?php esc_html_e( 'If you have a coupon code, please apply it below.', 'justg' ); ?></p>
 
 	<p class="form-row form-row-first">
-		<input type="text" name="coupon_code" class="input-text" placeholder="<?php esc_attr_e( 'Coupon code', 'justg' ); ?>" id="coupon_code" value="" />
+		<input type="text" name="coupon_code" class="input-text form-control form-control-sm" placeholder="<?php esc_attr_e( 'Coupon code', 'justg' ); ?>" id="coupon_code" value="" />
 	</p>
 
 	<p class="form-row form-row-last">
