@@ -163,49 +163,57 @@ if ( ! is_admin() && ! function_exists( 'wc_review_ratings_enabled' ) ) {
 	}
 }
 
-add_filter( 'woocommerce_breadcrumb_defaults', 'justg_woocommerce_breadcrumbs' );
-function justg_woocommerce_breadcrumbs() {
-    return array(
-            'delimiter'   => ' &#47; ',
-            'wrap_before' => '<nav class="woocommerce-breadcrumb" itemprop="breadcrumb">',
-            'wrap_after'  => '</nav>',
-            'before'      => '',
-            'after'       => '',
-            'home'        => _x( 'Home', 'breadcrumb', 'justg' ),
-        );
+if ( ! function_exists( 'justg_woocommerce_breadcrumbs' ) ) {
+
+	add_filter( 'woocommerce_breadcrumb_defaults', 'justg_woocommerce_breadcrumbs' );
+	function justg_woocommerce_breadcrumbs() {
+		return array(
+				'delimiter'   => ' &#47; ',
+				'wrap_before' => '<nav class="woocommerce-breadcrumb" itemprop="breadcrumb">',
+				'wrap_after'  => '</nav>',
+				'before'      => '',
+				'after'       => '',
+				'home'        => _x( 'Home', 'breadcrumb', 'justg' ),
+			);
+	}
 }
 
-// Add cart in menu 
-add_filter( 'wp_nav_menu_items', 'justg_append_cart_icon', 10, 2 );
-function justg_append_cart_icon( $items, $args ) {
-	$cart_item_count = is_object( WC()->cart ) ? WC()->cart->get_cart_contents_count() : '0';
+if ( ! function_exists( 'justg_append_cart_icon' ) && class_exists( 'WooCommerce' ) ) {
+	// Add cart in menu 
+	add_filter( 'wp_nav_menu_items', 'justg_append_cart_icon', 10, 2 );
+	function justg_append_cart_icon( $items, $args ) {
+		$cart_item_count = is_object( WC()->cart ) ? WC()->cart->get_cart_contents_count() : '0';
 
-	$cart_count_span = '<span class="counter" id="cart-count">'.$cart_item_count.'</span>';
+		$cart_count_span = '<span class="counter" id="cart-count">'.$cart_item_count.'</span>';
 
-	$cart_link = '<li class="cart menu-item menu-item-type-post_type menu-item-object-page menu-item-57 nav-item">';
-	$cart_link .= '<a class="nav-link" href="' . get_permalink( wc_get_page_id( 'cart' ) ) . '"><i class="fa fa-shopping-bag"></i>'.$cart_count_span.'</a>';
-	$cart_link .= '</li>';
+		$cart_link = '<li class="cart menu-item menu-item-type-post_type menu-item-object-page menu-item-57 nav-item">';
+		$cart_link .= '<a class="nav-link" href="' . get_permalink( wc_get_page_id( 'cart' ) ) . '"><i class="fa fa-shopping-bag"></i>'.$cart_count_span.'</a>';
+		$cart_link .= '</li>';
 
-	// Add the cart link to the end of the menu.
-	$items = $items . $cart_link;
-	
-	return $items;
+		// Add the cart link to the end of the menu.
+		$items = $items . $cart_link;
+		
+		return $items;
+	}
 }
 
-// Add refresh cart count
-add_filter( 'woocommerce_add_to_cart_fragments', 'justg_refresh_cart_count', 50, 1 );
-function justg_refresh_cart_count( $fragments ){
-	$cart_item_count = is_object( WC()->cart ) ? WC()->cart->get_cart_contents_count() : '0';
-    $fragments['#cart-count'] = '<span class="counter" id="cart-count">'.$cart_item_count.'</span>';
-    return $fragments;
+if ( ! function_exists( 'justg_refresh_cart_count' ) && class_exists( 'WooCommerce' ) ) {
+	// Add refresh cart count
+	add_filter( 'woocommerce_add_to_cart_fragments', 'justg_refresh_cart_count', 50, 1 );
+	function justg_refresh_cart_count( $fragments ){
+		$cart_item_count = is_object( WC()->cart ) ? WC()->cart->get_cart_contents_count() : '0';
+		$fragments['#cart-count'] = '<span class="counter" id="cart-count">'.$cart_item_count.'</span>';
+		return $fragments;
+	}
 }
 
-//Unset checkout fields
-add_filter( 'woocommerce_checkout_fields' , 'justg_override_checkout_fields' );
-function justg_override_checkout_fields( $fields ) {
-	 unset($fields['billing']['billing_country']);
-	 unset($fields['billing']['billing_company']);
-     return $fields;
+if ( ! function_exists( 'justg_override_checkout_fields' ) && class_exists( 'WooCommerce' ) ) {
+	//Unset checkout fields
+	add_filter( 'woocommerce_checkout_fields' , 'justg_override_checkout_fields' );
+	function justg_override_checkout_fields( $fields ) {
+		unset($fields['billing']['billing_company']);
+		return $fields;
+	}
 }
 
 /**

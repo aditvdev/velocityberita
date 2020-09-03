@@ -24,7 +24,7 @@ global $product;
 echo apply_filters(
 	'woocommerce_loop_add_to_cart_link', // WPCS: XSS ok.
 	sprintf(
-		'<a href="%s" data-quantity="%s" class="%s btn btn-sm bg-dark rounded-0 text-white py-1 mt-1" %s><i class="fa fa-cart-plus"></i> Beli </a>',
+		'<a href="%s" data-quantity="%s" class="%s btn btn-sm btn-dark btn-block bg-dark text-white" %s><i class="fa fa-cart-plus"></i> Beli </a>',
 		esc_url( $product->add_to_cart_url() ),
 		esc_attr( isset( $args['quantity'] ) ? $args['quantity'] : 1 ),
 		esc_attr( isset( $args['class'] ) ? $args['class'] : 'button' ),
