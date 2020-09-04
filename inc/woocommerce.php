@@ -215,35 +215,3 @@ if ( ! function_exists( 'justg_override_checkout_fields' ) && class_exists( 'Woo
 		return $fields;
 	}
 }
-
-/**
- * Change the checkout city field to a dropdown field.
- */
-function justg_city_dropdown( $fields ) {
-
-	// Helpers to define the $url path
-    //$protocol = is_ssl() ? 'https' : 'http';
-	$directory = trailingslashit( get_template_directory_uri() );
-	
-	// Get the contents of the JSON file 
-	$getJsonCity = file_get_contents("{$directory}woocommerce/data/city.json");
-	// Convert to array 
-	$arrayCity = json_decode($getJsonCity, true);
-
-	$cities = array();
-	foreach($arrayCity as $city){
-		$cities[$city['city_id']] = $city['city_name'];
-	}
-
-	$city_args = wp_parse_args( array(
-		'type' => 'select',
-		'options' => array_combine( $cities, $cities ),
-	), $fields['shipping']['shipping_city'] );
-
-	$fields['shipping']['shipping_city'] = $city_args;
-	$fields['billing']['billing_city'] = $city_args;
-
-	return $fields;
-
-}
-add_filter( 'woocommerce_checkout_fields', 'justg_city_dropdown' );
