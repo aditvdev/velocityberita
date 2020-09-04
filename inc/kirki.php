@@ -145,7 +145,7 @@ Kirki::add_field( 'justg_config', [
 	'label'       => esc_html__( 'Menu Typography', 'justg' ),
 	'section'     => 'header_section',
 	'default'     => [
-		'font-family'    => 'Roboto',
+		'font-family'    => 'Poppins',
 		'variant'        => 'regular',
 		'font-size'      => '16px',
 		'line-height'    => '1.5',
