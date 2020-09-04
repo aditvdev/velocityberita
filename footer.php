@@ -17,6 +17,8 @@ $container = get_theme_mod( 'justg_container_type' );
 
 </div><!-- #page we need this extra closing tag here -->
 
+<div class="footbar">contoh saja</div>
+
 <?php wp_footer(); ?>
 
 </body>
