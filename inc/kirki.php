@@ -71,7 +71,7 @@ Kirki::add_field( 'justg_config', [
 	'label'       => esc_html__( 'Typography Umum', 'justg' ),
 	'section'     => 'global_section',
 	'default'     => [
-		'font-family'    => 'Roboto',
+		'font-family'    => 'Poppins',
 		'variant'        => 'regular',
 		'font-size'      => '14px',
 		'line-height'    => '1.5',
