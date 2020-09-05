@@ -1,2 +1,2 @@
-# justG
-Starter theme Wordpress for Beaver Builder
+# mjlah
+Starter theme Wordpress for Blog or News Portal
