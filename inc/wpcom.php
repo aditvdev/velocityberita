@@ -4,21 +4,21 @@
  *
  * This file is centrally included from `wp-content/mu-plugins/wpcom-theme-compat.php`.
  *
- * @package justg
+ * @package mjlah
  */
 
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-add_action( 'after_setup_theme', 'justg_wpcom_setup' );
+add_action( 'after_setup_theme', 'mjlah_wpcom_setup' );
 
-if ( ! function_exists( 'justg_wpcom_setup' ) ) {
+if ( ! function_exists( 'mjlah_wpcom_setup' ) ) {
 	/**
 	 * Adds support for wp.com-specific theme functions.
 	 *
 	 * @global array $themecolors
 	 */
-	function justg_wpcom_setup() {
+	function mjlah_wpcom_setup() {
 		global $themecolors;
 
 		// Set theme colors for third party services.
@@ -37,13 +37,13 @@ if ( ! function_exists( 'justg_wpcom_setup' ) ) {
 	}
 }
 
-add_action( 'wp_enqueue_scripts', 'justg_wpcom_styles' );
+add_action( 'wp_enqueue_scripts', 'mjlah_wpcom_styles' );
 
-if ( ! function_exists( 'justg_wpcom_styles' ) ) {
+if ( ! function_exists( 'mjlah_wpcom_styles' ) ) {
 	/**
 	 * WordPress.com-specific styles
 	 */
-	function justg_wpcom_styles() {
-		wp_enqueue_style( 'justg-wpcom', get_template_directory_uri() . '/inc/style-wpcom.css', array(), '20160411' );
+	function mjlah_wpcom_styles() {
+		wp_enqueue_style( 'mjlah-wpcom', get_template_directory_uri() . '/inc/style-wpcom.css', array(), '20160411' );
 	}
 }

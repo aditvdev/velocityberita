@@ -2,7 +2,7 @@
 /**
  * The template for displaying search results pages
  *
- * @package justg
+ * @package mjlah
  */
 
 // Exit if accessed directly.
@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) || exit;
 
 get_header();
 
-$container = get_theme_mod( 'justg_container_type' );
+$container = get_theme_mod( 'mjlah_container_type' );
 
 ?>
 
@@ -33,7 +33,7 @@ $container = get_theme_mod( 'justg_container_type' );
 								<?php
 								printf(
 									/* translators: %s: query term */
-									esc_html__( 'Search Results for: %s', 'justg' ),
+									esc_html__( 'Search Results for: %s', 'mjlah' ),
 									'<span>' . get_search_query() . '</span>'
 								);
 								?>
@@ -64,7 +64,7 @@ $container = get_theme_mod( 'justg_container_type' );
 			</main><!-- #main -->
 
 			<!-- The pagination component -->
-			<?php justg_pagination(); ?>
+			<?php mjlah_pagination(); ?>
 
 			<!-- Do the right sidebar check -->
 			<?php get_template_part( 'global-templates/right-sidebar-check' ); ?>

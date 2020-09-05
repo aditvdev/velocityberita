@@ -2,5 +2,5 @@
 Starter theme Wordpress for Blog or News Portal
 
 source master from
-justG
-https://github.com/aadiityaak/justG
+mjlah
+https://github.com/aadiityaak/mjlah

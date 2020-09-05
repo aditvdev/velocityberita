@@ -2,7 +2,7 @@
 /**
  * Partial template for content in page.php
  *
- * @package justg
+ * @package mjlah
  */
 
 // Exit if accessed directly.
@@ -26,7 +26,7 @@ defined( 'ABSPATH' ) || exit;
 		<?php
 		wp_link_pages(
 			array(
-				'before' => '<div class="page-links">' . __( 'Pages:', 'justg' ),
+				'before' => '<div class="page-links">' . __( 'Pages:', 'mjlah' ),
 				'after'  => '</div>',
 			)
 		);
@@ -36,7 +36,7 @@ defined( 'ABSPATH' ) || exit;
 
 	<footer class="entry-footer">
 
-		<?php edit_post_link( __( 'Edit', 'justg' ), '<span class="edit-link">', '</span>' ); ?>
+		<?php edit_post_link( __( 'Edit', 'mjlah' ), '<span class="edit-link">', '</span>' ); ?>
 
 	</footer><!-- .entry-footer -->
 

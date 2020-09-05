@@ -4,13 +4,13 @@
  *
  * Displays all of the <head> section and everything up till <div id="content">
  *
- * @package justg
+ * @package mjlah
  */
 
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-$container = get_theme_mod( 'justg_container_type' );
+$container = get_theme_mod( 'mjlah_container_type' );
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -21,7 +21,7 @@ $container = get_theme_mod( 'justg_container_type' );
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?> <?php justg_body_attributes(); ?>>
+<body <?php body_class(); ?> <?php mjlah_body_attributes(); ?>>
 <?php do_action( 'wp_body_open' ); ?>
 <div class="site" id="page">
-<?php do_action('justg_do_header');?>
+<?php do_action('mjlah_do_header');?>

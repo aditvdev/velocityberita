@@ -2,13 +2,13 @@
 /**
  * Theme basic setup
  *
- * @package justg
+ * @package mjlah
  */
 
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-function justg_the_header_content() {
+function mjlah_the_header_content() {
 	$logo = get_theme_mod( 'logo', '' );
     ?>
         <header class="py-2 bg-white">	
@@ -25,7 +25,7 @@ function justg_the_header_content() {
         	        </div>
         	        <div class="col-7 col-md-9">
                 		<nav class="navbar navbar-expand-md">
-                				<button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="<?php esc_attr_e( 'Toggle navigation', 'justg'); ?>">
+                				<button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="<?php esc_attr_e( 'Toggle navigation', 'mjlah'); ?>">
 									<i class="fa fa-align-right" aria-hidden="true"></i>
                 				</button>
                 
@@ -39,7 +39,7 @@ function justg_the_header_content() {
                 						'fallback_cb'     => '',
                 						'menu_id'         => 'main-menu',
                 						'depth'           => 2,
-                						'walker'          => new justg_WP_Bootstrap_Navwalker(),
+                						'walker'          => new mjlah_WP_Bootstrap_Navwalker(),
                 					)
                 				); ?>
                 		</nav><!-- .site-navigation -->
@@ -50,10 +50,10 @@ function justg_the_header_content() {
         </header>
     <?php
 }
-add_action( 'justg_do_header', 'justg_the_header_content' );
+add_action( 'mjlah_do_header', 'mjlah_the_header_content' );
 
-function justg_the_footer_content() {
-    // if ( ! function_exists( 'justg_the_footer_content' ) ) :
+function mjlah_the_footer_content() {
+    // if ( ! function_exists( 'mjlah_the_footer_content' ) ) :
     ?>
     
         <div class="wrapper bg-dark text-white" id="wrapper-footer">
@@ -85,4 +85,4 @@ function justg_the_footer_content() {
     <?php
     // endif;
 }
-add_action( 'justg_do_footer', 'justg_the_footer_content' );
+add_action( 'mjlah_do_footer', 'mjlah_the_footer_content' );

@@ -2,7 +2,7 @@
 /**
  * The sidebar containing the main widget area
  *
- * @package justg
+ * @package mjlah
  */
 
 // Exit if accessed directly.

@@ -4,15 +4,15 @@
  *
  * @link https://jetpack.me/
  *
- * @package justg
+ * @package mjlah
  */
 
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-add_action( 'after_setup_theme', 'justg_components_jetpack_setup' );
+add_action( 'after_setup_theme', 'mjlah_components_jetpack_setup' );
 
-if ( ! function_exists( 'justg_components_jetpack_setup' ) ) {
+if ( ! function_exists( 'mjlah_components_jetpack_setup' ) ) {
 	/**
 	 * Jetpack setup function.
 	 *
@@ -20,13 +20,13 @@ if ( ! function_exists( 'justg_components_jetpack_setup' ) ) {
 	 * @link https://jetpack.me/support/responsive-videos/
 	 * @link https://jetpack.me/support/social-menu/
 	 */
-	function justg_components_jetpack_setup() {
+	function mjlah_components_jetpack_setup() {
 		// Add theme support for Infinite Scroll.
 		add_theme_support(
 			'infinite-scroll',
 			array(
 				'container' => 'main',
-				'render'    => 'justg_components_infinite_scroll_render',
+				'render'    => 'mjlah_components_infinite_scroll_render',
 				'footer'    => 'page',
 			)
 		);
@@ -40,11 +40,11 @@ if ( ! function_exists( 'justg_components_jetpack_setup' ) ) {
 	}
 }
 
-if ( ! function_exists( 'justg_components_infinite_scroll_render' ) ) {
+if ( ! function_exists( 'mjlah_components_infinite_scroll_render' ) ) {
 	/**
 	 * Custom render function for Infinite Scroll.
 	 */
-	function justg_components_infinite_scroll_render() {
+	function mjlah_components_infinite_scroll_render() {
 		while ( have_posts() ) {
 			the_post();
 			if ( is_search() ) :
@@ -56,12 +56,12 @@ if ( ! function_exists( 'justg_components_infinite_scroll_render' ) ) {
 	}
 }
 
-if ( ! function_exists( 'justg_components_social_menu' ) ) {
+if ( ! function_exists( 'mjlah_components_social_menu' ) ) {
 	/**
 	 * Display Jetpack's social menu if available.
 	 * Avoids fatal errors if Jetpack isn’t activated.
 	 */
-	function justg_components_social_menu() {
+	function mjlah_components_social_menu() {
 		if ( ! function_exists( 'jetpack_social_menu' ) ) {
 			// Return early if social menu is not available.
 			return;

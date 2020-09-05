@@ -2,7 +2,7 @@
 /**
  * The template for displaying search forms
  *
- * @package justg
+ * @package mjlah
  */
 
 // Exit if accessed directly.
@@ -10,13 +10,13 @@ defined( 'ABSPATH' ) || exit;
 ?>
 
 <form method="get" id="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search">
-	<label class="sr-only" for="s"><?php esc_html_e( 'Search', 'justg' ); ?></label>
+	<label class="sr-only" for="s"><?php esc_html_e( 'Search', 'mjlah' ); ?></label>
 	<div class="input-group">
 		<input class="field form-control" id="s" name="s" type="text"
-			placeholder="<?php esc_attr_e( 'Search &hellip;', 'justg' ); ?>" value="<?php the_search_query(); ?>">
+			placeholder="<?php esc_attr_e( 'Search &hellip;', 'mjlah' ); ?>" value="<?php the_search_query(); ?>">
 		<span class="input-group-append">
 			<input class="submit btn btn-primary" id="searchsubmit" name="submit" type="submit"
-			value="<?php esc_attr_e( 'Search', 'justg' ); ?>">
+			value="<?php esc_attr_e( 'Search', 'mjlah' ); ?>">
 		</span>
 	</div>
 </form>

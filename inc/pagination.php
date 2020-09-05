@@ -2,13 +2,13 @@
 /**
  * Pagination layout
  *
- * @package justg
+ * @package mjlah
  */
 
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-if ( ! function_exists( 'justg_pagination' ) ) {
+if ( ! function_exists( 'mjlah_pagination' ) ) {
 	/**
 	 * Displays the navigation to next/previous set of posts.
 	 *
@@ -39,7 +39,7 @@ if ( ! function_exists( 'justg_pagination' ) ) {
 	 * }
 	 * @param string       $class           (Optional) Classes to be added to the <ul> element. Default 'pagination'.
 	 */
-	function justg_pagination( $args = array(), $class = 'pagination' ) {
+	function mjlah_pagination( $args = array(), $class = 'pagination' ) {
 
 		if ( ! isset( $args['total'] ) && $GLOBALS['wp_query']->max_num_pages <= 1 ) {
 			return;
@@ -50,11 +50,11 @@ if ( ! function_exists( 'justg_pagination' ) ) {
 			array(
 				'mid_size'           => 2,
 				'prev_next'          => true,
-				'prev_text'          => __( '&laquo;', 'justg' ),
-				'next_text'          => __( '&raquo;', 'justg' ),
+				'prev_text'          => __( '&laquo;', 'mjlah' ),
+				'next_text'          => __( '&raquo;', 'mjlah' ),
 				'type'               => 'array',
 				'current'            => max( 1, get_query_var( 'paged' ) ),
-				'screen_reader_text' => __( 'Posts navigation', 'justg' ),
+				'screen_reader_text' => __( 'Posts navigation', 'mjlah' ),
 			)
 		);
 

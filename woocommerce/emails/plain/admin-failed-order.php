@@ -22,7 +22,7 @@ echo esc_html( wp_strip_all_tags( $email_heading ) );
 echo "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n";
 
 /* translators: %1$s: Order number. %2$s: Customer full name. */
-echo sprintf( esc_html__( 'Payment for order #%1$s from %2$s has failed. The order was as follows:', 'justg' ), esc_html( $order->get_order_number() ), esc_html( $order->get_formatted_billing_full_name() ) ) . "\n\n";
+echo sprintf( esc_html__( 'Payment for order #%1$s from %2$s has failed. The order was as follows:', 'mjlah' ), esc_html( $order->get_order_number() ), esc_html( $order->get_formatted_billing_full_name() ) ) . "\n\n";
 
 /*
  * @hooked WC_Emails::order_details() Shows the order details table.

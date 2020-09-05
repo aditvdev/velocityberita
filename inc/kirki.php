@@ -1,53 +1,53 @@
 <?php
 /**
- * justg functions kirki
+ * mjlah functions kirki
  *
- * @package justg
+ * @package mjlah
  */
 
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-function justg_justg_configuration() {
+function mjlah_mjlah_configuration() {
     return array( 'url_path'     => get_stylesheet_directory_uri() . '/inc/kirki/' );
 }
 
 
 // Add our config to differentiate from other themes/plugins 
 // that may use Kirki at the same time.
-Kirki::add_config( 'justg_config', array(
+Kirki::add_config( 'mjlah_config', array(
 	'capability'  => 'edit_theme_options',
 	'option_type' => 'theme_mod',
 ) );
 
 // Add Section.
 Kirki::add_section( 'global_section', array(
-	'title'    => __( 'Pengaturan Umum', 'justg' ),
+	'title'    => __( 'Pengaturan Umum', 'mjlah' ),
 	'priority' => 10,
 ) );
 Kirki::add_section( 'header_section', array(
-	'title'    => __( 'Pengaturan Header', 'justg' ),
+	'title'    => __( 'Pengaturan Header', 'mjlah' ),
 	'priority' => 10,
 ) );
 Kirki::add_section( 'block_section', array(
-	'title'    => __( 'Pengaturan Block', 'justg' ),
+	'title'    => __( 'Pengaturan Block', 'mjlah' ),
 	'priority' => 10,
 ) );
 
 // Add field to global section
-Kirki::add_field( 'justg_config', [
+Kirki::add_field( 'mjlah_config', [
 	'type'        => 'image',
 	'settings'    => 'favicon_url',
-	'label'       => esc_html__( 'Favicon', 'justg' ),
-	'description' => esc_html__( '', 'justg' ),
+	'label'       => esc_html__( 'Favicon', 'mjlah' ),
+	'description' => esc_html__( '', 'mjlah' ),
 	'section'     => 'global_section',
 	'default'     => '',
 ] );
 
-Kirki::add_field( 'justg_config', [
+Kirki::add_field( 'mjlah_config', [
 	'type'        => 'slider',
 	'settings'    => 'lebar_website',
-	'label'       => esc_html__( 'Lebar Website', 'justg' ),
+	'label'       => esc_html__( 'Lebar Website', 'mjlah' ),
 	'section'     => 'global_section',
 	'default'     => 1140,
 	'transport'   => 'auto',
@@ -65,10 +65,10 @@ Kirki::add_field( 'justg_config', [
     ),
 ] );
 
-Kirki::add_field( 'justg_config', [
+Kirki::add_field( 'mjlah_config', [
 	'type'        => 'typography',
 	'settings'    => 'typography_setting',
-	'label'       => esc_html__( 'Typography Umum', 'justg' ),
+	'label'       => esc_html__( 'Typography Umum', 'mjlah' ),
 	'section'     => 'global_section',
 	'default'     => [
 		'font-family'    => 'Poppins',
@@ -89,16 +89,16 @@ Kirki::add_field( 'justg_config', [
 	],
 ] );
 
-Kirki::add_field( 'justg_config', [
+Kirki::add_field( 'mjlah_config', [
     'type'        => 'multicolor',
     'settings'    => 'link_setting',
-    'label'       => esc_html__( 'Warna Link', 'justg' ),
+    'label'       => esc_html__( 'Warna Link', 'mjlah' ),
     'section'     => 'global_section',
     'priority'    => 10,
     'choices'     => [
-        'link'    => esc_html__( 'Color', 'justg' ),
-        'hover'   => esc_html__( 'Hover', 'justg' ),
-        'active'  => esc_html__( 'Active', 'justg' ),
+        'link'    => esc_html__( 'Color', 'mjlah' ),
+        'hover'   => esc_html__( 'Hover', 'mjlah' ),
+        'active'  => esc_html__( 'Active', 'mjlah' ),
     ],
     'default'     => [
         'link'    => '#1e73be',
@@ -107,11 +107,11 @@ Kirki::add_field( 'justg_config', [
     ],
 ] );
 
-Kirki::add_field( 'justg_config', [
+Kirki::add_field( 'mjlah_config', [
 	'type'        => 'background',
 	'settings'    => 'background_setting',
-	'label'       => esc_html__( 'Background Website', 'justg' ),
-	'description' => esc_html__( '', 'justg' ),
+	'label'       => esc_html__( 'Background Website', 'mjlah' ),
+	'description' => esc_html__( '', 'mjlah' ),
 	'section'     => 'global_section',
 	'default'     => [
 		'background-color'      => '#F5F5F5',
@@ -130,19 +130,19 @@ Kirki::add_field( 'justg_config', [
 ] );
 
 // Add field to header section
-Kirki::add_field( 'justg_config', [
+Kirki::add_field( 'mjlah_config', [
 	'type'        => 'image',
 	'settings'    => 'logo',
-	'label'       => esc_html__( 'Logo', 'justg' ),
-	'description' => esc_html__( '', 'justg' ),
+	'label'       => esc_html__( 'Logo', 'mjlah' ),
+	'description' => esc_html__( '', 'mjlah' ),
 	'section'     => 'header_section',
 	'default'     => '',
 ] );
 
-Kirki::add_field( 'justg_config', [
+Kirki::add_field( 'mjlah_config', [
 	'type'        => 'typography',
 	'settings'    => 'menu_setting',
-	'label'       => esc_html__( 'Menu Typography', 'justg' ),
+	'label'       => esc_html__( 'Menu Typography', 'mjlah' ),
 	'section'     => 'header_section',
 	'default'     => [
 		'font-family'    => 'Poppins',
@@ -164,11 +164,11 @@ Kirki::add_field( 'justg_config', [
 ] );
 
 // Add field to block section
-Kirki::add_field( 'justg_config', [
+Kirki::add_field( 'mjlah_config', [
 	'type'        => 'background',
 	'settings'    => 'background_block_setting',
-	'label'       => esc_html__( 'Background Block', 'justg' ),
-	'description' => esc_html__( 'Atur background (widget, heading, article, dll)', 'justg' ),
+	'label'       => esc_html__( 'Background Block', 'mjlah' ),
+	'description' => esc_html__( 'Atur background (widget, heading, article, dll)', 'mjlah' ),
 	'section'     => 'block_section',
 	'default'     => [
 		'background-color'      => '#ffffff',
@@ -186,7 +186,7 @@ Kirki::add_field( 'justg_config', [
 	],
 ] );
 
-Kirki::add_field( 'justg_config', [
+Kirki::add_field( 'mjlah_config', [
 	'type'        => 'dimensions',
 	'settings'    => 'dimensions_block_setting',
 	'label'       => esc_html__( 'Margin Block', 'kirki' ),

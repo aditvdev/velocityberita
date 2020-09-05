@@ -22,13 +22,13 @@ echo esc_html( wp_strip_all_tags( $email_heading ) );
 echo "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n";
 
 /* translators: %s: Customer first name */
-echo sprintf( esc_html__( 'Hi %s,', 'justg' ), $order->get_billing_first_name() ) . "\n\n"; // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
+echo sprintf( esc_html__( 'Hi %s,', 'mjlah' ), $order->get_billing_first_name() ) . "\n\n"; // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
 if ( $partial_refund ) {
 	/* translators: %s: Site title */
-	echo sprintf( esc_html__( 'Your order on %s has been partially refunded. There are more details below for your reference:', 'justg' ), wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES ) ) . "\n\n"; // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
+	echo sprintf( esc_html__( 'Your order on %s has been partially refunded. There are more details below for your reference:', 'mjlah' ), wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES ) ) . "\n\n"; // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
 } else {
 	/* translators: %s: Site title */
-	echo sprintf( esc_html__( 'Your order on %s has been refunded. There are more details below for your reference:', 'justg' ), wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES ) ) . "\n\n"; // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
+	echo sprintf( esc_html__( 'Your order on %s has been refunded. There are more details below for your reference:', 'mjlah' ), wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES ) ) . "\n\n"; // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
 }
 
 /*

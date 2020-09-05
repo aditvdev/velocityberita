@@ -23,7 +23,7 @@ defined( 'ABSPATH' ) || exit;
 <h1>
 	<?php
 	/* Translators: %s App name. */
-	printf( esc_html__( '%s would like to connect to your store', 'justg' ), esc_html( $app_name ) );
+	printf( esc_html__( '%s would like to connect to your store', 'mjlah' ), esc_html( $app_name ) );
 	?>
 </h1>
 
@@ -32,7 +32,7 @@ defined( 'ABSPATH' ) || exit;
 <p>
 	<?php
 	/* Translators: %1$s App name, %2$s scope. */
-	printf( esc_html__( 'This will give "%1$s" %2$s access which will allow it to:', 'justg' ), '<strong>' . esc_html( $app_name ) . '</strong>', '<strong>' . esc_html( $scope ) . '</strong>' );
+	printf( esc_html__( 'This will give "%1$s" %2$s access which will allow it to:', 'mjlah' ), '<strong>' . esc_html( $app_name ) . '</strong>', '<strong>' . esc_html( $scope ) . '</strong>' );
 	?>
 </p>
 
@@ -47,15 +47,15 @@ defined( 'ABSPATH' ) || exit;
 	<p>
 		<?php
 		/* Translators: %s display name. */
-		printf( esc_html__( 'Logged in as %s', 'justg' ), esc_html( $user->display_name ) );
+		printf( esc_html__( 'Logged in as %s', 'mjlah' ), esc_html( $user->display_name ) );
 		?>
-		<a href="<?php echo esc_url( $logout_url ); ?>" class="wc-auth-logout"><?php esc_html_e( 'Logout', 'justg' ); ?></a>
+		<a href="<?php echo esc_url( $logout_url ); ?>" class="wc-auth-logout"><?php esc_html_e( 'Logout', 'mjlah' ); ?></a>
 	</p>
 </div>
 
 <p class="wc-auth-actions">
-	<a href="<?php echo esc_url( $granted_url ); ?>" class="button button-primary wc-auth-approve"><?php esc_html_e( 'Approve', 'justg' ); ?></a>
-	<a href="<?php echo esc_url( $return_url ); ?>" class="button wc-auth-deny"><?php esc_html_e( 'Deny', 'justg' ); ?></a>
+	<a href="<?php echo esc_url( $granted_url ); ?>" class="button button-primary wc-auth-approve"><?php esc_html_e( 'Approve', 'mjlah' ); ?></a>
+	<a href="<?php echo esc_url( $return_url ); ?>" class="button wc-auth-deny"><?php esc_html_e( 'Deny', 'mjlah' ); ?></a>
 </p>
 
 <?php do_action( 'woocommerce_auth_page_footer' ); ?>

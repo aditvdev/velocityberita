@@ -2,7 +2,7 @@
 /**
  * Search results partial template
  *
- * @package justg
+ * @package mjlah
  */
 
 // Exit if accessed directly.
@@ -24,7 +24,7 @@ defined( 'ABSPATH' ) || exit;
 
 			<div class="entry-meta">
 
-				<?php justg_posted_on(); ?>
+				<?php mjlah_posted_on(); ?>
 
 			</div><!-- .entry-meta -->
 
@@ -40,7 +40,7 @@ defined( 'ABSPATH' ) || exit;
 
 	<footer class="entry-footer">
 
-		<?php justg_entry_footer(); ?>
+		<?php mjlah_entry_footer(); ?>
 
 	</footer><!-- .entry-footer -->
 

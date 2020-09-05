@@ -4,7 +4,7 @@
  *
  * Template for displaying a blank page.
  *
- * @package justg
+ * @package mjlah
  */
 
 // Exit if accessed directly.

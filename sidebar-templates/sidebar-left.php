@@ -2,7 +2,7 @@
 /**
  * The sidebar containing the main widget area
  *
- * @package justg
+ * @package mjlah
  */
 
 // Exit if accessed directly.
@@ -13,7 +13,7 @@ if ( ! is_active_sidebar( 'left-sidebar' ) ) {
 }
 
 // when both sidebars turned on reduce col size to 3 from 4.
-$sidebar_pos = get_theme_mod( 'justg_sidebar_position' );
+$sidebar_pos = get_theme_mod( 'mjlah_sidebar_position' );
 ?>
 
 <?php if ( 'both' === $sidebar_pos ) : ?>

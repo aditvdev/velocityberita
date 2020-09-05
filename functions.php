@@ -1,14 +1,14 @@
 <?php
 /**
- * justg functions and definitions
+ * mjlah functions and definitions
  *
- * @package justg
+ * @package mjlah
  */
 
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-$justg_includes = array(
+$mjlah_includes = array(
 	'/theme-settings.php',                  // Initialize theme default settings.
 	'/setup.php',                           // Theme setup and custom theme supports.
 	'/widgets.php',                         // Register widget area.
@@ -31,6 +31,6 @@ $justg_includes = array(
 	'/aq_resizer.php',						// load aq_resizer functions.
 );
 
-foreach ( $justg_includes as $file ) {
+foreach ( $mjlah_includes as $file ) {
 	require_once get_template_directory() . '/inc' . $file;
 }

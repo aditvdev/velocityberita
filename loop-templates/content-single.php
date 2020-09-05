@@ -2,7 +2,7 @@
 /**
  * Single post partial template
  *
- * @package justg
+ * @package mjlah
  */
 
 // Exit if accessed directly.
@@ -17,7 +17,7 @@ defined( 'ABSPATH' ) || exit;
 
 		<div class="entry-meta">
 
-			<?php justg_posted_on(); ?>
+			<?php mjlah_posted_on(); ?>
 
 		</div><!-- .entry-meta -->
 
@@ -32,7 +32,7 @@ defined( 'ABSPATH' ) || exit;
 		<?php
 		wp_link_pages(
 			array(
-				'before' => '<div class="page-links">' . __( 'Pages:', 'justg' ),
+				'before' => '<div class="page-links">' . __( 'Pages:', 'mjlah' ),
 				'after'  => '</div>',
 			)
 		);
@@ -42,7 +42,7 @@ defined( 'ABSPATH' ) || exit;
 
 	<footer class="entry-footer">
 
-		<?php justg_entry_footer(); ?>
+		<?php mjlah_entry_footer(); ?>
 
 	</footer><!-- .entry-footer -->
 

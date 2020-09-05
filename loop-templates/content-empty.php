@@ -2,7 +2,7 @@
 /**
  * Content empty partial template
  *
- * @package justg
+ * @package mjlah
  */
 
 // Exit if accessed directly.

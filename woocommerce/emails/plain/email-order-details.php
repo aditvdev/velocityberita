@@ -20,7 +20,7 @@ defined( 'ABSPATH' ) || exit;
 do_action( 'woocommerce_email_before_order_table', $order, $sent_to_admin, $plain_text, $email );
 
 /* translators: %1$s: Order ID. %2$s: Order date */
-echo wp_kses_post( wc_strtoupper( sprintf( esc_html__( '[Order #%1$s] (%2$s)', 'justg' ), $order->get_order_number(), wc_format_datetime( $order->get_date_created() ) ) ) ) . "\n";
+echo wp_kses_post( wc_strtoupper( sprintf( esc_html__( '[Order #%1$s] (%2$s)', 'mjlah' ), $order->get_order_number(), wc_format_datetime( $order->get_date_created() ) ) ) ) . "\n";
 echo "\n" . wc_get_email_order_items( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	$order,
 	array(
@@ -43,12 +43,12 @@ if ( $item_totals ) {
 }
 
 if ( $order->get_customer_note() ) {
-	echo esc_html__( 'Note:', 'justg' ) . "\t " . wp_kses_post( wptexturize( $order->get_customer_note() ) ) . "\n";
+	echo esc_html__( 'Note:', 'mjlah' ) . "\t " . wp_kses_post( wptexturize( $order->get_customer_note() ) ) . "\n";
 }
 
 if ( $sent_to_admin ) {
 	/* translators: %s: Order link. */
-	echo "\n" . sprintf( esc_html__( 'View order: %s', 'justg' ), esc_url( $order->get_edit_order_url() ) ) . "\n";
+	echo "\n" . sprintf( esc_html__( 'View order: %s', 'mjlah' ), esc_url( $order->get_edit_order_url() ) ) . "\n";
 }
 
 do_action( 'woocommerce_email_after_order_table', $order, $sent_to_admin, $plain_text, $email );

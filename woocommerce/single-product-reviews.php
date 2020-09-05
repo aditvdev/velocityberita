@@ -31,10 +31,10 @@ if ( ! comments_open() ) {
 			$count = $product->get_review_count();
 			if ( $count && wc_review_ratings_enabled() ) {
 				/* translators: 1: reviews count 2: product name */
-				$reviews_title = sprintf( esc_html( _n( '%1$s review for %2$s', '%1$s reviews for %2$s', $count, 'justg' ) ), esc_html( $count ), '<span>' . get_the_title() . '</span>' );
+				$reviews_title = sprintf( esc_html( _n( '%1$s review for %2$s', '%1$s reviews for %2$s', $count, 'mjlah' ) ), esc_html( $count ), '<span>' . get_the_title() . '</span>' );
 				echo apply_filters( 'woocommerce_reviews_title', $reviews_title, $count, $product ); // WPCS: XSS ok.
 			} else {
-				esc_html_e( 'Reviews', 'justg' );
+				esc_html_e( 'Reviews', 'mjlah' );
 			}
 			?>
 		</h2>
@@ -61,7 +61,7 @@ if ( ! comments_open() ) {
 			endif;
 			?>
 		<?php else : ?>
-			<p class="woocommerce-noreviews"><?php esc_html_e( 'There are no reviews yet.', 'justg' ); ?></p>
+			<p class="woocommerce-noreviews"><?php esc_html_e( 'There are no reviews yet.', 'mjlah' ); ?></p>
 		<?php endif; ?>
 	</div>
 
@@ -72,13 +72,13 @@ if ( ! comments_open() ) {
 				$commenter    = wp_get_current_commenter();
 				$comment_form = array(
 					/* translators: %s is product title */
-					'title_reply'         => have_comments() ? esc_html__( 'Add a review', 'justg' ) : sprintf( esc_html__( 'Be the first to review &ldquo;%s&rdquo;', 'justg' ), get_the_title() ),
+					'title_reply'         => have_comments() ? esc_html__( 'Add a review', 'mjlah' ) : sprintf( esc_html__( 'Be the first to review &ldquo;%s&rdquo;', 'mjlah' ), get_the_title() ),
 					/* translators: %s is product title */
-					'title_reply_to'      => esc_html__( 'Leave a Reply to %s', 'justg' ),
+					'title_reply_to'      => esc_html__( 'Leave a Reply to %s', 'mjlah' ),
 					'title_reply_before'  => '<span id="reply-title" class="comment-reply-title">',
 					'title_reply_after'   => '</span>',
 					'comment_notes_after' => '',
-					'label_submit'        => esc_html__( 'Submit', 'justg' ),
+					'label_submit'        => esc_html__( 'Submit', 'mjlah' ),
 					'logged_in_as'        => '',
 					'comment_field'       => '',
 				);
@@ -86,13 +86,13 @@ if ( ! comments_open() ) {
 				$name_email_required = (bool) get_option( 'require_name_email', 1 );
 				$fields              = array(
 					'author' => array(
-						'label'    => __( 'Name', 'justg' ),
+						'label'    => __( 'Name', 'mjlah' ),
 						'type'     => 'text',
 						'value'    => $commenter['comment_author'],
 						'required' => $name_email_required,
 					),
 					'email'  => array(
-						'label'    => __( 'Email', 'justg' ),
+						'label'    => __( 'Email', 'mjlah' ),
 						'type'     => 'email',
 						'value'    => $commenter['comment_author_email'],
 						'required' => $name_email_required,
@@ -117,28 +117,28 @@ if ( ! comments_open() ) {
 				$account_page_url = wc_get_page_permalink( 'myaccount' );
 				if ( $account_page_url ) {
 					/* translators: %s opening and closing link tags respectively */
-					$comment_form['must_log_in'] = '<p class="must-log-in">' . sprintf( esc_html__( 'You must be %1$slogged in%2$s to post a review.', 'justg' ), '<a href="' . esc_url( $account_page_url ) . '">', '</a>' ) . '</p>';
+					$comment_form['must_log_in'] = '<p class="must-log-in">' . sprintf( esc_html__( 'You must be %1$slogged in%2$s to post a review.', 'mjlah' ), '<a href="' . esc_url( $account_page_url ) . '">', '</a>' ) . '</p>';
 				}
 
 				if ( wc_review_ratings_enabled() ) {
-					$comment_form['comment_field'] = '<div class="comment-form-rating"><label for="rating">' . esc_html__( 'Your rating', 'justg' ) . ( wc_review_ratings_required() ? '&nbsp;<span class="required">*</span>' : '' ) . '</label><select name="rating" id="rating" required>
-						<option value="">' . esc_html__( 'Rate&hellip;', 'justg' ) . '</option>
-						<option value="5">' . esc_html__( 'Perfect', 'justg' ) . '</option>
-						<option value="4">' . esc_html__( 'Good', 'justg' ) . '</option>
-						<option value="3">' . esc_html__( 'Average', 'justg' ) . '</option>
-						<option value="2">' . esc_html__( 'Not that bad', 'justg' ) . '</option>
-						<option value="1">' . esc_html__( 'Very poor', 'justg' ) . '</option>
+					$comment_form['comment_field'] = '<div class="comment-form-rating"><label for="rating">' . esc_html__( 'Your rating', 'mjlah' ) . ( wc_review_ratings_required() ? '&nbsp;<span class="required">*</span>' : '' ) . '</label><select name="rating" id="rating" required>
+						<option value="">' . esc_html__( 'Rate&hellip;', 'mjlah' ) . '</option>
+						<option value="5">' . esc_html__( 'Perfect', 'mjlah' ) . '</option>
+						<option value="4">' . esc_html__( 'Good', 'mjlah' ) . '</option>
+						<option value="3">' . esc_html__( 'Average', 'mjlah' ) . '</option>
+						<option value="2">' . esc_html__( 'Not that bad', 'mjlah' ) . '</option>
+						<option value="1">' . esc_html__( 'Very poor', 'mjlah' ) . '</option>
 					</select></div>';
 				}
 
-				$comment_form['comment_field'] .= '<p class="comment-form-comment"><label for="comment">' . esc_html__( 'Your review', 'justg' ) . '&nbsp;<span class="required">*</span></label><textarea id="comment" class="form-control" name="comment" cols="45" rows="8" required></textarea></p>';
+				$comment_form['comment_field'] .= '<p class="comment-form-comment"><label for="comment">' . esc_html__( 'Your review', 'mjlah' ) . '&nbsp;<span class="required">*</span></label><textarea id="comment" class="form-control" name="comment" cols="45" rows="8" required></textarea></p>';
 
 				comment_form( apply_filters( 'woocommerce_product_review_comment_form_args', $comment_form ) );
 				?>
 			</div>
 		</div>
 	<?php else : ?>
-		<p class="woocommerce-verification-required"><?php esc_html_e( 'Only logged in customers who have purchased this product may leave a review.', 'justg' ); ?></p>
+		<p class="woocommerce-verification-required"><?php esc_html_e( 'Only logged in customers who have purchased this product may leave a review.', 'mjlah' ); ?></p>
 	<?php endif; ?>
 
 	<div class="clear"></div>

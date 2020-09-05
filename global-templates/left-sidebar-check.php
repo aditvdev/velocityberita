@@ -2,13 +2,13 @@
 /**
  * Left sidebar check
  *
- * @package justg
+ * @package mjlah
  */
 
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-$sidebar_pos = get_theme_mod( 'justg_sidebar_position' );
+$sidebar_pos = get_theme_mod( 'mjlah_sidebar_position' );
 
 if ( 'left' === $sidebar_pos || 'both' === $sidebar_pos ) {
 	get_template_part( 'sidebar-templates/sidebar', 'left' );

@@ -23,19 +23,19 @@ if ( ! wc_coupons_enabled() ) { // @codingStandardsIgnoreLine.
 
 ?>
 <div class="woocommerce-form-coupon-toggle">
-	<?php wc_print_notice( apply_filters( 'woocommerce_checkout_coupon_message', esc_html__( 'Have a coupon?', 'justg' ) . ' <a href="#" class="showcoupon">' . esc_html__( 'Click here to enter your code', 'justg' ) . '</a>' ), 'notice' ); ?>
+	<?php wc_print_notice( apply_filters( 'woocommerce_checkout_coupon_message', esc_html__( 'Have a coupon?', 'mjlah' ) . ' <a href="#" class="showcoupon">' . esc_html__( 'Click here to enter your code', 'mjlah' ) . '</a>' ), 'notice' ); ?>
 </div>
 
 <form class="checkout_coupon woocommerce-form-coupon" method="post" style="display:none">
 
-	<p><?php esc_html_e( 'If you have a coupon code, please apply it below.', 'justg' ); ?></p>
+	<p><?php esc_html_e( 'If you have a coupon code, please apply it below.', 'mjlah' ); ?></p>
 
 	<p class="form-row form-row-first">
-		<input type="text" name="coupon_code" class="input-text form-control form-control-sm" placeholder="<?php esc_attr_e( 'Coupon code', 'justg' ); ?>" id="coupon_code" value="" />
+		<input type="text" name="coupon_code" class="input-text form-control form-control-sm" placeholder="<?php esc_attr_e( 'Coupon code', 'mjlah' ); ?>" id="coupon_code" value="" />
 	</p>
 
 	<p class="form-row form-row-last">
-		<button type="submit" class="button" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'justg' ); ?>"><?php esc_html_e( 'Apply coupon', 'justg' ); ?></button>
+		<button type="submit" class="button" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'mjlah' ); ?>"><?php esc_html_e( 'Apply coupon', 'mjlah' ); ?></button>
 	</p>
 
 	<div class="clear"></div>

@@ -4,17 +4,17 @@
  *
  * Eventually, some of the functionality here could be replaced by core features.
  *
- * @package justg
+ * @package mjlah
  */
 
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-if ( ! function_exists( 'justg_posted_on' ) ) {
+if ( ! function_exists( 'mjlah_posted_on' ) ) {
 	/**
 	 * Prints HTML with meta information for the current post-date/time and author.
 	 */
-	function justg_posted_on() {
+	function mjlah_posted_on() {
 		$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 		if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
 			$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s"> (%4$s) </time>';
@@ -27,19 +27,19 @@ if ( ! function_exists( 'justg_posted_on' ) ) {
 			esc_html( get_the_modified_date() )
 		);
 		$posted_on   = apply_filters(
-			'justg_posted_on',
+			'mjlah_posted_on',
 			sprintf(
 				'<span class="posted-on">%1$s <a href="%2$s" rel="bookmark">%3$s</a></span>',
-				esc_html_x( 'Posted on', 'post date', 'justg' ),
+				esc_html_x( 'Posted on', 'post date', 'mjlah' ),
 				esc_url( get_permalink() ),
-				apply_filters( 'justg_posted_on_time', $time_string )
+				apply_filters( 'mjlah_posted_on_time', $time_string )
 			)
 		);
 		$byline      = apply_filters(
-			'justg_posted_by',
+			'mjlah_posted_by',
 			sprintf(
 				'<span class="byline"> %1$s<span class="author vcard"> <a class="url fn n" href="%2$s">%3$s</a></span></span>',
-				$posted_on ? esc_html_x( 'by', 'post author', 'justg' ) : esc_html_x( 'Posted by', 'post author', 'justg' ),
+				$posted_on ? esc_html_x( 'by', 'post author', 'mjlah' ) : esc_html_x( 'Posted by', 'post author', 'mjlah' ),
 				esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
 				esc_html( get_the_author() )
 			)
@@ -48,35 +48,35 @@ if ( ! function_exists( 'justg_posted_on' ) ) {
 	}
 }
 
-if ( ! function_exists( 'justg_entry_footer' ) ) {
+if ( ! function_exists( 'mjlah_entry_footer' ) ) {
 	/**
 	 * Prints HTML with meta information for the categories, tags and comments.
 	 */
-	function justg_entry_footer() {
+	function mjlah_entry_footer() {
 		// Hide category and tag text for pages.
 		if ( 'post' === get_post_type() ) {
 			/* translators: used between list items, there is a space after the comma */
-			$categories_list = get_the_category_list( esc_html__( ', ', 'justg' ) );
-			if ( $categories_list && justg_categorized_blog() ) {
+			$categories_list = get_the_category_list( esc_html__( ', ', 'mjlah' ) );
+			if ( $categories_list && mjlah_categorized_blog() ) {
 				/* translators: %s: Categories of current post */
-				printf( '<span class="cat-links">' . esc_html__( 'Posted in %s', 'justg' ) . '</span>', $categories_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				printf( '<span class="cat-links">' . esc_html__( 'Posted in %s', 'mjlah' ) . '</span>', $categories_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
 			/* translators: used between list items, there is a space after the comma */
-			$tags_list = get_the_tag_list( '', esc_html__( ', ', 'justg' ) );
+			$tags_list = get_the_tag_list( '', esc_html__( ', ', 'mjlah' ) );
 			if ( $tags_list ) {
 				/* translators: %s: Tags of current post */
-				printf( '<span class="tags-links">' . esc_html__( 'Tagged %s', 'justg' ) . '</span>', $tags_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				printf( '<span class="tags-links">' . esc_html__( 'Tagged %s', 'mjlah' ) . '</span>', $tags_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
 		}
 		if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 			echo '<span class="comments-link">';
-			comments_popup_link( esc_html__( 'Leave a comment', 'justg' ), esc_html__( '1 Comment', 'justg' ), esc_html__( '% Comments', 'justg' ) );
+			comments_popup_link( esc_html__( 'Leave a comment', 'mjlah' ), esc_html__( '1 Comment', 'mjlah' ), esc_html__( '% Comments', 'mjlah' ) );
 			echo '</span>';
 		}
 		edit_post_link(
 			sprintf(
 				/* translators: %s: Name of current post */
-				esc_html__( 'Edit %s', 'justg' ),
+				esc_html__( 'Edit %s', 'mjlah' ),
 				the_title( '<span class="sr-only">"', '"</span>', false )
 			),
 			'<span class="edit-link">',
@@ -85,14 +85,14 @@ if ( ! function_exists( 'justg_entry_footer' ) ) {
 	}
 }
 
-if ( ! function_exists( 'justg_categorized_blog' ) ) {
+if ( ! function_exists( 'mjlah_categorized_blog' ) ) {
 	/**
 	 * Returns true if a blog has more than 1 category.
 	 *
 	 * @return bool
 	 */
-	function justg_categorized_blog() {
-		$all_the_cool_cats = get_transient( 'justg_categories' );
+	function mjlah_categorized_blog() {
+		$all_the_cool_cats = get_transient( 'mjlah_categories' );
 		if ( false === $all_the_cool_cats ) {
 			// Create an array of all the categories that are attached to posts.
 			$all_the_cool_cats = get_categories(
@@ -105,45 +105,45 @@ if ( ! function_exists( 'justg_categorized_blog' ) ) {
 			);
 			// Count the number of categories that are attached to the posts.
 			$all_the_cool_cats = count( $all_the_cool_cats );
-			set_transient( 'justg_categories', $all_the_cool_cats );
+			set_transient( 'mjlah_categories', $all_the_cool_cats );
 		}
 		if ( $all_the_cool_cats > 1 ) {
-			// This blog has more than 1 category so justg_categorized_blog should return true.
+			// This blog has more than 1 category so mjlah_categorized_blog should return true.
 			return true;
 		} else {
-			// This blog has only 1 category so justg_categorized_blog should return false.
+			// This blog has only 1 category so mjlah_categorized_blog should return false.
 			return false;
 		}
 	}
 }
 
-add_action( 'edit_category', 'justg_category_transient_flusher' );
-add_action( 'save_post', 'justg_category_transient_flusher' );
+add_action( 'edit_category', 'mjlah_category_transient_flusher' );
+add_action( 'save_post', 'mjlah_category_transient_flusher' );
 
-if ( ! function_exists( 'justg_category_transient_flusher' ) ) {
+if ( ! function_exists( 'mjlah_category_transient_flusher' ) ) {
 	/**
-	 * Flush out the transients used in justg_categorized_blog.
+	 * Flush out the transients used in mjlah_categorized_blog.
 	 */
-	function justg_category_transient_flusher() {
+	function mjlah_category_transient_flusher() {
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 			return;
 		}
 		// Like, beat it. Dig?
-		delete_transient( 'justg_categories' );
+		delete_transient( 'mjlah_categories' );
 	}
 }
 
-if ( ! function_exists( 'justg_body_attributes' ) ) {
+if ( ! function_exists( 'mjlah_body_attributes' ) ) {
 	/**
 	 * Displays the attributes for the body element.
 	 */
-	function justg_body_attributes() {
+	function mjlah_body_attributes() {
 		/**
 		 * Filters the body attributes.
 		 *
 		 * @param array $atts An associative array of attributes.
 		 */
-		$atts = array_unique( apply_filters( 'justg_body_attributes', $atts = array() ) );
+		$atts = array_unique( apply_filters( 'mjlah_body_attributes', $atts = array() ) );
 		if ( ! is_array( $atts ) || empty( $atts ) ) {
 			return;
 		}

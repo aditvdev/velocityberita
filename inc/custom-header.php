@@ -2,19 +2,19 @@
 /**
  * Custom header setup
  *
- * @package justg
+ * @package mjlah
  */
 
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-add_action( 'after_setup_theme', 'justg_custom_header_setup' );
+add_action( 'after_setup_theme', 'mjlah_custom_header_setup' );
 
-if ( ! function_exists( 'justg_custom_header_setup' ) ) {
+if ( ! function_exists( 'mjlah_custom_header_setup' ) ) {
 	/**
 	 * Set up custom header feature.
 	 */
-	function justg_custom_header_setup() {
+	function mjlah_custom_header_setup() {
 
 		/**
 		 *
@@ -34,7 +34,7 @@ if ( ! function_exists( 'justg_custom_header_setup' ) ) {
 		add_theme_support(
 			'custom-header',
 			apply_filters(
-				'justg_custom_header_args',
+				'mjlah_custom_header_args',
 				array(
 					'default-image' => get_parent_theme_file_uri( '/img/header.jpg' ),
 					'width'         => 2000,
@@ -49,7 +49,7 @@ if ( ! function_exists( 'justg_custom_header_setup' ) ) {
 				'default-image' => array(
 					'url'           => '%s/img/header.jpg',
 					'thumbnail_url' => '%s/img/header.jpg',
-					'description'   => __( 'Default Header Image', 'justg' ),
+					'description'   => __( 'Default Header Image', 'mjlah' ),
 				),
 			)
 		);

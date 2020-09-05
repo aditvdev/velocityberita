@@ -2,18 +2,18 @@
 /**
  * Add WooCommerce support
  *
- * @package justg
+ * @package mjlah
  */
 
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-add_action( 'after_setup_theme', 'justg_woocommerce_support' );
-if ( ! function_exists( 'justg_woocommerce_support' ) ) {
+add_action( 'after_setup_theme', 'mjlah_woocommerce_support' );
+if ( ! function_exists( 'mjlah_woocommerce_support' ) ) {
 	/**
 	 * Declares WooCommerce theme support.
 	 */
-	function justg_woocommerce_support() {
+	function mjlah_woocommerce_support() {
 		add_theme_support( 'woocommerce' );
 
 		// Add Product Gallery support.
@@ -22,7 +22,7 @@ if ( ! function_exists( 'justg_woocommerce_support' ) ) {
 		add_theme_support( 'wc-product-gallery-slider' );
 
 		// Add Bootstrap classes to form fields.
-		add_filter( 'woocommerce_form_field_args', 'justg_wc_form_field_args', 10, 3 );
+		add_filter( 'woocommerce_form_field_args', 'mjlah_wc_form_field_args', 10, 3 );
 	}
 }
 
@@ -31,15 +31,15 @@ remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wr
 remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
 
 // Then hook in your own functions to display the wrappers your theme requires.
-add_action( 'woocommerce_before_main_content', 'justg_woocommerce_wrapper_start', 10 );
-add_action( 'woocommerce_after_main_content', 'justg_woocommerce_wrapper_end', 10 );
+add_action( 'woocommerce_before_main_content', 'mjlah_woocommerce_wrapper_start', 10 );
+add_action( 'woocommerce_after_main_content', 'mjlah_woocommerce_wrapper_end', 10 );
 
-if ( ! function_exists( 'justg_woocommerce_wrapper_start' ) ) {
+if ( ! function_exists( 'mjlah_woocommerce_wrapper_start' ) ) {
 	/**
 	 * Display the theme specific start of the page wrapper.
 	 */
-	function justg_woocommerce_wrapper_start() {
-		$container = get_theme_mod( 'justg_container_type' );
+	function mjlah_woocommerce_wrapper_start() {
+		$container = get_theme_mod( 'mjlah_container_type' );
 		echo '<div class="wrapper" id="woocommerce-wrapper">';
 		echo '<div class="' . esc_attr( $container ) . '" id="content" tabindex="-1">';
 		// echo '<div class="row">';
@@ -48,11 +48,11 @@ if ( ! function_exists( 'justg_woocommerce_wrapper_start' ) ) {
 	}
 }
 
-if ( ! function_exists( 'justg_woocommerce_wrapper_end' ) ) {
+if ( ! function_exists( 'mjlah_woocommerce_wrapper_end' ) ) {
 	/**
 	 * Display the theme specific end of the page wrapper.
 	 */
-	function justg_woocommerce_wrapper_end() {
+	function mjlah_woocommerce_wrapper_end() {
 		echo '</main><!-- #main -->';
 		// get_template_part( 'global-templates/right-sidebar-check' );
 		// echo '</div><!-- .row -->';
@@ -61,7 +61,7 @@ if ( ! function_exists( 'justg_woocommerce_wrapper_end' ) ) {
 	}
 }
 
-if ( ! function_exists( 'justg_wc_form_field_args' ) ) {
+if ( ! function_exists( 'mjlah_wc_form_field_args' ) ) {
 	/**
 	 * Filter hook function monkey patching form classes
 	 * Author: Adriano Monecchi http://stackoverflow.com/a/36724593/307826
@@ -72,7 +72,7 @@ if ( ! function_exists( 'justg_wc_form_field_args' ) ) {
 	 *
 	 * @return mixed
 	 */
-	function justg_wc_form_field_args( $args, $key, $value = null ) {
+	function mjlah_wc_form_field_args( $args, $key, $value = null ) {
 		// Start field type switch case.
 		switch ( $args['type'] ) {
 			// Targets all select input type elements, except the country and state select input types.
@@ -163,25 +163,25 @@ if ( ! is_admin() && ! function_exists( 'wc_review_ratings_enabled' ) ) {
 	}
 }
 
-if ( ! function_exists( 'justg_woocommerce_breadcrumbs' ) ) {
+if ( ! function_exists( 'mjlah_woocommerce_breadcrumbs' ) ) {
 
-	add_filter( 'woocommerce_breadcrumb_defaults', 'justg_woocommerce_breadcrumbs' );
-	function justg_woocommerce_breadcrumbs() {
+	add_filter( 'woocommerce_breadcrumb_defaults', 'mjlah_woocommerce_breadcrumbs' );
+	function mjlah_woocommerce_breadcrumbs() {
 		return array(
 				'delimiter'   => ' &#47; ',
 				'wrap_before' => '<nav class="woocommerce-breadcrumb" itemprop="breadcrumb">',
 				'wrap_after'  => '</nav>',
 				'before'      => '',
 				'after'       => '',
-				'home'        => _x( 'Home', 'breadcrumb', 'justg' ),
+				'home'        => _x( 'Home', 'breadcrumb', 'mjlah' ),
 			);
 	}
 }
 
-if ( ! function_exists( 'justg_append_cart_icon' ) && class_exists( 'WooCommerce' ) ) {
+if ( ! function_exists( 'mjlah_append_cart_icon' ) && class_exists( 'WooCommerce' ) ) {
 	// Add cart in menu 
-	add_filter( 'wp_nav_menu_items', 'justg_append_cart_icon', 10, 2 );
-	function justg_append_cart_icon( $items, $args ) {
+	add_filter( 'wp_nav_menu_items', 'mjlah_append_cart_icon', 10, 2 );
+	function mjlah_append_cart_icon( $items, $args ) {
 		$cart_item_count = is_object( WC()->cart ) ? WC()->cart->get_cart_contents_count() : '0';
 
 		$cart_count_span = '<span class="counter" id="cart-count">'.$cart_item_count.'</span>';
@@ -197,20 +197,20 @@ if ( ! function_exists( 'justg_append_cart_icon' ) && class_exists( 'WooCommerce
 	}
 }
 
-if ( ! function_exists( 'justg_refresh_cart_count' ) && class_exists( 'WooCommerce' ) ) {
+if ( ! function_exists( 'mjlah_refresh_cart_count' ) && class_exists( 'WooCommerce' ) ) {
 	// Add refresh cart count
-	add_filter( 'woocommerce_add_to_cart_fragments', 'justg_refresh_cart_count', 50, 1 );
-	function justg_refresh_cart_count( $fragments ){
+	add_filter( 'woocommerce_add_to_cart_fragments', 'mjlah_refresh_cart_count', 50, 1 );
+	function mjlah_refresh_cart_count( $fragments ){
 		$cart_item_count = is_object( WC()->cart ) ? WC()->cart->get_cart_contents_count() : '0';
 		$fragments['#cart-count'] = '<span class="counter" id="cart-count">'.$cart_item_count.'</span>';
 		return $fragments;
 	}
 }
 
-if ( ! function_exists( 'justg_override_checkout_fields' ) && class_exists( 'WooCommerce' ) ) {
+if ( ! function_exists( 'mjlah_override_checkout_fields' ) && class_exists( 'WooCommerce' ) ) {
 	//Unset checkout fields
-	add_filter( 'woocommerce_checkout_fields' , 'justg_override_checkout_fields' );
-	function justg_override_checkout_fields( $fields ) {
+	add_filter( 'woocommerce_checkout_fields' , 'mjlah_override_checkout_fields' );
+	function mjlah_override_checkout_fields( $fields ) {
 		unset($fields['billing']['billing_company']);
 		return $fields;
 	}

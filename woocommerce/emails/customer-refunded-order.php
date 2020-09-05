@@ -23,16 +23,16 @@ defined( 'ABSPATH' ) || exit;
 do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
 
 <?php /* translators: %s: Customer first name */ ?>
-<p><?php printf( esc_html__( 'Hi %s,', 'justg' ), esc_html( $order->get_billing_first_name() ) ); ?></p>
+<p><?php printf( esc_html__( 'Hi %s,', 'mjlah' ), esc_html( $order->get_billing_first_name() ) ); ?></p>
 
 <p>
 <?php
 if ( $partial_refund ) {
 	/* translators: %s: Site title */
-	printf( esc_html__( 'Your order on %s has been partially refunded. There are more details below for your reference:', 'justg' ), wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES ) ); // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
+	printf( esc_html__( 'Your order on %s has been partially refunded. There are more details below for your reference:', 'mjlah' ), wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES ) ); // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
 } else {
 	/* translators: %s: Site title */
-	printf( esc_html__( 'Your order on %s has been refunded. There are more details below for your reference:', 'justg' ), wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES ) ); // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
+	printf( esc_html__( 'Your order on %s has been refunded. There are more details below for your reference:', 'mjlah' ), wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES ) ); // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
 }
 ?>
 </p>

@@ -2,13 +2,13 @@
 /**
  * Theme customizer
  *
- * @package justg
+ * @package mjlah
  */
 
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-function justg_head(){
+function mjlah_head(){
     $favicon = get_theme_mod( 'favicon_url', '' );
     echo "<link rel='shortcut icon' href='$favicon' sizes='32x32' type='image/x-icon'>";
    
@@ -43,4 +43,4 @@ function justg_head(){
     </style>
     <?php
 }
-add_action( 'wp_head', 'justg_head' );
+add_action( 'wp_head', 'mjlah_head' );

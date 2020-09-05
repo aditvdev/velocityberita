@@ -1,16 +1,16 @@
 <?php
 /**
- * justg functions and definitions
+ * mjlah functions and definitions
  *
- * @package justg
+ * @package mjlah
  */
 
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
 
-// [thumbnail width="350" height="200"] or justg_thumbnail('',350,200)
-function justg_thumbnail( $atts, $width = 350, $height = 200 ) {
+// [thumbnail width="350" height="200"] or mjlah_thumbnail('',350,200)
+function mjlah_thumbnail( $atts, $width = 350, $height = 200 ) {
     
     // Handling attributes width & height 
 	$attributes = shortcode_atts( array(
@@ -34,10 +34,10 @@ function justg_thumbnail( $atts, $width = 350, $height = 200 ) {
     echo '</a>';
 	return ob_get_clean();
 }
-add_shortcode( 'thumbnail', 'justg_thumbnail' );
+add_shortcode( 'thumbnail', 'mjlah_thumbnail' );
 
-// [excerpt panjang="150"] or justg_excerpt('', 150)
-function justg_excerpt($atts, $panjang=150 ){
+// [excerpt panjang="150"] or mjlah_excerpt('', 150)
+function mjlah_excerpt($atts, $panjang=150 ){
     global $post;
     $atribut = shortcode_atts( array(
         'panjang'         => $panjang,
@@ -50,10 +50,10 @@ function justg_excerpt($atts, $panjang=150 ){
     $html = '<p>'.$html.'...</p>';
     return $html;
 }
-add_shortcode('excerpt', 'justg_excerpt');
+add_shortcode('excerpt', 'mjlah_excerpt');
 
 // [share]
-function justg_share() {
+function mjlah_share() {
 	ob_start();
 	echo '<div class="d-flex">';
     	echo '<a class="p-2 " href="https://www.facebook.com/sharer/sharer.php?u='.get_the_permalink().'" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>';
@@ -61,4 +61,4 @@ function justg_share() {
 	echo '</div>';
 	return ob_get_clean();
 }
-add_shortcode( 'share', 'justg_share' );
+add_shortcode( 'share', 'mjlah_share' );

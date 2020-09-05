@@ -2,7 +2,7 @@
 /**
  * Declaring widgets
  *
- * @package justg
+ * @package mjlah
  */
 
 // Exit if accessed directly.
@@ -14,9 +14,9 @@ defined( 'ABSPATH' ) || exit;
  *
  * @link https://developer.wordpress.org/reference/hooks/dynamic_sidebar_params/
  */
-add_filter( 'dynamic_sidebar_params', 'justg_widget_classes' );
+add_filter( 'dynamic_sidebar_params', 'mjlah_widget_classes' );
 
-if ( ! function_exists( 'justg_widget_classes' ) ) {
+if ( ! function_exists( 'mjlah_widget_classes' ) ) {
 
 	/**
 	 * Count number of visible widgets in a sidebar and add classes to widgets accordingly,
@@ -49,7 +49,7 @@ if ( ! function_exists( 'justg_widget_classes' ) ) {
 	 * }
 	 * @return array $params
 	 */
-	function justg_widget_classes( $params ) {
+	function mjlah_widget_classes( $params ) {
 
 		global $sidebars_widgets;
 
@@ -89,20 +89,20 @@ if ( ! function_exists( 'justg_widget_classes' ) ) {
 		return $params;
 
 	}
-} // End of if function_exists( 'justg_widget_classes' ).
+} // End of if function_exists( 'mjlah_widget_classes' ).
 
-add_action( 'widgets_init', 'justg_widgets_init' );
+add_action( 'widgets_init', 'mjlah_widgets_init' );
 
-if ( ! function_exists( 'justg_widgets_init' ) ) {
+if ( ! function_exists( 'mjlah_widgets_init' ) ) {
 	/**
 	 * Initializes themes widgets.
 	 */
-	function justg_widgets_init() {
+	function mjlah_widgets_init() {
 		register_sidebar(
 			array(
-				'name'          => __( 'Right Sidebar', 'justg' ),
+				'name'          => __( 'Right Sidebar', 'mjlah' ),
 				'id'            => 'right-sidebar',
-				'description'   => __( 'Right sidebar widget area', 'justg' ),
+				'description'   => __( 'Right sidebar widget area', 'mjlah' ),
 				'before_widget' => '<aside id="%1$s" class="block-customizer widget %2$s">',
 				'after_widget'  => '</aside>',
 				'before_title'  => '<h3 class="widget-title">',
@@ -112,9 +112,9 @@ if ( ! function_exists( 'justg_widgets_init' ) ) {
 
 		register_sidebar(
 			array(
-				'name'          => __( 'Left Sidebar', 'justg' ),
+				'name'          => __( 'Left Sidebar', 'mjlah' ),
 				'id'            => 'left-sidebar',
-				'description'   => __( 'Left sidebar widget area', 'justg' ),
+				'description'   => __( 'Left sidebar widget area', 'mjlah' ),
 				'before_widget' => '<aside id="%1$s" class="block-customizer widget %2$s">',
 				'after_widget'  => '</aside>',
 				'before_title'  => '<h3 class="widget-title">',
@@ -123,4 +123,4 @@ if ( ! function_exists( 'justg_widgets_init' ) ) {
 		);
 
 	}
-} // End of function_exists( 'justg_widgets_init' ).
+} // End of function_exists( 'mjlah_widgets_init' ).

@@ -28,10 +28,10 @@ $show_shipping = ! wc_ship_to_billing_address_only() && $order->needs_shipping_a
 
 	<?php endif; ?>
 
-	<h2 class="woocommerce-column__title"><?php esc_html_e( 'Billing address', 'justg' ); ?></h2>
+	<h2 class="woocommerce-column__title"><?php esc_html_e( 'Billing address', 'mjlah' ); ?></h2>
 
 	<address>
-		<?php echo wp_kses_post( $order->get_formatted_billing_address( esc_html__( 'N/A', 'justg' ) ) ); ?>
+		<?php echo wp_kses_post( $order->get_formatted_billing_address( esc_html__( 'N/A', 'mjlah' ) ) ); ?>
 
 		<?php if ( $order->get_billing_phone() ) : ?>
 			<p class="woocommerce-customer-details--phone"><?php echo esc_html( $order->get_billing_phone() ); ?></p>
@@ -47,9 +47,9 @@ $show_shipping = ! wc_ship_to_billing_address_only() && $order->needs_shipping_a
 		</div>
 
 		<div class="woocommerce-column woocommerce-column--2 woocommerce-column--shipping-address col-md-6">
-			<h2 class="woocommerce-column__title"><?php esc_html_e( 'Shipping address', 'justg' ); ?></h2>
+			<h2 class="woocommerce-column__title"><?php esc_html_e( 'Shipping address', 'mjlah' ); ?></h2>
 			<address>
-				<?php echo wp_kses_post( $order->get_formatted_shipping_address( esc_html__( 'N/A', 'justg' ) ) ); ?>
+				<?php echo wp_kses_post( $order->get_formatted_shipping_address( esc_html__( 'N/A', 'mjlah' ) ) ); ?>
 			</address>
 		</div><!-- /.col-2 -->
 

@@ -2,7 +2,7 @@
 /**
  * Custom hooks
  *
- * @package justg
+ * @package mjlah
  */
 
 // Exit if accessed directly.

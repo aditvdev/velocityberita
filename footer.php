@@ -4,16 +4,16 @@
  *
  * Contains the closing of the #content div and all content after
  *
- * @package justg
+ * @package mjlah
  */
 
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-$container = get_theme_mod( 'justg_container_type' );
+$container = get_theme_mod( 'mjlah_container_type' );
 ?>
 
-<?php do_action('justg_do_footer'); ?>
+<?php do_action('mjlah_do_footer'); ?>
 
 </div><!-- #page we need this extra closing tag here -->
 

@@ -8,7 +8,7 @@
  * E.g., it puts together the home page when no home.php file exists.
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
- * @package justg
+ * @package mjlah
  */
 
 // Exit if accessed directly.
@@ -16,7 +16,7 @@ defined( 'ABSPATH' ) || exit;
 
 get_header();
 
-$container = get_theme_mod( 'justg_container_type' );
+$container = get_theme_mod( 'mjlah_container_type' );
 ?>
 
 <div class="wrapper" id="index-wrapper">
@@ -51,7 +51,7 @@ $container = get_theme_mod( 'justg_container_type' );
 			</main><!-- #main -->
 
 			<!-- The pagination component -->
-			<?php justg_pagination(); ?>
+			<?php mjlah_pagination(); ?>
 
 			<!-- Do the right sidebar check -->
 			<?php get_template_part( 'global-templates/right-sidebar-check' ); ?>
