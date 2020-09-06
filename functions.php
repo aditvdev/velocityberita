@@ -20,7 +20,8 @@ $justg_includes = array(
 	'/custom-comments.php',                 // Custom Comments file.
 	'/jetpack.php',                         // Load Jetpack compatibility file.
 	'/class-wp-bootstrap-navwalker.php',    // Load custom WordPress nav walker.
-	'/woocommerce.php',                     // Load WooCommerce functions.
+	'/template-function.php',				// Load template functions.
+	'/template-hooks.php',					// Loat template hook.
 	'/editor.php',                          // Load Editor functions.
 	'/customizer.php',                      // Customizer.
 	'/deprecated.php',                      // Load deprecated functions.
@@ -29,6 +30,8 @@ $justg_includes = array(
 	'/kirki/kirki.php',                     // Load kirki.
 	'/kirki.php',							// Setup Kirki.
 	'/aq_resizer.php',						// load aq_resizer functions.
+	'/woocommerce.php',                     // Load WooCommerce functions.
+	
 );
 
 foreach ( $justg_includes as $file ) {

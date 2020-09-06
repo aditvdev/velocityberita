@@ -178,30 +178,11 @@ if ( ! function_exists( 'justg_woocommerce_breadcrumbs' ) ) {
 	}
 }
 
-if ( ! function_exists( 'justg_append_cart_icon' ) && class_exists( 'WooCommerce' ) ) {
-	// Add cart in menu 
-	add_filter( 'wp_nav_menu_items', 'justg_append_cart_icon', 10, 2 );
-	function justg_append_cart_icon( $items, $args ) {
-		$cart_item_count = is_object( WC()->cart ) ? WC()->cart->get_cart_contents_count() : '0';
-
-		$cart_count_span = '<span class="counter" id="cart-count">'.$cart_item_count.'</span>';
-
-		$cart_link = '<li class="cart menu-item menu-item-type-post_type menu-item-object-page menu-item-57 nav-item">';
-		$cart_link .= '<a class="nav-link" href="' . get_permalink( wc_get_page_id( 'cart' ) ) . '"><i class="fa fa-shopping-bag"></i>'.$cart_count_span.'</a>';
-		$cart_link .= '</li>';
-
-		// Add the cart link to the end of the menu.
-		$items = $items . $cart_link;
-		
-		return $items;
-	}
-}
-
 if ( ! function_exists( 'justg_refresh_cart_count' ) && class_exists( 'WooCommerce' ) ) {
 	// Add refresh cart count
 	add_filter( 'woocommerce_add_to_cart_fragments', 'justg_refresh_cart_count', 50, 1 );
 	function justg_refresh_cart_count( $fragments ){
-		$cart_item_count = is_object( WC()->cart ) ? WC()->cart->get_cart_contents_count() : '0';
+		$cart_item_count = justg_handheld_footer_bar_cart_link();
 		$fragments['#cart-count'] = '<span class="counter" id="cart-count">'.$cart_item_count.'</span>';
 		return $fragments;
 	}
@@ -215,3 +196,50 @@ if ( ! function_exists( 'justg_override_checkout_fields' ) && class_exists( 'Woo
 		return $fields;
 	}
 }
+
+if ( ! function_exists( 'justg_handheld_footer_bar_cart_link' ) ) {
+	/**
+	 * The cart callback function for the handheld footer bar
+	 *
+	 * @since 2.0.0
+	 */
+	function justg_handheld_footer_bar_cart_link() {
+		if ( ! justg_woo_cart_available() ) {
+			return;
+		}
+		?>
+			<a class="footer-cart-contents" href="<?php echo esc_url( wc_get_cart_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', 'storefront' ); ?>">
+				<span class="count"><?php echo wp_kses_data( WC()->cart->get_cart_contents_count() ); ?></span>
+			</a>
+		<?php
+	}
+}
+
+/**
+ * Storefront functions.
+ *
+ * @package storefront
+ */
+
+if ( ! function_exists( 'justg_is_woocommerce_activated' ) ) {
+	/**
+	 * Query WooCommerce activation
+	 */
+	function justg_is_woocommerce_activated() {
+		return class_exists( 'WooCommerce' ) ? true : false;
+	}
+}
+
+if ( ! function_exists( 'justg_woo_cart_available' ) ) {
+	/**
+	 * Validates whether the Woo Cart instance is available in the request
+	 *
+	 * @since 2.6.0
+	 * @return bool
+	 */
+	function justg_woo_cart_available() {
+		$woo = WC();
+		return $woo instanceof \WooCommerce && $woo->cart instanceof \WC_Cart;
+	}
+}
+

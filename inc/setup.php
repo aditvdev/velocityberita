@@ -123,8 +123,8 @@ function justg_header_footer_render() {
 
 	// If we have a header, remove the theme header and hook in Theme Builder's.
 	if ( ! empty( $header_ids ) ) {
-		remove_action( 'justg_do_header', 'justg_the_header_content' );
-		add_action( 'justg_do_header', 'FLThemeBuilderLayoutRenderer::render_header' );
+		remove_action( 'justg_header', 'justg_the_header_content' );
+		add_action( 'justg_header', 'FLThemeBuilderLayoutRenderer::render_header' );
 	}
 
 	// Get the footer ID.

@@ -24,4 +24,4 @@ $container = get_theme_mod( 'justg_container_type' );
 <body <?php body_class(); ?> <?php justg_body_attributes(); ?>>
 <?php do_action( 'wp_body_open' ); ?>
 <div class="site" id="page">
-<?php do_action('justg_do_header');?>
+<?php do_action('justg_header');?>
