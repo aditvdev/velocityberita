@@ -22,3 +22,10 @@ add_action( 'justg_header', 'justg_header_logo', 40 );
 add_action( 'justg_header', 'justg_header_menu', 40 );
 add_action( 'justg_header', 'justg_header_cart', 60 );
 add_action( 'justg_header', 'justg_header_close', 70 );
+
+/**
+ * Cart Fragment
+ * 
+ * @see justg_cart_link_fragment()
+ */
+add_filter( 'woocommerce_add_to_cart_fragments', 'justg_cart_link_fragment' );

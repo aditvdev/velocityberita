@@ -18,7 +18,7 @@ if( ! function_exists( 'justg_header_open' )) {
         ?>
         <header class="py-2 bg-white">
             <div id="wrapper-navbar" itemscope itemtype="http://schema.org/WebSite">
-                <div class=" container mx-auto d-flex">
+                <div class=" container mx-auto d-flex align-items-center">
         <?php
     }
 }
@@ -72,19 +72,77 @@ if( ! function_exists( 'justg_header_menu') ) {
 if ( ! function_exists( 'justg_header_cart' ) ) {
 	/**
 	 * Display Header Cart
-	 *
 	 */
 	function justg_header_cart() {
 		if ( justg_is_woocommerce_activated() ) {
-            $cart_item_count = is_object( WC()->cart ) ? WC()->cart->get_cart_contents_count() : '0';
-
-            $cart_count_span = '<span class="counter" id="cart-count">'.$cart_item_count.'</span>';
-    
-            echo '<li class="cart menu-item menu-item-type-post_type menu-item-object-page menu-item-57 nav-item">';
-                echo '<a class="nav-link" href="' . get_permalink( wc_get_page_id( 'cart' ) ) . '"><i class="fa fa-shopping-bag"></i>'.$cart_count_span.'</a>';
-            echo '</li>';
-			the_widget( 'WC_Widget_Cart', 'title=' );
+			if ( is_cart() ) {
+				$class = 'current-menu-item';
+			} else {
+				$class = '';
+			}
+			?>
+            <div id="site-header-cart" class="site-header-cart position-relative">
+                <a class="dropdown-toggle <?php echo esc_attr( $class ); ?>" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <?php justg_cart_link(); ?>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <?php the_widget( 'WC_Widget_Cart', 'title=' ); ?>
+                </div>
+            </div>
+            <?php
 		}
+	}
+}
+
+if ( ! function_exists( 'justg_cart_link_fragment' ) ) {
+	/**
+	 * Cart Fragments
+	 */
+	function justg_cart_link_fragment( $fragments ) {
+		global $woocommerce;
+
+		ob_start();
+		justg_cart_link();
+		$fragments['a.cart-contents'] = ob_get_clean();
+
+		ob_start();
+		justg_handheld_footer_bar_cart_link();
+		$fragments['a.footer-cart-contents'] = ob_get_clean();
+
+		return $fragments;
+	}
+}
+
+if ( ! function_exists( 'justg_cart_link' ) ) {
+	/**
+	 * Cart Link
+	 */
+	function justg_cart_link() {
+		if ( ! justg_woo_cart_available() ) {
+			return;
+		}
+		?>
+			<a class="cart-contents" href="<?php echo esc_url( wc_get_cart_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', 'justg' ); ?>">
+				<?php /* translators: %d: number of items in cart */ ?>
+				<?php echo wp_kses_post( WC()->cart->get_cart_subtotal() ); ?> <span class="count"><?php echo wp_kses_data( sprintf( _n( '%d item', '%d items', WC()->cart->get_cart_contents_count(), 'justg' ), WC()->cart->get_cart_contents_count() ) ); ?></span>
+			</a>
+		<?php
+	}
+}
+
+if ( ! function_exists( 'justg_handheld_footer_bar_cart_link' ) ) {
+	/**
+	 * The cart callback function for the handheld footer bar
+	 */
+	function justg_handheld_footer_bar_cart_link() {
+		if ( ! justg_woo_cart_available() ) {
+			return;
+		}
+		?>
+			<a class="footer-cart-contents" href="<?php echo esc_url( wc_get_cart_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', 'justg' ); ?>">
+				<span class="count"><?php echo wp_kses_data( WC()->cart->get_cart_contents_count() ); ?></span>
+			</a>
+		<?php
 	}
 }
 

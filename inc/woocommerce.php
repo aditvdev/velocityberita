@@ -178,16 +178,6 @@ if ( ! function_exists( 'justg_woocommerce_breadcrumbs' ) ) {
 	}
 }
 
-if ( ! function_exists( 'justg_refresh_cart_count' ) && class_exists( 'WooCommerce' ) ) {
-	// Add refresh cart count
-	add_filter( 'woocommerce_add_to_cart_fragments', 'justg_refresh_cart_count', 50, 1 );
-	function justg_refresh_cart_count( $fragments ){
-		$cart_item_count = justg_handheld_footer_bar_cart_link();
-		$fragments['#cart-count'] = '<span class="counter" id="cart-count">'.$cart_item_count.'</span>';
-		return $fragments;
-	}
-}
-
 if ( ! function_exists( 'justg_override_checkout_fields' ) && class_exists( 'WooCommerce' ) ) {
 	//Unset checkout fields
 	add_filter( 'woocommerce_checkout_fields' , 'justg_override_checkout_fields' );
@@ -208,7 +198,7 @@ if ( ! function_exists( 'justg_handheld_footer_bar_cart_link' ) ) {
 			return;
 		}
 		?>
-			<a class="footer-cart-contents" href="<?php echo esc_url( wc_get_cart_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', 'storefront' ); ?>">
+			<a class="footer-cart-contents" href="<?php echo esc_url( wc_get_cart_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', 'justg' ); ?>">
 				<span class="count"><?php echo wp_kses_data( WC()->cart->get_cart_contents_count() ); ?></span>
 			</a>
 		<?php
@@ -216,9 +206,9 @@ if ( ! function_exists( 'justg_handheld_footer_bar_cart_link' ) ) {
 }
 
 /**
- * Storefront functions.
+ * justg functions.
  *
- * @package storefront
+ * @package justg
  */
 
 if ( ! function_exists( 'justg_is_woocommerce_activated' ) ) {

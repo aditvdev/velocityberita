@@ -30,3 +30,6 @@
 .woocommerce-MyAccount-navigation .list-group-item:hover a {
     color:#ffffff;
 }
+.site-header-cart:hover > .dropdown-menu {
+    display: block;
+}
