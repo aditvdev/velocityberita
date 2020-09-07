@@ -172,7 +172,7 @@ class justg_Shipping_Method extends WC_Shipping_Method {
 				'title'       => __( 'RajaOngkir API Key', 'justg' ),
 				'type'        => 'text',
 				'placeholder' => '',
-				'description' => __( '<a href="http://www.rajaongkir.com?utm_source=justg.com" target="_blank">Click here</a> to get RajaOngkir.com API Key. It is FREE.', 'justg' ),
+				'description' => __( '<a href="http://www.rajaongkir.com" target="_blank">Click here</a> to get RajaOngkir.com API Key. It is FREE.', 'justg' ),
 				'default'     => '',
 			),
 			'account_type'          => array(
@@ -325,7 +325,7 @@ class justg_Shipping_Method extends WC_Shipping_Method {
 							<tr>
 								<th>&nbsp;</th>
 								<?php foreach ( $this->api->get_accounts() as $account ) { ?>
-									<th class="justg-account-features-col-<?php echo esc_attr( $account->get_type() ); ?>"><a href="https://rajaongkir.com/dokumentasi?utm_source=justg.com" target="_blank"><?php echo esc_html( $account->get_label() ); ?></a></th>
+									<th class="justg-account-features-col-<?php echo esc_attr( $account->get_type() ); ?>"><a href="https://rajaongkir.com/dokumentasi" target="_blank"><?php echo esc_html( $account->get_label() ); ?></a></th>
 								<?php } ?>
 							</tr>
 						</thead>

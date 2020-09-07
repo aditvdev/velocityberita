@@ -10,10 +10,9 @@ defined( 'ABSPATH' ) || exit;
 
 // Define plugin constants.
 define( 'JUSTG_FILE', __FILE__ );
-define( 'JUSTH_PATH', plugin_dir_path( JUSTG_FILE ) );
 
 // Load the helpers.
-require_once JUSTH_PATH . 'includes/helpers.php';
+require_once get_template_directory() . '/woocommerce/ongkir/includes/helpers.php';
 
 // Register the class auto loader.
 if ( function_exists( 'justg_autoload' ) ) {

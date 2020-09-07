@@ -75,7 +75,7 @@ class justg_API {
 	 * @return void
 	 */
 	private function populate_accounts() {
-		$files = glob( JUSTH_PATH . 'includes/accounts/class-justg-account-*.php' );
+		$files = glob( get_template_directory() . '/woocommerce/ongkir/includes/accounts/class-justg-account-*.php' );
 
 		foreach ( $files as $file ) {
 			$class_name = str_replace( array( 'class-', '-' ), array( '', '_' ), basename( $file, '.php' ) );
@@ -102,7 +102,7 @@ class justg_API {
 	 * @return void
 	 */
 	private function populate_couriers() {
-		$files = glob( JUSTH_PATH . 'includes/couriers/class-justg-courier-*.php' );
+		$files = glob( get_template_directory() . '/woocommerce/ongkir/includes/couriers/class-justg-courier-*.php' );
 
 		foreach ( $files as $file ) {
 			$class_name = str_replace( array( 'class-', '-' ), array( '', '_' ), basename( $file, '.php' ) );

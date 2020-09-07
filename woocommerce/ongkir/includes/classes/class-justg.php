@@ -71,7 +71,7 @@ class justg {
 	 */
 	public function __construct() {
 		// Hook to load plugin textdomain.
-		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
+		// add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
 
 		// Hook to add plugin action links.
 		add_action( 'plugin_action_links_' . plugin_basename( JUSTG_FILE ), array( $this, 'plugin_action_links' ) );
@@ -119,15 +119,6 @@ class justg {
 		}
 
 		return $available;
-	}
-
-	/**
-	 * Load plugin textdomain.
-	 *
-	 * @since 1.0.0
-	 */
-	public function load_textdomain() {
-		load_plugin_textdomain( 'justg', false, basename( JUSTH_PATH ) . '/languages' );
 	}
 
 	/**
@@ -206,7 +197,7 @@ class justg {
 
 			// Enqueue admin styles.
 			wp_enqueue_style(
-				'justg-backend', // Give the script a unique ID.
+				'ongkir-backend', // Give the script a unique ID.
 				$css_url, // Define the path to the JS file.
 				array(), // Define dependencies.
 				justg_get_plugin_data( 'Version' ), // Define a version (optional).
@@ -228,20 +219,20 @@ class justg {
 			);
 
 			// Define the scripts URL.
-			$js_url = get_template_directory_uri() .'/js/justg-backend.js';
+			$js_url = get_template_directory_uri() .'/js/ongkir-backend.js';
 			if ( $is_dev_env ) {
 				$js_url = add_query_arg( array( 't' => time() ), str_replace( '.min', '', $js_url ) );
 			}
 
 			wp_enqueue_script(
-				'justg-backend', // Give the script a unique ID.
+				'ongkir-backend', // Give the script a unique ID.
 				$js_url, // Define the path to the JS file.
 				array( 'jquery', 'accordion', 'wp-util', 'selectWoo', 'lockr.js' ), // Define dependencies.
 				justg_get_plugin_data( 'Version' ), // Define a version (optional).
 				true // Specify whether to put in footer (leave this true).
 			);
 
-			wp_localize_script( 'justg-backend', 'justg_params', justg_scripts_params() );
+			wp_localize_script( 'ongkir-backend', 'justg_params', justg_scripts_params() );
 		}
 	}
 
@@ -272,20 +263,20 @@ class justg {
 		);
 
 		// Enqueue main scripts.
-		$js_url = get_template_directory_uri() .'/js/justg-frontend.js';
+		$js_url = get_template_directory_uri() .'/js/ongkir-frontend.js';
 		if ( $is_dev_env ) {
 			$js_url = add_query_arg( array( 't' => time() ), str_replace( '.min', '', $js_url ) );
 		}
 
 		wp_enqueue_script(
-			'justg-frontend', // Give the script a unique ID.
+			'ongkir-frontend', // Give the script a unique ID.
 			$js_url, // Define the path to the JS file.
 			array( 'jquery', 'wp-util', 'selectWoo', 'lockr.js' ), // Define dependencies.
 			justg_get_plugin_data( 'Version' ), // Define a version (optional).
 			true // Specify whether to put in footer (leave this true).
 		);
 
-		wp_localize_script( 'justg-frontend', 'justg_params', justg_scripts_params() );
+		wp_localize_script( 'ongkir-frontend', 'justg_params', justg_scripts_params() );
 	}
 
 	/**

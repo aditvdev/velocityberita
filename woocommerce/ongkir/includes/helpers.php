@@ -45,11 +45,12 @@ if ( ! function_exists( 'justg_autoload' ) ) :
 		}
 
 		if ( strpos( $class, 'justg_account_' ) === 0 ) {
-			require_once JUSTH_PATH . 'includes/accounts/class-' . str_replace( '_', '-', $class ) . '.php';
+			require_once get_template_directory() . '/woocommerce/ongkir/includes/accounts/class-' . str_replace( '_', '-', $class ) . '.php';
 		} elseif ( strpos( $class, 'justg_courier_' ) === 0 ) {
-			require_once JUSTH_PATH . 'includes/couriers/class-' . str_replace( '_', '-', $class ) . '.php';
+			require_once get_template_directory() . '/woocommerce/ongkir/includes/couriers/class-' . str_replace( '_', '-', $class ) . '.php';
 		} else {
-			require_once JUSTH_PATH . 'includes/classes/class-' . str_replace( '_', '-', $class ) . '.php';
+			require_once get_template_directory() . '/woocommerce/ongkir/includes/classes/class-' . str_replace( '_', '-', $class ) . '.php';
+			
 		}
 	}
 endif;
@@ -67,8 +68,8 @@ if ( ! function_exists( 'justg_get_json_data' ) ) :
 	function justg_get_json_data( $file_name, $search = array() ) {
 		global $wp_filesystem;
 
-		$file_url  = get_template_directory_uri() .'/data/' . $file_name . '.json';
-		$file_path = JUSTH_PATH . 'data/' . $file_name . '.json';
+		$file_url  = get_template_directory_uri() .'/inc/data/' . $file_name . '.json';
+		$file_path = get_template_directory_uri() . '/inc/data/' . $file_name . '.json';
 
 		try {
 			require_once ABSPATH . 'wp-admin/includes/file.php';
