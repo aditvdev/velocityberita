@@ -34,9 +34,26 @@
  /*!
  * Style for mjlah news
  */
- .widget dl, 
- .widget ol, 
- .widget ul {
+ blockquote {
+   font-style: italic;
+   padding: 2em;
+   position: relative;
+   background: #f3f3f3;
+   margin: 1rem 0;
+}
+blockquote:before {
+   display: block;
+   content: "\f10d";
+   font-size: 1.3rem;
+   position: absolute;
+   left: -10px;
+   top: -10px;
+   color: #7a7a7a;
+   font-family: fontawesome;
+}
+.widget dl, 
+.widget ol, 
+.widget ul {
    margin: 0;
    padding-left: 1.2rem;
 }
