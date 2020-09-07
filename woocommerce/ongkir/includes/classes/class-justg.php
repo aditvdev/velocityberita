@@ -81,7 +81,7 @@ class justg {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_frontend_assets' ), 999 );
 
 		// Hook to check if this shipping method is available for current order.
-		add_filter( 'woocommerce_shipping_' . justg_METHOD_ID . '_is_available', array( $this, 'check_is_available' ), 10, 2 );
+		add_filter( 'woocommerce_shipping_' . 'justg' . '_is_available', array( $this, 'check_is_available' ), 10, 2 );
 
 		// Hook to modify billing and shipping address fields position priority.
 		add_filter( 'woocommerce_default_address_fields', array( $this, 'default_address_fields_priority' ) );
@@ -199,7 +199,7 @@ class justg {
 
 		if ( 'woocommerce_page_wc-settings' === $hook ) {
 			// Define the styles URL.
-			$css_url = JUSTG_URL . 'assets/css/justg-backend.min.css';
+			$css_url = get_template_directory_uri() .'/css/ongkir-backend.css';
 			if ( $is_dev_env ) {
 				$css_url = add_query_arg( array( 't' => time() ), str_replace( '.min', '', $css_url ) );
 			}
@@ -214,7 +214,7 @@ class justg {
 			);
 
 			// Register lockr.js scripts.
-			$lockr_url = JUSTG_URL . 'assets/js/lockr.min.js';
+			$lockr_url = get_template_directory_uri() .'/js/lockr.js';
 			if ( $is_dev_env ) {
 				$lockr_url = add_query_arg( array( 't' => time() ), str_replace( '.min', '', $lockr_url ) );
 			}
@@ -228,7 +228,7 @@ class justg {
 			);
 
 			// Define the scripts URL.
-			$js_url = JUSTG_URL . 'assets/js/justg-backend.min.js';
+			$js_url = get_template_directory_uri() .'/js/justg-backend.js';
 			if ( $is_dev_env ) {
 				$js_url = add_query_arg( array( 't' => time() ), str_replace( '.min', '', $js_url ) );
 			}
@@ -258,7 +258,7 @@ class justg {
 		$is_dev_env = justg_is_dev();
 
 		// Register lockr.js scripts.
-		$lockr_url = JUSTG_URL . 'assets/js/lockr.min.js';
+		$lockr_url = get_template_directory_uri() .'/js/lockr.js';
 		if ( $is_dev_env ) {
 			$lockr_url = add_query_arg( array( 't' => time() ), str_replace( '.min', '', $lockr_url ) );
 		}
@@ -272,7 +272,7 @@ class justg {
 		);
 
 		// Enqueue main scripts.
-		$js_url = JUSTG_URL . 'assets/js/justg-frontend.min.js';
+		$js_url = get_template_directory_uri() .'/js/justg-frontend.js';
 		if ( $is_dev_env ) {
 			$js_url = add_query_arg( array( 't' => time() ), str_replace( '.min', '', $js_url ) );
 		}
@@ -465,7 +465,7 @@ class justg {
 	 */
 	public function register_shipping_method( $methods ) {
 		if ( class_exists( 'justg_Shipping_Method' ) ) {
-			$methods[ justg_METHOD_ID ] = 'justg_Shipping_Method';
+			$methods[ 'justg' ] = 'justg_Shipping_Method';
 		}
 
 		return $methods;

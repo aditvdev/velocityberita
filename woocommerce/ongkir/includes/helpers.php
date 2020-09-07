@@ -67,7 +67,7 @@ if ( ! function_exists( 'justg_get_json_data' ) ) :
 	function justg_get_json_data( $file_name, $search = array() ) {
 		global $wp_filesystem;
 
-		$file_url  = JUSTG_URL . 'data/' . $file_name . '.json';
+		$file_url  = get_template_directory_uri() .'/data/' . $file_name . '.json';
 		$file_path = JUSTH_PATH . 'data/' . $file_name . '.json';
 
 		try {
@@ -133,13 +133,13 @@ if ( ! function_exists( 'justg_scripts_params' ) ) :
 			array(
 				'ajax_url'      => admin_url( 'ajax.php' ),
 				'json'          => array(
-					'country_url'     => add_query_arg( array( 't' => time() ), JUSTG_URL . 'data/country.json' ),
+					'country_url'     => add_query_arg( array( 't' => time() ), get_template_directory_uri() .'/data/country.json' ),
 					'country_key'     => 'justg_country_data',
-					'province_url'    => add_query_arg( array( 't' => time() ), JUSTG_URL . 'data/province.json' ),
+					'province_url'    => add_query_arg( array( 't' => time() ), get_template_directory_uri() .'/data/province.json' ),
 					'province_key'    => 'justg_province_data',
-					'city_url'        => add_query_arg( array( 't' => time() ), JUSTG_URL . 'data/city.json' ),
+					'city_url'        => add_query_arg( array( 't' => time() ), get_template_directory_uri() .'/data/city.json' ),
 					'city_key'        => 'justg_city_data',
-					'subdistrict_url' => add_query_arg( array( 't' => time() ), JUSTG_URL . 'data/subdistrict.json' ),
+					'subdistrict_url' => add_query_arg( array( 't' => time() ), get_template_directory_uri() .'/data/subdistrict.json' ),
 					'subdistrict_key' => 'justg_subdistrict_data',
 				),
 				'text'          => array(
@@ -156,8 +156,8 @@ if ( ! function_exists( 'justg_scripts_params' ) ) :
 				),
 				'debug'         => ( 'yes' === get_option( 'woocommerce_shipping_debug_mode', 'no' ) ),
 				'show_settings' => isset( $_GET['justg_settings'] ) && is_admin(), // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			'method_id'         => justg_METHOD_ID,
-			'method_title'      => justg_get_plugin_data( 'Name' ),
+			'method_id'         => 'justg',
+			'method_title'      => 'JustG',
 			)
 		);
 	}
@@ -264,7 +264,7 @@ if ( ! function_exists( 'justg_instances' ) ) :
 
 		if ( $shipping_methods ) {
 			foreach ( $shipping_methods as $shipping_method ) {
-				if ( justg_METHOD_ID !== $shipping_method->method_id ) {
+				if ( 'justg' !== $shipping_method->method_id ) {
 					continue;
 				}
 
@@ -283,7 +283,7 @@ if ( ! function_exists( 'justg_instances' ) ) :
 				$shipping_methods = $zone_data_store->get_methods( $zone['id'], $enabled_only );
 				if ( $shipping_methods ) {
 					foreach ( $shipping_methods as $shipping_method ) {
-						if ( justg_METHOD_ID !== $shipping_method->method_id ) {
+						if ( 'justg' !== $shipping_method->method_id ) {
 							continue;
 						}
 

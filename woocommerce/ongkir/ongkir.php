@@ -9,10 +9,8 @@
 defined( 'ABSPATH' ) || exit;
 
 // Define plugin constants.
-define( 'justg_METHOD_ID', 'justg' );
 define( 'JUSTG_FILE', __FILE__ );
 define( 'JUSTH_PATH', plugin_dir_path( JUSTG_FILE ) );
-define( 'JUSTG_URL', plugin_dir_url( JUSTG_FILE ) );
 
 // Load the helpers.
 require_once JUSTH_PATH . 'includes/helpers.php';

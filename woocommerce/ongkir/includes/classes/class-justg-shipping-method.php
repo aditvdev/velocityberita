@@ -59,10 +59,10 @@ class justg_Shipping_Method extends WC_Shipping_Method {
 	public function __construct( $instance_id = 0 ) {
 		$this->api                = new justg_API();
 		$this->instance_id        = absint( $instance_id );
-		$this->id                 = justg_METHOD_ID;
-		$this->method_title       = justg_get_plugin_data( 'Name' );
-		$this->title              = justg_get_plugin_data( 'Name' );
-		$this->method_description = justg_get_plugin_data( 'Description' );
+		$this->id                 = 'justg';
+		$this->method_title       = 'JustG';
+		$this->title              = 'JustG';
+		$this->method_description = 'Ongkir Indonesia';
 		$this->supports           = array(
 			'shipping-zones',
 			'instance-settings',
