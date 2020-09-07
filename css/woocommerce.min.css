@@ -42,6 +42,10 @@ a.cart-contents,
     background-color: #1d1e24;
     padding: 20px
 }
+.site-header-cart .cart-contents {
+    padding: 5px 20px;
+    border: 1px solid #ddd;
+}
 .woocommerce .widget_shopping_cart .total, .woocommerce.widget_shopping_cart .total {
     margin-top:10px;
     border-top : 1px solid #ddd;

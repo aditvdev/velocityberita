@@ -82,10 +82,8 @@ if ( ! function_exists( 'justg_header_cart' ) ) {
 			}
 			?>
             <div id="site-header-cart" class="site-header-cart position-relative">
-                <a class="<?php echo esc_attr( $class ); ?>">
-                    <?php justg_cart_link(); ?>
-                </a>
-                <div class="dropdown-cart">
+                <?php justg_cart_link(); ?>
+                <div class="dropdown-cart pt-3">
                     <?php the_widget( 'WC_Widget_Cart', 'title=' ); ?>
                 </div>
             </div>
@@ -120,11 +118,17 @@ if ( ! function_exists( 'justg_cart_link' ) ) {
 	function justg_cart_link() {
 		if ( ! justg_woo_cart_available() ) {
 			return;
-		}
+        }
 		?>
 			<a class="cart-contents" href="<?php echo esc_url( wc_get_cart_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', 'justg' ); ?>">
-				<?php /* translators: %d: number of items in cart */ ?>
-				<?php echo wp_kses_post( WC()->cart->get_cart_subtotal() ); ?> <span class="count"><?php echo wp_kses_data( sprintf( _n( '%d item', '%d items', WC()->cart->get_cart_contents_count(), 'justg' ), WC()->cart->get_cart_contents_count() ) ); ?></span>
+                <?php 
+                // echo wp_kses_post( WC()->cart->get_cart_subtotal() ); 
+                ?> 
+                
+                <span class="count">
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> 
+                    <?php echo wp_kses_data( sprintf( _n( '%d', '%d', WC()->cart->get_cart_contents_count(), 'justg' ), WC()->cart->get_cart_contents_count() ) ); ?>
+                </span>
 			</a>
 		<?php
 	}
