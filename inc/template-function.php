@@ -82,10 +82,10 @@ if ( ! function_exists( 'justg_header_cart' ) ) {
 			}
 			?>
             <div id="site-header-cart" class="site-header-cart position-relative">
-                <a class="dropdown-toggle <?php echo esc_attr( $class ); ?>" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="<?php echo esc_attr( $class ); ?>">
                     <?php justg_cart_link(); ?>
                 </a>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <div class="dropdown-cart">
                     <?php the_widget( 'WC_Widget_Cart', 'title=' ); ?>
                 </div>
             </div>
@@ -144,6 +144,24 @@ if ( ! function_exists( 'justg_handheld_footer_bar_cart_link' ) ) {
 			</a>
 		<?php
 	}
+}
+
+if ( ! function_exists( 'justg_widget_shopping_cart_button_view_cart') ) {
+    /**
+     * Replace View cart button in shoping cart header
+     */
+    function justg_widget_shopping_cart_button_view_cart() {
+        echo '<a href="' . esc_url( wc_get_cart_url() ) . '" class="btn btn-sm btn-dark">' . esc_html__( 'View cart', 'justg' ) . '</a>';
+    }
+}
+
+if( ! function_exists( 'justg_widget_shopping_cart_proceed_to_checkout' )){
+    /**
+     * Replace Checkout button in shoping cart header
+     */
+    function justg_widget_shopping_cart_proceed_to_checkout() {
+        echo '<a href="' . esc_url( wc_get_checkout_url() ) . '" class="btn btn-sm btn-dark">' . esc_html__( 'Checkout', 'justg' ) . '</a>';
+    }
 }
 
 if( ! function_exists( 'justg_header_close' )) {

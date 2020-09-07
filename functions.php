@@ -15,13 +15,12 @@ $justg_includes = array(
 	'/enqueue.php',                         // Enqueue scripts and styles.
 	'/template-tags.php',                   // Custom template tags for this theme.
 	'/pagination.php',                      // Custom pagination for this theme.
-	'/hooks.php',                           // Custom hooks.
+	'/template-function.php',				// Load template functions.
+	'/template-hooks.php',					// Loat template hook.
 	'/extras.php',                          // Custom functions that act independently of the theme templates.
 	'/custom-comments.php',                 // Custom Comments file.
 	'/jetpack.php',                         // Load Jetpack compatibility file.
 	'/class-wp-bootstrap-navwalker.php',    // Load custom WordPress nav walker.
-	'/template-function.php',				// Load template functions.
-	'/template-hooks.php',					// Loat template hook.
 	'/editor.php',                          // Load Editor functions.
 	'/customizer.php',                      // Customizer.
 	'/deprecated.php',                      // Load deprecated functions.
@@ -30,8 +29,7 @@ $justg_includes = array(
 	'/kirki/kirki.php',                     // Load kirki.
 	'/kirki.php',							// Setup Kirki.
 	'/aq_resizer.php',						// load aq_resizer functions.
-	'/woocommerce.php',                     // Load WooCommerce functions.
-	
+	'/woocommerce.php',                     // Load WooCommerce functions.	
 );
 
 foreach ( $justg_includes as $file ) {

@@ -30,6 +30,31 @@
 .woocommerce-MyAccount-navigation .list-group-item:hover a {
     color:#ffffff;
 }
-.site-header-cart:hover > .dropdown-menu {
+a.cart-contents,
+.site-header-cart .widget_shopping_cart a {
+    color: #d5d9db;
+}
+.site-header-cart .widget_shopping_cart, 
+.site-header-cart .product_list_widget li .quantity {
+    color: #9aa0a7;
+}
+.site-header-cart .widget_shopping_cart {
+    background-color: #1d1e24;
+    padding: 20px
+}
+.woocommerce .widget_shopping_cart .total, .woocommerce.widget_shopping_cart .total {
+    margin-top:10px;
+    border-top : 1px solid #ddd;
+}
+.dropdown-cart {
+    position: absolute;
+    width: 300px;
+    right: 0px;
+    top: 100%;
+    display: none;
+    max-width: 90vw;
+    z-index: 99
+}
+.site-header-cart:hover .dropdown-cart {
     display: block;
 }
