@@ -9,7 +9,7 @@
 defined( 'ABSPATH' ) || exit;
 
 function mjlah_the_header_content() {
-	$logo = get_theme_mod( 'logo', '' );
+	$logo = get_theme_mod('custom_logo')?wp_get_attachment_image_src(get_theme_mod('custom_logo'),'full')[0]:'';
     ?>
         <header class="py-2 bg-white">	
         	<div id="wrapper-navbar" itemscope itemtype="http://schema.org/WebSite">
