@@ -36,6 +36,9 @@ function justg_head(){
     a:active {
         color: var(--active-color );
     }
+    .bg-primary {
+        background-color: var(--dark);
+    }
     .btn-primary {
         background-color: var(--dark);
         border-color: var(--dark);
@@ -49,11 +52,9 @@ function justg_head(){
         background-color: var(--active-color );
         border-color: var(--active-color );
     }
-
     a.cart-contents {
         color: var(--dark);
     }
-
     .site-header-cart .widget_shopping_cart a {
         color: var(--light);
     }
