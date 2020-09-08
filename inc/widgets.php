@@ -124,3 +124,10 @@ if ( ! function_exists( 'mjlah_widgets_init' ) ) {
 
 	}
 } // End of function_exists( 'mjlah_widgets_init' ).
+
+
+/*
+* Add widget file from folder widget
+*/
+//Widget Tags
+require_once get_template_directory() . '/inc/widgets/tags.php';
