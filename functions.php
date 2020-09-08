@@ -28,6 +28,7 @@ $mjlah_includes = array(
 	'/kirki/kirki.php',                     // Load kirki.
 	'/kirki.php',							// Setup Kirki.
 	'/aq_resizer.php',						// load aq_resizer functions.
+	'/mjlah.php',							// load mjlah functions.
 );
 
 foreach ( $mjlah_includes as $file ) {
