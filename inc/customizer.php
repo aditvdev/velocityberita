@@ -9,7 +9,7 @@
 defined( 'ABSPATH' ) || exit;
 
 function mjlah_head(){
-    $favicon = get_theme_mod( 'favicon_url', '' );
+    $favicon = get_site_icon_url();
     echo "<link rel='shortcut icon' href='$favicon' sizes='32x32' type='image/x-icon'>";
    
     $link_setting = get_theme_mod( 'link_setting' );

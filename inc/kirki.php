@@ -36,20 +36,11 @@ Kirki::add_section( 'block_section', array(
 
 // Add field to global section
 Kirki::add_field( 'mjlah_config', [
-	'type'        => 'image',
-	'settings'    => 'favicon_url',
-	'label'       => esc_html__( 'Favicon', 'mjlah' ),
-	'description' => esc_html__( '', 'mjlah' ),
-	'section'     => 'global_section',
-	'default'     => '',
-] );
-
-Kirki::add_field( 'mjlah_config', [
 	'type'        => 'slider',
 	'settings'    => 'lebar_website',
 	'label'       => esc_html__( 'Lebar Website', 'mjlah' ),
 	'section'     => 'global_section',
-	'default'     => 1140,
+	'default'     => 1100,
 	'transport'   => 'auto',
 	'choices'     => [
 		'min'  => 600,
