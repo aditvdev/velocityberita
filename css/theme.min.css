@@ -28,3 +28,51 @@
         transition: all ease 200ms
      }
  }
+
+ #comments .comments-title {
+   font-size: 20px;
+   margin-bottom: 1.5rem;
+}
+#comments .comment-list {
+   list-style: none;
+   padding-left: 0px;
+}
+#comments .comment-body {
+   clear: both;
+   margin-bottom: 1.5rem;
+}
+#comments .comment-meta img {
+   float: left;
+   margin-right: 10px;
+   border-radius: 5px;
+}
+.comment-list li .fn, .comment-list li .cfn {
+   text-transform: uppercase;
+   display: inline-block;
+}
+.comment-list li .says {
+   display: none;
+}
+#comments .reply {
+   margin: -50px 0 0 10px;
+   padding: 5px 10px;
+   opacity: 0.5;
+}
+#comments .reply > a:before {
+   content: '\f112';
+   font-family: 'fontawesome';
+   position: relative;
+   margin-right: 5px;
+   font-size: 70%;
+}
+#comments footer.comment-meta .comment-metadata {
+   font-size: 80%;
+}
+#comments .comment-content {
+   padding: 10px 20px 45px;
+   margin: 10px 0px 15px;
+   font-size: 15px;
+   border: 1px solid #f1f1f1;
+   border-radius: 5px;
+   line-height: 1.5em !important;
+}
