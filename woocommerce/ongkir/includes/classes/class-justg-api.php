@@ -1,12 +1,6 @@
 <?php
 /**
- * The file that defines the justg_API class
- *
- * @link       https://github.com/sofyansitorus
- * @since      1.0.0
- *
  * @package    justg
- * @subpackage justg/includes
  */
 
 // If this file is called directly, abort.

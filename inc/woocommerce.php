@@ -37,6 +37,7 @@ if ( ! function_exists( 'justg_is_woocommerce_activated' ) ) {
 
 //Load Ongkir Function
 if ( justg_is_woocommerce_activated() ) {
+	require_once get_template_directory() . '/woocommerce/wishlist.php';
 	require_once get_template_directory() . '/woocommerce/ongkir/ongkir.php';
 }
 

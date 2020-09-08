@@ -98,12 +98,16 @@ Kirki::add_field( 'justg_config', [
     'choices'     => [
         'link'    => esc_html__( 'Color', 'justg' ),
         'hover'   => esc_html__( 'Hover', 'justg' ),
-        'active'  => esc_html__( 'Active', 'justg' ),
+		'active'  => esc_html__( 'Active', 'justg' ),
+		'dark'	  => esc_html__( 'Dark Tone', 'justg' ),
+		'light'   => esc_html__( 'Light Tone', 'justg' ),
     ],
     'default'     => [
-        'link'    => '#1e73be',
+        'link'    => '#121212',
         'hover'   => '#333333',
-        'active'  => '#1e73be',
+		'active'  => '#121212',
+		'dark'    => '#121212',
+        'light'   => '#f7f7f7',
     ],
 ] );
 
