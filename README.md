@@ -1,2 +1,2 @@
 # justG
-Starter theme Wordpress for Beaver Builder
+Starter theme Wordpress for Beaver Builder & Woocommerce
