@@ -9,23 +9,18 @@
 defined( 'ABSPATH' ) || exit;
 
 function justg_head(){
-    $favicon = get_theme_mod( 'favicon_url', '' );
-    echo "<link rel='shortcut icon' href='$favicon' sizes='32x32' type='image/x-icon'>";
-   
     $link_setting = get_theme_mod( 'link_setting' );
     $link_color   = isset($link_setting['link']) ? $link_setting['link'] : '#333';
     $hover_color  = isset($link_setting['hover']) ? $link_setting['hover'] : '#000';
     $active_color = isset($link_setting['active']) ? $link_setting['active'] : '#333';
-    $dark_color   = isset($link_setting['dark']) ? $link_setting['dark'] : '#000';
-    $light_color  = isset($link_setting['light']) ? $link_setting['light'] : '#ccc';
+    $primary_color   = isset($link_setting['primary']) ? $link_setting['primary'] : '#000';
     ?>
-    <style>
+    <style type="text/css">
     :root {
-      --dark: <?php echo $dark_color; ?>;
-      --light: <?php echo $light_color; ?>;
       --link-color : <?php echo $link_color; ?>;
       --hover-color : <?php echo $hover_color; ?>;
       --active-color : <?php echo $active_color; ?>;
+      --primary : <?php echo $primary_color; ?>;;
     }
     a, a:link, a:visited {
         color: var(--link-color);
@@ -36,24 +31,8 @@ function justg_head(){
     a:active {
         color: var(--active-color );
     }
-    .bg-primary {
-        background-color: var(--dark);
-    }
-    .btn-primary {
-        background-color: var(--dark);
-        border-color: var(--dark);
-        color: var(--light);
-    }
-    .btn-primary:hover {
-        background-color: var(--hover-color );
-        border-color: var(--hover-color );
-    }
-    .btn-primary:active {
-        background-color: var(--active-color );
-        border-color: var(--active-color );
-    }
     a.cart-contents {
-        color: var(--dark);
+        color: var(--primary);
     }
     .site-header-cart .widget_shopping_cart a {
         color: var(--light);
@@ -63,12 +42,12 @@ function justg_head(){
         color: var(--light);
     }
     .site-header-cart .widget_shopping_cart {
-        background-color: var(--dark);
+        background-color: var(--primary);
         padding: 20px
     }
     .site-header-cart .cart-contents {
         padding: 5px 20px;
-        border: 1px solid var(--dark);
+        border: 1px solid var(--primary);
     }
     .woocommerce .widget_shopping_cart .total, .woocommerce.widget_shopping_cart .total {
         margin-top:10px;
