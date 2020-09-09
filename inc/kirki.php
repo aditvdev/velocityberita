@@ -34,16 +34,6 @@ Kirki::add_section( 'block_section', array(
 	'priority' => 10,
 ) );
 
-// Add field to global section
-Kirki::add_field( 'justg_config', [
-	'type'        => 'image',
-	'settings'    => 'favicon_url',
-	'label'       => esc_html__( 'Favicon', 'justg' ),
-	'description' => esc_html__( '', 'justg' ),
-	'section'     => 'global_section',
-	'default'     => '',
-] );
-
 Kirki::add_field( 'justg_config', [
 	'type'        => 'slider',
 	'settings'    => 'lebar_website',

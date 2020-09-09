@@ -134,13 +134,13 @@ if ( ! function_exists( 'justg_scripts_params' ) ) :
 			array(
 				'ajax_url'      => admin_url( 'ajax.php' ),
 				'json'          => array(
-					'country_url'     => add_query_arg( array( 't' => time() ), get_template_directory_uri() .'/data/country.json' ),
+					'country_url'     => add_query_arg( array( 't' => time() ), get_template_directory_uri() .'/inc/data/country.json' ),
 					'country_key'     => 'justg_country_data',
-					'province_url'    => add_query_arg( array( 't' => time() ), get_template_directory_uri() .'/data/province.json' ),
+					'province_url'    => add_query_arg( array( 't' => time() ), get_template_directory_uri() .'/inc/data/province.json' ),
 					'province_key'    => 'justg_province_data',
-					'city_url'        => add_query_arg( array( 't' => time() ), get_template_directory_uri() .'/data/city.json' ),
+					'city_url'        => add_query_arg( array( 't' => time() ), get_template_directory_uri() .'/inc/data/city.json' ),
 					'city_key'        => 'justg_city_data',
-					'subdistrict_url' => add_query_arg( array( 't' => time() ), get_template_directory_uri() .'/data/subdistrict.json' ),
+					'subdistrict_url' => add_query_arg( array( 't' => time() ), get_template_directory_uri() .'/inc/data/subdistrict.json' ),
 					'subdistrict_key' => 'justg_subdistrict_data',
 				),
 				'text'          => array(
