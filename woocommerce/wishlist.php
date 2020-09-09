@@ -74,11 +74,8 @@ if (justg_is_woocommerce_activated()) {
     add_action('admin_post_user_wishlist_update', 'update_wishlist_ajax');
 
     // Wishlist table shortcode
-    add_shortcode('wishlist', 'wishlist');
-    function wishlist( $atts, $content = null ) {
-
-        extract(shortcode_atts(array(), $atts));
-
+    function wishlist( ) {
+        
         return '<table class="wishlist-table loading">
                     <tr>
                         <th><!-- Left for image --></th>

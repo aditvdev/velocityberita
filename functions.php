@@ -24,7 +24,6 @@ $justg_includes = array(
 	'/editor.php',                          // Load Editor functions.
 	'/customizer.php',                      // Customizer.
 	'/deprecated.php',                      // Load deprecated functions.
-	'/shortcode.php',						// load shortcode functions.
 	'/builder-part.php',                    // Load kirki.
 	'/kirki/kirki.php',                     // Load kirki.
 	'/kirki.php',							// Setup Kirki.

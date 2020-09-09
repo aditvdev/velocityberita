@@ -49,7 +49,7 @@ Kirki_Init::set_url();
 
 new Kirki_Controls();
 
-if ( ! function_exists( 'Kirki' ) ) {
+if ( ! function_exists( 'justg' ) ) {
 	/**
 	 * Returns an instance of the Kirki object.
 	 */

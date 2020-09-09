@@ -181,8 +181,8 @@ Kirki::add_field( 'justg_config', [
 Kirki::add_field( 'justg_config', [
 	'type'        => 'dimensions',
 	'settings'    => 'dimensions_block_setting',
-	'label'       => esc_html__( 'Margin Block', 'kirki' ),
-	'description' => esc_html__( 'Atur Jarak Block (widget, heading, article, dll)', 'kirki' ),
+	'label'       => esc_html__( 'Margin Block', 'justg' ),
+	'description' => esc_html__( 'Atur Jarak Block (widget, heading, article, dll)', 'justg' ),
 	'section'     => 'block_section',
 	'default'     => [
 		'padding-top'    => '2em',
