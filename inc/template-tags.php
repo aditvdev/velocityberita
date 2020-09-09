@@ -158,3 +158,4 @@ if ( ! function_exists( 'mjlah_body_attributes' ) ) {
 		echo trim( $attributes ); // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 }
+

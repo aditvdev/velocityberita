@@ -45,3 +45,5 @@ if ( ! function_exists( 'mjlah_get_theme_default_settings' ) ) {
 		return apply_filters( 'mjlah_theme_default_settings', $defaults );
 	}
 }
+
+
