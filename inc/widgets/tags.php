@@ -17,17 +17,19 @@ class mjlah_tags_widget extends WP_Widget {
             'mjlah_tags_widget', 
 
             // Widget name will appear in UI
-            __('Tags Widget', 'mjlah_tags_widget_domain'), 
+            __('Tags Widget', 'mjlah'), 
 
             // Widget description
-            array( 'description' => __( 'The widget tag of the theme', 'mjlah_tags_widget_domain' ), ) 
+            array( 'description' => __( 'Tampilkan Tags berdasarkan jumlah', 'mjlah' ), ) 
         );
     }
 
     // Creating widget front-end
 
     public function widget( $args, $instance ) {
-    $title = apply_filters( 'widget_title', $instance['title'] );
+
+    $title  = apply_filters( 'widget_title', $instance['title'] );
+    $number = $instance['number'];
 
         // before and after widget arguments are defined by themes
         echo $args['before_widget'];
@@ -40,7 +42,7 @@ class mjlah_tags_widget extends WP_Widget {
                 'hide_empty'    => true,
                 'orderby'       => 'count',
                 'order'         => 'DESC',
-                'number'        => 5,
+                'number'        => $number,
             ]);
             // print_r($taxonomies);
             if ( !empty($taxonomies) ) :
@@ -60,12 +62,17 @@ class mjlah_tags_widget extends WP_Widget {
     // Widget Backend 
     public function form( $instance ) {
         //widget data
-        $title = isset( $instance[ 'title' ])?$instance[ 'title' ]:'Tags';
+        $title      = isset( $instance[ 'title' ])?$instance[ 'title' ]:'Tags';
+        $number     = isset( $instance[ 'number' ])?$instance[ 'number' ]:5;
         // Widget admin form
         ?>
         <p>
-            <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
+            <label for="<?php echo $this->get_field_id( 'title' ); ?>">'Title:'</label> 
             <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_id( 'number' ); ?>">Jumlah:</label> 
+            <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" type="text" value="<?php echo esc_attr( $number ); ?>" />
         </p>
         <?php 
     }
@@ -73,7 +80,8 @@ class mjlah_tags_widget extends WP_Widget {
     // Updating widget replacing old instances with new
     public function update( $new_instance, $old_instance ) {
         $instance = array();
-        $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+        $instance['title']      = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+        $instance['number']     = ( ! empty( $new_instance['number'] ) ) ? strip_tags( $new_instance['number'] ) : '';
         return $instance;
     }
 

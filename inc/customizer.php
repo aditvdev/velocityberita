@@ -8,10 +8,7 @@
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-function mjlah_head(){
-    $favicon = get_site_icon_url();
-    echo "<link rel='shortcut icon' href='$favicon' sizes='32x32' type='image/x-icon'>";
-   
+function mjlah_head(){   
     $link_setting = get_theme_mod( 'link_setting' );
     $link_color   = isset($link_setting['link']) ? $link_setting['link'] : '#333';
     $hover_color  = isset($link_setting['hover']) ? $link_setting['hover'] : '#000';

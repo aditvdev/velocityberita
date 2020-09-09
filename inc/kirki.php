@@ -180,8 +180,8 @@ Kirki::add_field( 'mjlah_config', [
 Kirki::add_field( 'mjlah_config', [
 	'type'        => 'dimensions',
 	'settings'    => 'dimensions_block_setting',
-	'label'       => esc_html__( 'Margin Block', 'kirki' ),
-	'description' => esc_html__( 'Atur Jarak Block (widget, heading, article, dll)', 'kirki' ),
+	'label'       => esc_html__( 'Margin Block', 'mjlah' ),
+	'description' => esc_html__( 'Atur Jarak Block (widget, heading, article, dll)', 'mjlah' ),
 	'section'     => 'block_section',
 	'default'     => [
 		'padding-top'    => '2em',

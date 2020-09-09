@@ -29,12 +29,8 @@
      }
  }
 
-<<<<<<< HEAD
 
  /*!
-=======
-/*!
->>>>>>> bdef642181f4219dad20c7ca906c3218771b0f23
  * Style for mjlah news
  */
 
@@ -85,11 +81,7 @@
    border-radius: 5px;
    line-height: 1.5em !important;
 }
-<<<<<<< HEAD
- blockquote {
-=======
 blockquote {
->>>>>>> bdef642181f4219dad20c7ca906c3218771b0f23
    font-style: italic;
    padding: 2em;
    position: relative;

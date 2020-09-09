@@ -21,7 +21,7 @@ class Kirki_L10n {
 	 * @access private
 	 * @var string
 	 */
-	private $textdomain = 'kirki';
+	private $textdomain = 'mjlah';
 
 	/**
 	 * The theme textdomain
@@ -110,11 +110,11 @@ class Kirki_L10n {
 	public function override_load_textdomain( $override, $domain, $mofile ) {
 		global $l10n;
 		if ( isset( $l10n[ $this->get_theme_textdomain() ] ) ) {
-			$l10n['kirki'] = $l10n[ $this->get_theme_textdomain() ]; // phpcs:ignore WordPress.WP.GlobalVariablesOverride
+			$l10n['mjlah'] = $l10n[ $this->get_theme_textdomain() ]; // phpcs:ignore WordPress.WP.GlobalVariablesOverride
 		}
 
 		// Check if the domain is "kirki".
-		if ( 'kirki' === $domain ) {
+		if ( 'mjlah' === $domain ) {
 			return true;
 		}
 		return $override;
