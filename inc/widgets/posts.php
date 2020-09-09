@@ -17,7 +17,7 @@ class mjlah_posts_widget extends WP_Widget {
             'mjlah_posts_widget', 
 
             // Widget name will appear in UI
-            __('Posts Widget', 'mjlah'), 
+            __('Widget Posts', 'mjlah'), 
 
             // Widget description
             array( 'description' => __( 'Tampilkan Post di widget', 'mjlah' ), ) 
@@ -62,7 +62,7 @@ class mjlah_posts_widget extends WP_Widget {
     // Widget Backend 
     public function form( $instance ) {
         //widget data
-        $title      = isset( $instance[ 'title' ])?$instance[ 'title' ]:'Tags';
+        $title      = isset( $instance[ 'title' ])?$instance[ 'title' ]:'New Post';
         $number     = isset( $instance[ 'number' ])?$instance[ 'number' ]:5;
         // Widget admin form
         ?>
@@ -90,7 +90,7 @@ class mjlah_posts_widget extends WP_Widget {
      
      
 // Register and load the widget
-function mjlah_tags_load_widget() {
+function mjlah_posts_load_widget() {
     register_widget( 'mjlah_posts_widget' );
 }
-add_action( 'widgets_init', 'mjlah_tags_load_widget' );
+add_action( 'widgets_init', 'mjlah_posts_load_widget' );

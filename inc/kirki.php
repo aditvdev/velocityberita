@@ -116,14 +116,6 @@ Kirki::add_section( 'header_section', array(
 	'title'    => __( 'Pengaturan Header', 'mjlah' ),
 	'priority' => 10,
 ) );
-Kirki::add_field( 'mjlah_config', [
-	'type'        => 'image',
-	'settings'    => 'logo',
-	'label'       => esc_html__( 'Logo', 'mjlah' ),
-	'description' => esc_html__( '', 'mjlah' ),
-	'section'     => 'header_section',
-	'default'     => '',
-] );
 
 Kirki::add_field( 'mjlah_config', [
 	'type'        => 'typography',
@@ -248,7 +240,7 @@ Kirki::add_field( 'mjlah_config', [
 	'description' => esc_html__( 'Atur background Footer', 'mjlah' ),
 	'section'     => 'footer_section',
 	'default'     => [
-		'background-color'      => '#ffffff',
+		'background-color'      => '#333333',
 		'background-image'      => '',
 		'background-repeat'     => 'repeat',
 		'background-position'   => 'center center',
@@ -263,3 +255,44 @@ Kirki::add_field( 'mjlah_config', [
 	],
 ] );
 
+Kirki::add_field( 'mjlah_config', [
+	'type'        => 'typography',
+	'settings'    => 'typography_footer',
+	'label'       => esc_html__( 'Typography Footer', 'mjlah' ),
+	'section'     => 'footer_section',
+	'default'     => [
+		'font-family'    => '',
+		'variant'        => '',
+		'font-size'      => '',
+		'line-height'    => '',
+		'letter-spacing' => '',
+		'color'          => '#ffffff',
+		'text-transform' => 'none',
+		'text-align'     => 'left',
+	],
+	'priority'    => 10,
+	'transport'   => 'auto',
+	'output'      => [
+		[
+			'element' => '#wrapper-footer',
+		],
+	],
+] );
+
+Kirki::add_field( 'mjlah_config', [
+    'type'        => 'multicolor',
+    'settings'    => 'link_footer',
+    'label'       => esc_html__( 'Warna Link footer', 'mjlah' ),
+    'section'     => 'footer_section',
+    'priority'    => 10,
+    'choices'     => [
+        'link'    => esc_html__( 'Color', 'mjlah' ),
+        'hover'   => esc_html__( 'Hover', 'mjlah' ),
+        'active'  => esc_html__( 'Active', 'mjlah' ),
+    ],
+    'default'     => [
+        'link'    => '#ffffff',
+        'hover'   => '#f5f5f5',
+        'active'  => '#ffffff',
+    ],
+] );

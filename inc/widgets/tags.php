@@ -17,7 +17,7 @@ class mjlah_tags_widget extends WP_Widget {
             'mjlah_tags_widget', 
 
             // Widget name will appear in UI
-            __('Tags Widget', 'mjlah'), 
+            __('Widget Tags', 'mjlah'), 
 
             // Widget description
             array( 'description' => __( 'Tampilkan Tags berdasarkan jumlah', 'mjlah' ), ) 
