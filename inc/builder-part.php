@@ -56,13 +56,27 @@ function mjlah_the_footer_content() {
     // if ( ! function_exists( 'mjlah_the_footer_content' ) ) :
     ?>
     
-        <div class="wrapper bg-dark text-white" id="wrapper-footer">
+        <div class="wrapper bg-dark text-white py-4" id="wrapper-footer">
         
         	<div class="container">
+
+				<?php
+				//looping get widget footer
+				$widgetfooter = get_theme_mod('reg_widget_footer');
+					if($widgetfooter):
+					echo '<div class="row mb-3">';
+						for ($x = 1; $x <= $widgetfooter; $x++) {	
+							echo '<div class="col-12 col-md">';
+							dynamic_sidebar( 'footer-sidebar-'.$x );
+							echo '</div>';
+						}
+					echo '</div>';
+					endif;
+				?>
         
         		<div class="row">
         
-        			<div class="col-md-12">
+        			<div class="col-12">
         
         				<footer class="site-footer" id="colophon">
         

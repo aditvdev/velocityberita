@@ -105,8 +105,8 @@ if ( ! function_exists( 'mjlah_widgets_init' ) ) {
 				'description'   => __( 'Right sidebar widget area', 'mjlah' ),
 				'before_widget' => '<aside id="%1$s" class="block-customizer widget %2$s">',
 				'after_widget'  => '</aside>',
-				'before_title'  => '<h3 class="widget-title">',
-				'after_title'   => '</h3>',
+				'before_title'  => '<h3 class="widget-title"><span>',
+				'after_title'   => '</span></h3>',
 			)
 		);
 
@@ -117,14 +117,31 @@ if ( ! function_exists( 'mjlah_widgets_init' ) ) {
 				'description'   => __( 'Left sidebar widget area', 'mjlah' ),
 				'before_widget' => '<aside id="%1$s" class="block-customizer widget %2$s">',
 				'after_widget'  => '</aside>',
-				'before_title'  => '<h3 class="widget-title">',
-				'after_title'   => '</h3>',
+				'before_title'  => '<h3 class="widget-title"><span>',
+				'after_title'   => '</span></h3>',
 			)
 		);
 
+		////Looping register widget footer
+		$widgetfooter = get_theme_mod('reg_widget_footer');
+		if($widgetfooter):
+		for ($x = 1; $x <= $widgetfooter; $x++) {			
+			register_sidebar(
+				array(
+					'name'          => __( 'Footer Sidebar '.$x, 'mjlah' ),
+					'id'            => 'footer-sidebar-'.$x,
+					'description'   => __( 'Footer sidebar widget area', 'mjlah' ),
+					'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+					'after_widget'  => '</aside>',
+					'before_title'  => '<h3 class="widget-title"><span>',
+					'after_title'   => '</span></h3>',
+				)
+			);
+		}
+		endif;
+
 	}
 } // End of function_exists( 'mjlah_widgets_init' ).
-
 
 /*
 * Add widget file from folder widget

@@ -94,7 +94,7 @@ if ( ! function_exists( 'mjlah_post_nav' ) ) {
 		?>
 		<nav class="container navigation post-navigation block-customizer">
 			<h2 class="sr-only"><?php esc_html_e( 'Post navigation', 'mjlah' ); ?></h2>
-			<div class="row nav-links justify-content-between">
+			<div class="row nav-links justify-content-between m-0">
 				<?php
 				if ( get_previous_post_link() ) {
 					previous_post_link( '<span class="nav-previous">%link</span>', _x( '<i class="fa fa-angle-left"></i>&nbsp;%title', 'Previous post link', 'mjlah' ) );

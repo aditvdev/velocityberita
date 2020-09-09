@@ -20,21 +20,12 @@ Kirki::add_config( 'mjlah_config', array(
 	'option_type' => 'theme_mod',
 ) );
 
-// Add Section.
+
+// Add field to global section
 Kirki::add_section( 'global_section', array(
 	'title'    => __( 'Pengaturan Umum', 'mjlah' ),
 	'priority' => 10,
 ) );
-Kirki::add_section( 'header_section', array(
-	'title'    => __( 'Pengaturan Header', 'mjlah' ),
-	'priority' => 10,
-) );
-Kirki::add_section( 'block_section', array(
-	'title'    => __( 'Pengaturan Block', 'mjlah' ),
-	'priority' => 10,
-) );
-
-// Add field to global section
 Kirki::add_field( 'mjlah_config', [
 	'type'        => 'slider',
 	'settings'    => 'lebar_website',
@@ -121,6 +112,10 @@ Kirki::add_field( 'mjlah_config', [
 ] );
 
 // Add field to header section
+Kirki::add_section( 'header_section', array(
+	'title'    => __( 'Pengaturan Header', 'mjlah' ),
+	'priority' => 10,
+) );
 Kirki::add_field( 'mjlah_config', [
 	'type'        => 'image',
 	'settings'    => 'logo',
@@ -155,6 +150,10 @@ Kirki::add_field( 'mjlah_config', [
 ] );
 
 // Add field to block section
+Kirki::add_section( 'block_section', array(
+	'title'    => __( 'Pengaturan Block', 'mjlah' ),
+	'priority' => 10,
+) );
 Kirki::add_field( 'mjlah_config', [
 	'type'        => 'background',
 	'settings'    => 'background_block_setting',
@@ -201,3 +200,26 @@ Kirki::add_field( 'mjlah_config', [
 		],
 	],
 ] );
+
+//add field to footer section
+Kirki::add_section( 'footer_section', array(
+	'title'    => __( 'Pengaturan Footer', 'mjlah' ),
+	'priority' => 10,
+) );
+Kirki::add_field( 'mjlah_config', [
+	'type'        => 'select',
+	'settings'    => 'reg_widget_footer',
+	'label'       => esc_html__( 'Widget Footer', 'mjlah' ),
+	'section'     => 'footer_section',
+	'default'     => '3',
+	'description' => esc_html__( 'Jumlah Widget footer', 'mjlah' ),
+	'priority'    => 10,
+	'multiple'    => 1,
+	'choices'     => [
+		'1' => esc_html__( '1', 'mjlah' ),
+		'2' => esc_html__( '2', 'mjlah' ),
+		'3' => esc_html__( '3', 'mjlah' ),
+		'4' => esc_html__( '4', 'mjlah' ),
+		'5' => esc_html__( '5', 'mjlah' ),
+	],
+] ); 
