@@ -55,51 +55,55 @@ add_action( 'mjlah_do_header', 'mjlah_the_header_content' );
 function mjlah_the_footer_content() {
 	// if ( ! function_exists( 'mjlah_the_footer_content' ) ) :
 	$lebarfooter 	= get_theme_mod('lebar_container_footer');
-	$footer_satu	= $lebarfooter=='full'?'block-footer':'';
-	$footer_dua		= $lebarfooter=='fixed'?'block-footer':'';
+	$footer_satu	= $lebarfooter=='full'?'block-footer py-4':'';
+	$footer_dua		= $lebarfooter=='fixed'?'block-footer py-4':'';
     ?>
     
-        <div class="wrapper py-4 <?php echo $footer_satu;?>" id="wrapper-footer">
+        <div class="wrapper p-0" id="wrapper-footer">
         
-        	<div class="container">
+			<div class="full-footer <?php echo $footer_satu;?>">
 
-				<div class="inside-footer <?php echo $footer_dua;?>">
+				<div class="container">
 
-					<?php
-					//looping get widget footer
-					$widgetfooter = get_theme_mod('reg_widget_footer');
-						if($widgetfooter):
-						echo '<div class="row mb-3">';
-							for ($x = 1; $x <= $widgetfooter; $x++) {	
-								echo '<div class="col-12 col-md">';
-								dynamic_sidebar( 'footer-sidebar-'.$x );
-								echo '</div>';
-							}
-						echo '</div>';
-						endif;
-					?>
-        
-					<div class="row">
-			
-						<div class="col-12">
-			
-							<footer class="site-footer" id="colophon">
-			
-								<div class="site-info">
-			
-									<div class="text-center">© <?php echo date("Y"); ?> <?php echo get_bloginfo('name');?>. All Rights Reserved.</div>
-			
-								</div><!-- .site-info -->
-			
-							</footer><!-- #colophon -->
-			
-						</div><!--col end -->
-			
-					</div><!-- row end -->
+					<div class="fixed-footer <?php echo $footer_dua;?>">
 
-				</div>
+						<?php
+						//looping get widget footer
+						$widgetfooter = get_theme_mod('reg_widget_footer');
+							if($widgetfooter):
+							echo '<div class="row mb-3 px-3">';
+								for ($x = 1; $x <= $widgetfooter; $x++) {	
+									echo '<div class="col-12 col-md">';
+									dynamic_sidebar( 'footer-sidebar-'.$x );
+									echo '</div>';
+								}
+							echo '</div>';
+							endif;
+						?>
+			
+						<div class="row">
+				
+							<div class="col-12">
+				
+								<footer class="site-footer" id="colophon">
+				
+									<div class="site-info">
+				
+										<div class="text-center">© <?php echo date("Y"); ?> <?php echo get_bloginfo('name');?>. All Rights Reserved.</div>
+				
+									</div><!-- .site-info -->
+				
+								</footer><!-- #colophon -->
+				
+							</div><!--col end -->
+				
+						</div><!-- row end -->
 
-        	</div><!-- container end -->
+					</div>
+
+				</div><!-- container end -->
+
+			</div>
         
         </div><!-- wrapper end -->
         

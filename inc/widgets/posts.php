@@ -9,18 +9,18 @@
 defined( 'ABSPATH' ) || exit;
 
 // Creating the widget 
-class mjlah_tags_widget extends WP_Widget {
+class mjlah_posts_widget extends WP_Widget {
 
     function __construct() {
         parent::__construct(
             // Base ID of your widget
-            'mjlah_tags_widget', 
+            'mjlah_posts_widget', 
 
             // Widget name will appear in UI
-            __('Tags Widget', 'mjlah'), 
+            __('Posts Widget', 'mjlah'), 
 
             // Widget description
-            array( 'description' => __( 'Tampilkan Tags berdasarkan jumlah', 'mjlah' ), ) 
+            array( 'description' => __( 'Tampilkan Post di widget', 'mjlah' ), ) 
         );
     }
 
@@ -85,12 +85,12 @@ class mjlah_tags_widget extends WP_Widget {
         return $instance;
     }
 
-// Class mjlah_tags_widget ends here
+// Class mjlah_posts_widget ends here
 } 
      
      
 // Register and load the widget
 function mjlah_tags_load_widget() {
-    register_widget( 'mjlah_tags_widget' );
+    register_widget( 'mjlah_posts_widget' );
 }
 add_action( 'widgets_init', 'mjlah_tags_load_widget' );
