@@ -154,6 +154,7 @@ Kirki::add_section( 'block_section', array(
 	'title'    => __( 'Pengaturan Block', 'mjlah' ),
 	'priority' => 10,
 ) );
+
 Kirki::add_field( 'mjlah_config', [
 	'type'        => 'background',
 	'settings'    => 'background_block_setting',
@@ -206,6 +207,7 @@ Kirki::add_section( 'footer_section', array(
 	'title'    => __( 'Pengaturan Footer', 'mjlah' ),
 	'priority' => 10,
 ) );
+
 Kirki::add_field( 'mjlah_config', [
 	'type'        => 'select',
 	'settings'    => 'reg_widget_footer',
@@ -223,3 +225,41 @@ Kirki::add_field( 'mjlah_config', [
 		'5' => esc_html__( '5', 'mjlah' ),
 	],
 ] ); 
+
+Kirki::add_field( 'mjlah_config', [
+	'type'        => 'select',
+	'settings'    => 'lebar_container_footer',
+	'label'       => esc_html__( 'Lebar Konten Footer', 'mjlah' ),
+	'section'     => 'footer_section',
+	'default'     => 'fixed',
+	'description' => esc_html__( 'lebar footer', 'mjlah' ),
+	'priority'    => 10,
+	'multiple'    => 1,
+	'choices'     => [
+		'fixed' => esc_html__( 'Fixed', 'mjlah' ),
+		'full' 	=> esc_html__( 'Full', 'mjlah' ),
+	],
+] ); 
+
+Kirki::add_field( 'mjlah_config', [
+	'type'        => 'background',
+	'settings'    => 'background_block_footer',
+	'label'       => esc_html__( 'Background Block Footer', 'mjlah' ),
+	'description' => esc_html__( 'Atur background Footer', 'mjlah' ),
+	'section'     => 'footer_section',
+	'default'     => [
+		'background-color'      => '#ffffff',
+		'background-image'      => '',
+		'background-repeat'     => 'repeat',
+		'background-position'   => 'center center',
+		'background-size'       => 'cover',
+		'background-attachment' => 'scroll',
+	],
+	'transport'   => 'auto',
+	'output'      => [
+		[
+			'element' => array('.block-footer'),
+		],
+	],
+] );
+
