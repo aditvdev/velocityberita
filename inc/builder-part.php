@@ -55,8 +55,8 @@ add_action( 'mjlah_do_header', 'mjlah_the_header_content' );
 function mjlah_the_footer_content() {
 	// if ( ! function_exists( 'mjlah_the_footer_content' ) ) :
 	$lebarfooter 	= get_theme_mod('lebar_container_footer');
-	$footer_satu	= $lebarfooter=='fixed'?'block-footer':'';
-	$footer_dua		= $lebarfooter=='full'?'block-footer':'';
+	$footer_satu	= $lebarfooter=='full'?'block-footer':'';
+	$footer_dua		= $lebarfooter=='fixed'?'block-footer':'';
     ?>
     
         <div class="wrapper py-4 <?php echo $footer_satu;?>" id="wrapper-footer">
