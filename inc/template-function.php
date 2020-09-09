@@ -82,10 +82,8 @@ if ( ! function_exists( 'justg_header_cart' ) ) {
 			}
 			?>
             <div id="site-header-cart" class="site-header-cart position-relative">
-                <a class="dropdown-toggle <?php echo esc_attr( $class ); ?>" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <?php justg_cart_link(); ?>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <?php justg_cart_link(); ?>
+                <div class="dropdown-cart pt-3">
                     <?php the_widget( 'WC_Widget_Cart', 'title=' ); ?>
                 </div>
             </div>
@@ -120,11 +118,17 @@ if ( ! function_exists( 'justg_cart_link' ) ) {
 	function justg_cart_link() {
 		if ( ! justg_woo_cart_available() ) {
 			return;
-		}
+        }
 		?>
 			<a class="cart-contents" href="<?php echo esc_url( wc_get_cart_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', 'justg' ); ?>">
-				<?php /* translators: %d: number of items in cart */ ?>
-				<?php echo wp_kses_post( WC()->cart->get_cart_subtotal() ); ?> <span class="count"><?php echo wp_kses_data( sprintf( _n( '%d item', '%d items', WC()->cart->get_cart_contents_count(), 'justg' ), WC()->cart->get_cart_contents_count() ) ); ?></span>
+                <?php 
+                // echo wp_kses_post( WC()->cart->get_cart_subtotal() ); 
+                ?> 
+                
+                <span class="count">
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> 
+                    <?php echo wp_kses_data( sprintf( _n( '%d', '%d', WC()->cart->get_cart_contents_count(), 'justg' ), WC()->cart->get_cart_contents_count() ) ); ?>
+                </span>
 			</a>
 		<?php
 	}
@@ -144,6 +148,24 @@ if ( ! function_exists( 'justg_handheld_footer_bar_cart_link' ) ) {
 			</a>
 		<?php
 	}
+}
+
+if ( ! function_exists( 'justg_widget_shopping_cart_button_view_cart') ) {
+    /**
+     * Replace View cart button in shoping cart header
+     */
+    function justg_widget_shopping_cart_button_view_cart() {
+        echo '<a href="' . esc_url( wc_get_cart_url() ) . '" class="btn btn-sm btn-dark">' . esc_html__( 'View cart', 'justg' ) . '</a>';
+    }
+}
+
+if( ! function_exists( 'justg_widget_shopping_cart_proceed_to_checkout' )){
+    /**
+     * Replace Checkout button in shoping cart header
+     */
+    function justg_widget_shopping_cart_proceed_to_checkout() {
+        echo '<a href="' . esc_url( wc_get_checkout_url() ) . '" class="btn btn-sm btn-dark">' . esc_html__( 'Checkout', 'justg' ) . '</a>';
+    }
 }
 
 if( ! function_exists( 'justg_header_close' )) {

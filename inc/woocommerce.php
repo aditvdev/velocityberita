@@ -26,6 +26,21 @@ if ( ! function_exists( 'justg_woocommerce_support' ) ) {
 	}
 }
 
+if ( ! function_exists( 'justg_is_woocommerce_activated' ) ) {
+	/**
+	 * Query WooCommerce activation
+	 */
+	function justg_is_woocommerce_activated() {
+		return class_exists( 'WooCommerce' ) ? true : false;
+	}
+}
+
+//Load Ongkir Function
+if ( justg_is_woocommerce_activated() ) {
+	require_once get_template_directory() . '/woocommerce/wishlist.php';
+	require_once get_template_directory() . '/woocommerce/ongkir/ongkir.php';
+}
+
 // First unhook the WooCommerce content wrappers.
 remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
 remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
@@ -202,21 +217,6 @@ if ( ! function_exists( 'justg_handheld_footer_bar_cart_link' ) ) {
 				<span class="count"><?php echo wp_kses_data( WC()->cart->get_cart_contents_count() ); ?></span>
 			</a>
 		<?php
-	}
-}
-
-/**
- * justg functions.
- *
- * @package justg
- */
-
-if ( ! function_exists( 'justg_is_woocommerce_activated' ) ) {
-	/**
-	 * Query WooCommerce activation
-	 */
-	function justg_is_woocommerce_activated() {
-		return class_exists( 'WooCommerce' ) ? true : false;
 	}
 }
 

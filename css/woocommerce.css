@@ -1,0 +1,216 @@
+@charset "UTF-8";
+
+.woocommerce-input-wrapper {
+    width: 100%
+}
+
+figure.woocommerce-product-gallery__wrapper {
+    max-width: inherit !important
+}
+
+.woocommerce a.added_to_cart {
+    vertical-align: middle;
+}
+
+.woocommerce span.onsale {
+    padding: 0px;
+}
+
+.woocommerce div.product .woocommerce-tabs ul.tabs li.active {
+    border-top: 3px solid #333333;
+    border-radius: 0;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+.woocommerce div.product .woocommerce-tabs ul.tabs li {
+    border-top: 3px solid #dddddd;
+    border-radius: 0;
+    border-left: 0px;
+    border-bottom-color: #fff;
+    background-color: #ffffff;
+    border-right: 0px;
+    z-index: 1;
+}
+
+.woocommerce div.product .woocommerce-tabs ul.tabs li::after,
+.woocommerce div.product .woocommerce-tabs ul.tabs li::before {
+    border: none;
+    position: relative;
+}
+
+.woocommerce div.product .woocommerce-tabs ul.tabs::before {
+    border: none;
+}
+
+.woocommerce-MyAccount-navigation .list-group-item.is-active,
+.woocommerce-MyAccount-navigation .list-group-item:hover {
+    background-color: #333333;
+}
+
+.woocommerce-MyAccount-navigation .list-group-item.is-active a,
+.woocommerce-MyAccount-navigation .list-group-item:hover a {
+    color: #ffffff;
+}
+
+.dropdown-cart {
+    position: absolute;
+    width: 300px;
+    right: 0px;
+    top: 100%;
+    display: none;
+    max-width: 90vw;
+    z-index: 99
+}
+
+.site-header-cart:hover .dropdown-cart {
+    display: block;
+}
+
+.wishlist-table {
+    width: 100%;
+    position: relative;
+}
+
+.wishlist-table.loading:after {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    background: #ffffff;
+    opacity: 0.5;
+    z-index: 5;
+}
+
+.wishlist-table.loading:before {
+    display: block;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -12px;
+    margin-left: -12px;
+    content: "";
+    background-image: url('../img/loading.svg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    z-index: 6;
+}
+
+.wishlist-table td {
+    position: relative;
+}
+
+.wishlist-table a.details {
+    padding: 4px 16px;
+    background: #000000;
+    color: #ffffff;
+    text-align: center;
+    border: none !important
+}
+
+.wishlist-table a.wishlist-remove {
+    display: block;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -12px;
+    margin-left: -12px;
+    background-image: url('../img/remove.svg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    z-index: 6;
+    border: none;
+    opacity: 0;
+}
+
+.wishlist-table td:hover>a.wishlist-remove {
+    opacity: 1;
+}
+
+.wishlist-toggle {
+    display: block;
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 5;
+    width: 24px;
+    height: 24px;
+    outline: none;
+    border: none;
+}
+
+.wishlist-title {
+    display: none;
+}
+
+.entry-summary .wishlist-toggle {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 8px;
+}
+
+.entry-summary .wishlist-title {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+    margin-bottom: 8px;
+}
+
+.wishlist-toggle:focus {
+    outline: none;
+    border: none;
+}
+
+.wishlist-toggle svg {
+    fill: #bdbdbd;
+    transition: all 200ms ease-out;
+}
+
+.wishlist-toggle:hover svg,
+.wishlist-toggle.active svg {
+    fill: #000000;
+}
+
+.wishlist-toggle svg .loading,
+.wishlist-toggle svg .check {
+    opacity: 0;
+}
+
+.wishlist-toggle.active svg .check {
+    opacity: 1;
+}
+
+.wishlist-toggle.active svg .heart {
+    opacity: 0;
+}
+
+.wishlist-toggle.loading svg .loading,
+.wishlist-table.loading:before {
+    animation: loading 500ms 0ms infinite normal linear;
+    transform-origin: center;
+    opacity: 1;
+}
+
+.wishlist-toggle.loading svg .heart {
+    opacity: 0;
+}
+
+@keyframes loading {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

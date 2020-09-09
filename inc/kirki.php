@@ -34,16 +34,6 @@ Kirki::add_section( 'block_section', array(
 	'priority' => 10,
 ) );
 
-// Add field to global section
-Kirki::add_field( 'justg_config', [
-	'type'        => 'image',
-	'settings'    => 'favicon_url',
-	'label'       => esc_html__( 'Favicon', 'justg' ),
-	'description' => esc_html__( '', 'justg' ),
-	'section'     => 'global_section',
-	'default'     => '',
-] );
-
 Kirki::add_field( 'justg_config', [
 	'type'        => 'slider',
 	'settings'    => 'lebar_website',
@@ -98,12 +88,16 @@ Kirki::add_field( 'justg_config', [
     'choices'     => [
         'link'    => esc_html__( 'Color', 'justg' ),
         'hover'   => esc_html__( 'Hover', 'justg' ),
-        'active'  => esc_html__( 'Active', 'justg' ),
+		'active'  => esc_html__( 'Active', 'justg' ),
+		'dark'	  => esc_html__( 'Dark Tone', 'justg' ),
+		'light'   => esc_html__( 'Light Tone', 'justg' ),
     ],
     'default'     => [
-        'link'    => '#1e73be',
+        'link'    => '#121212',
         'hover'   => '#333333',
-        'active'  => '#1e73be',
+		'active'  => '#121212',
+		'dark'    => '#121212',
+        'light'   => '#f7f7f7',
     ],
 ] );
 

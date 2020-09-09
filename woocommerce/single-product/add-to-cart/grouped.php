@@ -64,6 +64,7 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 
 								woocommerce_quantity_input(
 									array(
+										'classes'     => apply_filters( 'woocommerce_quantity_input_classes', array( 'input-text', 'qty', 'text', 'form-control', 'form-control-sm' ), $product ),
 										'input_name'  => 'quantity[' . $grouped_product_child->get_id() . ']',
 										'input_value' => isset( $_POST['quantity'][ $grouped_product_child->get_id() ] ) ? wc_stock_amount( wc_clean( wp_unslash( $_POST['quantity'][ $grouped_product_child->get_id() ] ) ) ) : '', // phpcs:ignore WordPress.Security.NonceVerification.Missing
 										'min_value'   => apply_filters( 'woocommerce_quantity_input_min', 0, $grouped_product_child ),

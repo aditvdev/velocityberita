@@ -40,6 +40,7 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 							<?php
 								wc_dropdown_variation_attribute_options(
 									array(
+										'class'		=> 'form-control form-control-sm',
 										'options'   => $options,
 										'attribute' => $attribute_name,
 										'product'   => $product,

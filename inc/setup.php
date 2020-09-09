@@ -100,9 +100,6 @@ if ( ! function_exists( 'justg_setup' ) ) {
 			)
 		);
 
-		// Set up the WordPress Theme logo feature.
-		add_theme_support( 'custom-logo' );
-
 		// Add support for responsive embedded content.
 		add_theme_support( 'responsive-embeds' );
 
@@ -123,7 +120,12 @@ function justg_header_footer_render() {
 
 	// If we have a header, remove the theme header and hook in Theme Builder's.
 	if ( ! empty( $header_ids ) ) {
-		remove_action( 'justg_header', 'justg_the_header_content' );
+		remove_action( 'justg_header', 'justg_header_open' );
+		remove_action( 'justg_header', 'justg_header_logo' );
+		remove_action( 'justg_header', 'justg_header_menu' );
+		remove_action( 'justg_header', 'justg_header_cart' );
+		remove_action( 'justg_header', 'justg_header_close' );
+		
 		add_action( 'justg_header', 'FLThemeBuilderLayoutRenderer::render_header' );
 	}
 
