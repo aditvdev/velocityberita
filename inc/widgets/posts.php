@@ -96,19 +96,17 @@ class mjlah_posts_widget extends WP_Widget {
         $lebar_img  = $instance['lebar_img']?$instance['lebar_img']:70;
         $tinggi_img = $instance['tinggi_img']?$instance['tinggi_img']:70;        
         $viewers    = $instance['viewers']?$instance['viewers']:'tidak';
-
-        $thumbnail  = get_the_post_thumbnail_url(get_the_ID(),'thumbnail');
         
         echo '<div class="list-post list-post-'.$i.'">';        
         echo generated_schema(get_the_ID());
-        
+
             //Layout 1
             if($layout=='layout1'):
                 ?>            
                 <div class="d-flex border-bottom pb-2 mb-2">
                     <div class="thumb-post">
                         <a href="<?php echo get_the_permalink(); ?>" class="d-inline-block mr-2">
-                        <img src="<?php echo $thumbnail;?>" class="img-fluid w-100"/>
+                        <?php echo get_the_post_thumbnail( get_the_ID(),array($lebar_img,$tinggi_img), array( 'class' => 'w-100 img-fluid' ) );?>
                         </a>                            
                     </div>
                     <div class="content-post">

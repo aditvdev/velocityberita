@@ -64,8 +64,14 @@ function getexcerpt($count=150,$idpost=null){
 function generated_schema($idpost=null){
     $schema = '';
     if($idpost!=null):
+        
+        $width      = '';
+        $height     = '';
+        if(get_the_post_thumbnail_url($idpost,'full')) {
+            list($width, $height, $type, $attr) = getimagesize(get_the_post_thumbnail_url($idpost,'full'));
+        }
+
         $author_id  = get_post_field( 'post_author', $idpost );
-        list($width, $height, $type, $attr) = getimagesize(get_the_post_thumbnail_url($idpost,'full'));
 
         $schema     .= '<meta itemscope="" itemprop="mainEntityOfPage" itemtype="https://schema.org/WebPage" itemid="'.get_permalink($idpost).'" content="'.get_the_title($idpost).'">';
         $schema     .= '<meta itemprop="datePublished" content="'.get_the_date( 'Y-m-d', $idpost ).'">';
