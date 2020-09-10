@@ -121,6 +121,28 @@ Kirki::add_field( 'justg_config', [
 	],
 ] );
 
+// Header section
+Kirki::add_field( 'justg_config', [
+	'type'        => 'slider',
+	'settings'    => 'tinggi_logo',
+	'label'       => esc_html__( 'Logo Height', 'justg' ),
+	'section'     => 'header_section',
+	'default'     => 40,
+	'transport'   => 'auto',
+	'choices'     => [
+		'min'  => 10,
+		'max'  => 300,
+		'step' => 1,
+	],
+    'output' => array(
+        array(
+            'element'  => '.navbar-brand img',
+            'property' => 'max-height',
+            'units'    => 'px',
+        ),
+    ),
+] );
+
 Kirki::add_field( 'justg_config', [
 	'type'        => 'typography',
 	'settings'    => 'menu_setting',
