@@ -164,8 +164,9 @@ class mjlah_posts_widget extends WP_Widget {
             //Layout list    
             elseif($layout=='list'): ?>
 
-                <div class="border-bottom pb-2 mb-2">
-                    <a href="<?php echo get_the_permalink(); ?>" class="d-block">
+                <div class="d-flex align-items-baseline border-bottom pb-2 mb-2">
+                    <i class="fa fa-file-text-o mr-2" aria-hidden="true"></i>
+                    <a href="<?php echo get_the_permalink(); ?>" class="d-inline-block">
                         <?php echo get_the_title(); ?>
                     </a>                            
                 </div>

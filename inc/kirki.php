@@ -73,6 +73,34 @@ Kirki::add_field( 'mjlah_config', [
 
 Kirki::add_field( 'mjlah_config', [
     'type'        => 'multicolor',
+    'settings'    => 'colortheme_setting',
+    'label'       => esc_html__( 'Warna Utama Website', 'mjlah' ),
+    'section'     => 'global_section',
+    'priority'    => 10,
+    'choices'     => [
+		'primary' => esc_html__( 'Primary', 'mjlah' ),
+		'light'	  => esc_html__( 'Light', 'mjlah' ),
+    ],
+    'default'     => [
+        'primary' => '#000000',
+        'light'   => '#333333',
+	],	
+	'output'    => [
+		[
+			'choice'    => 'primary',
+			'element'   => ':root',
+			'property'  => '--primary',
+		],
+		[
+			'choice'    => 'light',
+			'element'   => ':root',
+			'property'  => '--light',
+		],
+	],
+] );
+
+Kirki::add_field( 'mjlah_config', [
+    'type'        => 'multicolor',
     'settings'    => 'link_setting',
     'label'       => esc_html__( 'Warna Link', 'mjlah' ),
     'section'     => 'global_section',
@@ -102,16 +130,6 @@ Kirki::add_field( 'mjlah_config', [
 			'choice'    => 'active',
 			'element'   => 'a:active',
 			'property'  => 'color',
-		],
-		[
-			'choice'    => 'primary',
-			'element'   => ':root',
-			'property'  => '--primary',
-		],
-		[
-			'choice'    => 'light',
-			'element'   => ':root',
-			'property'  => '--light',
 		],
 	],
 ] );
