@@ -28,6 +28,10 @@ if ( ! function_exists( 'justg_setup' ) ) {
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
 
+		// Add theme support custom logo
+		add_theme_support( 'custom-logo' );
+
+		// Add theme support to beaver builder
 		add_theme_support( 'fl-theme-builder-headers' );
 		add_theme_support( 'fl-theme-builder-footers' );
 		add_theme_support( 'fl-theme-builder-parts' );
