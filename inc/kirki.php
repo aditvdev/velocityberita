@@ -86,7 +86,34 @@ Kirki::add_field( 'mjlah_config', [
         'link'    => '#1e73be',
         'hover'   => '#333333',
         'active'  => '#1e73be',
-    ],
+	],	
+	'output'    => [
+		[
+			'choice'    => 'link',
+			'element'   => 'a',
+			'property'  => 'color',
+		],
+		[
+			'choice'    => 'hover',
+			'element'   => 'a:hover',
+			'property'  => 'color',
+		],
+		[
+			'choice'    => 'active',
+			'element'   => 'a:active',
+			'property'  => 'color',
+		],
+		[
+			'choice'    => 'primary',
+			'element'   => ':root',
+			'property'  => '--primary',
+		],
+		[
+			'choice'    => 'light',
+			'element'   => ':root',
+			'property'  => '--light',
+		],
+	],
 ] );
 
 Kirki::add_field( 'mjlah_config', [
@@ -294,5 +321,22 @@ Kirki::add_field( 'mjlah_config', [
         'link'    => '#ffffff',
         'hover'   => '#f5f5f5',
         'active'  => '#ffffff',
-    ],
+	],
+	'output'    => [
+		[
+			'choice'    => 'link',
+			'element'   => '#wrapper-footer a',
+			'property'  => 'color',
+		],
+		[
+			'choice'    => 'hover',
+			'element'   => '#wrapper-footer a:hover',
+			'property'  => 'color',
+		],
+		[
+			'choice'    => 'active',
+			'element'   => '#wrapper-footer a:active',
+			'property'  => 'color',
+		],
+	],
 ] );
