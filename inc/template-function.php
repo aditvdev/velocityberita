@@ -16,7 +16,7 @@ if( ! function_exists( 'justg_header_open' )) {
      */
     function justg_header_open() {
         ?>
-        <header class="py-2 bg-white">
+        <header class="py-2 bg-header">
             <div id="wrapper-navbar" itemscope itemtype="http://schema.org/WebSite">
                 <div class=" container mx-auto d-flex align-items-center">
         <?php

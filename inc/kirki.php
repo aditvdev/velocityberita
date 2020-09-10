@@ -123,6 +123,28 @@ Kirki::add_field( 'justg_config', [
 
 // Header section
 Kirki::add_field( 'justg_config', [
+	'type'        => 'background',
+	'settings'    => 'background_header',
+	'label'       => esc_html__( 'Background Header', 'justg' ),
+	'description' => esc_html__( '', 'justg' ),
+	'section'     => 'header_section',
+	'default'     => [
+		'background-color'      => '#ffffff',
+		'background-image'      => '',
+		'background-repeat'     => 'repeat',
+		'background-position'   => 'center center',
+		'background-size'       => 'cover',
+		'background-attachment' => 'scroll',
+	],
+	'transport'   => 'auto',
+	'output'      => [
+		[
+			'element' => '.bg-header',
+		],
+	],
+] );
+
+Kirki::add_field( 'justg_config', [
 	'type'        => 'slider',
 	'settings'    => 'tinggi_logo',
 	'label'       => esc_html__( 'Logo Height', 'justg' ),
