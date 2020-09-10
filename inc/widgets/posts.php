@@ -56,12 +56,13 @@ class mjlah_posts_widget extends WP_Widget {
             // The Loop
             $i = 1;
             if ( $the_query->have_posts() ) {
-                echo '<div class="list-posts">';
-                while ( $the_query->have_posts() ) {
-                    $the_query->the_post();
-                    $this->layoutpost($instance['layout'],$instance,$i);
-                    $i++;
-                }
+                $class  = ($instance['layout']=='gallery')?'row':'';
+                echo '<div class="list-posts '.$class.'">';
+                    while ( $the_query->have_posts() ) {
+                        $the_query->the_post();
+                        $this->layoutpost($instance['layout'],$instance,$i);
+                        $i++;
+                    }
                 echo '</div>';
             } else {
                 // no posts found
@@ -97,7 +98,9 @@ class mjlah_posts_widget extends WP_Widget {
         $tinggi_img = $instance['tinggi_img']?$instance['tinggi_img']:70;        
         $viewers    = $instance['viewers']?$instance['viewers']:'tidak';
 
-        echo '<div class="list-post list-post-'.$i.'">';        
+        $class      = ($layout=='gallery')?'col-md-6 col-12 p-2 pt-0':'';
+
+        echo '<div class="list-post list-post-'.$i.' '.$class.'">';        
         echo generated_schema(get_the_ID());
 
             //Layout 1
@@ -147,27 +150,14 @@ class mjlah_posts_widget extends WP_Widget {
                 </div>
 
             <?php
-            //Layout 3    
-            elseif($layout=='layout3'): ?>
-                          
-                <div class="d-flex border-bottom pb-2 mb-2">
-                    <div class="thumb-post">
-                        <a href="<?php echo get_the_permalink(); ?>" class="d-inline-block mr-2">
+            //Layout gallery    
+            elseif($layout=='gallery'): ?>
+
+                <div class="gallery-posts position-relative">
+                    <a href="<?php echo get_the_permalink(); ?>" class="d-block">
                         <?php echo get_the_post_thumbnail( get_the_ID(),array($lebar_img,$tinggi_img), array( 'class' => 'w-100 img-fluid' ) );?>
-                        </a>                            
-                    </div>
-                    <div class="content-post">
-                        <a href="<?php echo get_the_permalink(); ?>" class="title-post font-weight-bold h4 d-block"><?php echo get_the_title(); ?></a>
-                        <small class="d-block text-muted">
-                            <span class="date-post"><?php echo get_the_date('F j, Y'); ?></span>
-                            <?php if($viewers == 'ya'): ?>
-                            <span class="view-post"> / <?php echo get_post_view(); ?> views</span>
-                            <?php endif; ?>
-                        </small>
-                        <?php if($kutipan != 0): ?>
-                            <div class="exceprt-post"><?php echo getexcerpt($kutipan,get_the_ID()); ?></div>
-                        <?php endif; ?>
-                    </div>
+                        <div class="mask-post"><?php echo get_the_title(); ?></div>
+                    </a>                            
                 </div>
 
             <?php
@@ -202,7 +192,7 @@ class mjlah_posts_widget extends WP_Widget {
             <select class="widefat" name="<?php echo $this->get_field_name( 'layout' ); ?>">
                 <option value="layout1"<?php selected($orderby, "layout1"); ?>>Layout 1</option>
                 <option value="layout2"<?php selected($orderby, "layout2"); ?>>Layout 2</option>
-                <option value="layout3"<?php selected($orderby, "layout3"); ?>>Layout 3</option>
+                <option value="gallery"<?php selected($orderby, "gallery"); ?>>Gallery</option>
             </select>
 		</p>
         <p>
