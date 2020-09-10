@@ -25,7 +25,7 @@ function mjlah_viewer_post() {
 }
 add_action('wp_head', 'mjlah_viewer_post');
 ///function get viewer
-function mjlah_get_post_view() {
+function get_post_view() {
     $count = get_post_meta( get_the_ID(), 'post_views_count', true );
     $count = $count > 0 ? $count : 0 ;
     return $count;
@@ -37,10 +37,23 @@ function mjlah_posts_column_views( $columns ) {
 }
 function mjlah_posts_custom_column_views( $column ) {
     if ( $column === 'post_views') {
-        echo mjlah_get_post_view();
+        echo get_post_view();
     }
 }
 add_filter( 'manage_posts_columns', 'mjlah_posts_column_views' );
 add_action( 'manage_posts_custom_column', 'mjlah_posts_custom_column_views' );
 add_filter( 'manage_page_posts_columns', 'mjlah_posts_column_views' );
 add_action( 'manage_page_posts_custom_column', 'mjlah_posts_custom_column_views' );
+
+/*
+*get content of post
+*/
+function getexcerpt($count=150,$idpost=null){
+    global $post;
+    $html = $idpost=null?get_the_content():get_post_field('post_content',$idpost);
+    $html = strip_tags($html);
+    $html = substr($html, 0, $count);
+    $html = substr($html, 0, strripos($html, " "));
+    $html = ''.$html.'...';
+    return $html;
+}
