@@ -201,10 +201,10 @@ class mjlah_posts_widget extends WP_Widget {
         <p>
             <label for="<?php echo $this->get_field_id( 'layout' ); ?>">Layout:</label>        
             <select class="widefat" name="<?php echo $this->get_field_name( 'layout' ); ?>">
-                <option value="layout1"<?php selected($orderby, "layout1"); ?>>Layout 1</option>
-                <option value="layout2"<?php selected($orderby, "layout2"); ?>>Layout 2</option>
-                <option value="gallery"<?php selected($orderby, "gallery"); ?>>Gallery</option>
-                <option value="list"<?php selected($orderby, "list"); ?>>List</option>
+                <option value="layout1"<?php selected($layout, "layout1"); ?>>Layout 1</option>
+                <option value="layout2"<?php selected($layout, "layout2"); ?>>Layout 2</option>
+                <option value="gallery"<?php selected($layout, "gallery"); ?>>Gallery</option>
+                <option value="list"<?php selected($layout, "list"); ?>>List</option>
             </select>
 		</p>
         <p>
