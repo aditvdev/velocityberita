@@ -160,6 +160,16 @@ class mjlah_posts_widget extends WP_Widget {
                     </a>                            
                 </div>
 
+           <?php
+            //Layout list    
+            elseif($layout=='list'): ?>
+
+                <div class="border-bottom pb-2 mb-2">
+                    <a href="<?php echo get_the_permalink(); ?>" class="d-block">
+                        <?php echo get_the_title(); ?>
+                    </a>                            
+                </div>
+
             <?php
             //Endif layout    
             endif;
@@ -193,6 +203,7 @@ class mjlah_posts_widget extends WP_Widget {
                 <option value="layout1"<?php selected($orderby, "layout1"); ?>>Layout 1</option>
                 <option value="layout2"<?php selected($orderby, "layout2"); ?>>Layout 2</option>
                 <option value="gallery"<?php selected($orderby, "gallery"); ?>>Gallery</option>
+                <option value="list"<?php selected($orderby, "list"); ?>>List</option>
             </select>
 		</p>
         <p>

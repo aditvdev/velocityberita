@@ -125,10 +125,10 @@ if ( ! function_exists( 'mjlah_widgets_init' ) ) {
 		////Looping register widget footer
 		$widgetfooter = get_theme_mod('reg_widget_footer');
 		if($widgetfooter):
-		for ($x = 1; $x <= $widgetfooter; $x++) {			
+		for ($x = 1; $x <= $widgetfooter; $x++) {		
 			register_sidebar(
 				array(
-					'name'          => __( 'Footer Sidebar '.$x, 'mjlah' ),
+					'name'          => 'Footer Sidebar '.$x,
 					'id'            => 'footer-sidebar-'.$x,
 					'description'   => __( 'Footer sidebar widget area', 'mjlah' ),
 					'before_widget' => '<aside id="%1$s" class="widget %2$s">',

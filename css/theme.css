@@ -134,3 +134,19 @@ blockquote:before {
    padding: .3rem;
    cursor: pointer;
 }
+
+/*
+* style widget
+*/
+.widget_mjlah_posts_widget .mask-post {
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   background: rgb(0 0 0 / 57%);
+   padding: .5rem;
+   line-height: 1rem;
+   color: #fff;
+   max-height: 65px;
+   overflow: hidden;
+}
