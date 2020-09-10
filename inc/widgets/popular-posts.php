@@ -9,18 +9,18 @@
 defined( 'ABSPATH' ) || exit;
 
 // Creating the widget 
-class mjlah_posts_widget extends WP_Widget {
+class mjlah_popular_posts_widget extends WP_Widget {
 
     function __construct() {
         parent::__construct(
             // Base ID of your widget
-            'mjlah_posts_widget', 
+            'mjlah_popular_posts_widget', 
 
             // Widget name will appear in UI
-            __('Widget Posts', 'mjlah'), 
+            __('Widget Popular Posts', 'mjlah'), 
 
             // Widget description
-            array( 'description' => __( 'Tampilkan Post di widget', 'mjlah' ), ) 
+            array( 'description' => __( 'Tampilkan Post Populer di widget', 'mjlah' ), ) 
         );
     }
 
@@ -28,10 +28,16 @@ class mjlah_posts_widget extends WP_Widget {
     public function widget( $args, $instance ) {
         $idwidget   = uniqid();
         $title      = apply_filters( 'widget_title', $instance['title'] );
+        
+        $kutipan    = $instance['kutipan']?$instance['kutipan']:'';
+        $lebar_img  = $instance['lebar_img']?$instance['lebar_img']:70;
+        $tinggi_img = $instance['tinggi_img']?$instance['tinggi_img']:70;        
+        $viewers    = $instance['viewers']?$instance['viewers']:'ya';        
+        $viewdate   = $instance['viewdate']?$instance['viewdate']:'tidak';
 
         // before and after widget arguments are defined by themes
         echo $args['before_widget'];
-        echo '<div class="widget-'.$idwidget.' posts-widget-'.$instance['layout'].'">';
+        echo '<div class="widget-'.$idwidget.'">';
 
             if ( ! empty( $title ) )
             echo $args['before_title'] . $title . $args['after_title'];
@@ -43,12 +49,8 @@ class mjlah_posts_widget extends WP_Widget {
             $query_args['posts_per_page']       = $instance['jumlah'];
             $query_args['cat']                  = $instance['kategori'];
             $query_args['order']                = $instance['order'];
-
-            ///urutkan berdasarkan view
-            if ($instance['orderby']=="view") {                
-                $query_args['orderby']          = 'meta_value';
-                $query_args['meta_key']         = 'post_views_count';
-            }
+            $query_args['orderby']              = 'meta_value';
+            $query_args['meta_key']             = 'post_views_count';
 
             // The Query
             $the_query = new WP_Query( $query_args );
@@ -56,11 +58,47 @@ class mjlah_posts_widget extends WP_Widget {
             // The Loop
             $i = 1;
             if ( $the_query->have_posts() ) {
-                $class  = ($instance['layout']=='gallery')?'row':'';
-                echo '<div class="list-posts '.$class.'">';
+                
+                echo '<div class="list-posts">';
                     while ( $the_query->have_posts() ) {
                         $the_query->the_post();
-                        $this->layoutpost($instance['layout'],$instance,$i);
+                        ?>    
+                            <div class="list-post list-post-<?php echo $i; ?>">
+                            <?php echo generated_schema(get_the_ID()); ?>
+
+                                <div class="d-flex border-bottom pb-2 mb-2">
+                                    <div class="thumb-post">
+                                        <a href="<?php echo get_the_permalink(); ?>" class="d-inline-block mr-2">
+                                        <?php echo get_the_post_thumbnail( get_the_ID(),array($lebar_img,$tinggi_img), array( 'class' => 'w-100 img-fluid' ) );?>
+                                        </a>                            
+                                    </div>
+                                    <div class="content-post">
+                                        <a href="<?php echo get_the_permalink(); ?>" class="title-post font-weight-bold h4 d-block"><?php echo get_the_title(); ?></a>
+                                        <small class="d-block text-muted">
+
+                                            <?php if($viewdate == 'ya'): ?>
+                                                <span class="date-post"><?php echo get_the_date('F j, Y'); ?></span>
+                                            <?php endif; ?>
+
+                                            <?php if($viewers == 'ya' && $viewdate == 'ya'): ?>
+                                                <span class="mx-1 separator">/</span>
+                                            <?php endif; ?>
+
+                                            <?php if($viewers == 'ya'): ?>
+                                                <span class="view-post"><?php echo get_post_view(); ?> views</span>
+                                            <?php endif; ?>
+
+                                        </small>
+                                        <?php if($kutipan != 0): ?>
+                                            <div class="exceprt-post"><?php echo getexcerpt($kutipan,get_the_ID()); ?></div>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        <?php
+                        
                         $i++;
                     }
                 echo '</div>';
@@ -71,126 +109,36 @@ class mjlah_posts_widget extends WP_Widget {
             wp_reset_postdata();
 
         echo '</div>';
-        
+
         //Style for widget
-        if($instance['layout']=='layout1'):
         ?>
-        <style>
-            .widget-<?php echo $idwidget;?> .thumb-post a {
-                width: <?php echo $instance['lebar_img'];?>px;
-            }
-            .widget-<?php echo $idwidget;?> .thumb-post img {
-                height: <?php echo $instance['tinggi_img'];?>px;
-                object-fit: cover;
-            }
-        </style>
+            <style>
+                .widget-<?php echo $idwidget;?> .thumb-post a {
+                    width: <?php echo $instance['lebar_img'];?>px;
+                }
+                .widget-<?php echo $idwidget;?> .thumb-post img {
+                    height: <?php echo $instance['tinggi_img'];?>px;
+                    object-fit: cover;
+                }
+            </style>
         <?php
-        endif;
 
         echo $args['after_widget'];
-    }
-
-    //widget Layout Post
-    public function layoutpost( $layout='layout1',$instance,$i=null) {
-
-        $kutipan    = $instance['kutipan']?$instance['kutipan']:'';
-        $lebar_img  = $instance['lebar_img']?$instance['lebar_img']:70;
-        $tinggi_img = $instance['tinggi_img']?$instance['tinggi_img']:70;        
-        $viewers    = $instance['viewers']?$instance['viewers']:'tidak';
-
-        $class      = ($layout=='gallery')?'col-md-6 col-12 p-2 pt-0':'';
-
-        echo '<div class="list-post list-post-'.$i.' '.$class.'">';        
-        echo generated_schema(get_the_ID());
-
-            //Layout 1
-            if($layout=='layout1'):
-                ?>            
-                <div class="d-flex border-bottom pb-2 mb-2">
-                    <div class="thumb-post">
-                        <a href="<?php echo get_the_permalink(); ?>" class="d-inline-block mr-2">
-                        <?php echo get_the_post_thumbnail( get_the_ID(),array($lebar_img,$tinggi_img), array( 'class' => 'w-100 img-fluid' ) );?>
-                        </a>                            
-                    </div>
-                    <div class="content-post">
-                        <a href="<?php echo get_the_permalink(); ?>" class="title-post font-weight-bold h4 d-block"><?php echo get_the_title(); ?></a>
-                        <small class="d-block text-muted">
-                            <span class="date-post"><?php echo get_the_date('F j, Y'); ?></span>
-                            <?php if($viewers == 'ya'): ?>
-                            <span class="view-post"> / <?php echo get_post_view(); ?> views</span>
-                            <?php endif; ?>
-                        </small>
-                        <?php if($kutipan != 0): ?>
-                            <div class="exceprt-post"><?php echo getexcerpt($kutipan,get_the_ID()); ?></div>
-                        <?php endif; ?>
-                    </div>
-                </div>
-            <?php
-            //Layout 2    
-            elseif($layout=='layout2'):
-                ?>            
-                <div class="border-bottom pb-2 mb-2">
-                    <div class="thumb-post">
-                        <a href="<?php echo get_the_permalink(); ?>" class="d-block">
-                        <?php echo get_the_post_thumbnail( get_the_ID(),'medium', array( 'class' => 'w-100 img-fluid' ) );?>
-                        </a>                            
-                    </div>
-                    <div class="content-post">
-                        <a href="<?php echo get_the_permalink(); ?>" class="title-post font-weight-bold h4 d-block"><?php echo get_the_title(); ?></a>
-                        <small class="d-block text-muted">
-                            <span class="date-post"><?php echo get_the_date('F j, Y'); ?></span>
-                            <?php if($viewers == 'ya'): ?>
-                            <span class="view-post"> / <?php echo get_post_view(); ?> views</span>
-                            <?php endif; ?>
-                        </small>
-                        <?php if($kutipan != 0): ?>
-                            <div class="exceprt-post"><?php echo getexcerpt($kutipan,get_the_ID()); ?></div>
-                        <?php endif; ?>
-                    </div>
-                </div>
-
-            <?php
-            //Layout gallery    
-            elseif($layout=='gallery'): ?>
-
-                <div class="gallery-posts position-relative">
-                    <a href="<?php echo get_the_permalink(); ?>" class="d-block">
-                        <?php echo get_the_post_thumbnail( get_the_ID(),array($lebar_img,$tinggi_img), array( 'class' => 'w-100 img-fluid' ) );?>
-                        <div class="mask-post"><?php echo get_the_title(); ?></div>
-                    </a>                            
-                </div>
-
-           <?php
-            //Layout list    
-            elseif($layout=='list'): ?>
-
-                <div class="d-flex align-items-baseline border-bottom pb-2 mb-2">
-                    <i class="fa fa-file-text-o text-muted mr-2" aria-hidden="true"></i>
-                    <a href="<?php echo get_the_permalink(); ?>" class="d-inline-block">
-                        <?php echo get_the_title(); ?>
-                    </a>                            
-                </div>
-
-            <?php
-            //Endif layout    
-            endif;
-        
-        echo '</div>';
     }
 
     // Widget Backend 
     public function form( $instance ) {
         //widget data
-        $title          = isset( $instance[ 'title' ])?$instance[ 'title' ]:'New Post';
+        $title          = isset( $instance[ 'title' ])?$instance[ 'title' ]:'Popular Post';
         $layout         = isset( $instance[ 'layout' ])?$instance[ 'layout' ]:'';
         $kategori       = isset( $instance[ 'kategori' ])?$instance[ 'kategori' ]:'';
         $jumlah         = isset( $instance[ 'jumlah' ])?$instance[ 'jumlah' ]:'5';
         $lebar_img      = isset( $instance[ 'lebar_img' ])?$instance[ 'lebar_img' ]:'70';
         $tinggi_img     = isset( $instance[ 'tinggi_img' ])?$instance[ 'tinggi_img' ]:'70';
-        $kutipan        = isset( $instance[ 'kutipan' ])?$instance[ 'kutipan' ]:'50';
-        $orderby        = isset( $instance[ 'orderby' ])?$instance[ 'orderby' ]:'';
+        $kutipan        = isset( $instance[ 'kutipan' ])?$instance[ 'kutipan' ]:'0';
         $order          = isset( $instance[ 'order' ])?$instance[ 'order' ]:'';
-        $viewers        = isset( $instance[ 'viewers' ])?$instance[ 'viewers' ]:'';
+        $viewers        = isset( $instance[ 'viewers' ])?$instance[ 'viewers' ]:'ya';
+        $viewdate       = isset( $instance[ 'viewdate' ])?$instance[ 'viewdate' ]:'';
 
         // Widget admin form
         ?>
@@ -198,15 +146,6 @@ class mjlah_posts_widget extends WP_Widget {
             <label for="<?php echo $this->get_field_id( 'title' ); ?>">Judul:</label> 
             <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
         </p>
-        <p>
-            <label for="<?php echo $this->get_field_id( 'layout' ); ?>">Layout:</label>        
-            <select class="widefat" name="<?php echo $this->get_field_name( 'layout' ); ?>">
-                <option value="layout1"<?php selected($orderby, "layout1"); ?>>Layout 1</option>
-                <option value="layout2"<?php selected($orderby, "layout2"); ?>>Layout 2</option>
-                <option value="gallery"<?php selected($orderby, "gallery"); ?>>Gallery</option>
-                <option value="list"<?php selected($orderby, "list"); ?>>List</option>
-            </select>
-		</p>
         <p>
             <label for="<?php echo $this->get_field_id( 'kategori' ); ?>">Kategori:</label>        
             <select class="widefat" name="<?php echo $this->get_field_name( 'kategori' ); ?>">
@@ -244,13 +183,6 @@ class mjlah_posts_widget extends WP_Widget {
             <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'jumlah' ); ?>" type="number" value="<?php echo esc_attr( $jumlah ); ?>" />
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id( 'orderby' ); ?>">Urutkan Berdasarkan:</label>        
-            <select class="widefat" name="<?php echo $this->get_field_name( 'orderby' ); ?>">
-                <option value="date"<?php selected($orderby, "date"); ?>>Tanggal</option>
-                <option value="view"<?php selected($orderby, "view"); ?>>Populer</option>
-            </select>
-		</p>
-        <p>
             <label for="<?php echo $this->get_field_id( 'order' ); ?>">Urutan:</label>        
             <select class="widefat" name="<?php echo $this->get_field_name( 'order' ); ?>">
                 <option value="DESC"<?php selected($order, "DESC"); ?>>DESC</option>
@@ -276,6 +208,13 @@ class mjlah_posts_widget extends WP_Widget {
                 <option value="ya"<?php selected($viewers, "ya"); ?>>Ya</option>
             </select>
 		</p>
+        <p>
+            <label for="<?php echo $this->get_field_id( 'viewdate' ); ?>">Tampilkan tanggal:</label>        
+            <select class="widefat" name="<?php echo $this->get_field_name( 'viewdate' ); ?>">
+                <option value="tidak"<?php selected($viewdate, "tidak"); ?>>Tidak</option>
+                <option value="ya"<?php selected($viewdate, "ya"); ?>>Ya</option>
+            </select>
+		</p>
         <?php 
     }
 
@@ -283,24 +222,23 @@ class mjlah_posts_widget extends WP_Widget {
     public function update( $new_instance, $old_instance ) {
         $instance = array();
         $instance['title']          = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
-        $instance['layout']         = ( ! empty( $new_instance['layout'] ) ) ? strip_tags( $new_instance['layout'] ) : '';
         $instance['kategori']       = ( ! empty( $new_instance['kategori'] ) ) ? strip_tags( $new_instance['kategori'] ) : '';
         $instance['jumlah']         = ( ! empty( $new_instance['jumlah'] ) ) ? strip_tags( $new_instance['jumlah'] ) : '';
         $instance['lebar_img']      = ( ! empty( $new_instance['lebar_img'] ) ) ? strip_tags( $new_instance['lebar_img'] ) : '';
         $instance['tinggi_img']     = ( ! empty( $new_instance['tinggi_img'] ) ) ? strip_tags( $new_instance['tinggi_img'] ) : '';
         $instance['kutipan']        = ( ! empty( $new_instance['kutipan'] ) ) ? strip_tags( $new_instance['kutipan'] ) : '';
-        $instance['orderby']        = ( ! empty( $new_instance['orderby'] ) ) ? strip_tags( $new_instance['orderby'] ) : '';
         $instance['order']          = ( ! empty( $new_instance['order'] ) ) ? strip_tags( $new_instance['order'] ) : '';
         $instance['viewers']        = ( ! empty( $new_instance['viewers'] ) ) ? strip_tags( $new_instance['viewers'] ) : '';
+        $instance['viewdate']       = ( ! empty( $new_instance['viewdate'] ) ) ? strip_tags( $new_instance['viewdate'] ) : '';
         return $instance;
     }
 
-// Class mjlah_posts_widget ends here
+// Class mjlah_popular_posts_widget ends here
 } 
      
      
 // Register and load the widget
-function mjlah_posts_load_widget() {
-    register_widget( 'mjlah_posts_widget' );
+function mjlah_popular_posts_load_widget() {
+    register_widget( 'mjlah_popular_posts_widget' );
 }
-add_action( 'widgets_init', 'mjlah_posts_load_widget' );
+add_action( 'widgets_init', 'mjlah_popular_posts_load_widget' );
