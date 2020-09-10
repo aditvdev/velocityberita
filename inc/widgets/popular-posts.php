@@ -133,10 +133,15 @@ class mjlah_popular_posts_widget extends WP_Widget {
             elseif($layout=='layout2'):
                 ?>            
                 <div class="d-flex align-items-center border-bottom pb-2 mb-2">
-                    <span class="h1 mr-2"><?php echo $i; ?></span>
-                    <a href="<?php echo get_the_permalink(); ?>" class="d-inline-block">
+                    <span class="h3 font-weight-bold mr-2"><?php echo $i; ?></span>
+                    <div class="content-post">
+                    <a href="<?php echo get_the_permalink(); ?>" class="d-block">
                         <?php echo get_the_title(); ?>
-                    </a>                            
+                    </a>   
+                    <?php if($viewers == 'ya'): ?>
+                        <small class="view-post"><?php echo get_post_view(); ?> views</small>
+                    <?php endif; ?> 
+                    </div>                        
                 </div>
 
             <?php
