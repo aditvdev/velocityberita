@@ -8401,7 +8401,7 @@ a.badge-dark:focus {
 }
 
 .alert-primary {
-   color: #2c1b85;
+   color: var(--primary);
    background-color: #ddd6ff;
    border-color: #cfc6ff
 }
@@ -8906,20 +8906,20 @@ a.badge-dark:focus {
 }
 
 .list-group-item-primary {
-   color: #2c1b85;
-   background-color: #cfc6ff
+   color: var(--primary);
+   background-color: var(--light)
 }
 
 .list-group-item-primary.list-group-item-action:focus,
 .list-group-item-primary.list-group-item-action:hover {
-   color: #2c1b85;
-   background-color: #baadff
+   color: var(--primary);
+   background-color: var(--light)
 }
 
 .list-group-item-primary.list-group-item-action.active {
    color: #fff;
-   background-color: #2c1b85;
-   border-color: #2c1b85
+   background-color: var(--primary);
+   border-color: var(--primary)
 }
 
 .list-group-item-secondary {
@@ -14473,7 +14473,7 @@ button.bg-dark:hover {
 
 a.text-primary:focus,
 a.text-primary:hover {
-   color: #2600e6 !important
+   color: var(--primary) !important
 }
 
 .text-secondary {

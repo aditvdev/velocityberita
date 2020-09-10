@@ -22,7 +22,6 @@ $justg_includes = array(
 	'/jetpack.php',                         // Load Jetpack compatibility file.
 	'/class-wp-bootstrap-navwalker.php',    // Load custom WordPress nav walker.
 	'/editor.php',                          // Load Editor functions.
-	'/customizer.php',                      // Customizer.
 	'/deprecated.php',                      // Load deprecated functions.
 	'/builder-part.php',                    // Load kirki.
 	'/kirki/kirki.php',                     // Load kirki.

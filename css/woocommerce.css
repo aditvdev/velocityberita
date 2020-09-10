@@ -60,7 +60,7 @@ figure.woocommerce-product-gallery__wrapper {
     top: 100%;
     display: none;
     max-width: 90vw;
-    z-index: 99
+    z-index: 99;
 }
 
 .site-header-cart:hover .dropdown-cart {
