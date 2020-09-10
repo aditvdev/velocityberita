@@ -96,7 +96,30 @@ Kirki::add_field( 'justg_config', [
         'hover'   => '#333333',
 		'active'  => '#121212',
 		'primary'    => '#121212',
-    ],
+	],
+	'output'    => [
+		[
+			'choice'    => 'link',
+			'element'   => 'a',
+			'property'  => 'color',
+		],
+		[
+			'choice'    => 'hover',
+			'element'   => 'a:hover',
+			'property'  => 'color',
+		],
+		[
+			'choice'    => 'active',
+			'element'   => 'a:active',
+			'property'  => 'color',
+		],
+		[
+			'choice'    => 'primary',
+			'element'   => ':root',
+			'property'  => '--primary',
+		],
+	],
+
 ] );
 
 Kirki::add_field( 'justg_config', [
@@ -139,7 +162,7 @@ Kirki::add_field( 'justg_config', [
 	'transport'   => 'auto',
 	'output'      => [
 		[
-			'element' => '.bg-header',
+			'element' => ['.bg-header', '#main-menu .dropdown-menu'],
 		],
 	],
 ] );
@@ -185,6 +208,35 @@ Kirki::add_field( 'justg_config', [
 	'output'      => [
 		[
 			'element' => '#main-menu',
+		],
+	],
+] );
+
+Kirki::add_field( 'justg_config', [
+    'type'        => 'multicolor',
+    'settings'    => 'link_menu',
+    'label'       => esc_html__( 'Menu Color', 'justg' ),
+    'section'     => 'header_section',
+    'priority'    => 10,
+    'choices'     => [
+        'link'    => esc_html__( 'Color', 'justg' ),
+        'hover'   => esc_html__( 'Hover', 'justg' ),
+    ],
+    'default'     => [
+        'link'    => '#121212',
+        'hover'   => '#333333',
+		'active'  => '#121212',
+	],
+	'output'    => [
+		[
+			'choice'    => 'link',
+			'element'   => '#main-menu a',
+			'property'  => 'color',
+		],
+		[
+			'choice'    => 'hover',
+			'element'   => '#main-menu a:hover',
+			'property'  => 'color',
 		],
 	],
 ] );
