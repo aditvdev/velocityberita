@@ -29,9 +29,10 @@ if( ! function_exists( 'justg_header_logo' ) ) {
      * 
      */
     function justg_header_logo() {
-        $logo = get_theme_mod( 'logo', '' );
-        if($logo) {
-            $title = '<img src="'.$logo.'">';
+        $custom_logo_id = get_theme_mod( 'custom_logo' );
+        $logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+        if(!empty($logo[0])) {
+            $title = '<img src="'.esc_url($logo[0]).'">';
         } else {
             $title = get_bloginfo( 'name' );
         }

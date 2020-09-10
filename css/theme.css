@@ -17950,6 +17950,10 @@ a.skip-link {
    padding: 10px;
 }
 
+.menu-item:hover .dropdown-menu {
+   display:block;
+}
+
 @media (max-width: 768px) {
    .navbar-collapse {
       position: fixed;

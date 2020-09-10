@@ -121,16 +121,6 @@ Kirki::add_field( 'justg_config', [
 	],
 ] );
 
-// Add field to header section
-Kirki::add_field( 'justg_config', [
-	'type'        => 'image',
-	'settings'    => 'logo',
-	'label'       => esc_html__( 'Logo', 'justg' ),
-	'description' => esc_html__( '', 'justg' ),
-	'section'     => 'header_section',
-	'default'     => '',
-] );
-
 Kirki::add_field( 'justg_config', [
 	'type'        => 'typography',
 	'settings'    => 'menu_setting',
