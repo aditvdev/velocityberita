@@ -71,7 +71,7 @@ a.cart-contents {
     color: var(--primary);
 }
 
-.site-header-cart .widget_shopping_cart a {
+.product_list_widget li > a {
     color: var(--light);
 }
 

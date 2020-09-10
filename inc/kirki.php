@@ -89,13 +89,15 @@ Kirki::add_field( 'justg_config', [
         'link'    => esc_html__( 'Color', 'justg' ),
         'hover'   => esc_html__( 'Hover', 'justg' ),
 		'active'  => esc_html__( 'Active', 'justg' ),
-		'primary'	  => esc_html__( 'Primary', 'justg' ),
+		'primary' => esc_html__( 'Primary', 'justg' ),
+		'light'	  => esc_html__( 'Light', 'justg' ),
     ],
     'default'     => [
         'link'    => '#121212',
         'hover'   => '#333333',
 		'active'  => '#121212',
-		'primary'    => '#121212',
+		'primary' => '#98C65E',
+		'light'   => '#f8f9fa',
 	],
 	'output'    => [
 		[
@@ -117,6 +119,11 @@ Kirki::add_field( 'justg_config', [
 			'choice'    => 'primary',
 			'element'   => ':root',
 			'property'  => '--primary',
+		],
+		[
+			'choice'    => 'light',
+			'element'   => ':root',
+			'property'  => '--light',
 		],
 	],
 

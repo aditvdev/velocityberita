@@ -156,7 +156,7 @@ if ( ! function_exists( 'justg_widget_shopping_cart_button_view_cart') ) {
      * Replace View cart button in shoping cart header
      */
     function justg_widget_shopping_cart_button_view_cart() {
-        echo '<a href="' . esc_url( wc_get_cart_url() ) . '" class="btn btn-sm btn-dark">' . esc_html__( 'View cart', 'justg' ) . '</a>';
+        echo '<a href="' . esc_url( wc_get_cart_url() ) . '" class="btn btn-sm btn-dark text-white">' . esc_html__( 'View cart', 'justg' ) . '</a>';
     }
 }
 
@@ -165,7 +165,7 @@ if( ! function_exists( 'justg_widget_shopping_cart_proceed_to_checkout' )){
      * Replace Checkout button in shoping cart header
      */
     function justg_widget_shopping_cart_proceed_to_checkout() {
-        echo '<a href="' . esc_url( wc_get_checkout_url() ) . '" class="btn btn-sm btn-dark">' . esc_html__( 'Checkout', 'justg' ) . '</a>';
+        echo '<a href="' . esc_url( wc_get_checkout_url() ) . '" class="btn btn-sm btn-dark text-white">' . esc_html__( 'Checkout', 'justg' ) . '</a>';
     }
 }
 
