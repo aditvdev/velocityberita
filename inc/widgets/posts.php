@@ -70,6 +70,22 @@ class mjlah_posts_widget extends WP_Widget {
             wp_reset_postdata();
 
         echo '</div>';
+        
+        //Style for widget
+        if($instance['layout']=='layout1'):
+        ?>
+        <style>
+            .widget-<?php echo $idwidget;?> .thumb-post a {
+                width: <?php echo $instance['lebar_img'];?>px;
+            }
+            .widget-<?php echo $idwidget;?> .thumb-post img {
+                height: <?php echo $instance['tinggi_img'];?>px;
+                object-fit: cover;
+            }
+        </style>
+        <?php
+        endif;
+
         echo $args['after_widget'];
     }
 
@@ -80,59 +96,62 @@ class mjlah_posts_widget extends WP_Widget {
         $lebar_img  = $instance['lebar_img']?$instance['lebar_img']:70;
         $tinggi_img = $instance['tinggi_img']?$instance['tinggi_img']:70;        
         $viewers    = $instance['viewers']?$instance['viewers']:'tidak';
+
+        $thumbnail  = get_the_post_thumbnail_url(get_the_ID(),'thumbnail');
         
-        echo '<div class="list-post list-post-'.$i.'">';
-
-        //Layout 1
-        if($layout=='layout1'):
-            ?>            
-            <div class="d-flex border-bottom pb-2 mb-2">
-                <div class="thumb-post">
-                    <a href="<?php echo get_the_permalink(); ?>" class="d-inline-block mr-2" style="width: <?php echo $lebar_img; ?>px;">
-                    <?php echo get_the_post_thumbnail( get_the_ID(), array( $lebar_img, $tinggi_img), array( 'class' => 'img-fluid' ) );?>
-                    </a>                            
-                </div>
-                <div class="content-post">
-                    <a href="<?php echo get_the_permalink(); ?>" class="title-post font-weight-bold h4 d-block"><?php echo get_the_title(); ?></a>
-                    <small class="d-block text-muted">
-                        <span class="date-post"><?php echo get_the_date('F j, Y'); ?></span>
-                        <?php if($viewers == 'ya'): ?>
-                        <span class="view-post"> / <?php echo get_post_view(); ?> views</span>
+        echo '<div class="list-post list-post-'.$i.'">';        
+        echo generated_schema(get_the_ID());
+        
+            //Layout 1
+            if($layout=='layout1'):
+                ?>            
+                <div class="d-flex border-bottom pb-2 mb-2">
+                    <div class="thumb-post">
+                        <a href="<?php echo get_the_permalink(); ?>" class="d-inline-block mr-2">
+                        <img src="<?php echo $thumbnail;?>" class="img-fluid w-100"/>
+                        </a>                            
+                    </div>
+                    <div class="content-post">
+                        <a href="<?php echo get_the_permalink(); ?>" class="title-post font-weight-bold h4 d-block"><?php echo get_the_title(); ?></a>
+                        <small class="d-block text-muted">
+                            <span class="date-post"><?php echo get_the_date('F j, Y'); ?></span>
+                            <?php if($viewers == 'ya'): ?>
+                            <span class="view-post"> / <?php echo get_post_view(); ?> views</span>
+                            <?php endif; ?>
+                        </small>
+                        <?php if($kutipan != 0): ?>
+                            <div class="exceprt-post"><?php echo getexcerpt($kutipan,get_the_ID()); ?></div>
                         <?php endif; ?>
-                    </small>
-                    <?php if($kutipan != 0): ?>
-                        <div class="exceprt-post"><?php echo getexcerpt($kutipan,get_the_ID()); ?></div>
-                    <?php endif; ?>
+                    </div>
                 </div>
-            </div>
-            <?php
+                <?php
 
-        //Layout 2    
-        elseif($layout=='layout2'):
-            ?>            
-            <div class="border-bottom pb-2 mb-2">
-                <div class="thumb-post">
-                    <a href="<?php echo get_the_permalink(); ?>" class="d-block">
-                    <?php echo get_the_post_thumbnail( get_the_ID(),'medium', array( 'class' => 'w-100 img-fluid' ) );?>
-                    </a>                            
-                </div>
-                <div class="content-post">
-                    <a href="<?php echo get_the_permalink(); ?>" class="title-post font-weight-bold h4 d-block"><?php echo get_the_title(); ?></a>
-                    <small class="d-block text-muted">
-                        <span class="date-post"><?php echo get_the_date('F j, Y'); ?></span>
-                        <?php if($viewers == 'ya'): ?>
-                        <span class="view-post"> / <?php echo get_post_view(); ?> views</span>
+            //Layout 2    
+            elseif($layout=='layout2'):
+                ?>            
+                <div class="border-bottom pb-2 mb-2">
+                    <div class="thumb-post">
+                        <a href="<?php echo get_the_permalink(); ?>" class="d-block">
+                        <?php echo get_the_post_thumbnail( get_the_ID(),'medium', array( 'class' => 'w-100 img-fluid' ) );?>
+                        </a>                            
+                    </div>
+                    <div class="content-post">
+                        <a href="<?php echo get_the_permalink(); ?>" class="title-post font-weight-bold h4 d-block"><?php echo get_the_title(); ?></a>
+                        <small class="d-block text-muted">
+                            <span class="date-post"><?php echo get_the_date('F j, Y'); ?></span>
+                            <?php if($viewers == 'ya'): ?>
+                            <span class="view-post"> / <?php echo get_post_view(); ?> views</span>
+                            <?php endif; ?>
+                        </small>
+                        <?php if($kutipan != 0): ?>
+                            <div class="exceprt-post"><?php echo getexcerpt($kutipan,get_the_ID()); ?></div>
                         <?php endif; ?>
-                    </small>
-                    <?php if($kutipan != 0): ?>
-                        <div class="exceprt-post"><?php echo getexcerpt($kutipan,get_the_ID()); ?></div>
-                    <?php endif; ?>
+                    </div>
                 </div>
-            </div>
 
-            <?php
-        //Endif layout    
-        endif;
+                <?php
+            //Endif layout    
+            endif;
         
         echo '</div>';
     }

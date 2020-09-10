@@ -57,3 +57,34 @@ function getexcerpt($count=150,$idpost=null){
     $html = ''.$html.'...';
     return $html;
 }
+
+/*
+*generated schema content of post
+*/
+function generated_schema($idpost=null){
+    $schema = '';
+    if($idpost!=null):
+        $author_id  = get_post_field( 'post_author', $idpost );
+
+        $schema     .= '<meta itemscope="" itemprop="mainEntityOfPage" itemtype="https://schema.org/WebPage" itemid="'.get_permalink($idpost).'" content="'.get_the_title($idpost).'">';
+        $schema     .= '<meta itemprop="datePublished" content="'.get_the_date( 'Y-m-d', $idpost ).'">';
+        $schema     .= '<meta itemprop="dateModified" content="'.get_the_modified_date('Y-m-d', $idpost).'">';
+        $schema     .= '<div itemprop="publisher" itemscope="" itemtype="https://schema.org/Organization">';
+            $schema .= '<meta itemprop="name" content="'.get_bloginfo( 'name' ).'">';
+        $schema     .= '</div>';
+        $schema     .= '<div itemscope="" itemprop="author" itemtype="https://schema.org/Person">';
+            $schema .= '<meta itemprop="url" content="'.get_the_author_meta( 'url', $author_id ).'">';
+            $schema .= '<meta itemprop="name" content="'.get_the_author_meta( 'nicename', $author_id ).'">';
+        $schema     .= '</div>';
+        $schema     .= '<div itemscope="" itemprop="image" itemtype="https://schema.org/ImageObject">';
+            $schema .= '<meta itemprop="url" content="'.get_the_post_thumbnail_url($idpost,'full').'">';
+            $schema .= '<meta itemprop="width" content="790">';
+            $schema .= '<meta itemprop="height" content="536">';
+        $schema     .= '</div>';
+        $schema     .= '<div itemprop="interactionStatistic" itemscope="" itemtype="https://schema.org/InteractionCounter">';
+            $schema .= '<meta itemprop="interactionType" content="https://schema.org/CommentAction">';
+            $schema .= '<meta itemprop="userInteractionCount" content="'.wp_count_comments($idpost)->total_comments.'">';
+        $schema     .= '</div>';
+    endif;
+    return $schema;
+}
