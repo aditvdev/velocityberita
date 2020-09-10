@@ -65,6 +65,7 @@ function generated_schema($idpost=null){
     $schema = '';
     if($idpost!=null):
         $author_id  = get_post_field( 'post_author', $idpost );
+        list($width, $height, $type, $attr) = getimagesize(get_the_post_thumbnail_url($idpost,'full'));
 
         $schema     .= '<meta itemscope="" itemprop="mainEntityOfPage" itemtype="https://schema.org/WebPage" itemid="'.get_permalink($idpost).'" content="'.get_the_title($idpost).'">';
         $schema     .= '<meta itemprop="datePublished" content="'.get_the_date( 'Y-m-d', $idpost ).'">';
@@ -78,8 +79,8 @@ function generated_schema($idpost=null){
         $schema     .= '</div>';
         $schema     .= '<div itemscope="" itemprop="image" itemtype="https://schema.org/ImageObject">';
             $schema .= '<meta itemprop="url" content="'.get_the_post_thumbnail_url($idpost,'full').'">';
-            $schema .= '<meta itemprop="width" content="790">';
-            $schema .= '<meta itemprop="height" content="536">';
+            $schema .= '<meta itemprop="width" content="'.$width.'">';
+            $schema .= '<meta itemprop="height" content="'.$height.'">';
         $schema     .= '</div>';
         $schema     .= '<div itemprop="interactionStatistic" itemscope="" itemtype="https://schema.org/InteractionCounter">';
             $schema .= '<meta itemprop="interactionType" content="https://schema.org/CommentAction">';
