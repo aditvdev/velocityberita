@@ -90,7 +90,8 @@ class mjlah_popular_posts_widget extends WP_Widget {
         $kutipan    = $instance['kutipan']?$instance['kutipan']:'';
         $lebar_img  = $instance['lebar_img']?$instance['lebar_img']:70;
         $tinggi_img = $instance['tinggi_img']?$instance['tinggi_img']:70;        
-        $viewers    = $instance['viewers']?$instance['viewers']:'tidak';
+        $viewers    = $instance['viewers']?$instance['viewers']:'ya';       
+        $viewdate   = $instance['viewdate']?$instance['viewdate']:'tidak';
 
         $class      = ($layout=='gallery')?'col-md-6 col-12 p-2 pt-0':'';
 
