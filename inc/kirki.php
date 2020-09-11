@@ -163,6 +163,43 @@ Kirki::add_section( 'header_section', array(
 ) );
 
 Kirki::add_field( 'mjlah_config', [
+	'type'        => 'select',
+	'settings'    => 'lebar_container_header',
+	'label'       => esc_html__( 'Lebar Konten Header', 'mjlah' ),
+	'section'     => 'header_section',
+	'default'     => 'fixed',
+	'description' => esc_html__( 'lebar header', 'mjlah' ),
+	'priority'    => 10,
+	'multiple'    => 1,
+	'choices'     => [
+		'fixed' => esc_html__( 'Fixed', 'mjlah' ),
+		'full' 	=> esc_html__( 'Full', 'mjlah' ),
+	],
+] ); 
+
+Kirki::add_field( 'mjlah_config', [
+	'type'        => 'background',
+	'settings'    => 'background_block_header',
+	'label'       => esc_html__( 'Background Block header', 'mjlah' ),
+	'description' => esc_html__( 'Atur background header', 'mjlah' ),
+	'section'     => 'header_section',
+	'default'     => [
+		'background-color'      => '#ffffff',
+		'background-image'      => '',
+		'background-repeat'     => 'repeat',
+		'background-position'   => 'center center',
+		'background-size'       => 'cover',
+		'background-attachment' => 'scroll',
+	],
+	'transport'   => 'auto',
+	'output'      => [
+		[
+			'element' => array('.block-header'),
+		],
+	],
+] );
+
+Kirki::add_field( 'mjlah_config', [
 	'type'        => 'typography',
 	'settings'    => 'menu_setting',
 	'label'       => esc_html__( 'Menu Typography', 'mjlah' ),
