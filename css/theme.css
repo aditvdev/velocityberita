@@ -150,3 +150,11 @@ blockquote:before {
    max-height: 65px;
    overflow: hidden;
 }
+.widget_calendar .wp-calendar-table thead th {
+   background: #ddd;
+}
+.widget_calendar .wp-calendar-table tbody th:hover, 
+.widget_calendar .wp-calendar-table tbody td:hover {
+   background: var(--primary);
+   color: #fff;
+}
