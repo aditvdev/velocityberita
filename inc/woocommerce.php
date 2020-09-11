@@ -233,3 +233,34 @@ if ( ! function_exists( 'justg_woo_cart_available' ) ) {
 	}
 }
 
+/*
+ * Step 1. Add Link (Tab) to My Account menu
+ */
+add_filter ( 'woocommerce_account_menu_items', 'justg_add_link', 40 );
+function justg_add_link( $menu_links ){
+ 
+	$menu_links = array_slice( $menu_links, 0, 5, true ) 
+	+ array( 'wishlist' => 'Wishlist' )
+	+ array_slice( $menu_links, 5, NULL, true );
+ 
+	return $menu_links;
+ 
+}
+/*
+ * Step 2. Register Permalink Endpoint
+ */
+add_action( 'init', 'justg_add_endpoint' );
+function justg_add_endpoint() {
+ 
+	// WP_Rewrite is my Achilles' heel, so please do not ask me for detailed explanation
+	add_rewrite_endpoint( 'wishlist', EP_PAGES );
+ 
+}
+/*
+ * Step 3. Content for the new page in My Account, woocommerce_account_{ENDPOINT NAME}_endpoint
+ */
+add_action( 'woocommerce_account_wishlist_endpoint', 'justg_my_account_endpoint_content' );
+function justg_my_account_endpoint_content() {
+ 	echo wishlist();
+ 
+}

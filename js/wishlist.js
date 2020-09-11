@@ -80,9 +80,10 @@
 
                     wishlist = wishlist.unique();
 
+                    showWishlist(wishlist);
+
                     highlightWishlist(wishlist,inWishlist);
                     sessionStorage.removeItem(shopName);
-
                 } else {
                     if (typeof(ls) != 'undefined' && ls != null) {
                         ls = ls.split(',');
@@ -104,6 +105,7 @@
                         sessionStorage.removeItem(shopName);
                     });
                 }
+                
             },
             error: function(){
                 console.log('No user data returned');
@@ -170,9 +172,8 @@
         });
     });
 
-    setTimeout(function(){
-
-        if (wishlist.length) {
+    function showWishlist( wishlist ){
+        if (undefined !== wishlist && wishlist.length) {
 
             restUrl += '?include='+wishlist.join(',');
             restUrl += '&per_page='+wishlist.length;
@@ -204,7 +205,9 @@
             });
         }
 
-    },1000);
+    }
+
+    setTimeout( showWishlist ,1000);
 
     $(document).on('click', '.wishlist-remove', function(){
 

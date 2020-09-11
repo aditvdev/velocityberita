@@ -34,7 +34,7 @@ if (justg_is_woocommerce_activated()) {
     function wishlist_toggle(){
 
         global $product;
-        echo '<span class="wishlist-title">'.esc_attr__("Add to wishlist","justg").'</span><a class="wishlist-toggle" data-product="'.esc_attr($product->get_id()).'" href="#" title="'.esc_attr__("Add to wishlist","justg").'"><i class="fa fa-heart-o" aria-hidden="true"></i></a>';
+        echo '<a class="wishlist-toggle" data-product="'.esc_attr($product->get_id()).'" href="#" title="'.esc_attr__("Add to wishlist","justg").'"><i class="fa fa-heart-o" aria-hidden="true"></i></a>';
     }
 
     // Wishlist option in the user profile
@@ -73,8 +73,8 @@ if (justg_is_woocommerce_activated()) {
     add_action('admin_post_nopriv_user_wishlist_update', 'update_wishlist_ajax');
     add_action('admin_post_user_wishlist_update', 'update_wishlist_ajax');
 
-    // Wishlist table shortcode
-    function wishlist( ) {
+    // Dipanggil di inc/woocommerce.php
+    function wishlist() {
         
         return '<table class="wishlist-table loading">
                     <tr>
