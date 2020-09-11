@@ -98,6 +98,25 @@ blockquote:before {
    color: #7a7a7a;
    font-family: fontawesome;
 }
+.scrolltoTop {
+   width: 30px;
+   height: 30px;
+   cursor: pointer;
+   position: fixed;
+   bottom: 10px;
+   right: 10px;
+   background: var(--primary);
+   color: #fff;
+   text-align: center;
+   font-size: 1rem;
+   line-height: 1.6rem;
+   display: none;
+}
+
+/*
+* style widget
+*/
+
 .widget dl, 
 .widget ol, 
 .widget ul {
@@ -134,10 +153,14 @@ blockquote:before {
    padding: .3rem;
    cursor: pointer;
 }
-
-/*
-* style widget
-*/
+.widget_calendar .wp-calendar-table thead th {
+   background: #ddd;
+}
+.widget_calendar .wp-calendar-table tbody th:hover, 
+.widget_calendar .wp-calendar-table tbody td:hover {
+   background: var(--primary);
+   color: #fff;
+}
 .widget_mjlah_posts_widget .mask-post {
    position: absolute;
    bottom: 0;
@@ -149,12 +172,4 @@ blockquote:before {
    color: #fff;
    max-height: 65px;
    overflow: hidden;
-}
-.widget_calendar .wp-calendar-table thead th {
-   background: #ddd;
-}
-.widget_calendar .wp-calendar-table tbody th:hover, 
-.widget_calendar .wp-calendar-table tbody td:hover {
-   background: var(--primary);
-   color: #fff;
 }

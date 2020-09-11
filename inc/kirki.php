@@ -358,3 +358,18 @@ Kirki::add_field( 'mjlah_config', [
 		],
 	],
 ] );
+
+Kirki::add_field( 'mjlah_config', [
+	'type'        => 'select',
+	'settings'    => 'scrolltotop_footer',
+	'label'       => esc_html__( 'Tampilkan Tombol Scroll ke atas', 'mjlah' ),
+	'section'     => 'footer_section',
+	'default'     => 'ya',
+	'description' => esc_html__( 'Tampilkan Tombol Scroll ke atas', 'mjlah' ),
+	'priority'    => 10,
+	'multiple'    => 1,
+	'choices'     => [
+		'ya' 		=> esc_html__( 'Ya', 'mjlah' ),
+		'tidak' 	=> esc_html__( 'Tidak', 'mjlah' ),
+	],
+] );

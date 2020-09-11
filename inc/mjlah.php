@@ -46,6 +46,20 @@ add_filter( 'manage_page_posts_columns', 'mjlah_posts_column_views' );
 add_action( 'manage_page_posts_custom_column', 'mjlah_posts_custom_column_views' );
 
 /*
+* Add function for button scroll to top
+*/
+function mjlah_scrolltotop() {
+    $scrollfooter 	= get_theme_mod('scrolltotop_footer');
+    if($scrollfooter=='ya'): ?>
+        <span class="scrolltoTop" onClick="window.scrollTo({top: 100,left: 100,behavior: 'smooth'});">
+            <i class="fa fa-caret-up" aria-hidden="true"></i>
+        </span>
+    <?php
+    endif;
+}
+add_action('wp_footer', 'mjlah_scrolltotop');
+
+/*
 *get content of post
 */
 function getexcerpt($count=150,$idpost=null){
