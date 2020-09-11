@@ -134,7 +134,7 @@ class mjlah_popular_posts_widget extends WP_Widget {
             elseif($layout=='layout2'):
                 ?>            
                 <div class="d-flex align-items-center border-bottom pb-2 mb-2">
-                    <span class="h3 font-weight-bold mr-2"><?php echo $i; ?></span>
+                    <span class="number-post h3 font-weight-bold mr-2"><?php echo $i; ?></span>
                     <div class="content-post">
                     <a href="<?php echo get_the_permalink(); ?>" class="d-block">
                         <?php echo get_the_title(); ?>
