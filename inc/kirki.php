@@ -231,6 +231,53 @@ Kirki::add_section( 'block_section', array(
 
 Kirki::add_field( 'mjlah_config', [
 	'type'        => 'background',
+	'settings'    => 'background_main_block_setting',
+	'label'       => esc_html__( 'Background Main Block', 'mjlah' ),
+	'description' => esc_html__( 'Atur background Block Konten Utama', 'mjlah' ),
+	'section'     => 'block_section',
+	'default'     => [
+		'background-color'      => '#ffffff',
+		'background-image'      => '',
+		'background-repeat'     => 'repeat',
+		'background-position'   => 'center center',
+		'background-size'       => 'cover',
+		'background-attachment' => 'scroll',
+	],
+	'transport'   => 'auto',
+	'output'      => [
+		[
+			'element' => array('#wrapper-main > .wrapper > #content'),
+		],
+	],
+] );
+
+Kirki::add_field( 'mjlah_config', [
+	'type'        => 'dimensions',
+	'settings'    => 'dimensions_main_block_setting',
+	'label'       => esc_html__( 'Margin Main Block', 'mjlah' ),
+	'description' => esc_html__( 'Atur Jarak Block Utama', 'mjlah' ),
+	'section'     => 'block_section',
+	'default'     => [
+		'padding-top'    => '1em',
+		'padding-bottom' => '1em',
+		'padding-left'   => '1em',
+		'padding-right'  => '1em',
+
+		'margin-top'    => '0em',
+		'margin-bottom' => '0em',
+		// 'margin-left'   => '0em',
+		// 'margin-right'  => '0em',
+	],
+	'transport'   => 'auto',
+	'output'      => [
+		[
+			'element' => array('#wrapper-main > .wrapper > #content'),
+		],
+	],
+] );
+
+Kirki::add_field( 'mjlah_config', [
+	'type'        => 'background',
 	'settings'    => 'background_block_setting',
 	'label'       => esc_html__( 'Background Block', 'mjlah' ),
 	'description' => esc_html__( 'Atur background (widget, heading, article, dll)', 'mjlah' ),

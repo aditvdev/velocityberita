@@ -112,6 +112,9 @@ blockquote:before {
    line-height: 1.6rem;
    display: none;
 }
+#wrapper-main > .wrapper {
+   padding: 0;
+}
 
 /*
 * style widget

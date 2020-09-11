@@ -60,6 +60,8 @@ function mjlah_the_header_content() {
 			</div><!-- #wrapper-navbar end -->
 			
 		</header>
+
+		<div id="wrapper-main"><!-- #wrapper-main start -->
 		
     <?php
 }
@@ -71,7 +73,9 @@ function mjlah_the_footer_content() {
 	$footer_full	= $lebarfooter=='full'?'block-footer py-4':'';
 	$footer_fix		= $lebarfooter=='fixed'?'block-footer py-4':'';
     ?>
-    
+	
+		</div><!-- #wrapper-main End -->
+	
         <div id="wrapper-footer" class="wrapper p-0 <?php echo $footer_full;?>">
 
 				<div class="container <?php echo $footer_fix;?>">
