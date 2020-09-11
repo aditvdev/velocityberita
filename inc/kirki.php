@@ -249,7 +249,7 @@ Kirki::add_field( 'mjlah_config', [
     'type'        => 'multicolor',
     'settings'    => 'link_menu_header_setting',
     'label'       => esc_html__( 'Warna Link Menu Header', 'mjlah' ),
-    'section'     => 'global_section',
+    'section'     => 'header_section',
     'priority'    => 10,
     'choices'     => [
         'link'    => esc_html__( 'Color', 'mjlah' ),
