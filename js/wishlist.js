@@ -22,7 +22,7 @@
             target
             .removeClass('loading')
             .addClass('active')
-            .attr('title',title);
+            .attr('title',title).html('<i class="fa fa-heart" aria-hidden="true"></i>');
         },800);
     }
 
@@ -126,14 +126,14 @@
         currentProduct = currentProduct.toString();
 
         if (!loggedIn && isInArray(currentProduct,wishlist)) {
-            $this.addClass('active').attr('title',inWishlist);
+            $this.addClass('active').attr('title',inWishlist).html('<i class="fa fa-heart" aria-hidden="true"></i>');
         }
 
         $(this).on('click',function(e){
             e.preventDefault();
             if (!$this.hasClass('active') && !$this.hasClass('loading')) {
 
-                $this.addClass('loading');
+                $this.addClass('loading').html('<i class="fa fa-spinner fa-pulse fa-fw"></i>');
 
                 wishlist.push(currentProduct);
                 wishlist = wishlist.unique();
@@ -210,7 +210,7 @@
 
         var $this = $(this);
 
-        $this.closest('table').addClass('loading');
+        $this.closest('table').addClass('loading').html('<i class="fa fa-spinner fa-pulse fa-fw"></i>');
 
         wishlist = [];
 

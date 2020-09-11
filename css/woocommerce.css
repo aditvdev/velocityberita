@@ -114,21 +114,7 @@ a.cart-contents {
     z-index: 5;
 }
 
-.wishlist-table.loading:before {
-    display: block;
-    width: 24px;
-    height: 24px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: -12px;
-    margin-left: -12px;
-    content: "";
-    background-image: url('../img/loading.svg');
-    background-repeat: no-repeat;
-    background-size: 100%;
-    z-index: 6;
-}
+
 
 .wishlist-table td {
     position: relative;
@@ -151,7 +137,6 @@ a.cart-contents {
     left: 50%;
     margin-top: -12px;
     margin-left: -12px;
-    background-image: url('../img/remove.svg');
     background-repeat: no-repeat;
     background-size: 100%;
     z-index: 6;
