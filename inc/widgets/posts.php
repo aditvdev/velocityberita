@@ -97,6 +97,7 @@ class mjlah_posts_widget extends WP_Widget {
         $lebar_img  = $instance['lebar_img']?$instance['lebar_img']:70;
         $tinggi_img = $instance['tinggi_img']?$instance['tinggi_img']:70;        
         $viewers    = $instance['viewers']?$instance['viewers']:'tidak';
+        $viewdate   = $instance['viewdate']?$instance['viewdate']:'ya';
 
         $class      = ($layout=='gallery')?'col-md-6 col-12 p-2 pt-0':'';
 
@@ -114,11 +115,20 @@ class mjlah_posts_widget extends WP_Widget {
                     </div>
                     <div class="content-post">
                         <a href="<?php echo get_the_permalink(); ?>" class="title-post font-weight-bold h4 d-block"><?php echo get_the_title(); ?></a>
-                        <small class="d-block text-muted">
-                            <span class="date-post"><?php echo get_the_date('F j, Y'); ?></span>
-                            <?php if($viewers == 'ya'): ?>
-                            <span class="view-post"> / <?php echo get_post_view(); ?> views</span>
+                        <small class="d-block text-muted meta-post">
+
+                            <?php if($viewdate == 'ya'): ?>
+                                <span class="date-post"><?php echo get_the_date('F j, Y'); ?></span>
                             <?php endif; ?>
+
+                            <?php if($viewers == 'ya' && $viewdate == 'ya'): ?>
+                                <span class="mx-1 separator">/</span>
+                            <?php endif; ?>
+
+                            <?php if($viewers == 'ya'): ?>
+                                <span class="view-post"><?php echo get_post_view(); ?> views</span>
+                            <?php endif; ?>
+
                         </small>
                         <?php if($kutipan != 0): ?>
                             <div class="exceprt-post"><?php echo getexcerpt($kutipan,get_the_ID()); ?></div>
@@ -137,11 +147,20 @@ class mjlah_posts_widget extends WP_Widget {
                     </div>
                     <div class="content-post">
                         <a href="<?php echo get_the_permalink(); ?>" class="title-post font-weight-bold h4 d-block"><?php echo get_the_title(); ?></a>
-                        <small class="d-block text-muted">
-                            <span class="date-post"><?php echo get_the_date('F j, Y'); ?></span>
-                            <?php if($viewers == 'ya'): ?>
-                            <span class="view-post"> / <?php echo get_post_view(); ?> views</span>
+                        <small class="d-block text-muted meta-post">
+
+                            <?php if($viewdate == 'ya'): ?>
+                                <span class="date-post"><?php echo get_the_date('F j, Y'); ?></span>
                             <?php endif; ?>
+
+                            <?php if($viewers == 'ya' && $viewdate == 'ya'): ?>
+                                <span class="mx-1 separator">/</span>
+                            <?php endif; ?>
+
+                            <?php if($viewers == 'ya'): ?>
+                                <span class="view-post"><?php echo get_post_view(); ?> views</span>
+                            <?php endif; ?>
+
                         </small>
                         <?php if($kutipan != 0): ?>
                             <div class="exceprt-post"><?php echo getexcerpt($kutipan,get_the_ID()); ?></div>
@@ -171,6 +190,42 @@ class mjlah_posts_widget extends WP_Widget {
                     </a>                            
                 </div>
 
+            
+            <?php
+            //Layout 3    
+            elseif($layout=='layout3'):
+                ?>            
+                <div class="border-bottom pb-2 mb-2">
+                    <?php if($i==1):?>
+                    <div class="thumb-post">
+                        <a href="<?php echo get_the_permalink(); ?>" class="d-block">
+                        <?php echo get_the_post_thumbnail( get_the_ID(),'medium', array( 'class' => 'w-100 img-fluid' ) );?>
+                        </a>                            
+                    </div>
+                    <?php endif;?>
+                    <div class="content-post">
+                        <a href="<?php echo get_the_permalink(); ?>" class="title-post font-weight-bold h4 d-block"><?php echo get_the_title(); ?></a>
+                        <small class="d-block text-muted meta-post">
+
+                            <?php if($viewdate == 'ya'): ?>
+                                <span class="date-post"><?php echo get_the_date('F j, Y'); ?></span>
+                            <?php endif; ?>
+
+                            <?php if($viewers == 'ya' && $viewdate == 'ya'): ?>
+                                <span class="mx-1 separator">/</span>
+                            <?php endif; ?>
+
+                            <?php if($viewers == 'ya'): ?>
+                                <span class="view-post"><?php echo get_post_view(); ?> views</span>
+                            <?php endif; ?>
+
+                        </small>
+                        <?php if($kutipan != 0): ?>
+                            <div class="exceprt-post"><?php echo getexcerpt($kutipan,get_the_ID()); ?></div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+
             <?php
             //Endif layout    
             endif;
@@ -191,6 +246,7 @@ class mjlah_posts_widget extends WP_Widget {
         $orderby        = isset( $instance[ 'orderby' ])?$instance[ 'orderby' ]:'';
         $order          = isset( $instance[ 'order' ])?$instance[ 'order' ]:'';
         $viewers        = isset( $instance[ 'viewers' ])?$instance[ 'viewers' ]:'';
+        $viewdate       = isset( $instance[ 'viewdate' ])?$instance[ 'viewdate' ]:'ya';
 
         // Widget admin form
         ?>
@@ -203,6 +259,7 @@ class mjlah_posts_widget extends WP_Widget {
             <select class="widefat" name="<?php echo $this->get_field_name( 'layout' ); ?>">
                 <option value="layout1"<?php selected($layout, "layout1"); ?>>Layout 1</option>
                 <option value="layout2"<?php selected($layout, "layout2"); ?>>Layout 2</option>
+                <option value="layout3"<?php selected($layout, "layout3"); ?>>Layout 3</option>
                 <option value="gallery"<?php selected($layout, "gallery"); ?>>Gallery</option>
                 <option value="list"<?php selected($layout, "list"); ?>>List</option>
             </select>
@@ -276,6 +333,13 @@ class mjlah_posts_widget extends WP_Widget {
                 <option value="ya"<?php selected($viewers, "ya"); ?>>Ya</option>
             </select>
 		</p>
+        <p>
+            <label for="<?php echo $this->get_field_id( 'viewdate' ); ?>">Tampilkan tanggal:</label>        
+            <select class="widefat" name="<?php echo $this->get_field_name( 'viewdate' ); ?>">
+                <option value="tidak"<?php selected($viewdate, "tidak"); ?>>Tidak</option>
+                <option value="ya"<?php selected($viewdate, "ya"); ?>>Ya</option>
+            </select>
+		</p>
         <?php 
     }
 
@@ -292,6 +356,7 @@ class mjlah_posts_widget extends WP_Widget {
         $instance['orderby']        = ( ! empty( $new_instance['orderby'] ) ) ? strip_tags( $new_instance['orderby'] ) : '';
         $instance['order']          = ( ! empty( $new_instance['order'] ) ) ? strip_tags( $new_instance['order'] ) : '';
         $instance['viewers']        = ( ! empty( $new_instance['viewers'] ) ) ? strip_tags( $new_instance['viewers'] ) : '';
+        $instance['viewdate']       = ( ! empty( $new_instance['viewdate'] ) ) ? strip_tags( $new_instance['viewdate'] ) : '';
         return $instance;
     }
 

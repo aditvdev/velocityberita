@@ -53,7 +53,7 @@ Kirki::add_field( 'mjlah_config', [
 	'label'       => esc_html__( 'Typography Umum', 'mjlah' ),
 	'section'     => 'global_section',
 	'default'     => [
-		'font-family'    => 'Poppins',
+		'font-family'    => '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif',
 		'variant'        => 'regular',
 		'font-size'      => '14px',
 		'line-height'    => '1.5',
