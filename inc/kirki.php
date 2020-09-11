@@ -168,8 +168,8 @@ Kirki::add_field( 'mjlah_config', [
 	'label'       => esc_html__( 'Menu Typography', 'mjlah' ),
 	'section'     => 'header_section',
 	'default'     => [
-		'font-family'    => 'Poppins',
-		'variant'        => 'regular',
+		'font-family'    => '',
+		'variant'        => '',
 		'font-size'      => '16px',
 		'line-height'    => '1.5',
 		'letter-spacing' => '0',
@@ -199,7 +199,7 @@ Kirki::add_field( 'mjlah_config', [
 	'description' => esc_html__( 'Atur background (widget, heading, article, dll)', 'mjlah' ),
 	'section'     => 'block_section',
 	'default'     => [
-		'background-color'      => '#ffffff',
+		'background-color'      => 'rgba(255,255,255,0)',
 		'background-image'      => '',
 		'background-repeat'     => 'repeat',
 		'background-position'   => 'center center',
@@ -221,10 +221,10 @@ Kirki::add_field( 'mjlah_config', [
 	'description' => esc_html__( 'Atur Jarak Block (widget, heading, article, dll)', 'mjlah' ),
 	'section'     => 'block_section',
 	'default'     => [
-		'padding-top'    => '2em',
-		'padding-bottom' => '2em',
-		'padding-left'   => '2em',
-		'padding-right'  => '2em',
+		'padding-top'    => '0em',
+		'padding-bottom' => '0em',
+		'padding-left'   => '0em',
+		'padding-right'  => '0em',
 
 		'margin-top'    => '0em',
 		'margin-bottom' => '2em',

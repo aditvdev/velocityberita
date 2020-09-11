@@ -34,6 +34,7 @@ class mjlah_posts_widget extends WP_Widget {
         echo '<div class="widget-'.$idwidget.' posts-widget-'.$instance['layout'].'">';
 
             if ( ! empty( $title ) )
+            $title = $instance['kategori']?'<a href="'.get_category_link($instance['kategori']).'">'.$title.'</a>':$title;
             echo $args['before_title'] . $title . $args['after_title'];
 
             // This is where you run the code and display the output
