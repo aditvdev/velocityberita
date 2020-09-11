@@ -109,7 +109,7 @@ class mjlah_popular_posts_widget extends WP_Widget {
                     </div>
                     <div class="content-post">
                         <a href="<?php echo get_the_permalink(); ?>" class="title-post font-weight-bold h4 d-block"><?php echo get_the_title(); ?></a>
-                        <small class="d-block text-muted">
+                        <small class="d-block text-muted meta-post">
 
                             <?php if($viewdate == 'ya'): ?>
                                 <span class="date-post"><?php echo get_the_date('F j, Y'); ?></span>
