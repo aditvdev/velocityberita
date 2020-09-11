@@ -22,17 +22,18 @@ function mjlah_the_header_content() {
 
 					<div class="row align-items-center">
 						
-						<div class="col-5 col-md-3">
-						<?php if($logo) {
-							$title = '<img src="'.$logo.'">';
-						} else {
-							$title = get_bloginfo( 'name' );
-						}
-						?>
+						<div class="header-logo col-12">
+							<?php if($logo) {
+								$title = '<img src="'.$logo.'">';
+							} else {
+								$title = get_bloginfo( 'name' );
+							}
+							?>
 							<a class="navbar-brand" rel="home" href="<?php echo get_site_url(); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url"><?php echo $title ?></a>
 						</div>
-						<div class="col-7 col-md-9">
-							<nav class="navbar navbar-expand-md">
+
+						<div class="header-menu col-12">
+							<nav class="navbar navbar-expand-md px-0">
 									<button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="<?php esc_attr_e( 'Toggle navigation', 'mjlah'); ?>">
 										<i class="fa fa-align-right" aria-hidden="true"></i>
 									</button>
@@ -43,7 +44,7 @@ function mjlah_the_header_content() {
 											'theme_location'  => 'primary',
 											'container_class' => 'collapse navbar-collapse',
 											'container_id'    => 'navbarNavDropdown',
-											'menu_class'      => 'navbar-nav ml-auto',
+											'menu_class'      => 'navbar-nav mr-auto',
 											'fallback_cb'     => '',
 											'menu_id'         => 'main-menu',
 											'depth'           => 2,

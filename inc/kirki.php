@@ -210,7 +210,7 @@ Kirki::add_field( 'mjlah_config', [
 		'font-size'      => '16px',
 		'line-height'    => '1.5',
 		'letter-spacing' => '0',
-		'color'          => '#333333',
+		'color'          => '#ffffff',
 		'text-transform' => 'uppercase',
 		'text-align'     => 'left',
 	],
@@ -219,6 +219,63 @@ Kirki::add_field( 'mjlah_config', [
 	'output'      => [
 		[
 			'element' => '#main-menu',
+		],
+	],
+] );
+
+Kirki::add_field( 'mjlah_config', [
+	'type'        => 'background',
+	'settings'    => 'background_menu_header',
+	'label'       => esc_html__( 'Background Menu header', 'mjlah' ),
+	'description' => esc_html__( 'Atur background Menu header', 'mjlah' ),
+	'section'     => 'header_section',
+	'default'     => [
+		'background-color'      => '#333333',
+		'background-image'      => '',
+		'background-repeat'     => 'repeat',
+		'background-position'   => 'center center',
+		'background-size'       => 'cover',
+		'background-attachment' => 'scroll',
+	],
+	'transport'   => 'auto',
+	'output'      => [
+		[
+			'element' => array('.header-menu'),
+		],
+	],
+] );
+
+Kirki::add_field( 'mjlah_config', [
+    'type'        => 'multicolor',
+    'settings'    => 'link_menu_header_setting',
+    'label'       => esc_html__( 'Warna Link Menu Header', 'mjlah' ),
+    'section'     => 'global_section',
+    'priority'    => 10,
+    'choices'     => [
+        'link'    => esc_html__( 'Color', 'mjlah' ),
+        'hover'   => esc_html__( 'Hover', 'mjlah' ),
+        'active'  => esc_html__( 'Active', 'mjlah' ),
+    ],
+    'default'     => [
+        'link'    => '#ffffff',
+        'hover'   => '#f00000',
+        'active'  => '#ffffff',
+	],	
+	'output'    => [
+		[
+			'choice'    => 'link',
+			'element'   => '.header-menu a',
+			'property'  => 'color',
+		],
+		[
+			'choice'    => 'hover',
+			'element'   => '.header-menu a:hover',
+			'property'  => 'color',
+		],
+		[
+			'choice'    => 'active',
+			'element'   => '.header-menu a:active',
+			'property'  => 'color',
 		],
 	],
 ] );
