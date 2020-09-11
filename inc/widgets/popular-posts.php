@@ -193,7 +193,7 @@ class mjlah_popular_posts_widget extends WP_Widget {
 				) );
 				foreach($categories as $category): ?>
 
-                    <option value="<?php echo $category->term_id;?>" <?php selected($kategori, $category->term_id); ?>><?php echo $category->name;?></option>
+                    <option value="<?php echo $category->term_id;?>" <?php selected($kategori, $category->term_id); ?>><?php echo $category->name;?> (<?php echo $category->count;?>)</option>
 
                     <?php
                     $taxonomies = array( 
@@ -206,7 +206,7 @@ class mjlah_popular_posts_widget extends WP_Widget {
                     $terms = get_terms($taxonomies, $args);
                     ?>
                     <?php foreach($terms as $term): ?>
-                        <option value="<?php echo $term->term_id;?>" <?php selected($kategori, $term->term_id); ?>>&nbsp;&nbsp;&nbsp;<?php echo $term->name;?></option>
+                        <option value="<?php echo $term->term_id;?>" <?php selected($kategori, $term->term_id); ?>>&nbsp;&nbsp;&nbsp;<?php echo $term->name;?> (<?php echo $term->count;?>)</option>
                     <?php endforeach; ?>
                 <?php endforeach; ?>
             </select>
