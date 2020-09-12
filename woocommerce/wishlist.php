@@ -76,15 +76,7 @@ if (justg_is_woocommerce_activated()) {
     // Dipanggil di inc/woocommerce.php
     function wishlist() {
         
-        return '<table class="wishlist-table loading">
-                    <tr>
-                        <th><!-- Left for image --></th>
-                        <th>'.esc_html__("Name","justg").'</th>
-                        <th>'.esc_html__("Price","justg").'</th>
-                        <th>'.esc_html__("Stock","justg").'</th>
-                        <th><!-- Left for button --></th>
-                    </tr>
-                </table>';
+        return '<table class="wishlist-table table loading"></table>';
 
     }
 

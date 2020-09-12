@@ -32,7 +32,7 @@
             var currentProduct = $this.data('product');
             currentProduct = currentProduct.toString();
             if (isInArray(currentProduct,wishlist)) {
-                $this.addClass('active').attr('title',title);
+                $this.addClass('active').attr('title',title).html('<i class="fa fa-heart" aria-hidden="true"></i>');
             }
         });
     }
@@ -186,7 +186,7 @@
                 $('.wishlist-table').each(function(){
                     var $this = $(this);
                     $.each(response,function(index,object){
-                        $this.append('<tr data-product="'+object.id+'"><td><a class="wishlist-remove" href="#" title="'+opt.removeWishlist+'"></a>'+object.image+'</td><td>'+object.title["rendered"]+'</td><td>'+object.price+'</td><td>'+object.stock+'</td><td><a class="details" href="'+object.link+'">'+opt.buttonText+'</a></td></tr>');
+                        $this.append('<tr data-product="'+object.id+'"><td>'+object.image+'</td><td>'+object.title["rendered"]+'<div>'+object.price+'</div><div>'+object.stock+'</div><td><a class="btn btn-outline-dark text-dark btn-sm" href="'+object.link+'"><i class="fa fa-eye" aria-hidden="true"></i></a> <a class="wishlist-remove btn btn-outline-danger text-danger btn-sm" title="'+opt.removeWishlist+'"><i class="fa fa-times" aria-hidden="true"></i></a></td></tr>');
                     });
                 });
             })
@@ -213,7 +213,7 @@
 
         var $this = $(this);
 
-        $this.closest('table').addClass('loading').html('<i class="fa fa-spinner fa-pulse fa-fw"></i>');
+        $this.html('<i class="fa fa-spinner fa-pulse fa-fw"></i>');
 
         wishlist = [];
 
