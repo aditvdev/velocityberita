@@ -20,17 +20,54 @@ Kirki::add_config( 'justg_config', array(
 	'option_type' => 'theme_mod',
 ) );
 
+
+// Add Panel
+Kirki::add_panel( 'panel_global', array(
+    'priority'    => 10,
+    'title'       => esc_html__( 'Global', 'kirki' ),
+    'description' => esc_html__( '', 'kirki' ),
+) );
+Kirki::add_panel( 'panel_header', array(
+    'priority'    => 10,
+    'title'       => esc_html__( 'Header', 'kirki' ),
+    'description' => esc_html__( '', 'kirki' ),
+) );
+
 // Add Section.
-Kirki::add_section( 'global_section', array(
-	'title'    => __( 'Pengaturan Umum', 'justg' ),
+Kirki::add_section( 'global_typography', array(
+	'panel'    => 'panel_global',
+	'title'    => __( 'Typography', 'justg' ),
 	'priority' => 10,
 ) );
-Kirki::add_section( 'header_section', array(
-	'title'    => __( 'Pengaturan Header', 'justg' ),
+Kirki::add_section( 'global_color', array(
+	'panel'    => 'panel_global',
+	'title'    => __( 'Color', 'justg' ),
+	'priority' => 10,
+) );
+Kirki::add_section( 'global_container', array(
+	'panel'    => 'panel_global',
+	'title'    => __( 'Container', 'justg' ),
 	'priority' => 10,
 ) );
 Kirki::add_section( 'block_section', array(
-	'title'    => __( 'Pengaturan Block', 'justg' ),
+	'panel'    => 'panel_global',
+	'title'    => __( 'Block Setting', 'justg' ),
+	'priority' => 10,
+) );
+
+Kirki::add_section( 'title_tagline', array(
+	'panel'    => 'panel_header',
+	'title'    => __( 'Site Identity', 'justg' ),
+	'priority' => 10,
+) );
+Kirki::add_section( 'header_section', array(
+	'panel'    => 'panel_header',
+	'title'    => __( 'Primary Header', 'justg' ),
+	'priority' => 10,
+) );
+Kirki::add_section( 'menus_section', array(
+	'panel'    => 'panel_header',
+	'title'    => __( 'Primary Menu', 'justg' ),
 	'priority' => 10,
 ) );
 
@@ -38,7 +75,7 @@ Kirki::add_field( 'justg_config', [
 	'type'        => 'slider',
 	'settings'    => 'lebar_website',
 	'label'       => esc_html__( 'Lebar Website', 'justg' ),
-	'section'     => 'global_section',
+	'section'     => 'global_container',
 	'default'     => 1140,
 	'transport'   => 'auto',
 	'choices'     => [
@@ -59,7 +96,7 @@ Kirki::add_field( 'justg_config', [
 	'type'        => 'typography',
 	'settings'    => 'typography_setting',
 	'label'       => esc_html__( 'Typography Umum', 'justg' ),
-	'section'     => 'global_section',
+	'section'     => 'global_typography',
 	'default'     => [
 		'font-family'    => 'Poppins',
 		'variant'        => 'regular',
@@ -82,8 +119,8 @@ Kirki::add_field( 'justg_config', [
 Kirki::add_field( 'justg_config', [
     'type'        => 'multicolor',
     'settings'    => 'link_setting',
-    'label'       => esc_html__( 'Warna Link', 'justg' ),
-    'section'     => 'global_section',
+    'label'       => esc_html__( 'Color', 'justg' ),
+    'section'     => 'global_color',
     'priority'    => 10,
     'choices'     => [
         'link'    => esc_html__( 'Color', 'justg' ),
@@ -131,10 +168,10 @@ Kirki::add_field( 'justg_config', [
 
 Kirki::add_field( 'justg_config', [
 	'type'        => 'background',
-	'settings'    => 'background_setting',
-	'label'       => esc_html__( 'Background Website', 'justg' ),
+	'settings'    => 'background_website',
+	'label'       => esc_html__( 'Background', 'justg' ),
 	'description' => esc_html__( '', 'justg' ),
-	'section'     => 'global_section',
+	'section'     => 'global_color',
 	'default'     => [
 		'background-color'      => '#F5F5F5',
 		'background-image'      => '',
@@ -199,7 +236,7 @@ Kirki::add_field( 'justg_config', [
 	'type'        => 'typography',
 	'settings'    => 'menu_setting',
 	'label'       => esc_html__( 'Menu Typography', 'justg' ),
-	'section'     => 'header_section',
+	'section'     => 'menus_section',
 	'default'     => [
 		'font-family'    => 'Poppins',
 		'variant'        => 'regular',
@@ -223,7 +260,7 @@ Kirki::add_field( 'justg_config', [
     'type'        => 'multicolor',
     'settings'    => 'link_menu',
     'label'       => esc_html__( 'Menu Color', 'justg' ),
-    'section'     => 'header_section',
+    'section'     => 'menus_section',
     'priority'    => 10,
     'choices'     => [
         'link'    => esc_html__( 'Color', 'justg' ),
