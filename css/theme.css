@@ -191,3 +191,25 @@ blockquote:before {
    max-height: 65px;
    overflow: hidden;
 }
+.widget_search #s {
+   border-radius: .25rem;
+}
+.widget_search #searchsubmit {
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   right: 0;
+   width: 35px;
+   opacity: 0;
+}
+.widget_search .input-group-append:after {
+   content: '\f002';
+   font-family: fontawesome;
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   right: 0;
+   width: 35px;
+   text-align: center;
+   line-height: 35px;
+}
