@@ -41,6 +41,7 @@ if ( ! function_exists( 'justg_scripts' ) ) {
 				'shopName'       => sanitize_title_with_dashes(sanitize_title_with_dashes(get_bloginfo('name'))),
 				'inWishlist'     => esc_html__("Already in wishlist","justg"),
 				'removeWishlist' => esc_html__("Remove from wishlist","justg"),
+				'buttonText'     => esc_html__("Details","justg"),
 				'error'          => esc_html__("Something went wrong, could not add to wishlist","justg"),
 				'noWishlist'     => esc_html__("No wishlist found","justg"),
 			)
@@ -50,4 +51,4 @@ if ( ! function_exists( 'justg_scripts' ) ) {
 	}
 } // End of if function_exists( 'justg_scripts' ).
 
-add_action( 'wp_enqueue_scripts', 'justg_scripts' );
+add_action( 'wp_enqueue_scripts', 'justg_scripts', 20 );

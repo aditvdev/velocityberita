@@ -1,5 +1,29 @@
 @charset "UTF-8";
 
+.woocommerce #respond input#submit,
+.woocommerce a.button,
+.woocommerce button.button,
+.woocommerce input.button {
+    color: var(--light);
+    background-color: var(--primary);
+}
+
+.woocommerce #respond input#submit:hover,
+.woocommerce a.button:hover,
+.woocommerce button.button:hover,
+.woocommerce input.button:hover {
+    color: var(--light);
+    background-color: var(--dark);
+}
+
+.woocommerce #respond input#submit.loading,
+.woocommerce a.button.loading,
+.woocommerce button.button.loading,
+.woocommerce input.button.loading {
+    opacity: 1;
+}
+
+
 .woocommerce-input-wrapper {
     width: 100%
 }
@@ -71,7 +95,7 @@ a.cart-contents {
     color: var(--primary);
 }
 
-.product_list_widget li > a {
+.product_list_widget li>a {
     color: var(--light);
 }
 
@@ -107,9 +131,11 @@ a.cart-contents {
     outline: none;
     border: none;
 }
+
 .wishlist-toggle .fa-heart {
     color: var(--pink);
 }
+
 @keyframes loading {
     from {
         transform: rotate(0deg);
