@@ -47,7 +47,7 @@ function mjlah_the_header_content() {
 											'menu_class'      => 'navbar-nav mr-auto',
 											'fallback_cb'     => '',
 											'menu_id'         => 'main-menu',
-											'depth'           => 2,
+											'depth'           => 4,
 											'walker'          => new mjlah_WP_Bootstrap_Navwalker(),
 										)
 									); ?>

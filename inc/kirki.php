@@ -242,6 +242,7 @@ Kirki::add_field( 'mjlah_config', [
 		[
 			'element' => array(
 				'.header-menu',
+				'.header-menu #navbarNavDropdown',
 				'.header-menu .dropdown-menu',
 				'.dropdown-item:focus',
 				'.dropdown-item:hover'
@@ -269,17 +270,17 @@ Kirki::add_field( 'mjlah_config', [
 	'output'    => [
 		[
 			'choice'    => 'link',
-			'element'   => '.header-menu a',
+			'element'   => '.header-menu a,.header-menu .fa',
 			'property'  => 'color',
 		],
 		[
 			'choice'    => 'hover',
-			'element'   => '.header-menu a:hover',
+			'element'   => '.header-menu a:hover,.header-menu .nav-link:hover .fa',
 			'property'  => 'color',
 		],
 		[
 			'choice'    => 'active',
-			'element'   => '.header-menu a:active',
+			'element'   => '.header-menu a:active,.header-menu .nav-link:active .fa',
 			'property'  => 'color',
 		],
 	],
