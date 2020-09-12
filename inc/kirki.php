@@ -240,7 +240,12 @@ Kirki::add_field( 'mjlah_config', [
 	'transport'   => 'auto',
 	'output'      => [
 		[
-			'element' => array('.header-menu'),
+			'element' => array(
+				'.header-menu',
+				'.header-menu .dropdown-menu',
+				'.dropdown-item:focus',
+				'.dropdown-item:hover'
+			),
 		],
 	],
 ] );
