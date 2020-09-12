@@ -17940,7 +17940,9 @@ a.skip-link {
    border: 1px solid #e9ecef
 }
 
-.comment-form input,
+.comment-form input[type=text],
+.comment-form input[type=email],
+.comment-form input[type=url],
 .comment-form textarea {
    border: 1px solid #dddddd;
    border-radius: 2px;
