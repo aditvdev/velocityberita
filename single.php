@@ -16,6 +16,9 @@ $container = get_theme_mod( 'mjlah_container_type' );
 
 	<div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
 
+		<?php $Crumbs = new Crumbs($options);
+        $Crumbs->theBreadcrumbs(); ?>
+
 		<div class="row">
 
 			<!-- Do the left sidebar check -->
