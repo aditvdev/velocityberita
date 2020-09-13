@@ -15,61 +15,61 @@ function justg_justg_configuration() {
 
 // Add our config to differentiate from other themes/plugins 
 // that may use Kirki at the same time.
-Kirki::add_config( 'justg_config', array(
+Kirki::add_config( 'justg_config', [
 	'capability'  => 'edit_theme_options',
 	'option_type' => 'theme_mod',
-) );
+] );
 
 
 // Add Panel
-Kirki::add_panel( 'panel_global', array(
+Kirki::add_panel( 'panel_global', [
     'priority'    => 10,
     'title'       => esc_html__( 'Global', 'justg' ),
     'description' => esc_html__( '', 'justg' ),
-) );
-Kirki::add_panel( 'panel_header', array(
+] );
+Kirki::add_panel( 'panel_header', [
     'priority'    => 10,
     'title'       => esc_html__( 'Header', 'justg' ),
     'description' => esc_html__( '', 'justg' ),
-) );
+] );
 
 // Add Section.
-Kirki::add_section( 'global_typography', array(
+Kirki::add_section( 'global_typography', [
 	'panel'    => 'panel_global',
 	'title'    => __( 'Typography', 'justg' ),
 	'priority' => 10,
-) );
-Kirki::add_section( 'global_color', array(
+] );
+Kirki::add_section( 'global_color', [
 	'panel'    => 'panel_global',
 	'title'    => __( 'Color', 'justg' ),
 	'priority' => 10,
-) );
-Kirki::add_section( 'global_container', array(
+] );
+Kirki::add_section( 'global_container', [
 	'panel'    => 'panel_global',
 	'title'    => __( 'Container', 'justg' ),
 	'priority' => 10,
-) );
-Kirki::add_section( 'block_section', array(
+] );
+Kirki::add_section( 'block_section', [
 	'panel'    => 'panel_global',
 	'title'    => __( 'Block Setting', 'justg' ),
 	'priority' => 10,
-) );
+] );
 
-Kirki::add_section( 'title_tagline', array(
+Kirki::add_section( 'title_tagline', [
 	'panel'    => 'panel_header',
 	'title'    => __( 'Site Identity', 'justg' ),
 	'priority' => 10,
-) );
-Kirki::add_section( 'header_section', array(
+] );
+Kirki::add_section( 'header_section', [
 	'panel'    => 'panel_header',
 	'title'    => __( 'Primary Header', 'justg' ),
 	'priority' => 10,
-) );
-Kirki::add_section( 'menus_section', array(
+] );
+Kirki::add_section( 'menus_section', [
 	'panel'    => 'panel_header',
 	'title'    => __( 'Primary Menu', 'justg' ),
 	'priority' => 10,
-) );
+] );
 
 Kirki::add_field( 'justg_config', [
 	'type'        => 'slider',
@@ -83,13 +83,13 @@ Kirki::add_field( 'justg_config', [
 		'max'  => 2300,
 		'step' => 1,
 	],
-    'output' => array(
-        array(
+    'output' => [
+        [
             'element'  => '.container',
             'property' => 'max-width',
             'units'    => 'px',
-        ),
-    ),
+		],
+	],
 ] );
 
 Kirki::add_field( 'justg_config', [
@@ -271,13 +271,13 @@ Kirki::add_field( 'justg_config', [
 		'max'  => 300,
 		'step' => 1,
 	],
-    'output' => array(
-        array(
+    'output' => [
+        [
             'element'  => '.navbar-brand img',
             'property' => 'max-height',
             'units'    => 'px',
-        ),
-    ),
+		],
+	],
 ] );
 
 Kirki::add_field( 'justg_config', [
