@@ -18033,6 +18033,10 @@ a.skip-link {
    border-radius: 5px;
    line-height: 1.5em !important;
 }
+.site > header {
+   border: none;
+   border-bottom: solid;
+}
 blockquote {
    font-style: italic;
    padding: 2em;

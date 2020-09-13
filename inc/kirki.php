@@ -24,13 +24,13 @@ Kirki::add_config( 'justg_config', array(
 // Add Panel
 Kirki::add_panel( 'panel_global', array(
     'priority'    => 10,
-    'title'       => esc_html__( 'Global', 'kirki' ),
-    'description' => esc_html__( '', 'kirki' ),
+    'title'       => esc_html__( 'Global', 'justg' ),
+    'description' => esc_html__( '', 'justg' ),
 ) );
 Kirki::add_panel( 'panel_header', array(
     'priority'    => 10,
-    'title'       => esc_html__( 'Header', 'kirki' ),
-    'description' => esc_html__( '', 'kirki' ),
+    'title'       => esc_html__( 'Header', 'justg' ),
+    'description' => esc_html__( '', 'justg' ),
 ) );
 
 // Add Section.
@@ -190,6 +190,20 @@ Kirki::add_field( 'justg_config', [
 
 // Header section
 Kirki::add_field( 'justg_config', [
+	'type'        => 'select',
+	'settings'    => 'select_header_container',
+	'label'       => esc_html__( 'Header Container', 'justg' ),
+	'section'     => 'header_section',
+	'default'     => 'container',
+	'placeholder' => esc_html__( 'Header Container', 'justg' ),
+	'priority'    => 10,
+	'multiple'    => 1,
+	'choices'     => [
+		'container' => esc_html__( 'Box', 'justg' ),
+		'container-fluid' => esc_html__( 'FUll Width', 'justg' ),
+	],
+] );
+Kirki::add_field( 'justg_config', [
 	'type'        => 'background',
 	'settings'    => 'background_header',
 	'label'       => esc_html__( 'Background Header', 'justg' ),
@@ -206,7 +220,41 @@ Kirki::add_field( 'justg_config', [
 	'transport'   => 'auto',
 	'output'      => [
 		[
-			'element' => ['.bg-header', '#main-menu .dropdown-menu'],
+			'element' => ['.site > header', '#main-menu .dropdown-menu'],
+		],
+	],
+] );
+
+Kirki::add_field( 'justg_config', [
+	'type'        => 'slider',
+	'settings'    => 'header_border_bottom',
+	'label'       => esc_html__( 'Bottom Border Size', 'justg' ),
+	'section'     => 'header_section',
+	'default'     => 0,
+	'transport'   => 'auto',
+	'choices'     => [
+		'min'  => 0,
+		'max'  => 30,
+		'step' => 1,
+	],
+    'output' => [
+        [
+            'element'  => '.site > header',
+            'property' => 'border-width',
+			'units'    => 'px',
+		],
+	],
+] );
+Kirki::add_field( 'justg_config', [
+	'type'        => 'color',
+	'settings'    => 'header_border_color',
+	'label'       => __( 'Color Control (hex-only)', 'kirki' ),
+	'section'     => 'header_section',
+	'default'     => '#efefef',
+	'output' => [
+        [
+            'element'  => '.site > header',
+            'property' => 'border-color',
 		],
 	],
 ] );
