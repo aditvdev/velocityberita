@@ -24,7 +24,7 @@ function mjlah_the_header_content() {
 						
 						<div class="header-logo col-12">
 							<?php if($logo) {
-								$title = '<img src="'.$logo.'">';
+								$title = '<img src="'.$logo.'" alt="'.get_bloginfo( 'name' ).'">';
 							} else {
 								$title = get_bloginfo( 'name' );
 							}
