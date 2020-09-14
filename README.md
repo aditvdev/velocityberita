@@ -20,3 +20,5 @@ Starter theme Wordpress for Beaver Builder & Woocommerce
 :pushpin: Add Footer Customizer\
 :pushpin: Create Full Documentation
 
+:zap: Download\
+:bomb: [justg-master.zip](https://github.com/aadiityaak/justg/archive/master.zip)
