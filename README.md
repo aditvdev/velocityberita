@@ -13,6 +13,7 @@ Starter theme Wordpress for Beaver Builder & Woocommerce
 :pushpin: Wishlist in Woocomerce
 
 :ledger: ToDo\
+:pushpin: Add Languages Support\
 :pushpin: Simplify option shipping zone\
 :pushpin: Add Breadcrumb Customizer\
 :pushpin: Add Blog Customizer\
