@@ -18037,6 +18037,13 @@ a.skip-link {
    border: none;
    border-bottom: solid;
 }
+.breadcrumbs,
+.breadcrumbs a,
+.breadcrumbs a:link,
+.breadcrumbs a:visited {
+   color: var(--secondary);
+   font-size: .95em;
+}
 blockquote {
    font-style: italic;
    padding: 2em;

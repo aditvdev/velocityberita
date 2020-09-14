@@ -27,6 +27,9 @@ $container = get_theme_mod( 'justg_container_type' );
 			<main class="site-main" id="main">
 
 				<?php
+
+				do_action('justg_before_title');
+
 				if ( have_posts() ) {
 					?>
 					<header class="page-header block-customizer">

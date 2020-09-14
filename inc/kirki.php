@@ -32,6 +32,11 @@ Kirki::add_panel( 'panel_header', [
     'title'       => esc_html__( 'Header', 'justg' ),
     'description' => esc_html__( '', 'justg' ),
 ] );
+Kirki::add_panel( 'panel_breadcrumb', [
+    'priority'    => 10,
+    'title'       => esc_html__( 'Breadcrumb', 'justg' ),
+    'description' => esc_html__( '', 'justg' ),
+] );
 
 // Add Section.
 Kirki::add_section( 'global_typography', [
@@ -68,6 +73,12 @@ Kirki::add_section( 'header_section', [
 Kirki::add_section( 'menus_section', [
 	'panel'    => 'panel_header',
 	'title'    => __( 'Primary Menu', 'justg' ),
+	'priority' => 10,
+] );
+
+Kirki::add_section( 'breadcrumb_section', [
+	'panel'    => 'panel_breadcrumb',
+	'title'    => __( 'Separator', 'justg' ),
 	'priority' => 10,
 ] );
 
@@ -248,7 +259,7 @@ Kirki::add_field( 'justg_config', [
 Kirki::add_field( 'justg_config', [
 	'type'        => 'color',
 	'settings'    => 'header_border_color',
-	'label'       => __( 'Color Control (hex-only)', 'kirki' ),
+	'label'       => __( 'Color Control (hex-only)', 'justg' ),
 	'section'     => 'header_section',
 	'default'     => '#efefef',
 	'output' => [
@@ -379,4 +390,13 @@ Kirki::add_field( 'justg_config', [
 			'element' => array('.block-customizer'),
 		],
 	],
+] );
+
+Kirki::add_field( 'justg_config', [
+	'type'     => 'text',
+	'settings' => 'text_breadcrumb_separator',
+	'label'    => esc_html__( 'Separator', 'justg' ),
+	'section'  => 'breadcrumb_section',
+	'default'  => esc_html__( '/', 'justg' ),
+	'priority' => 10,
 ] );

@@ -23,6 +23,8 @@ $container = get_theme_mod( 'justg_container_type' );
 
 				<main class="site-main" id="main">
 
+					<?php do_action('justg_before_title'); ?>
+
 					<section class="error-404 not-found">
 
 						<header class="page-header block-customizer">
