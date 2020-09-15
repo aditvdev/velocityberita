@@ -15,36 +15,43 @@ if ( ! function_exists( 'mjlah_posted_on' ) ) {
 	 * Prints HTML with meta information for the current post-date/time and author.
 	 */
 	function mjlah_posted_on() {
-		$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
-		if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-			$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s"> (%4$s) </time>';
-		}
-		$time_string = sprintf(
-			$time_string,
+		$author = '<span class="author"><i class="fa fa-user"></i> <a class="url fn n" href="%1$s">%2$s</a></span>';		
+		$author = sprintf(
+			$author,
+			esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
+			esc_html( get_the_author() )
+		);
+
+		$time = '<time class="entry-date published" datetime="%1$s">%2$s</time>';		
+		$time = sprintf(
+			$time,
 			esc_attr( get_the_date( 'c' ) ),
 			esc_html( get_the_date() ),
-			esc_attr( get_the_modified_date( 'c' ) ),
-			esc_html( get_the_modified_date() )
 		);
-		$posted_on   = apply_filters(
-			'mjlah_posted_on',
-			sprintf(
-				'<span class="posted-on">%1$s <a href="%2$s" rel="bookmark">%3$s</a></span>',
-				esc_html_x( 'Posted on', 'post date', 'mjlah' ),
-				esc_url( get_permalink() ),
-				apply_filters( 'mjlah_posted_on_time', $time_string )
-			)
+		$date = '<span class="date"><i class="fa fa-clock-o"></i> <a href="%1$s" rel="bookmark">%2$s</a></span>';		
+		$date = sprintf(
+			$date,
+			esc_url( get_permalink() ),
+			apply_filters( 'mjlah_posted_on_time', $time )
 		);
-		$byline      = apply_filters(
-			'mjlah_posted_by',
-			sprintf(
-				'<span class="byline"> %1$s<span class="author vcard"> <a class="url fn n" href="%2$s">%3$s</a></span></span>',
-				$posted_on ? esc_html_x( 'by', 'post author', 'mjlah' ) : esc_html_x( 'Posted by', 'post author', 'mjlah' ),
-				esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
-				esc_html( get_the_author() )
-			)
-		);
-		echo $posted_on . $byline; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+
+		$cat = '';
+		if ( 'post' === get_post_type() ) {
+			/* translators: used between list items, there is a space after the comma */
+			$categories_list = get_the_category_list( esc_html__( ', ', 'mjlah' ) );
+			if ( $categories_list && mjlah_categorized_blog() ) {
+				$cat = '<span class="cat"><i class="fa fa-list-alt"></i> %s</span>';
+				/* translators: %s: Categories of current post */
+				$cat = sprintf(
+					$cat,
+					$categories_list
+				);
+				// printf( '<span class="cat-links">' . esc_html__( 'Posted in %s', 'mjlah' ) . '</span>', $categories_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			}
+		}
+
+		// output 
+		printf("<div class='metapost'>%s  %s  %s</div>",$author,$date,$cat);
 	}
 }
 
@@ -56,16 +63,10 @@ if ( ! function_exists( 'mjlah_entry_footer' ) ) {
 		// Hide category and tag text for pages.
 		if ( 'post' === get_post_type() ) {
 			/* translators: used between list items, there is a space after the comma */
-			$categories_list = get_the_category_list( esc_html__( ', ', 'mjlah' ) );
-			if ( $categories_list && mjlah_categorized_blog() ) {
-				/* translators: %s: Categories of current post */
-				printf( '<span class="cat-links">' . esc_html__( 'Posted in %s', 'mjlah' ) . '</span>', $categories_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			}
-			/* translators: used between list items, there is a space after the comma */
-			$tags_list = get_the_tag_list( '', esc_html__( ', ', 'mjlah' ) );
+			$tags_list = get_the_tag_list();
 			if ( $tags_list ) {
 				/* translators: %s: Tags of current post */
-				printf( '<span class="tags-links">' . esc_html__( 'Tagged %s', 'mjlah' ) . '</span>', $tags_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				printf( '<span class="tags-links">' . esc_html__( '%s', 'mjlah' ) . '</span>', $tags_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
 		}
 		if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {

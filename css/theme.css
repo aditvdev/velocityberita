@@ -130,6 +130,14 @@ blockquote:before {
 #wrapper-main > .wrapper {
    padding: 0;
 }
+.tags-links a {
+   background: var(--primary);
+   display: inline-block;
+   padding: .3rem .7rem;
+   color: var(--white);
+   text-decoration: none;
+   margin: 0 .3rem .3rem 0;
+}
 
 /*
 * style widget
