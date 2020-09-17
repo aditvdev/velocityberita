@@ -272,6 +272,10 @@ if( ! function_exists( 'justg_breadcrumb' ) ) {
 }
 
 if( ! function_exists( 'justg_the_footer_content' ) ) {
+    /**
+     * Footer function
+     * 
+     */
     function justg_the_footer_content() {
         ?>
         
