@@ -81,6 +81,11 @@ Kirki::add_section( 'breadcrumb_section', [
 	'title'    => __( 'Separator', 'justg' ),
 	'priority' => 10,
 ] );
+Kirki::add_section( 'breadcrumb_option', [
+	'panel'    => 'panel_breadcrumb',
+	'title'    => __( 'Setting', 'justg' ),
+	'priority' => 10,
+] );
 
 Kirki::add_field( 'justg_config', [
 	'type'        => 'slider',
@@ -399,4 +404,19 @@ Kirki::add_field( 'justg_config', [
 	'section'  => 'breadcrumb_section',
 	'default'  => esc_html__( '/', 'justg' ),
 	'priority' => 10,
+] );
+Kirki::add_field( 'justg_config', [
+	'type'        => 'multicheck',
+	'settings'    => 'breadcrumb_disable',
+	'label'       => esc_html__( 'Tampilkan Breadcrumb', 'justg' ),
+	'section'     => 'breadcrumb_option',
+	'default'     => array('disable-on-home', 'disable-on-404'),
+	'priority'    => 10,
+	'choices'     => [
+		'disable-on-home' => esc_html__( 'Disable on Home Page', 'justg' ),
+		'disable-on-page' => esc_html__( 'Disable on Page', 'justg' ),
+		'disable-on-blog' => esc_html__( 'Disable on Blog', 'justg' ),
+		'disable-on-archive' => esc_html__( 'Disable on Archive', 'justg' ),
+		'disable-on-404' => esc_html__( 'Disable on 404', 'justg' ),
+	],
 ] );

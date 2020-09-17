@@ -189,8 +189,13 @@ if( ! function_exists( 'justg_breadcrumb' ) ) {
 
         $sep = get_theme_mod('text_breadcrumb_separator', '/');
         $sep = ' '.$sep.' ';
-    
-        if (!is_front_page()) {
+
+        $breadcrumbdisable = get_theme_mod('breadcrumb_disable');
+
+        if (in_array( 'disable-on-home', $breadcrumbdisable)) {
+            
+        }
+        if ( $showbreadcrumb == true ) {
         
             // Home Url
             echo '<div class="breadcrumbs pb-2"  itemscope itemtype="https://schema.org/BreadcrumbList">';
