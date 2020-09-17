@@ -138,6 +138,9 @@ blockquote:before {
    text-decoration: none;
    margin: 0 .3rem .3rem 0;
 }
+.tags-links a:hover {
+   color: var(--white);
+}
 
 /*
 * style widget
