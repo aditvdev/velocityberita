@@ -190,12 +190,30 @@ if( ! function_exists( 'justg_breadcrumb' ) ) {
         $sep = get_theme_mod('text_breadcrumb_separator', '/');
         $sep = ' '.$sep.' ';
 
-        $breadcrumbdisable = get_theme_mod('breadcrumb_disable');
+        $breadcrumbdisable  = get_theme_mod('breadcrumb_disable', array());
+        $showbreadcrumb     = true;
 
-        if (in_array( 'disable-on-home', $breadcrumbdisable)) {
-            
+        if ( is_front_page() && in_array( 'disable-on-home', $breadcrumbdisable)) {
+            $showbreadcrumb = false;
         }
-        if ( $showbreadcrumb == true ) {
+
+        if ( ! is_front_page() && is_singular( 'page' ) && in_array( 'disable-on-page', $breadcrumbdisable)) {
+            $showbreadcrumb = false;
+        }
+
+        if ( is_archive() && in_array( 'disable-on-archive', $breadcrumbdisable)) {
+            $showbreadcrumb = false;
+        }
+        
+        if ( is_singular( 'post' ) && in_array( 'disable-on-post', $breadcrumbdisable)) {
+            $showbreadcrumb = false;
+        }
+
+        if ( is_404() && in_array( 'disable-on-404', $breadcrumbdisable)) {
+            $showbreadcrumb = false;
+        }
+
+        if ( $showbreadcrumb ) {
         
             // Home Url
             echo '<div class="breadcrumbs pb-2"  itemscope itemtype="https://schema.org/BreadcrumbList">';
@@ -241,6 +259,11 @@ if( ! function_exists( 'justg_breadcrumb' ) ) {
                     the_title();
                     rewind_posts();
                 }
+            }
+
+            // if 404
+            if ( is_404() ) {
+                echo esc_html_e( 'Not Found', 'justg' );
             }
     
             echo '</div>';

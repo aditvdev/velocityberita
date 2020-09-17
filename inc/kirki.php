@@ -415,7 +415,7 @@ Kirki::add_field( 'justg_config', [
 	'choices'     => [
 		'disable-on-home' => esc_html__( 'Disable on Home Page', 'justg' ),
 		'disable-on-page' => esc_html__( 'Disable on Page', 'justg' ),
-		'disable-on-blog' => esc_html__( 'Disable on Blog', 'justg' ),
+		'disable-on-post' => esc_html__( 'Disable on Post', 'justg' ),
 		'disable-on-archive' => esc_html__( 'Disable on Archive', 'justg' ),
 		'disable-on-404' => esc_html__( 'Disable on 404', 'justg' ),
 	],
