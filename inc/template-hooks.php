@@ -46,3 +46,10 @@ add_action( 'woocommerce_widget_shopping_cart_buttons', 'justg_widget_shopping_c
  * @see justg_breadcrumb()
  */
 add_action( 'justg_before_title', 'justg_breadcrumb' );
+
+/**
+ * Footer
+ *
+ * @see justg_the_footer_content()
+ */
+add_action( 'justg_do_footer', 'justg_the_footer_content' );

@@ -270,3 +270,37 @@ if( ! function_exists( 'justg_breadcrumb' ) ) {
         }
     }
 }
+
+if( ! function_exists( 'justg_the_footer_content' ) ) {
+    function justg_the_footer_content() {
+        ?>
+        
+            <div class="wrapper bg-dark text-white" id="wrapper-footer">
+            
+                <div class="container">
+            
+                    <div class="row">
+            
+                        <div class="col-md-12">
+            
+                            <footer class="site-footer" id="colophon">
+            
+                                <div class="site-info">
+            
+                                    <div class="text-center">© <?php echo date("Y"); ?> <?php echo get_bloginfo('name');?>. All Rights Reserved.</div>
+            
+                                </div><!-- .site-info -->
+            
+                            </footer><!-- #colophon -->
+            
+                        </div><!--col end -->
+            
+                    </div><!-- row end -->
+            
+                </div><!-- container end -->
+            
+            </div><!-- wrapper end -->
+            
+        <?php
+    }
+}
