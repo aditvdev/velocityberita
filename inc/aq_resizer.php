@@ -151,6 +151,25 @@ if(!class_exists('Aq_Resize')) {
                         if ( ! is_wp_error( $resized_file ) ) {
                             $resized_rel_path = str_replace( $upload_dir, '', $resized_file['path'] );
                             $img_url = $upload_url . $resized_rel_path;
+
+                            //update meta media
+                            global $wpdb;
+                            $data_attachment = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s';", $url ));
+                            $ID_data = $data_attachment[0];
+
+                            $data_path = "{$dst_rel_path}-{$suffix}.{$ext}";
+                            $meta_media = get_post_meta( $ID_data, '_wp_attachment_newsize', true );
+                            if ($meta_media) {
+                                $meta_media_un = json_decode($meta_media,true);
+                                array_push($meta_media_un,$data_path);
+                                $newdata = json_encode($meta_media_un);
+                                update_post_meta( $ID_data, '_wp_attachment_newsize', $newdata );
+                            } else {
+                                $newdata = json_encode(array($data_path));
+                                update_post_meta( $ID_data, '_wp_attachment_newsize', $newdata );
+                            }
+
+
                         } else {
                             throw new Aq_Exception('Unable to save resized image file: ' . $editor->get_error_message());
                         }
