@@ -24,7 +24,7 @@ $justg_includes = array(
 	'/editor.php',                          // Load Editor functions.
 	'/deprecated.php',                      // Load deprecated functions.
 	'/kirki/kirki.php',                     // Load kirki.
-	'/kirki.php',							// Setup Kirki.
+	'/customizer.php',						// Setup Customizer.
 	'/aq_resizer.php',						// load aq_resizer functions.
 	'/woocommerce.php',                     // Load WooCommerce functions.	
 );

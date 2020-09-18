@@ -1,4 +1,5 @@
 <?php
+
 /**
  * justg functions kirki
  *
@@ -6,91 +7,91 @@
  */
 
 // Exit if accessed directly.
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
-function justg_justg_configuration() {
-    return array( 'url_path'     => get_stylesheet_directory_uri() . '/inc/kirki/' );
+function justg_justg_configuration()
+{
+	return array('url_path'     => get_stylesheet_directory_uri() . '/inc/kirki/');
 }
 
 
 // Add our config to differentiate from other themes/plugins 
 // that may use Kirki at the same time.
-Kirki::add_config( 'justg_config', [
+Kirki::add_config('justg_config', [
 	'capability'  => 'edit_theme_options',
 	'option_type' => 'theme_mod',
-] );
-
+]);
 
 // Add Panel
-Kirki::add_panel( 'panel_global', [
-    'priority'    => 10,
-    'title'       => esc_html__( 'Global', 'justg' ),
-    'description' => esc_html__( '', 'justg' ),
-] );
-Kirki::add_panel( 'panel_header', [
-    'priority'    => 10,
-    'title'       => esc_html__( 'Header', 'justg' ),
-    'description' => esc_html__( '', 'justg' ),
-] );
-Kirki::add_panel( 'panel_breadcrumb', [
-    'priority'    => 10,
-    'title'       => esc_html__( 'Breadcrumb', 'justg' ),
-    'description' => esc_html__( '', 'justg' ),
-] );
+Kirki::add_panel('panel_global', [
+	'priority'    => 10,
+	'title'       => esc_html__('Global', 'justg'),
+	'description' => esc_html__('', 'justg'),
+]);
+Kirki::add_panel('panel_header', [
+	'priority'    => 10,
+	'title'       => esc_html__('Header', 'justg'),
+	'description' => esc_html__('', 'justg'),
+]);
+Kirki::add_panel('panel_breadcrumb', [
+	'priority'    => 10,
+	'title'       => esc_html__('Breadcrumb', 'justg'),
+	'description' => esc_html__('', 'justg'),
+]);
 
 // Add Section.
-Kirki::add_section( 'global_typography', [
+Kirki::add_section('global_typography', [
 	'panel'    => 'panel_global',
-	'title'    => __( 'Typography', 'justg' ),
+	'title'    => __('Typography', 'justg'),
 	'priority' => 10,
-] );
-Kirki::add_section( 'global_color', [
+]);
+Kirki::add_section('global_color', [
 	'panel'    => 'panel_global',
-	'title'    => __( 'Color', 'justg' ),
+	'title'    => __('Color', 'justg'),
 	'priority' => 10,
-] );
-Kirki::add_section( 'global_container', [
+]);
+Kirki::add_section('global_container', [
 	'panel'    => 'panel_global',
-	'title'    => __( 'Container', 'justg' ),
+	'title'    => __('Container', 'justg'),
 	'priority' => 10,
-] );
-Kirki::add_section( 'block_section', [
+]);
+Kirki::add_section('block_section', [
 	'panel'    => 'panel_global',
-	'title'    => __( 'Block Setting', 'justg' ),
+	'title'    => __('Block Setting', 'justg'),
 	'priority' => 10,
-] );
+]);
 
-Kirki::add_section( 'title_tagline', [
+Kirki::add_section('title_tagline', [
 	'panel'    => 'panel_header',
-	'title'    => __( 'Site Identity', 'justg' ),
+	'title'    => __('Site Identity', 'justg'),
 	'priority' => 10,
-] );
-Kirki::add_section( 'header_section', [
+]);
+Kirki::add_section('header_section', [
 	'panel'    => 'panel_header',
-	'title'    => __( 'Primary Header', 'justg' ),
+	'title'    => __('Primary Header', 'justg'),
 	'priority' => 10,
-] );
-Kirki::add_section( 'menus_section', [
+]);
+Kirki::add_section('menus_section', [
 	'panel'    => 'panel_header',
-	'title'    => __( 'Primary Menu', 'justg' ),
+	'title'    => __('Primary Menu', 'justg'),
 	'priority' => 10,
-] );
+]);
 
-Kirki::add_section( 'breadcrumb_section', [
+Kirki::add_section('breadcrumb_section', [
 	'panel'    => 'panel_breadcrumb',
-	'title'    => __( 'Separator', 'justg' ),
+	'title'    => __('Separator', 'justg'),
 	'priority' => 10,
-] );
-Kirki::add_section( 'breadcrumb_option', [
+]);
+Kirki::add_section('breadcrumb_option', [
 	'panel'    => 'panel_breadcrumb',
-	'title'    => __( 'Setting', 'justg' ),
+	'title'    => __('Setting', 'justg'),
 	'priority' => 10,
-] );
+]);
 
-Kirki::add_field( 'justg_config', [
+Kirki::add_field('justg_config', [
 	'type'        => 'slider',
 	'settings'    => 'lebar_website',
-	'label'       => esc_html__( 'Lebar Website', 'justg' ),
+	'label'       => esc_html__('Lebar Website', 'justg'),
 	'section'     => 'global_container',
 	'default'     => 1140,
 	'transport'   => 'auto',
@@ -99,19 +100,19 @@ Kirki::add_field( 'justg_config', [
 		'max'  => 2300,
 		'step' => 1,
 	],
-    'output' => [
-        [
-            'element'  => '.container',
-            'property' => 'max-width',
-            'units'    => 'px',
+	'output' => [
+		[
+			'element'  => '.container',
+			'property' => 'max-width',
+			'units'    => 'px',
 		],
 	],
-] );
+]);
 
-Kirki::add_field( 'justg_config', [
+Kirki::add_field('justg_config', [
 	'type'        => 'typography',
 	'settings'    => 'typography_setting',
-	'label'       => esc_html__( 'Typography Umum', 'justg' ),
+	'label'       => esc_html__('Typography Umum', 'justg'),
 	'section'     => 'global_typography',
 	'default'     => [
 		'font-family'    => 'Poppins',
@@ -130,24 +131,24 @@ Kirki::add_field( 'justg_config', [
 			'element' => 'body',
 		],
 	],
-] );
+]);
 
-Kirki::add_field( 'justg_config', [
-    'type'        => 'multicolor',
-    'settings'    => 'link_setting',
-    'label'       => esc_html__( 'Color', 'justg' ),
-    'section'     => 'global_color',
-    'priority'    => 10,
-    'choices'     => [
-        'link'    => esc_html__( 'Color', 'justg' ),
-        'hover'   => esc_html__( 'Hover', 'justg' ),
-		'active'  => esc_html__( 'Active', 'justg' ),
-		'primary' => esc_html__( 'Primary', 'justg' ),
-		'light'	  => esc_html__( 'Light', 'justg' ),
-    ],
-    'default'     => [
-        'link'    => '#121212',
-        'hover'   => '#333333',
+Kirki::add_field('justg_config', [
+	'type'        => 'multicolor',
+	'settings'    => 'link_setting',
+	'label'       => esc_html__('Color', 'justg'),
+	'section'     => 'global_color',
+	'priority'    => 10,
+	'choices'     => [
+		'link'    => esc_html__('Color', 'justg'),
+		'hover'   => esc_html__('Hover', 'justg'),
+		'active'  => esc_html__('Active', 'justg'),
+		'primary' => esc_html__('Primary', 'justg'),
+		'light'	  => esc_html__('Light', 'justg'),
+	],
+	'default'     => [
+		'link'    => '#121212',
+		'hover'   => '#333333',
 		'active'  => '#121212',
 		'primary' => '#98C65E',
 		'light'   => '#f8f9fa',
@@ -180,13 +181,13 @@ Kirki::add_field( 'justg_config', [
 		],
 	],
 
-] );
+]);
 
-Kirki::add_field( 'justg_config', [
+Kirki::add_field('justg_config', [
 	'type'        => 'background',
 	'settings'    => 'background_website',
-	'label'       => esc_html__( 'Background', 'justg' ),
-	'description' => esc_html__( '', 'justg' ),
+	'label'       => esc_html__('Background', 'justg'),
+	'description' => esc_html__('', 'justg'),
 	'section'     => 'global_color',
 	'default'     => [
 		'background-color'      => '#F5F5F5',
@@ -202,28 +203,28 @@ Kirki::add_field( 'justg_config', [
 			'element' => 'body',
 		],
 	],
-] );
+]);
 
 // Header section
-Kirki::add_field( 'justg_config', [
+Kirki::add_field('justg_config', [
 	'type'        => 'select',
 	'settings'    => 'select_header_container',
-	'label'       => esc_html__( 'Header Container', 'justg' ),
+	'label'       => esc_html__('Header Container', 'justg'),
 	'section'     => 'header_section',
 	'default'     => 'container',
-	'placeholder' => esc_html__( 'Header Container', 'justg' ),
+	'placeholder' => esc_html__('Header Container', 'justg'),
 	'priority'    => 10,
 	'multiple'    => 1,
 	'choices'     => [
-		'container' => esc_html__( 'Box', 'justg' ),
-		'container-fluid' => esc_html__( 'FUll Width', 'justg' ),
+		'container' => esc_html__('Box', 'justg'),
+		'container-fluid' => esc_html__('FUll Width', 'justg'),
 	],
-] );
-Kirki::add_field( 'justg_config', [
+]);
+Kirki::add_field('justg_config', [
 	'type'        => 'background',
 	'settings'    => 'background_header',
-	'label'       => esc_html__( 'Background Header', 'justg' ),
-	'description' => esc_html__( '', 'justg' ),
+	'label'       => esc_html__('Background Header', 'justg'),
+	'description' => esc_html__('', 'justg'),
 	'section'     => 'header_section',
 	'default'     => [
 		'background-color'      => '#ffffff',
@@ -239,12 +240,12 @@ Kirki::add_field( 'justg_config', [
 			'element' => ['.site > header', '#main-menu .dropdown-menu'],
 		],
 	],
-] );
+]);
 
-Kirki::add_field( 'justg_config', [
+Kirki::add_field('justg_config', [
 	'type'        => 'slider',
 	'settings'    => 'header_border_bottom',
-	'label'       => esc_html__( 'Bottom Border Size', 'justg' ),
+	'label'       => esc_html__('Bottom Border Size', 'justg'),
 	'section'     => 'header_section',
 	'default'     => 0,
 	'transport'   => 'auto',
@@ -253,32 +254,32 @@ Kirki::add_field( 'justg_config', [
 		'max'  => 30,
 		'step' => 1,
 	],
-    'output' => [
-        [
-            'element'  => '.site > header',
-            'property' => 'border-width',
+	'output' => [
+		[
+			'element'  => '.site > header',
+			'property' => 'border-width',
 			'units'    => 'px',
 		],
 	],
-] );
-Kirki::add_field( 'justg_config', [
+]);
+Kirki::add_field('justg_config', [
 	'type'        => 'color',
 	'settings'    => 'header_border_color',
-	'label'       => __( 'Color Control (hex-only)', 'justg' ),
+	'label'       => __('Color Control (hex-only)', 'justg'),
 	'section'     => 'header_section',
 	'default'     => '#efefef',
 	'output' => [
-        [
-            'element'  => '.site > header',
-            'property' => 'border-color',
+		[
+			'element'  => '.site > header',
+			'property' => 'border-color',
 		],
 	],
-] );
+]);
 
-Kirki::add_field( 'justg_config', [
+Kirki::add_field('justg_config', [
 	'type'        => 'slider',
 	'settings'    => 'tinggi_logo',
-	'label'       => esc_html__( 'Logo Height', 'justg' ),
+	'label'       => esc_html__('Logo Height', 'justg'),
 	'section'     => 'header_section',
 	'default'     => 40,
 	'transport'   => 'auto',
@@ -287,19 +288,19 @@ Kirki::add_field( 'justg_config', [
 		'max'  => 300,
 		'step' => 1,
 	],
-    'output' => [
-        [
-            'element'  => '.navbar-brand img',
-            'property' => 'max-height',
-            'units'    => 'px',
+	'output' => [
+		[
+			'element'  => '.navbar-brand img',
+			'property' => 'max-height',
+			'units'    => 'px',
 		],
 	],
-] );
+]);
 
-Kirki::add_field( 'justg_config', [
+Kirki::add_field('justg_config', [
 	'type'        => 'typography',
 	'settings'    => 'menu_setting',
-	'label'       => esc_html__( 'Menu Typography', 'justg' ),
+	'label'       => esc_html__('Menu Typography', 'justg'),
 	'section'     => 'menus_section',
 	'default'     => [
 		'font-family'    => 'Poppins',
@@ -318,21 +319,21 @@ Kirki::add_field( 'justg_config', [
 			'element' => '#main-menu',
 		],
 	],
-] );
+]);
 
-Kirki::add_field( 'justg_config', [
-    'type'        => 'multicolor',
-    'settings'    => 'link_menu',
-    'label'       => esc_html__( 'Menu Color', 'justg' ),
-    'section'     => 'menus_section',
-    'priority'    => 10,
-    'choices'     => [
-        'link'    => esc_html__( 'Color', 'justg' ),
-        'hover'   => esc_html__( 'Hover', 'justg' ),
-    ],
-    'default'     => [
-        'link'    => '#121212',
-        'hover'   => '#333333',
+Kirki::add_field('justg_config', [
+	'type'        => 'multicolor',
+	'settings'    => 'link_menu',
+	'label'       => esc_html__('Menu Color', 'justg'),
+	'section'     => 'menus_section',
+	'priority'    => 10,
+	'choices'     => [
+		'link'    => esc_html__('Color', 'justg'),
+		'hover'   => esc_html__('Hover', 'justg'),
+	],
+	'default'     => [
+		'link'    => '#121212',
+		'hover'   => '#333333',
 		'active'  => '#121212',
 	],
 	'output'    => [
@@ -347,14 +348,14 @@ Kirki::add_field( 'justg_config', [
 			'property'  => 'color',
 		],
 	],
-] );
+]);
 
 // Add field to block section
-Kirki::add_field( 'justg_config', [
+Kirki::add_field('justg_config', [
 	'type'        => 'background',
 	'settings'    => 'background_block_setting',
-	'label'       => esc_html__( 'Background Block', 'justg' ),
-	'description' => esc_html__( 'Atur background (widget, heading, article, dll)', 'justg' ),
+	'label'       => esc_html__('Background Block', 'justg'),
+	'description' => esc_html__('Atur background (widget, heading, article, dll)', 'justg'),
 	'section'     => 'block_section',
 	'default'     => [
 		'background-color'      => '#ffffff',
@@ -370,13 +371,13 @@ Kirki::add_field( 'justg_config', [
 			'element' => array('.block-customizer'),
 		],
 	],
-] );
+]);
 
-Kirki::add_field( 'justg_config', [
+Kirki::add_field('justg_config', [
 	'type'        => 'dimensions',
 	'settings'    => 'dimensions_block_setting',
-	'label'       => esc_html__( 'Margin Block', 'justg' ),
-	'description' => esc_html__( 'Atur Jarak Block (widget, heading, article, dll)', 'justg' ),
+	'label'       => esc_html__('Margin Block', 'justg'),
+	'description' => esc_html__('Atur Jarak Block (widget, heading, article, dll)', 'justg'),
 	'section'     => 'block_section',
 	'default'     => [
 		'padding-top'    => '2em',
@@ -395,28 +396,28 @@ Kirki::add_field( 'justg_config', [
 			'element' => array('.block-customizer'),
 		],
 	],
-] );
+]);
 
-Kirki::add_field( 'justg_config', [
+Kirki::add_field('justg_config', [
 	'type'     => 'text',
 	'settings' => 'text_breadcrumb_separator',
-	'label'    => esc_html__( 'Separator', 'justg' ),
+	'label'    => esc_html__('Separator', 'justg'),
 	'section'  => 'breadcrumb_section',
-	'default'  => esc_html__( '/', 'justg' ),
+	'default'  => esc_html__('/', 'justg'),
 	'priority' => 10,
-] );
-Kirki::add_field( 'justg_config', [
+]);
+Kirki::add_field('justg_config', [
 	'type'        => 'multicheck',
 	'settings'    => 'breadcrumb_disable',
-	'label'       => esc_html__( 'Tampilkan Breadcrumb', 'justg' ),
+	'label'       => esc_html__('Tampilkan Breadcrumb', 'justg'),
 	'section'     => 'breadcrumb_option',
 	'default'     => array('disable-on-home', 'disable-on-404'),
 	'priority'    => 10,
 	'choices'     => [
-		'disable-on-home' => esc_html__( 'Disable on Home Page', 'justg' ),
-		'disable-on-page' => esc_html__( 'Disable on Page', 'justg' ),
-		'disable-on-post' => esc_html__( 'Disable on Post', 'justg' ),
-		'disable-on-archive' => esc_html__( 'Disable on Archive', 'justg' ),
-		'disable-on-404' => esc_html__( 'Disable on 404', 'justg' ),
+		'disable-on-home' => esc_html__('Disable on Home Page', 'justg'),
+		'disable-on-page' => esc_html__('Disable on Page', 'justg'),
+		'disable-on-post' => esc_html__('Disable on Post', 'justg'),
+		'disable-on-archive' => esc_html__('Disable on Archive', 'justg'),
+		'disable-on-404' => esc_html__('Disable on 404', 'justg'),
 	],
-] );
+]);
