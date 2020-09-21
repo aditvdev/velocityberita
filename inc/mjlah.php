@@ -194,3 +194,13 @@ function mjlah_related_post() {
 
     echo '</div>';
 }
+
+
+//remove category: in title archive category
+function mjlah_prefix_category_title( $title ) {
+    if ( is_category() ) {
+        $title = single_cat_title( '', false );
+    }
+    return $title;
+}
+add_filter( 'get_the_archive_title', 'mjlah_prefix_category_title' );
