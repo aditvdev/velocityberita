@@ -14,33 +14,53 @@
 defined( 'ABSPATH' ) || exit;
 
 get_header();
-
-$container = get_theme_mod( 'justg_container_type' );
-
+$container 		= get_theme_mod( 'justg_container_type' );
 ?>
 
 <div class="wrapper" id="page-wrapper">
 
-	<div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
+	<div class="<?php echo esc_attr( $container ); ?>" id="content">
 
-		<main class="site-main" id="main">
+		<div class="row">
 
 			<?php
-			
-			do_action('justg_before_title');
-			 
-			while ( have_posts() ) {
-				the_post();
-				get_template_part( 'loop-templates/content', 'page' );
+			do_action('before_content');
 
-				// If comments are open or we have at least one comment, load up the comment template.
-				if ( comments_open() || get_comments_number() ) {
-					comments_template();
-				}
+			if ( is_active_sidebar( 'left-sidebar' ) xor is_active_sidebar( 'right-sidebar' ) ) {
+				$class = 'col-md-8';
+			} elseif ( is_active_sidebar( 'left-sidebar' ) && is_active_sidebar( 'right-sidebar' ) ) {
+				$class = 'col-md-4';
+			} else {
+				$class = 'col-md-12';
 			}
 			?>
+			<div class="<?php echo $class; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> content-area" id="primary">
 
-		</main><!-- #main -->
+				<main class="site-main" id="main" role="main">
+
+					<?php
+					
+					do_action('justg_before_title');
+					
+					while ( have_posts() ) {
+						the_post();
+
+						get_template_part( 'loop-templates/content', 'page' );
+
+						// If comments are open or we have at least one comment, load up the comment template.
+						if ( comments_open() || get_comments_number() ) {
+							comments_template();
+						}
+					}
+					?>
+
+				</main><!-- #main -->
+
+			</div><!-- #primary -->
+
+			<?php do_action('before_content'); ?>
+
+		</div><!-- .row -->
 
 	</div><!-- #content -->
 

@@ -271,6 +271,36 @@ if( ! function_exists( 'justg_breadcrumb' ) ) {
     }
 }
 
+if( ! function_exists( 'justg_left_sidebar_check' ) ) {
+    /**
+     * Left sidebar check
+     * 
+     */
+    function justg_left_sidebar_check() {
+        $sidebar_pos = get_theme_mod( 'justg_sidebar_position' );
+
+        if ( 'left' === $sidebar_pos || 'both' === $sidebar_pos ) {
+            get_template_part( 'sidebar-templates/sidebar', 'left' );
+        }
+        echo '<div class="col-md content-area" id="primary">';
+    }
+}
+
+if( ! function_exists( 'justg_right_sidebar_check' ) ) {
+    /**
+     * Right sidebar check
+     * 
+     */
+    function justg_right_sidebar_check() {
+        $sidebar_pos = get_theme_mod( 'justg_sidebar_position' );
+
+        echo '</div>'; //closing the primary container from /global-templates/left-sidebar-check.php
+        if ( 'right' === $sidebar_pos || 'both' === $sidebar_pos ) {
+            get_template_part( 'sidebar-templates/sidebar', 'right' );
+        }
+    }
+}
+
 if( ! function_exists( 'justg_the_footer_content' ) ) {
     /**
      * Footer function

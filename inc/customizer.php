@@ -38,6 +38,11 @@ Kirki::add_panel('panel_breadcrumb', [
 	'title'       => esc_html__('Breadcrumb', 'justg'),
 	'description' => esc_html__('', 'justg'),
 ]);
+Kirki::add_panel('panel_sidebar', [
+	'priority'    => 10,
+	'title'       => esc_html__('Sidebar', 'justg'),
+	'description' => esc_html__('', 'justg'),
+]);
 
 // Add Section.
 Kirki::add_section('global_typography', [
@@ -76,13 +81,18 @@ Kirki::add_section('menus_section', [
 	'title'    => __('Primary Menu', 'justg'),
 	'priority' => 10,
 ]);
+Kirki::add_section('sidebar_section', [
+	'panel'    => 'panel_sidebar',
+	'title'    => __('Sidebar', 'justg'),
+	'priority' => 10,
+]);
 
 Kirki::add_section('breadcrumb_section', [
 	'panel'    => 'panel_breadcrumb',
 	'title'    => __('Separator', 'justg'),
 	'priority' => 10,
 ]);
-Kirki::add_section('breadcrumb_option', [
+Kirki::add_section('panel_sidebar', [
 	'panel'    => 'panel_breadcrumb',
 	'title'    => __('Setting', 'justg'),
 	'priority' => 10,
@@ -108,6 +118,7 @@ Kirki::add_field('justg_config', [
 		],
 	],
 ]);
+
 
 Kirki::add_field('justg_config', [
 	'type'        => 'typography',
@@ -275,7 +286,6 @@ Kirki::add_field('justg_config', [
 		],
 	],
 ]);
-
 Kirki::add_field('justg_config', [
 	'type'        => 'slider',
 	'settings'    => 'tinggi_logo',
@@ -320,7 +330,6 @@ Kirki::add_field('justg_config', [
 		],
 	],
 ]);
-
 Kirki::add_field('justg_config', [
 	'type'        => 'multicolor',
 	'settings'    => 'link_menu',
@@ -372,7 +381,6 @@ Kirki::add_field('justg_config', [
 		],
 	],
 ]);
-
 Kirki::add_field('justg_config', [
 	'type'        => 'dimensions',
 	'settings'    => 'dimensions_block_setting',
@@ -410,7 +418,7 @@ Kirki::add_field('justg_config', [
 	'type'        => 'multicheck',
 	'settings'    => 'breadcrumb_disable',
 	'label'       => esc_html__('Tampilkan Breadcrumb', 'justg'),
-	'section'     => 'breadcrumb_option',
+	'section'     => 'breadcrumb_section',
 	'default'     => array('disable-on-home', 'disable-on-404'),
 	'priority'    => 10,
 	'choices'     => [
@@ -421,3 +429,20 @@ Kirki::add_field('justg_config', [
 		'disable-on-404' => esc_html__('Disable on 404', 'justg'),
 	],
 ]);
+
+Kirki::add_field( 'justg_config', [
+	'type'        => 'select',
+	'settings'    => 'justg_sidebar_position',
+	'label'       => esc_html__( 'Default Sidebar', 'justg' ),
+	'section'     => 'sidebar_section',
+	'default'     => 'no',
+	'placeholder' => esc_html__( 'Pilih layout', 'justg' ),
+	'priority'    => 10,
+	'multiple'    => 1,
+	'choices'     => [
+		'no' 	=> esc_html__( 'No Sidebar', 'justg' ),
+		'left'  => esc_html__( 'Left Sidebar', 'justg' ),
+		'right' => esc_html__( 'Right Sidebar', 'justg' ),
+		'both'  => esc_html__( 'Both Sidebar', 'justg' ),
+	],
+] );

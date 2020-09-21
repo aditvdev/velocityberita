@@ -48,6 +48,20 @@ add_action( 'woocommerce_widget_shopping_cart_buttons', 'justg_widget_shopping_c
 add_action( 'justg_before_title', 'justg_breadcrumb' );
 
 /**
+ * Before Content
+ *
+ * @see justg_left_sidebar_check()
+ */
+add_action( 'justg_before_content', 'justg_left_sidebar_check' );
+
+/**
+ * After Content
+ *
+ * @see justg_left_sidebar_check()
+ */
+add_action( 'justg_after_content', 'justg_right_sidebar_check' );
+
+/**
  * Footer
  *
  * @see justg_the_footer_content()
