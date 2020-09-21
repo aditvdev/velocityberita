@@ -21,20 +21,11 @@ $container 		= get_theme_mod( 'justg_container_type' );
 
 	<div class="<?php echo esc_attr( $container ); ?>" id="content">
 
-		<div class="row">
+		<div class="d-flex">
 
-			<?php
-			do_action('before_content');
+			<?php do_action('justg_before_content'); ?>
 
-			if ( is_active_sidebar( 'left-sidebar' ) xor is_active_sidebar( 'right-sidebar' ) ) {
-				$class = 'col-md-8';
-			} elseif ( is_active_sidebar( 'left-sidebar' ) && is_active_sidebar( 'right-sidebar' ) ) {
-				$class = 'col-md-4';
-			} else {
-				$class = 'col-md-12';
-			}
-			?>
-			<div class="<?php echo $class; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> content-area" id="primary">
+			<div class="content-area w-25 flex-fill" id="primary">
 
 				<main class="site-main" id="main" role="main">
 
@@ -58,9 +49,9 @@ $container 		= get_theme_mod( 'justg_container_type' );
 
 			</div><!-- #primary -->
 
-			<?php do_action('before_content'); ?>
+			<?php do_action('justg_after_content'); ?>
 
-		</div><!-- .row -->
+		</div>
 
 	</div><!-- #content -->
 

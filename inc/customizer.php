@@ -100,8 +100,8 @@ Kirki::add_section('panel_sidebar', [
 
 Kirki::add_field('justg_config', [
 	'type'        => 'slider',
-	'settings'    => 'lebar_website',
-	'label'       => esc_html__('Lebar Website', 'justg'),
+	'settings'    => 'container_width',
+	'label'       => esc_html__('Container Width', 'justg'),
 	'section'     => 'global_container',
 	'default'     => 1140,
 	'transport'   => 'auto',
@@ -118,7 +118,6 @@ Kirki::add_field('justg_config', [
 		],
 	],
 ]);
-
 
 Kirki::add_field('justg_config', [
 	'type'        => 'typography',
@@ -446,3 +445,23 @@ Kirki::add_field( 'justg_config', [
 		'both'  => esc_html__( 'Both Sidebar', 'justg' ),
 	],
 ] );
+Kirki::add_field('justg_config', [
+	'type'        => 'slider',
+	'settings'    => 'sidebar_width',
+	'label'       => esc_html__('Sidebar Width', 'justg'),
+	'section'     => 'sidebar_section',
+	'default'     => 30,
+	'transport'   => 'auto',
+	'choices'     => [
+		'min'  => 20,
+		'max'  => 50,
+		'step' => 1,
+	],
+	'output' => [
+		[
+			'element'  => '.widget-area',
+			'property' => 'width',
+			'units'    => '%',
+		],
+	],
+]);
