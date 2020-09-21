@@ -103,7 +103,7 @@ class mjlah_posts_widget extends WP_Widget {
         $class      = ($layout=='gallery')?'col-md-6 col-12 p-2 pt-0':'';
 
         echo '<div class="list-post list-post-'.$i.' '.$class.'">';        
-        echo generated_schema(get_the_ID());
+        echo mjlah_generated_schema(get_the_ID());
 
             //Layout 1
             if($layout=='layout1'):
@@ -125,12 +125,12 @@ class mjlah_posts_widget extends WP_Widget {
                             <?php endif; ?>
 
                             <?php if($viewers == 'ya'): ?>
-                                <span class="view-post"><?php echo get_post_view(); ?> views</span>
+                                <span class="view-post"><?php echo mjlah_get_post_view(); ?> views</span>
                             <?php endif; ?>
 
                         </small>
                         <?php if($kutipan != 0): ?>
-                            <div class="exceprt-post"><?php echo getexcerpt($kutipan,get_the_ID()); ?></div>
+                            <div class="exceprt-post"><?php echo mjlah_getexcerpt($kutipan,get_the_ID()); ?></div>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -157,12 +157,12 @@ class mjlah_posts_widget extends WP_Widget {
                             <?php endif; ?>
 
                             <?php if($viewers == 'ya'): ?>
-                                <span class="view-post"><?php echo get_post_view(); ?> views</span>
+                                <span class="view-post"><?php echo mjlah_get_post_view(); ?> views</span>
                             <?php endif; ?>
 
                         </small>
                         <?php if($kutipan != 0): ?>
-                            <div class="exceprt-post"><?php echo getexcerpt($kutipan,get_the_ID()); ?></div>
+                            <div class="exceprt-post"><?php echo mjlah_getexcerpt($kutipan,get_the_ID()); ?></div>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -215,12 +215,12 @@ class mjlah_posts_widget extends WP_Widget {
                             <?php endif; ?>
 
                             <?php if($viewers == 'ya'): ?>
-                                <span class="view-post"><?php echo get_post_view(); ?> views</span>
+                                <span class="view-post"><?php echo mjlah_get_post_view(); ?> views</span>
                             <?php endif; ?>
 
                         </small>
                         <?php if($kutipan != 0): ?>
-                            <div class="exceprt-post"><?php echo getexcerpt($kutipan,get_the_ID()); ?></div>
+                            <div class="exceprt-post"><?php echo mjlah_getexcerpt($kutipan,get_the_ID()); ?></div>
                         <?php endif; ?>
                     </div>
                 </div>
