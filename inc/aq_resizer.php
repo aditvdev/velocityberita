@@ -264,3 +264,17 @@ if(!function_exists('aq_resize')) {
     }
 }
 
+
+/**
+ * when delete attachment, get meta media 
+ */
+add_action('delete_attachment', 'delete_attachment_aq_resize');
+function delete_attachment_aq_resize($id) {
+    if(!empty(get_post_meta( $id, '_wp_attachment_newsize', true ))){
+        $meta_newpath = json_decode(get_post_meta( $id, '_wp_attachment_newsize', true ),true);
+        foreach($meta_newpath as $path) {
+            $file_path = "/home/public_html/wp-content/uploads".$path;  // path of the file which need to be deleted. 
+            wp_delete_file( $file_path ); //delete file here.
+        }
+    }
+}

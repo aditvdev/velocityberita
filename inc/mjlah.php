@@ -147,22 +147,16 @@ function mjlah_thumbnail( $idpost=null, $size = 'thumbnail' , $attr='' ) {
   return $html;
 }
 
-function mjlah_related_post($title=null,$number=4) {
+function mjlah_related_post() {
+    echo '<div class="related-post">';
 
         //Output Title
-        if($title) {
-            $thetitle = '<div class="title-related-post mb-3">%1$s</div>';		
-            $thetitle = sprintf(
-                $thetitle,
-                $title,
-            );
-            echo $thetitle;
-        }
+        echo '<h3 class="widget-title"><span>Related Post</span></h3>';
 
         //args query
-        $args                   = [];
-        $args['posts_per_page']    = $number;
-        $args['post__not_in']   = array(get_the_ID());
+        $args                       = [];
+        $args['posts_per_page']     = 4;
+        $args['post__not_in']       = array(get_the_ID());
         
         //get tags from post
         $tags  = wp_get_post_tags(get_the_ID());
@@ -197,4 +191,6 @@ function mjlah_related_post($title=null,$number=4) {
             <?php
         }
         wp_reset_query();
+
+    echo '</div>';
 }

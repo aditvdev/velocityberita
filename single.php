@@ -36,8 +36,7 @@ $container = get_theme_mod( 'mjlah_container_type' );
 					mjlah_post_nav();
 					
 					//Related Post
-					$titlerel = 'Related Post '.get_the_title();
-					mjlah_related_post($titlerel,4);
+					mjlah_related_post();
 
 					// If comments are open or we have at least one comment, load up the comment template.
 					if ( comments_open() || get_comments_number() ) {
