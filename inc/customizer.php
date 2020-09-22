@@ -9,11 +9,9 @@
 // Exit if accessed directly.
 defined('ABSPATH') || exit;
 
-function justg_justg_configuration()
-{
+function justg_justg_configuration(){
 	return array('url_path'     => get_stylesheet_directory_uri() . '/inc/kirki/');
 }
-
 
 // Add our config to differentiate from other themes/plugins 
 // that may use Kirki at the same time.
@@ -460,7 +458,7 @@ Kirki::add_field('justg_config', [
 	'output' => [
 		[
 			'element'  => '.widget-area',
-			'property' => 'width',
+			'property' => 'max-width',
 			'units'    => '%',
 		],
 	],

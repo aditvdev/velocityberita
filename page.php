@@ -21,11 +21,11 @@ $container 		= get_theme_mod( 'justg_container_type' );
 
 	<div class="<?php echo esc_attr( $container ); ?>" id="content">
 
-		<div class="d-flex">
+		<div class="row">
 
 			<?php do_action('justg_before_content'); ?>
 
-			<div class="content-area w-25 flex-fill" id="primary">
+			<div class="content-area col" id="primary">
 
 				<main class="site-main" id="main" role="main">
 

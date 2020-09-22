@@ -19,9 +19,9 @@ $container = get_theme_mod( 'justg_container_type' );
 		<div class="row">
 
 			<!-- Do the left sidebar check -->
-			<?php get_template_part( 'global-templates/left-sidebar-check' ); ?>
+			<?php do_action('justg_before_content'); ?>
 
-			<main class="site-main" id="main">
+			<main class="site-main col order-1" id="main">
 
 				<?php
 				
@@ -41,8 +41,8 @@ $container = get_theme_mod( 'justg_container_type' );
 
 			</main><!-- #main -->
 
-			<!-- Do the right sidebar check -->
-			<?php get_template_part( 'global-templates/right-sidebar-check' ); ?>
+			<!-- Do the right sidebar check. -->
+			<?php do_action('justg_after_content'); ?>
 
 		</div><!-- .row -->
 

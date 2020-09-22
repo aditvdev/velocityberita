@@ -284,7 +284,7 @@ if( ! function_exists( 'justg_left_sidebar_check' ) ) {
                 return;
             }
             ?>
-            <div class="widget-area left-sidebar pr-md-3" id="left-sidebar" role="complementary">
+            <div class="widget-area left-sidebar pr-md-3 col-sm-12 order-2" id="left-sidebar" role="complementary">
             <?php dynamic_sidebar( 'left-sidebar' ); ?>
             
             </div><!-- #left-sidebar -->
@@ -306,7 +306,7 @@ if( ! function_exists( 'justg_right_sidebar_check' ) ) {
                 return;
             }
             ?>
-            <div class="widget-area right-sidebar pl-md-3" id="right-sidebar" role="complementary">
+            <div class="widget-area right-sidebar pl-md-3 col-sm-12 order-3" id="right-sidebar" role="complementary">
                 <?php dynamic_sidebar( 'right-sidebar' ); ?>
             </div>
             <?php
