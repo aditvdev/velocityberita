@@ -440,7 +440,6 @@ Kirki::add_field( 'justg_config', [
 		'no' 	=> esc_html__( 'No Sidebar', 'justg' ),
 		'left'  => esc_html__( 'Left Sidebar', 'justg' ),
 		'right' => esc_html__( 'Right Sidebar', 'justg' ),
-		'both'  => esc_html__( 'Both Sidebar', 'justg' ),
 	],
 ] );
 Kirki::add_field('justg_config', [

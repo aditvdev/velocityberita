@@ -279,15 +279,14 @@ if( ! function_exists( 'justg_left_sidebar_check' ) ) {
     function justg_left_sidebar_check() {
         $sidebar_pos = get_theme_mod( 'justg_sidebar_position' );
 
-        if ( 'left' === $sidebar_pos || 'both' === $sidebar_pos ) {
-            if ( ! is_active_sidebar( 'left-sidebar' ) ) {
+        if ( 'left' === $sidebar_pos ) {
+            if ( ! is_active_sidebar( 'main-sidebar' ) ) {
                 return;
             }
             ?>
-            <div class="widget-area left-sidebar pr-md-3 col-sm-12 order-2" id="left-sidebar" role="complementary">
-            <?php dynamic_sidebar( 'left-sidebar' ); ?>
-            
-            </div><!-- #left-sidebar -->
+            <div class="widget-area left-sidebar pr-md-2 col-sm-12 order-md-1 order-3" id="left-sidebar" role="complementary">
+                <?php dynamic_sidebar( 'main-sidebar' ); ?>
+            </div>
             <?php
         }
     }
@@ -301,13 +300,13 @@ if( ! function_exists( 'justg_right_sidebar_check' ) ) {
     function justg_right_sidebar_check() {
         $sidebar_pos = get_theme_mod( 'justg_sidebar_position' );
 
-        if ( 'right' === $sidebar_pos || 'both' === $sidebar_pos ) {
-            if ( ! is_active_sidebar( 'right-sidebar' ) ) {
+        if ( 'right' === $sidebar_pos ) {
+            if ( ! is_active_sidebar( 'main-sidebar' ) ) {
                 return;
             }
             ?>
-            <div class="widget-area right-sidebar pl-md-3 col-sm-12 order-3" id="right-sidebar" role="complementary">
-                <?php dynamic_sidebar( 'right-sidebar' ); ?>
+            <div class="widget-area right-sidebar pl-md-2 col-sm-12 order-3" id="right-sidebar" role="complementary">
+                <?php dynamic_sidebar( 'main-sidebar' ); ?>
             </div>
             <?php
         }

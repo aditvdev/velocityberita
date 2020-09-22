@@ -25,7 +25,7 @@ $container 		= get_theme_mod( 'justg_container_type' );
 
 			<?php do_action('justg_before_content'); ?>
 
-			<div class="content-area col" id="primary">
+			<div class="content-area col order-2" id="primary">
 
 				<main class="site-main" id="main" role="main">
 

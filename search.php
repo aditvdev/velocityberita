@@ -20,10 +20,10 @@ $container = get_theme_mod( 'justg_container_type' );
 
 		<div class="row">
 
-			<!-- Do the left sidebar check and opens the primary div -->
-			<?php get_template_part( 'global-templates/left-sidebar-check' ); ?>
+			<!-- Do the left sidebar check -->
+			<?php do_action('justg_before_content'); ?>
 
-			<main class="site-main" id="main">
+			<main class="site-main col order-2" id="main">
 
 				<?php if ( have_posts() ) : ?>
 
@@ -60,14 +60,12 @@ $container = get_theme_mod( 'justg_container_type' );
 					<?php get_template_part( 'loop-templates/content', 'none' ); ?>
 
 				<?php endif; ?>
-
+				<!-- The pagination component -->
+				<?php justg_pagination(); ?>
 			</main><!-- #main -->
 
-			<!-- The pagination component -->
-			<?php justg_pagination(); ?>
-
-			<!-- Do the right sidebar check -->
-			<?php get_template_part( 'global-templates/right-sidebar-check' ); ?>
+			<!-- Do the right sidebar check. -->
+			<?php do_action('justg_after_content'); ?>
 
 		</div><!-- .row -->
 

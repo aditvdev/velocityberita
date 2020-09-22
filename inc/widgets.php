@@ -100,21 +100,9 @@ if ( ! function_exists( 'justg_widgets_init' ) ) {
 	function justg_widgets_init() {
 		register_sidebar(
 			array(
-				'name'          => __( 'Right Sidebar', 'justg' ),
-				'id'            => 'right-sidebar',
-				'description'   => __( 'Right sidebar widget area', 'justg' ),
-				'before_widget' => '<aside id="%1$s" class="block-customizer widget %2$s">',
-				'after_widget'  => '</aside>',
-				'before_title'  => '<h3 class="widget-title">',
-				'after_title'   => '</h3>',
-			)
-		);
-
-		register_sidebar(
-			array(
-				'name'          => __( 'Left Sidebar', 'justg' ),
-				'id'            => 'left-sidebar',
-				'description'   => __( 'Left sidebar widget area', 'justg' ),
+				'name'          => __( 'Main Sidebar', 'justg' ),
+				'id'            => 'main-sidebar',
+				'description'   => __( 'Main sidebar widget area', 'justg' ),
 				'before_widget' => '<aside id="%1$s" class="block-customizer widget %2$s">',
 				'after_widget'  => '</aside>',
 				'before_title'  => '<h3 class="widget-title">',

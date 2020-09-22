@@ -57,9 +57,10 @@ if ( ! function_exists( 'justg_woocommerce_wrapper_start' ) ) {
 		$container = get_theme_mod( 'justg_container_type' );
 		echo '<div class="wrapper" id="woocommerce-wrapper">';
 		echo '<div class="' . esc_attr( $container ) . '" id="content" tabindex="-1">';
-		// echo '<div class="row">';
-		// get_template_part( 'global-templates/left-sidebar-check' );
-		echo '<main class="site-main" id="main">';
+		echo '<div class="row">';
+		// Do the left sidebar check
+		do_action('justg_before_content');
+		echo '<main class="site-main col order-2" id="main">';
 	}
 }
 
@@ -69,8 +70,9 @@ if ( ! function_exists( 'justg_woocommerce_wrapper_end' ) ) {
 	 */
 	function justg_woocommerce_wrapper_end() {
 		echo '</main><!-- #main -->';
-		// get_template_part( 'global-templates/right-sidebar-check' );
-		// echo '</div><!-- .row -->';
+		// Do the right sidebar check.
+		do_action('justg_after_content');
+		echo '</div><!-- Row end -->';
 		echo '</div><!-- Container end -->';
 		echo '</div><!-- Wrapper end -->';
 	}
