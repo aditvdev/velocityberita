@@ -27,13 +27,13 @@ $container = get_theme_mod( 'justg_container_type' );
 
 					<section class="error-404 not-found">
 
-						<header class="page-header block-customizer">
+						<header class="page-header block-primary">
 
 							<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'justg' ); ?></h1>
 
 						</header><!-- .page-header -->
 
-						<div class="page-content block-customizer">
+						<div class="page-content block-primary">
 
 							<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'justg' ); ?></p>
 

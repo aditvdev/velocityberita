@@ -32,7 +32,7 @@ $container = get_theme_mod( 'justg_container_type' );
 
 				if ( have_posts() ) {
 					?>
-					<header class="page-header block-customizer">
+					<header class="page-header block-primary">
 						<?php
 						the_archive_title( '<h1 class="page-title">', '</h1>' );
 						the_archive_description( '<div class="taxonomy-description">', '</div>' );

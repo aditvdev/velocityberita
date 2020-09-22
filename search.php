@@ -29,7 +29,7 @@ $container = get_theme_mod( 'justg_container_type' );
 
 					<header class="page-header">
 
-							<h1 class="page-title block-customizer">
+							<h1 class="page-title block-primary">
 								<?php
 								printf(
 									/* translators: %s: query term */

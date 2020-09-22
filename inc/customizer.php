@@ -84,6 +84,11 @@ Kirki::add_section('sidebar_section', [
 	'title'    => __('Sidebar', 'justg'),
 	'priority' => 10,
 ]);
+Kirki::add_section('sidebar_style_section', [
+	'panel'    => 'panel_sidebar',
+	'title'    => __('Sidebar Style', 'justg'),
+	'priority' => 10,
+]);
 
 Kirki::add_section('breadcrumb_section', [
 	'panel'    => 'panel_breadcrumb',
@@ -374,7 +379,7 @@ Kirki::add_field('justg_config', [
 	'transport'   => 'auto',
 	'output'      => [
 		[
-			'element' => array('.block-customizer'),
+			'element' => array('.block-primary'),
 		],
 	],
 ]);
@@ -398,7 +403,7 @@ Kirki::add_field('justg_config', [
 	'transport'   => 'auto',
 	'output'      => [
 		[
-			'element' => array('.block-customizer'),
+			'element' => array('.block-primary'),
 		],
 	],
 ]);
@@ -427,6 +432,7 @@ Kirki::add_field('justg_config', [
 	],
 ]);
 
+//sidebar_section
 Kirki::add_field( 'justg_config', [
 	'type'        => 'select',
 	'settings'    => 'justg_sidebar_position',
@@ -497,11 +503,13 @@ Kirki::add_field( 'justg_config', [
 		'right' 	=> esc_html__( 'Right Sidebar', 'justg' ),
 	],
 ] );
+
+//sidebar_style_section
 Kirki::add_field('justg_config', [
 	'type'        => 'slider',
 	'settings'    => 'sidebar_width',
 	'label'       => esc_html__('Sidebar Width', 'justg'),
-	'section'     => 'sidebar_section',
+	'section'     => 'sidebar_style_section',
 	'default'     => 30,
 	'transport'   => 'auto',
 	'choices'     => [
@@ -515,6 +523,50 @@ Kirki::add_field('justg_config', [
 			'property' => 'max-width',
 			'units'    => '%',
 			'media_query' => '@media (min-width: 768px)',
+		],
+	],
+]);
+Kirki::add_field('justg_config', [
+	'type'        => 'background',
+	'settings'    => 'background_widget_setting',
+	'label'       => esc_html__('Background Block', 'justg'),
+	'description' => esc_html__('Atur background (widget, heading, article, dll)', 'justg'),
+	'section'     => 'sidebar_style_section',
+	'default'     => [
+		'background-color'      => '#ffffff',
+		'background-image'      => '',
+		'background-repeat'     => 'repeat',
+		'background-position'   => 'center center',
+		'background-size'       => 'cover',
+		'background-attachment' => 'scroll',
+	],
+	'transport'   => 'auto',
+	'output'      => [
+		[
+			'element' => array('.widget-area > .widget'),
+		],
+	],
+]);
+Kirki::add_field('justg_config', [
+	'type'        => 'typography',
+	'settings'    => 'typography_widget_setting',
+	'label'       => esc_html__('Typography', 'justg'),
+	'section'     => 'sidebar_style_section',
+	'default'     => [
+		'font-family'    => 'Poppins',
+		'variant'        => 'regular',
+		'font-size'      => '14px',
+		'line-height'    => '1.5',
+		'letter-spacing' => '0',
+		'color'          => '#333333',
+		'text-transform' => 'none',
+		'text-align'     => 'left',
+	],
+	'priority'    => 10,
+	'transport'   => 'auto',
+	'output'      => [
+		[
+			'element' => '.widget-area > .widget',
 		],
 	],
 ]);
