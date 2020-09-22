@@ -432,14 +432,69 @@ Kirki::add_field( 'justg_config', [
 	'settings'    => 'justg_sidebar_position',
 	'label'       => esc_html__( 'Default Sidebar', 'justg' ),
 	'section'     => 'sidebar_section',
-	'default'     => 'no',
-	'placeholder' => esc_html__( 'Pilih layout', 'justg' ),
+	'default'     => 'right',
+	'placeholder' => esc_html__( 'Right Sidebar', 'justg' ),
 	'priority'    => 10,
 	'multiple'    => 1,
 	'choices'     => [
-		'no' 	=> esc_html__( 'No Sidebar', 'justg' ),
-		'left'  => esc_html__( 'Left Sidebar', 'justg' ),
-		'right' => esc_html__( 'Right Sidebar', 'justg' ),
+		'no' 		=> esc_html__( 'No Sidebar', 'justg' ),
+		'left'  	=> esc_html__( 'Left Sidebar', 'justg' ),
+		'right' 	=> esc_html__( 'Right Sidebar', 'justg' ),
+	],
+] );
+Kirki::add_field( 'justg_config', [
+	'type'        => 'custom',
+	'settings'    => 'separator',
+	'section'     => 'sidebar_section',
+		'default'         => '<hr/>',
+	'priority'    => 10,
+] );
+Kirki::add_field( 'justg_config', [
+	'type'        => 'select',
+	'settings'    => 'justg_pages_sidebar_position',
+	'label'       => esc_html__( 'Pages Sidebar', 'justg' ),
+	'section'     => 'sidebar_section',
+	'default'     => 'right',
+	'placeholder' => esc_html__( 'Default', 'justg' ),
+	'priority'    => 10,
+	'multiple'    => 1,
+	'choices'     => [
+		'default'	=> esc_html__( 'Default', 'justg' ),
+		'no' 		=> esc_html__( 'No Sidebar', 'justg' ),
+		'left'  	=> esc_html__( 'Left Sidebar', 'justg' ),
+		'right' 	=> esc_html__( 'Right Sidebar', 'justg' ),
+	],
+] );
+Kirki::add_field( 'justg_config', [
+	'type'        => 'select',
+	'settings'    => 'justg_blogs_sidebar_position',
+	'label'       => esc_html__( 'Blog Posts Sidebar', 'justg' ),
+	'section'     => 'sidebar_section',
+	'default'     => 'right',
+	'placeholder' => esc_html__( 'Default', 'justg' ),
+	'priority'    => 10,
+	'multiple'    => 1,
+	'choices'     => [
+		'default'	=> esc_html__( 'Default', 'justg' ),
+		'no' 		=> esc_html__( 'No Sidebar', 'justg' ),
+		'left'  	=> esc_html__( 'Left Sidebar', 'justg' ),
+		'right' 	=> esc_html__( 'Right Sidebar', 'justg' ),
+	],
+] );
+Kirki::add_field( 'justg_config', [
+	'type'        => 'select',
+	'settings'    => 'justg_archives_sidebar_position',
+	'label'       => esc_html__( 'Archives', 'justg' ),
+	'section'     => 'sidebar_section',
+	'default'     => 'right',
+	'placeholder' => esc_html__( 'Default', 'justg' ),
+	'priority'    => 10,
+	'multiple'    => 1,
+	'choices'     => [
+		'default'	=> esc_html__( 'Default', 'justg' ),
+		'no' 		=> esc_html__( 'No Sidebar', 'justg' ),
+		'left'  	=> esc_html__( 'Left Sidebar', 'justg' ),
+		'right' 	=> esc_html__( 'Right Sidebar', 'justg' ),
 	],
 ] );
 Kirki::add_field('justg_config', [
@@ -459,6 +514,7 @@ Kirki::add_field('justg_config', [
 			'element'  => '.widget-area',
 			'property' => 'max-width',
 			'units'    => '%',
+			'media_query' => '@media (min-width: 768px)',
 		],
 	],
 ]);

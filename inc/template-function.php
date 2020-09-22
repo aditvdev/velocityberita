@@ -277,7 +277,22 @@ if( ! function_exists( 'justg_left_sidebar_check' ) ) {
      * 
      */
     function justg_left_sidebar_check() {
-        $sidebar_pos = get_theme_mod( 'justg_sidebar_position' );
+        $sidebar_pos            = get_theme_mod( 'justg_sidebar_position' );
+        $pages_sidebar_pos      = get_theme_mod( 'justg_pages_sidebar_position' );
+        $singular_sidebar_pos   = get_theme_mod( 'justg_blogs_sidebar_position' );
+        $archives_sidebar_pos   = get_theme_mod( 'justg_archives_sidebar_position' );
+
+        if (is_page() && $pages_sidebar_pos != 'default' ){
+            $sidebar_pos = $pages_sidebar_pos;
+        }
+
+        if (is_singular() && $singular_sidebar_pos != 'default' ){
+            $sidebar_pos = $singular_sidebar_pos;
+        }
+
+        if (is_archive() && $archives_sidebar_pos != 'default' ){
+            $sidebar_pos = $archives_sidebar_pos;
+        }
 
         if ( 'left' === $sidebar_pos ) {
             if ( ! is_active_sidebar( 'main-sidebar' ) ) {
@@ -298,7 +313,22 @@ if( ! function_exists( 'justg_right_sidebar_check' ) ) {
      * 
      */
     function justg_right_sidebar_check() {
-        $sidebar_pos = get_theme_mod( 'justg_sidebar_position' );
+        $sidebar_pos            = get_theme_mod( 'justg_sidebar_position' );
+        $pages_sidebar_pos      = get_theme_mod( 'justg_pages_sidebar_position' );
+        $singular_sidebar_pos   = get_theme_mod( 'justg_blogs_sidebar_position' );
+        $archives_sidebar_pos   = get_theme_mod( 'justg_archives_sidebar_position' );
+
+        if (is_page() && $pages_sidebar_pos != 'default' ){
+            $sidebar_pos = $pages_sidebar_pos;
+        }
+
+        if (is_singular() && $singular_sidebar_pos != 'default' ){
+            $sidebar_pos = $singular_sidebar_pos;
+        }
+
+        if (is_archive() && $archives_sidebar_pos != 'default' ){
+            $sidebar_pos = $archives_sidebar_pos;
+        }
 
         if ( 'right' === $sidebar_pos ) {
             if ( ! is_active_sidebar( 'main-sidebar' ) ) {
