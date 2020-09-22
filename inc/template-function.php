@@ -294,6 +294,10 @@ if( ! function_exists( 'justg_left_sidebar_check' ) ) {
             $sidebar_pos = $archives_sidebar_pos;
         }
 
+        if( is_account_page() ){
+            return;
+        }
+
         if ( 'left' === $sidebar_pos ) {
             if ( ! is_active_sidebar( 'main-sidebar' ) ) {
                 return;
@@ -328,6 +332,10 @@ if( ! function_exists( 'justg_right_sidebar_check' ) ) {
 
         if (is_archive() && !in_array($archives_sidebar_pos, array('', 'default')) ){
             $sidebar_pos = $archives_sidebar_pos;
+        }
+
+        if( is_account_page() ){
+            return;
         }
 
         if ( 'right' === $sidebar_pos ) {
