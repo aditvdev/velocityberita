@@ -24,10 +24,10 @@ $mjlah_includes = array(
 	'/deprecated.php',                      // Load deprecated functions.
 	'/builder-part.php',                    // Load kirki.
 	'/kirki/kirki.php',                     // Load kirki.
-	'/customizer.php',							// Setup Kirki.
+	'/customizer.php',						// Setup Kirki.
 	'/aq_resizer.php',						// load aq_resizer functions.
 	'/breadcrumbs.php',						// load breadcrumbs functions.
-	'/mjlah.php',							// load mjlah functions.
+	'/template-function.php',							// load mjlah functions.
 );
 
 foreach ( $mjlah_includes as $file ) {
