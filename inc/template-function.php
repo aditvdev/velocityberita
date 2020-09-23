@@ -181,7 +181,7 @@ function mjlah_related_post() {
                 <?php while ($my_query->have_posts()) : $my_query->the_post(); ?>
                     <div class="col-6 col-md-3 mb-3">
                         <?php echo mjlah_thumbnail( get_the_ID(),'thumbnail' , array( 'class' => 'w-100 mx-auto' ) );?>                        
-                        <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a>
+                        <a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a>
                     </div>
             
                 <?php endwhile; ?>

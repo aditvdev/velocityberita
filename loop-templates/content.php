@@ -11,46 +11,54 @@ defined( 'ABSPATH' ) || exit;
 
 <article <?php post_class('block-customizer'); ?> id="post-<?php the_ID(); ?>">
 
-	<header class="entry-header">
+	<div class="row">
 
-		<?php
-		the_title(
-			sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ),
-			'</a></h2>'
-		);
-		?>
+		<div class="col-md-3 col-4 entry-thumbnail">
+			<?php echo mjlah_thumbnail( get_the_ID(),'thumbnail' , array( 'class' => 'w-100 mx-auto' ) );?>   
+		</div>
 
-		<?php if ( 'post' === get_post_type() ) : ?>
+		<div class="col-md-9 col-7 pl-0 pl-md-2 entry-content">
 
-			<div class="entry-meta">
-				<?php mjlah_posted_on(); ?>
-			</div><!-- .entry-meta -->
+			<header class="entry-header">
 
-		<?php endif; ?>
+				<?php
+				the_title(
+					sprintf( '<h3 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ),
+					'</a></h3>'
+				);
+				?>
 
-	</header><!-- .entry-header -->
+				<?php if ( 'post' === get_post_type() ) : ?>
 
-	<?php echo get_the_post_thumbnail( $post->ID, 'large' ); ?>
+					<div class="entry-meta">
+						<?php mjlah_posted_on(); ?>
+					</div><!-- .entry-meta -->
 
-	<div class="entry-content">
+				<?php endif; ?>
 
-		<?php the_excerpt(); ?>
+			</header><!-- .entry-header -->
 
-		<?php
-		wp_link_pages(
-			array(
-				'before' => '<div class="page-links">' . __( 'Pages:', 'mjlah' ),
-				'after'  => '</div>',
-			)
-		);
-		?>
+			<div class="entry-excerpt my-2"> 
+				<?php echo mjlah_getexcerpt(80,get_the_ID()); ?>
+			</div>
 
-	</div><!-- .entry-content -->
+			<?php
+			wp_link_pages(
+				array(
+					'before' => '<div class="page-links">' . __( 'Pages:', 'mjlah' ),
+					'after'  => '</div>',
+				)
+			);
+			?>
 
-	<footer class="entry-footer">
+			<footer class="entry-footer">
+		
+				<?php mjlah_entry_footer(); ?>
+		
+			</footer><!-- .entry-footer -->
 
-		<?php mjlah_entry_footer(); ?>
+		</div><!-- .entry-content -->
 
-	</footer><!-- .entry-footer -->
+	</div><!-- .row-->
 
 </article><!-- #post-## -->

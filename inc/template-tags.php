@@ -51,7 +51,19 @@ if ( ! function_exists( 'mjlah_posted_on' ) ) {
 		}
 
 		// output 
-		printf("<div class='metapost'>%s  %s  %s</div>",$author,$date,$cat);
+		if ( is_single()) {
+			printf("<div class='metapost'>%s  %s  %s</div>",$author,$date,$cat);
+		} else {
+			
+			$date = '<span class="date"><a href="%1$s" rel="bookmark">%2$s</a></span>';		
+			$date = sprintf(
+				$date,
+				esc_url( get_permalink() ),
+				apply_filters( 'mjlah_posted_on_time', $time )
+			);
+
+			printf("<div class='metapost text-muted'>%s</div>",$date);
+		}
 	}
 }
 
@@ -61,7 +73,7 @@ if ( ! function_exists( 'mjlah_entry_footer' ) ) {
 	 */
 	function mjlah_entry_footer() {
 		// Hide category and tag text for pages.
-		if ( 'post' === get_post_type() ) {
+		if ( 'post' === get_post_type() && is_single() ) {
 			/* translators: used between list items, there is a space after the comma */
 			$tags_list = get_the_tag_list();
 			if ( $tags_list ) {
@@ -69,20 +81,32 @@ if ( ! function_exists( 'mjlah_entry_footer' ) ) {
 				printf( '<span class="tags-links">' . esc_html__( '%s', 'mjlah' ) . '</span>', $tags_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
 		}
-		if ( ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
+		if ( is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 			echo '<span class="comments-link">';
 			comments_popup_link( esc_html__( 'Leave a comment', 'mjlah' ), esc_html__( '1 Comment', 'mjlah' ), esc_html__( '% Comments', 'mjlah' ) );
 			echo '</span>';
 		}
-		edit_post_link(
-			sprintf(
-				/* translators: %s: Name of current post */
-				esc_html__( 'Edit %s', 'mjlah' ),
-				the_title( '<span class="sr-only">"', '"</span>', false )
-			),
-			'<span class="edit-link">',
-			'</span>'
-		);
+		if ( is_single() ) {
+			edit_post_link(
+				sprintf(
+					/* translators: %s: Name of current post */
+					esc_html__( 'Edit %s', 'mjlah' ),
+					the_title( '<span class="sr-only">"', '"</span>', false )
+				),
+				'<span class="edit-link">',
+				'</span>'
+			);
+		}
+
+		if ( ! is_single() ) {			
+			$more = '<span class="readmore"><a href="%1$s" rel="bookmark" class="btn btn-sm btn-primary">Read more</a></span>';		
+			$more = sprintf(
+				$more,
+				esc_url( get_permalink() )
+			);
+			echo $more;
+		}
+
 	}
 }
 
