@@ -152,23 +152,29 @@ if(!class_exists('Aq_Resize')) {
                             $resized_rel_path = str_replace( $upload_dir, '', $resized_file['path'] );
                             $img_url = $upload_url . $resized_rel_path;
 
-                            //update meta media
+                            /*
+                            *update meta media
+                            */
+                            //get ID media
                             global $wpdb;
                             $data_attachment = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s';", $url ));
                             $ID_data = $data_attachment[0];
 
-                            $data_path = "{$dst_rel_path}-{$suffix}.{$ext}";
-                            $meta_media = get_post_meta( $ID_data, '_wp_attachment_newsize', true );
+                            //create name
+                            $data_path  = "{$dst_rel_path}-{$suffix}.{$ext}";
+                            $metaname   = '_attachment_aqresize_'.$ID_data;
+
+                            ///get option meta
+                            $meta_media = get_option($metaname);
                             if ($meta_media) {
-                                $meta_media_un = json_decode($meta_media,true);
-                                array_push($meta_media_un,$data_path);
-                                $newdata = json_encode($meta_media_un);
-                                update_post_meta( $ID_data, '_wp_attachment_newsize', $newdata );
+                                array_push($meta_media,$data_path);
+                                $newdata = $meta_media;
                             } else {
-                                $newdata = json_encode(array($data_path));
-                                update_post_meta( $ID_data, '_wp_attachment_newsize', $newdata );
+                                $newdata = array($data_path);
                             }
 
+                            //update option
+                            update_option($metaname,$newdata,'');                         
 
                         } else {
                             throw new Aq_Exception('Unable to save resized image file: ' . $editor->get_error_message());
@@ -266,15 +272,22 @@ if(!function_exists('aq_resize')) {
 
 
 /**
- * when delete attachment, get meta media 
+ * when delete attachment, get data option
  */
-add_action('delete_attachment', 'delete_attachment_aq_resize');
+add_action('delete_attachment', 'delete_attachment_aq_resize', 10, 1);
 function delete_attachment_aq_resize($id) {
-    if(!empty(get_post_meta( $id, '_wp_attachment_newsize', true ))){
-        $meta_newpath = json_decode(get_post_meta( $id, '_wp_attachment_newsize', true ),true);
-        foreach($meta_newpath as $path) {
-            $file_path = "/home/public_html/wp-content/uploads".$path;  // path of the file which need to be deleted. 
+
+    $metaname       = '_attachment_aqresize_'.$id;
+    $meta_media     = get_option($metaname);
+    $upload_dir     = wp_get_upload_dir()['basedir'];
+
+    if($meta_media){
+        foreach($meta_media as $path) {
+            $file_path = $upload_dir.$path;  // path of the file which need to be deleted. 
             wp_delete_file( $file_path ); //delete file here.
         }
     }
+    //delete option
+    delete_option($metaname);
 }
+
