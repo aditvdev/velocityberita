@@ -229,3 +229,6 @@ blockquote:before {
    text-align: center;
    line-height: 35px;
 }
+.widget_tabs_posts_widget .list-post .thumb-post a {
+   width: 70px;
+}

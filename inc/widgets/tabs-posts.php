@@ -87,9 +87,7 @@ class tabs_posts_widget extends WP_Widget {
                                         <div class="list-post list-post-<?= $i;?>">
                                             <div class="d-flex border-bottom pb-2 mb-2">
                                                 <div class="thumb-post">
-                                                    <a href="<?php echo get_the_permalink(); ?>" class="d-inline-block mr-2" style="width: 70px;">
-                                                    <?php echo get_the_post_thumbnail( get_the_ID(),array(70,70), array( 'class' => 'w-100 img-fluid' ) );?>
-                                                    </a>                            
+                                                    <?php echo mjlah_thumbnail( get_the_ID(),array(70,70), array( 'class' => 'w-100 img-fluid','class-link' => 'd-block mr-2' ) );?>                            
                                                 </div>
                                                 <div class="content-post">
                                                     <a href="<?php echo get_the_permalink(); ?>" class="title-post font-weight-bold d-block"><?php echo get_the_title(); ?></a>

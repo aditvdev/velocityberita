@@ -102,10 +102,8 @@ class mjlah_popular_posts_widget extends WP_Widget {
             if($layout=='layout1'):
                 ?>            
                 <div class="d-flex border-bottom pb-2 mb-2">
-                    <div class="thumb-post">
-                        <a href="<?php echo get_the_permalink(); ?>" class="d-inline-block mr-2">
-                        <?php echo get_the_post_thumbnail( get_the_ID(),array($lebar_img,$tinggi_img), array( 'class' => 'w-100 img-fluid' ) );?>
-                        </a>                            
+                    <div class="thumb-post">                
+                        <?php echo mjlah_thumbnail( get_the_ID(),array($lebar_img,$tinggi_img), array( 'class' => 'w-100 img-fluid','class-link' => 'd-block mr-2' ) );?>            
                     </div>
                     <div class="content-post">
                         <a href="<?php echo get_the_permalink(); ?>" class="title-post font-weight-bold h4 d-block"><?php echo get_the_title(); ?></a>
