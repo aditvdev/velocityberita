@@ -204,3 +204,112 @@ function mjlah_prefix_category_title( $title ) {
     return $title;
 }
 add_filter( 'get_the_archive_title', 'mjlah_prefix_category_title' );
+
+
+/**
+ * function to get button social sharing
+ * use $list as array social media , ['facebook','twitter'] 
+ */
+function mjlah_sharing($list = '') {
+    if ( ! $list ) {
+		$list = ['facebook','twitter'];
+    }
+    
+    $media_url  = get_the_post_thumbnail_url();
+    $post_link  = get_permalink(); 
+    $post_title = get_the_title();
+
+	if ( '' !== $post_link ) {
+		$permalink = $post_link;
+	} else {
+		$permalink = ( class_exists( 'WooCommerce' ) && is_checkout() || is_front_page() ) ? get_bloginfo( 'url' ) : get_permalink();
+
+		if ( class_exists( 'BuddyPress' ) && is_buddypress() ) {
+			$permalink = bp_get_requested_url();
+		}
+	}
+
+    $permalink = rawurlencode( $permalink );
+    
+    if ( '' !== $post_title ) {
+		$title = $post_title;
+	} else {
+		$title = class_exists( 'WooCommerce' ) && is_checkout() || is_front_page() ? get_bloginfo( 'name' ) : get_the_title();
+	}
+
+    $title = rawurlencode( wp_strip_all_tags( html_entity_decode( $title, ENT_QUOTES, 'UTF-8' ) ) );
+    
+    $twitter_username = get_bloginfo( 'name' );
+
+    $button = [];
+
+    foreach($list as $network) {
+
+        $link   = '';
+        $icon   = '';
+        $color  = '';
+
+        switch ( $network ) {
+            case 'facebook' :
+                $link   = sprintf( 'http://www.facebook.com/sharer.php?u=%1$s&t=%2$s', esc_attr( $permalink ), esc_attr( $title ) );
+                $color  = '#4065ad';
+                break;
+            case 'twitter' :
+                $link   = sprintf( 'http://twitter.com/share?text=%2$s&url=%1$s&via=%3$s', esc_attr( $permalink ), esc_attr( $title ), ! empty( $twitter_username ) ? esc_attr( $twitter_username ) : get_bloginfo( 'name' ) );
+                $color  = '#1c9ceb';
+                break;
+            case 'whatsapp' :
+                $link   = sprintf( 'https://wa.me/?text=%1$s', esc_attr( $permalink ));
+                $color  = '#25cb64';
+                break;
+            case 'pinterest' :
+                $link   = $media_url ? sprintf( 'http://www.pinterest.com/pin/create/button/?url=%1$s&media=%2$s&description=%3$s', esc_attr( $permalink ), esc_attr( urlencode( $media_url ) ), esc_attr( $title ) ) : '#';
+                $color  = '#c51f27';
+                break;
+            case 'email' :
+                $link   = sprintf( 'mailto:?subject=%1$s &amp;body=Check out this site %1$s', esc_attr( $title ), esc_attr( $permalink ) );
+                $icon   = 'envelope';
+                break;
+            case 'linkedin' :
+                $link   = sprintf( 'http://www.linkedin.com/shareArticle?mini=true&url=%1$s&title=%2$s', esc_attr( $permalink ), esc_attr( $title ) );
+                $color  = '#4065ad';
+                break;
+            case 'tumblr' :
+                $link   = sprintf( 'https://www.tumblr.com/share?v=3&u=%1$s&t=%2$s', esc_attr( $permalink ), esc_attr( $title ) );
+                $color  = '#0072ae';
+                break;
+            case 'blogger' :
+                $link   = sprintf( 'https://www.blogger.com/blog_this.pyra?t&u=%1$s&n=%2$s', esc_attr( $permalink ), esc_attr( $title ) );
+                $icon   = 'rss';    
+                $color  = '#f48120';
+                break;            
+            case 'gmail' :
+                $link   = sprintf( 'https://mail.google.com/mail/u/0/?view=cm&fs=1&su=%2$s&body=%1$s&ui=2&tf=1', esc_attr( $permalink ), esc_attr( $title ) );
+                $icon   = 'google';    
+                $color  = '#d04041';
+                break;
+            case 'reddit' :
+                $link   = sprintf( 'http://www.reddit.com/submit?url=%1$s&title=%2$s', esc_attr( $permalink ), esc_attr( $title ) );
+                $color  = '#f74300';
+                break;
+        }
+
+        $icon   = $icon?$icon:$network;
+        $color  = $color?'style="background: '.$color.';border-color: '.$color.';"':'';
+
+        $outputlink = '<a href="%1$s" title="%2$s" target="_blank" class="btn btn-sm btn-secondary mr-1 mb-1 rounded-0 py-1 px-2" %3$s><i class="fa fa-%4$s"></i></a>';		
+		$outputlink = sprintf(
+			$outputlink,
+			$link,
+            'Share to '.$network,
+            $color,
+            $icon,
+        );
+        
+        $button[] = $outputlink;
+
+    }
+
+    printf("<div class='sharing-button'>%s</div>",implode('',$button));
+
+}

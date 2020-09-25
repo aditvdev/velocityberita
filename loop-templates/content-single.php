@@ -46,4 +46,6 @@ defined( 'ABSPATH' ) || exit;
 
 	</footer><!-- .entry-footer -->
 
+	<?php mjlah_sharing(['facebook','twitter','whatsapp','pinterest','email','linkedin']); ?>
+
 </article><!-- #post-## -->
