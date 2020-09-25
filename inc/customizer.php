@@ -20,371 +20,412 @@ Kirki::add_config( 'mjlah_config', array(
 	'option_type' => 'theme_mod',
 ) );
 
-
-// Add field to global section
-Kirki::add_section( 'global_section', array(
-	'title'    => __( 'Pengaturan Umum', 'mjlah' ),
-	'priority' => 10,
-) );
-Kirki::add_field( 'mjlah_config', [
-	'type'        => 'slider',
-	'settings'    => 'lebar_website',
-	'label'       => esc_html__( 'Lebar Website', 'mjlah' ),
-	'section'     => 'global_section',
-	'default'     => 1100,
-	'transport'   => 'auto',
-	'choices'     => [
-		'min'  => 600,
-		'max'  => 2300,
-		'step' => 1,
-	],
-    'output' => array(
-        array(
-            'element'  => '.container',
-            'property' => 'max-width',
-            'units'    => 'px',
-        ),
-    ),
-] );
-
-Kirki::add_field( 'mjlah_config', [
-	'type'        => 'typography',
-	'settings'    => 'typography_setting',
-	'label'       => esc_html__( 'Typography Umum', 'mjlah' ),
-	'section'     => 'global_section',
-	'default'     => [
-		'font-family'    => '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif',
-		'variant'        => 'regular',
-		'font-size'      => '14px',
-		'line-height'    => '1.5',
-		'letter-spacing' => '0',
-		'color'          => '#333333',
-		'text-transform' => 'none',
-		'text-align'     => 'left',
-	],
+// Add Panel global
+Kirki::add_panel('panel_global', [
 	'priority'    => 10,
-	'transport'   => 'auto',
-	'output'      => [
-		[
-			'element' => 'body',
-		],
-	],
-] );
+	'title'       => esc_html__('Global', 'mjlah'),
+	'description' => esc_html__('', 'mjlah'),
+]);
 
-Kirki::add_field( 'mjlah_config', [
-    'type'        => 'multicolor',
-    'settings'    => 'colortheme_setting',
-    'label'       => esc_html__( 'Warna Utama Website', 'mjlah' ),
-    'section'     => 'global_section',
-    'priority'    => 10,
-    'choices'     => [
-		'primary' => esc_html__( 'Primary', 'mjlah' ),
-		'light'	  => esc_html__( 'Light', 'mjlah' ),
-    ],
-    'default'     => [
-        'primary' => '#000000',
-        'light'   => '#333333',
-	],	
-	'output'    => [
-		[
-			'choice'    => 'primary',
-			'element'   => ':root',
-			'property'  => '--primary',
-		],
-		[
-			'choice'    => 'light',
-			'element'   => ':root',
-			'property'  => '--light',
-		],
-	],
-] );
+	// Add field Site Identity
+	Kirki::add_section('title_tagline', [
+		'panel'    => 'panel_global',
+		'title'    => __('Site Identity', 'mjlah'),
+		'priority' => 10,
+	]);
 
-Kirki::add_field( 'mjlah_config', [
-    'type'        => 'multicolor',
-    'settings'    => 'link_setting',
-    'label'       => esc_html__( 'Warna Link', 'mjlah' ),
-    'section'     => 'global_section',
-    'priority'    => 10,
-    'choices'     => [
-        'link'    => esc_html__( 'Color', 'mjlah' ),
-        'hover'   => esc_html__( 'Hover', 'mjlah' ),
-        'active'  => esc_html__( 'Active', 'mjlah' ),
-    ],
-    'default'     => [
-        'link'    => '#1e73be',
-        'hover'   => '#333333',
-        'active'  => '#1e73be',
-	],	
-	'output'    => [
-		[
-			'choice'    => 'link',
-			'element'   => 'a',
-			'property'  => 'color',
-		],
-		[
-			'choice'    => 'hover',
-			'element'   => 'a:hover',
-			'property'  => 'color',
-		],
-		[
-			'choice'    => 'active',
-			'element'   => 'a:active',
-			'property'  => 'color',
-		],
-	],
-] );
-
-Kirki::add_field( 'mjlah_config', [
-	'type'        => 'background',
-	'settings'    => 'background_setting',
-	'label'       => esc_html__( 'Background Website', 'mjlah' ),
-	'description' => esc_html__( '', 'mjlah' ),
-	'section'     => 'global_section',
-	'default'     => [
-		'background-color'      => '#F5F5F5',
-		'background-image'      => '',
-		'background-repeat'     => 'repeat',
-		'background-position'   => 'center center',
-		'background-size'       => 'cover',
-		'background-attachment' => 'scroll',
-	],
-	'transport'   => 'auto',
-	'output'      => [
-		[
-			'element' => 'body',
-		],
-	],
-] );
-
-// Add field to header section
-Kirki::add_section( 'header_section', array(
-	'title'    => __( 'Pengaturan Header', 'mjlah' ),
-	'priority' => 10,
-) );
-
-Kirki::add_field( 'mjlah_config', [
-	'type'        => 'select',
-	'settings'    => 'lebar_container_header',
-	'label'       => esc_html__( 'Lebar Konten Header', 'mjlah' ),
-	'section'     => 'header_section',
-	'default'     => 'fixed',
-	'description' => esc_html__( 'lebar header', 'mjlah' ),
-	'priority'    => 10,
-	'multiple'    => 1,
-	'choices'     => [
-		'fixed' => esc_html__( 'Fixed', 'mjlah' ),
-		'full' 	=> esc_html__( 'Full', 'mjlah' ),
-	],
-] ); 
-
-Kirki::add_field( 'mjlah_config', [
-	'type'        => 'background',
-	'settings'    => 'background_block_header',
-	'label'       => esc_html__( 'Background Block header', 'mjlah' ),
-	'description' => esc_html__( 'Atur background header', 'mjlah' ),
-	'section'     => 'header_section',
-	'default'     => [
-		'background-color'      => '#ffffff',
-		'background-image'      => '',
-		'background-repeat'     => 'repeat',
-		'background-position'   => 'center center',
-		'background-size'       => 'cover',
-		'background-attachment' => 'scroll',
-	],
-	'transport'   => 'auto',
-	'output'      => [
-		[
-			'element' => array('.block-header'),
-		],
-	],
-] );
-
-Kirki::add_field( 'mjlah_config', [
-	'type'        => 'typography',
-	'settings'    => 'menu_setting',
-	'label'       => esc_html__( 'Menu Typography', 'mjlah' ),
-	'section'     => 'header_section',
-	'default'     => [
-		'font-family'    => '',
-		'variant'        => '',
-		'font-size'      => '16px',
-		'line-height'    => '1.5',
-		'letter-spacing' => '0',
-		'color'          => '#ffffff',
-		'text-transform' => 'uppercase',
-		'text-align'     => 'left',
-	],
-	'priority'    => 10,
-	'transport'   => 'auto',
-	'output'      => [
-		[
-			'element' => '#main-menu',
-		],
-	],
-] );
-
-Kirki::add_field( 'mjlah_config', [
-	'type'        => 'background',
-	'settings'    => 'background_menu_header',
-	'label'       => esc_html__( 'Background Menu header', 'mjlah' ),
-	'description' => esc_html__( 'Atur background Menu header', 'mjlah' ),
-	'section'     => 'header_section',
-	'default'     => [
-		'background-color'      => '#333333',
-		'background-image'      => '',
-		'background-repeat'     => 'repeat',
-		'background-position'   => 'center center',
-		'background-size'       => 'cover',
-		'background-attachment' => 'scroll',
-	],
-	'transport'   => 'auto',
-	'output'      => [
-		[
-			'element' => array(
-				'.header-menu',
-				'.header-menu #navbarNavDropdown',
-				'.header-menu .dropdown-menu',
-				'.dropdown-item:focus',
-				'.dropdown-item:hover'
+	// Add field to global container
+	Kirki::add_section( 'global_container', array(
+		'panel'    => 'panel_global',
+		'title'    => __( 'Width', 'mjlah' ),
+		'priority' => 10,
+	) );
+		Kirki::add_field( 'mjlah_config', [
+			'type'        => 'slider',
+			'settings'    => 'width_website',
+			'label'       => esc_html__( 'Width Website', 'mjlah' ),
+			'section'     => 'global_container',
+			'default'     => 1100,
+			'transport'   => 'auto',
+			'choices'     => [
+				'min'  => 600,
+				'max'  => 2300,
+				'step' => 1,
+			],
+			'output' => array(
+				array(
+					'element'  => '.container',
+					'property' => 'max-width',
+					'units'    => 'px',
+				),
 			),
-		],
-	],
-] );
+		] );		
+		Kirki::add_field( 'mjlah_config', [
+			'type'        => 'dimensions',
+			'settings'    => 'dimensions_main_block_setting',
+			'label'       => esc_html__( 'Margin Main Block', 'mjlah' ),
+			'description' => esc_html__( 'Atur Jarak Block Utama', 'mjlah' ),
+			'section'     => 'global_container',
+			'default'     => [
+				'padding-top'    => '1em',
+				'padding-bottom' => '1em',
+				'padding-left'   => '1em',
+				'padding-right'  => '1em',
+		
+				'margin-top'    => '0em',
+				'margin-bottom' => '0em',
+				// 'margin-left'   => '0em',
+				// 'margin-right'  => '0em',
+			],
+			'transport'   => 'auto',
+			'output'      => [
+				[
+					'element' => array('#wrapper-main > .wrapper > #content'),
+				],
+			],
+		] );
+		Kirki::add_field( 'mjlah_config', [
+			'type'        => 'background',
+			'settings'    => 'background_main_block_setting',
+			'label'       => esc_html__( 'Background Main Block', 'mjlah' ),
+			'description' => esc_html__( 'Atur background Block Konten Utama', 'mjlah' ),
+			'section'     => 'global_container',
+			'default'     => [
+				'background-color'      => '#ffffff',
+				'background-image'      => '',
+				'background-repeat'     => 'repeat',
+				'background-position'   => 'center center',
+				'background-size'       => 'cover',
+				'background-attachment' => 'scroll',
+			],
+			'transport'   => 'auto',
+			'output'      => [
+				[
+					'element' => array('#wrapper-main > .wrapper > #content'),
+				],
+			],
+		] );
+		
+		
+	// Add field to global color
+	Kirki::add_section( 'global_color', array(
+		'panel'    => 'panel_global',
+		'title'    => __( 'Color', 'mjlah' ),
+		'priority' => 10,
+	) );
+		Kirki::add_field( 'mjlah_config', [
+			'type'        => 'multicolor',
+			'settings'    => 'colortheme_setting',
+			'label'       => esc_html__( 'Color Themes', 'mjlah' ),
+			'section'     => 'global_color',
+			'priority'    => 10,
+			'choices'     => [
+				'primary' => esc_html__( 'Primary', 'mjlah' ),
+			],
+			'default'     => [
+				'primary' => '#000000',
+				'light'   => '#333333',
+			],	
+			'output'    => [
+				[
+					'choice'    => 'primary',
+					'element'   => ':root',
+					'property'  => '--primary',
+				],
+			],
+		] );
+		Kirki::add_field( 'mjlah_config', [
+			'type'        => 'multicolor',
+			'settings'    => 'colorlink_setting',
+			'label'       => esc_html__( 'Color Link', 'mjlah' ),
+			'section'     => 'global_color',
+			'priority'    => 10,
+			'choices'     => [
+				'link'    => esc_html__( 'Color', 'mjlah' ),
+				'hover'   => esc_html__( 'Hover', 'mjlah' ),
+				'active'  => esc_html__( 'Active', 'mjlah' ),
+			],
+			'default'     => [
+				'link'    => '#1e73be',
+				'hover'   => '#333333',
+				'active'  => '#1e73be',
+			],	
+			'output'    => [
+				[
+					'choice'    => 'link',
+					'element'   => 'a',
+					'property'  => 'color',
+				],
+				[
+					'choice'    => 'hover',
+					'element'   => 'a:hover',
+					'property'  => 'color',
+				],
+				[
+					'choice'    => 'active',
+					'element'   => 'a:active',
+					'property'  => 'color',
+				],
+			],
+		] );
+		Kirki::add_field( 'mjlah_config', [
+			'type'        => 'background',
+			'settings'    => 'background_website',
+			'label'       => esc_html__( 'Background Website', 'mjlah' ),
+			'description' => esc_html__( '', 'mjlah' ),
+			'section'     => 'global_color',
+			'default'     => [
+				'background-color'      => '#F5F5F5',
+				'background-image'      => '',
+				'background-repeat'     => 'repeat',
+				'background-position'   => 'center center',
+				'background-size'       => 'cover',
+				'background-attachment' => 'scroll',
+			],
+			'transport'   => 'auto',
+			'output'      => [
+				[
+					'element' => 'body',
+				],
+			],
+		] );
 
-Kirki::add_field( 'mjlah_config', [
-    'type'        => 'multicolor',
-    'settings'    => 'link_menu_header_setting',
-    'label'       => esc_html__( 'Warna Link Menu Header', 'mjlah' ),
-    'section'     => 'header_section',
-    'priority'    => 10,
-    'choices'     => [
-        'link'    => esc_html__( 'Color', 'mjlah' ),
-        'hover'   => esc_html__( 'Hover', 'mjlah' ),
-        'active'  => esc_html__( 'Active', 'mjlah' ),
-    ],
-    'default'     => [
-        'link'    => '#ffffff',
-        'hover'   => '#f00000',
-        'active'  => '#ffffff',
-	],	
-	'output'    => [
-		[
-			'choice'    => 'link',
-			'element'   => '.header-menu a,.header-menu .fa',
-			'property'  => 'color',
-		],
-		[
-			'choice'    => 'hover',
-			'element'   => '.header-menu a:hover,.header-menu .nav-link:hover .fa',
-			'property'  => 'color',
-		],
-		[
-			'choice'    => 'active',
-			'element'   => '.header-menu a:active,.header-menu .nav-link:active .fa',
-			'property'  => 'color',
-		],
-	],
-] );
+	// Add field to global color
+	Kirki::add_section( 'global_typography', array(
+		'panel'    => 'panel_global',
+		'title'    => __( 'Typography', 'mjlah' ),
+		'priority' => 10,
+	) );
+		Kirki::add_field( 'mjlah_config', [
+			'type'        => 'typography',
+			'settings'    => 'typography_setting',
+			'label'       => esc_html__( 'Typography Website', 'mjlah' ),
+			'section'     => 'global_typography',
+			'default'     => [
+				'font-family'    => '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif',
+				'variant'        => 'regular',
+				'font-size'      => '14px',
+				'line-height'    => '1.5',
+				'letter-spacing' => '0',
+				'color'          => '#333333',
+				'text-transform' => 'none',
+				'text-align'     => 'left',
+			],
+			'priority'    => 10,
+			'transport'   => 'auto',
+			'output'      => [
+				[
+					'element' => 'body',
+				],
+			],
+		] );	
+	// Add field to global color
+	Kirki::add_section( 'global_block', array(
+		'panel'    => 'panel_global',
+		'title'    => __( 'Block Setting', 'mjlah' ),
+		'priority' => 10,
+	) );
+		Kirki::add_field( 'mjlah_config', [
+			'type'        => 'background',
+			'settings'    => 'background_block_setting',
+			'label'       => esc_html__( 'Background Block', 'mjlah' ),
+			'description' => esc_html__( 'Atur background (widget, heading, article, dll)', 'mjlah' ),
+			'section'     => 'global_block',
+			'default'     => [
+				'background-color'      => 'rgba(255,255,255,0)',
+				'background-image'      => '',
+				'background-repeat'     => 'repeat',
+				'background-position'   => 'center center',
+				'background-size'       => 'cover',
+				'background-attachment' => 'scroll',
+			],
+			'transport'   => 'auto',
+			'output'      => [
+				[
+					'element' => array('.block-customizer'),
+				],
+			],
+		] );
+		
+		Kirki::add_field( 'mjlah_config', [
+			'type'        => 'dimensions',
+			'settings'    => 'dimensions_block_setting',
+			'label'       => esc_html__( 'Margin Block', 'mjlah' ),
+			'description' => esc_html__( 'Atur Jarak Block (widget, heading, article, dll)', 'mjlah' ),
+			'section'     => 'global_block',
+			'default'     => [
+				'padding-top'    => '0em',
+				'padding-bottom' => '0em',
+				'padding-left'   => '0em',
+				'padding-right'  => '0em',
+		
+				'margin-top'    => '0em',
+				'margin-bottom' => '2em',
+				'margin-left'   => '0em',
+				'margin-right'  => '0em',
+			],
+			'transport'   => 'auto',
+			'output'      => [
+				[
+					'element' => array('.block-customizer'),
+				],
+			],
+		] );
+	
 
-// Add field to block section
-Kirki::add_section( 'block_section', array(
-	'title'    => __( 'Pengaturan Block', 'mjlah' ),
-	'priority' => 10,
-) );
+// Add Panel header
+Kirki::add_panel('panel_header', [
+	'priority'    => 10,
+	'title'       => esc_html__('Header', 'mjlah'),
+	'description' => esc_html__('', 'mjlah'),
+]);
 
-Kirki::add_field( 'mjlah_config', [
-	'type'        => 'background',
-	'settings'    => 'background_main_block_setting',
-	'label'       => esc_html__( 'Background Main Block', 'mjlah' ),
-	'description' => esc_html__( 'Atur background Block Konten Utama', 'mjlah' ),
-	'section'     => 'block_section',
-	'default'     => [
-		'background-color'      => '#ffffff',
-		'background-image'      => '',
-		'background-repeat'     => 'repeat',
-		'background-position'   => 'center center',
-		'background-size'       => 'cover',
-		'background-attachment' => 'scroll',
-	],
-	'transport'   => 'auto',
-	'output'      => [
-		[
-			'element' => array('#wrapper-main > .wrapper > #content'),
-		],
-	],
-] );
+	// Add field to header width
+	Kirki::add_section( 'header_width', array(
+		'panel'    => 'panel_header',
+		'title'    => __( 'Width', 'mjlah' ),
+		'priority' => 10,
+	) );
+		Kirki::add_field( 'mjlah_config', [
+			'type'        => 'select',
+			'settings'    => 'lebar_container_header',
+			'label'       => esc_html__( 'Width Container Header', 'mjlah' ),
+			'section'     => 'header_section',
+			'default'     => 'fixed',
+			'description' => esc_html__( 'Container header', 'mjlah' ),
+			'priority'    => 10,
+			'multiple'    => 1,
+			'choices'     => [
+				'fixed' => esc_html__( 'Fixed', 'mjlah' ),
+				'full' 	=> esc_html__( 'Full', 'mjlah' ),
+			],
+		] ); 
 
-Kirki::add_field( 'mjlah_config', [
-	'type'        => 'dimensions',
-	'settings'    => 'dimensions_main_block_setting',
-	'label'       => esc_html__( 'Margin Main Block', 'mjlah' ),
-	'description' => esc_html__( 'Atur Jarak Block Utama', 'mjlah' ),
-	'section'     => 'block_section',
-	'default'     => [
-		'padding-top'    => '1em',
-		'padding-bottom' => '1em',
-		'padding-left'   => '1em',
-		'padding-right'  => '1em',
+	// Add field to header width
+	Kirki::add_section( 'header_color', array(
+		'panel'    => 'panel_header',
+		'title'    => __( 'Color', 'mjlah' ),
+		'priority' => 10,
+	) );
+		Kirki::add_field( 'mjlah_config', [
+			'type'        => 'background',
+			'settings'    => 'background_block_header',
+			'label'       => esc_html__( 'Background Block header', 'mjlah' ),
+			'description' => esc_html__( 'Setting background color header', 'mjlah' ),
+			'section'     => 'header_color',
+			'default'     => [
+				'background-color'      => '#ffffff',
+				'background-image'      => '',
+				'background-repeat'     => 'repeat',
+				'background-position'   => 'center center',
+				'background-size'       => 'cover',
+				'background-attachment' => 'scroll',
+			],
+			'transport'   => 'auto',
+			'output'      => [
+				[
+					'element' => array('.block-header'),
+				],
+			],
+		] );
+		
+	// Add field to header menu
+	Kirki::add_section( 'header_menu', array(
+		'panel'    => 'panel_header',
+		'title'    => __( 'Menu', 'mjlah' ),
+		'priority' => 10,
+	) );
+		Kirki::add_field( 'mjlah_config', [
+			'type'        => 'multicolor',
+			'settings'    => 'link_menu_header_setting',
+			'label'       => esc_html__( 'Color Link Menu', 'mjlah' ),
+			'section'     => 'header_menu',
+			'priority'    => 10,
+			'choices'     => [
+				'link'    => esc_html__( 'Color', 'mjlah' ),
+				'hover'   => esc_html__( 'Hover', 'mjlah' ),
+				'active'  => esc_html__( 'Active', 'mjlah' ),
+			],
+			'default'     => [
+				'link'    => '#ffffff',
+				'hover'   => '#f00000',
+				'active'  => '#ffffff',
+			],	
+			'output'    => [
+				[
+					'choice'    => 'link',
+					'element'   => '.header-menu a,.header-menu .fa',
+					'property'  => 'color',
+				],
+				[
+					'choice'    => 'hover',
+					'element'   => '.header-menu a:hover,.header-menu .nav-link:hover .fa',
+					'property'  => 'color',
+				],
+				[
+					'choice'    => 'active',
+					'element'   => '.header-menu a:active,.header-menu .nav-link:active .fa',
+					'property'  => 'color',
+				],
+			],
+		] );
+		Kirki::add_field( 'mjlah_config', [
+			'type'        => 'background',
+			'settings'    => 'background_menu_header',
+			'label'       => esc_html__( 'Background Menu', 'mjlah' ),
+			'description' => esc_html__( 'Setting background color Menu header', 'mjlah' ),
+			'section'     => 'header_menu',
+			'default'     => [
+				'background-color'      => '#333333',
+				'background-image'      => '',
+				'background-repeat'     => 'repeat',
+				'background-position'   => 'center center',
+				'background-size'       => 'cover',
+				'background-attachment' => 'scroll',
+			],
+			'transport'   => 'auto',
+			'output'      => [
+				[
+					'element' => array(
+						'.header-menu',
+						'.header-menu #navbarNavDropdown',
+						'.header-menu .dropdown-menu',
+						'.dropdown-item:focus',
+						'.dropdown-item:hover'
+					),
+				],
+			],
+		] );
 
-		'margin-top'    => '0em',
-		'margin-bottom' => '0em',
-		// 'margin-left'   => '0em',
-		// 'margin-right'  => '0em',
-	],
-	'transport'   => 'auto',
-	'output'      => [
-		[
-			'element' => array('#wrapper-main > .wrapper > #content'),
-		],
-	],
-] );
-
-Kirki::add_field( 'mjlah_config', [
-	'type'        => 'background',
-	'settings'    => 'background_block_setting',
-	'label'       => esc_html__( 'Background Block', 'mjlah' ),
-	'description' => esc_html__( 'Atur background (widget, heading, article, dll)', 'mjlah' ),
-	'section'     => 'block_section',
-	'default'     => [
-		'background-color'      => 'rgba(255,255,255,0)',
-		'background-image'      => '',
-		'background-repeat'     => 'repeat',
-		'background-position'   => 'center center',
-		'background-size'       => 'cover',
-		'background-attachment' => 'scroll',
-	],
-	'transport'   => 'auto',
-	'output'      => [
-		[
-			'element' => array('.block-customizer'),
-		],
-	],
-] );
-
-Kirki::add_field( 'mjlah_config', [
-	'type'        => 'dimensions',
-	'settings'    => 'dimensions_block_setting',
-	'label'       => esc_html__( 'Margin Block', 'mjlah' ),
-	'description' => esc_html__( 'Atur Jarak Block (widget, heading, article, dll)', 'mjlah' ),
-	'section'     => 'block_section',
-	'default'     => [
-		'padding-top'    => '0em',
-		'padding-bottom' => '0em',
-		'padding-left'   => '0em',
-		'padding-right'  => '0em',
-
-		'margin-top'    => '0em',
-		'margin-bottom' => '2em',
-		'margin-left'   => '0em',
-		'margin-right'  => '0em',
-	],
-	'transport'   => 'auto',
-	'output'      => [
-		[
-			'element' => array('.block-customizer'),
-		],
-	],
-] );
+	// Add field to header color
+	Kirki::add_section( 'header_typography', array(
+		'panel'    => 'panel_header',
+		'title'    => __( 'Typography', 'mjlah' ),
+		'priority' => 10,
+	) );
+		Kirki::add_field( 'mjlah_config', [
+			'type'        => 'typography',
+			'settings'    => 'menu_setting',
+			'label'       => esc_html__( 'Menu Typography', 'mjlah' ),
+			'section'     => 'header_typography',
+			'default'     => [
+				'font-family'    => '',
+				'variant'        => '',
+				'font-size'      => '16px',
+				'line-height'    => '1.5',
+				'letter-spacing' => '0',
+				'color'          => '#ffffff',
+				'text-transform' => 'uppercase',
+				'text-align'     => 'left',
+			],
+			'priority'    => 10,
+			'transport'   => 'auto',
+			'output'      => [
+				[
+					'element' => '#main-menu',
+				],
+			],
+		] );
 
 //add field to footer section
 Kirki::add_section( 'footer_section', array(

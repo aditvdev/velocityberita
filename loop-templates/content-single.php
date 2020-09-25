@@ -15,7 +15,7 @@ defined( 'ABSPATH' ) || exit;
 
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 
-		<div class="entry-meta">
+		<div class="entry-meta my-3">
 
 			<?php mjlah_posted_on(); ?>
 
@@ -40,7 +40,7 @@ defined( 'ABSPATH' ) || exit;
 
 	</div><!-- .entry-content -->
 
-	<footer class="entry-footer">
+	<footer class="entry-footer my-4">
 
 		<?php mjlah_entry_footer(); ?>
 

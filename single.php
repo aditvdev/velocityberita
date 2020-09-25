@@ -31,12 +31,16 @@ $container = get_theme_mod( 'mjlah_container_type' );
 
 					get_template_part( 'loop-templates/content', 'single' );
 
+					//get info author
 					mjlah_post_author();
 
+					//navigation post,
 					mjlah_post_nav();
 					
 					//Related Post
-					mjlah_related_post();
+					echo '<div class="my-4">';
+						mjlah_related_post();
+					echo '</div>';
 
 					// If comments are open or we have at least one comment, load up the comment template.
 					if ( comments_open() || get_comments_number() ) {
