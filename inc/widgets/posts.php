@@ -110,9 +110,7 @@ class mjlah_posts_widget extends WP_Widget {
                 ?>            
                 <div class="d-flex border-bottom pb-2 mb-2">
                     <div class="thumb-post">
-                    <!-- <a href="<?php echo get_the_permalink(); ?>" class="d-block mr-3"> -->
-                        <?php echo mjlah_thumbnail( get_the_ID(),array($lebar_img,$tinggi_img), array( 'class' => 'w-100 img-fluid' ) );?>
-                    <!-- </a> -->
+                        <?php echo mjlah_thumbnail( get_the_ID(),array($lebar_img,$tinggi_img), array( 'class' => 'w-100 img-fluid','class-link' => 'd-block mr-3' ) );?>
                     </div>
                     <div class="content-post">
                         <a href="<?php echo get_the_permalink(); ?>" class="title-post font-weight-bold h4 d-block"><?php echo get_the_title(); ?></a>
@@ -142,9 +140,7 @@ class mjlah_posts_widget extends WP_Widget {
                 ?>            
                 <div class="border-bottom pb-2 mb-2">
                     <div class="thumb-post">
-                        <a href="<?php echo get_the_permalink(); ?>" class="d-block">
-                        <?php echo get_the_post_thumbnail( get_the_ID(),'medium', array( 'class' => 'w-100 img-fluid' ) );?>
-                        </a>                            
+                        <?php echo mjlah_thumbnail( get_the_ID(),array($lebar_img,$tinggi_img), array( 'class' => 'w-100 img-fluid','class-link' => 'd-block' ) );?>                           
                     </div>
                     <div class="content-post">
                         <a href="<?php echo get_the_permalink(); ?>" class="title-post font-weight-bold h4 d-block"><?php echo get_the_title(); ?></a>
@@ -174,10 +170,8 @@ class mjlah_posts_widget extends WP_Widget {
             elseif($layout=='gallery'): ?>
 
                 <div class="gallery-posts position-relative">
-                    <a href="<?php echo get_the_permalink(); ?>" class="d-block">
-                        <?php echo get_the_post_thumbnail( get_the_ID(),array($lebar_img,$tinggi_img), array( 'class' => 'w-100 img-fluid' ) );?>
-                        <div class="mask-post"><?php echo get_the_title(); ?></div>
-                    </a>                            
+                        <?php echo mjlah_thumbnail( get_the_ID(),array($lebar_img,$tinggi_img), array( 'class' => 'w-100 img-fluid','class-link' => 'd-block' ) );?>
+                        <a href="<?php echo get_the_permalink(); ?>" class="mask-post"><span><?php echo get_the_title(); ?></span></a>
                 </div>
 
            <?php
@@ -198,10 +192,8 @@ class mjlah_posts_widget extends WP_Widget {
                 ?>            
                 <div class="border-bottom pb-2 mb-2">
                     <?php if($i==1):?>
-                    <div class="thumb-post">
-                        <a href="<?php echo get_the_permalink(); ?>" class="d-block">
-                        <?php echo get_the_post_thumbnail( get_the_ID(),'medium', array( 'class' => 'w-100 img-fluid' ) );?>
-                        </a>                            
+                    <div class="thumb-post"> 
+                        <?php echo mjlah_thumbnail( get_the_ID(),'medium', array( 'class' => 'w-100 img-fluid','class-link' => 'd-block' ) );?>                         
                     </div>
                     <?php endif;?>
                     <div class="content-post">

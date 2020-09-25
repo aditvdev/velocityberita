@@ -197,10 +197,15 @@ blockquote:before {
    right: 0;
    background: rgb(0 0 0 / 57%);
    padding: .5rem;
-   line-height: 1rem;
    color: #fff;
-   max-height: 65px;
+}
+.widget_mjlah_posts_widget .mask-post span {
+   line-height: 1.2rem;
+   color: #fff;
+   max-height: 60px;
+   display: block;
    overflow: hidden;
+   text-decoration: none;
 }
 .widget_search #s {
    border-radius: .25rem;
