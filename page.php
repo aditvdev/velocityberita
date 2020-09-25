@@ -25,7 +25,7 @@ $container = get_theme_mod( 'mjlah_container_type' );
 
 		<main class="site-main" id="main">
 
-			<?php the_breadcrumbs();?>
+			<?php mjlah_breadcrumbs();?>
 
 			<?php
 			while ( have_posts() ) {

@@ -37,7 +37,7 @@ function custom_get_category_parents( $id, $visited = array() ) {
     }
   
   
-function the_breadcrumbs() {
+function mjlah_breadcrumbs() {
     global $post;
     
     $html = '<ol class="breadcrumb">';

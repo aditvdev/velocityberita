@@ -16,7 +16,7 @@ $container = get_theme_mod( 'mjlah_container_type' );
 
 	<div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
 
-		<?php the_breadcrumbs();?>
+		<?php mjlah_breadcrumbs();?>
 
 		<div class="row">
 
