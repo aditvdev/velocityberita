@@ -11,8 +11,8 @@ defined( 'ABSPATH' ) || exit;
 function mjlah_the_header_content() {
 	$logo = get_theme_mod('custom_logo')?wp_get_attachment_image_src(get_theme_mod('custom_logo'),'full')[0]:'';
 	$lebarheader 	= get_theme_mod('lebar_container_header');
-	$header_full	= $lebarheader=='full'?'block-header py-2':'';
-	$header_fix		= $lebarheader=='fixed'?'block-header py-2':'';
+	$header_full	= $lebarheader=='full'?'block-header':'';
+	$header_fix		= $lebarheader=='fixed'?'block-header':'';
     ?>
         <header id="wrapper-header" class="<?php echo $header_full;?>">	
 
@@ -21,8 +21,17 @@ function mjlah_the_header_content() {
 				<div class="container <?php echo $header_fix;?>">
 
 					<div class="row align-items-center">
+
+						<div class="header-secondary col-12 bg-primary text-white py-2 d-flex justify-content-between">
+							<div class="header-tanggal">
+								tes
+							</div>	
+							<div class="header-sosmed">
+								tes
+							</div>	
+						</div>
 						
-						<div class="header-logo col-12">
+						<div class="header-logo col-12 py-2 py-md-3">
 							<?php if($logo) {
 								$title = '<img src="'.$logo.'" alt="'.get_bloginfo( 'name' ).'">';
 							} else {
