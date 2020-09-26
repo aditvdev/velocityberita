@@ -29,7 +29,7 @@ function mjlah_the_header_content() {
 								$title = get_bloginfo( 'name' );
 							}
 							?>
-							<a class="navbar-brand" rel="home" href="<?php echo get_site_url(); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url"><?php echo $title ?></a>
+							<a class="navbar-brand" rel="home" href="<?php echo home_url(); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url"><?php echo $title ?></a>
 						</div>
 
 						<div class="header-menu col-12">
