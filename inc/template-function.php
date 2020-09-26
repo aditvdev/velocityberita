@@ -50,7 +50,7 @@ add_action( 'manage_page_posts_custom_column', 'mjlah_posts_custom_column_views'
 */
 function mjlah_scrolltotop() {
     $scrollfooter 	= get_theme_mod('scrolltotop_footer');
-    if($scrollfooter=='ya'): ?>
+    if($scrollfooter=='on'): ?>
         <span class="scrolltoTop" onClick="window.scrollTo({top: 100,left: 100,behavior: 'smooth'});">
             <i class="fa fa-caret-up" aria-hidden="true"></i>
         </span>

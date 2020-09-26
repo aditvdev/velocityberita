@@ -290,7 +290,7 @@ Kirki::add_panel('panel_header', [
 			'type'        => 'select',
 			'settings'    => 'lebar_container_header',
 			'label'       => esc_html__( 'Width Container Header', 'mjlah' ),
-			'section'     => 'header_section',
+			'section'     => 'panel_header',
 			'default'     => 'fixed',
 			'description' => esc_html__( 'Container header', 'mjlah' ),
 			'priority'    => 10,
@@ -427,137 +427,166 @@ Kirki::add_panel('panel_header', [
 			],
 		] );
 
-//add field to footer section
-Kirki::add_section( 'footer_section', array(
-	'title'    => __( 'Pengaturan Footer', 'mjlah' ),
-	'priority' => 10,
-) );
-
-Kirki::add_field( 'mjlah_config', [
-	'type'        => 'select',
-	'settings'    => 'reg_widget_footer',
-	'label'       => esc_html__( 'Widget Footer', 'mjlah' ),
-	'section'     => 'footer_section',
-	'default'     => '3',
-	'description' => esc_html__( 'Jumlah Widget footer', 'mjlah' ),
+// Add Panel footer
+Kirki::add_panel('panel_footer', [
 	'priority'    => 10,
-	'multiple'    => 1,
-	'choices'     => [
-		'1' => esc_html__( '1', 'mjlah' ),
-		'2' => esc_html__( '2', 'mjlah' ),
-		'3' => esc_html__( '3', 'mjlah' ),
-		'4' => esc_html__( '4', 'mjlah' ),
-		'5' => esc_html__( '5', 'mjlah' ),
-	],
-] ); 
+	'title'       => esc_html__('Footer', 'mjlah'),
+	'description' => esc_html__('', 'mjlah'),
+]);
+	// Add field to header width
+	Kirki::add_section( 'footer_color', array(
+		'panel'    => 'panel_footer',
+		'title'    => __( 'Color', 'mjlah' ),
+		'priority' => 10,
+	) );
+		Kirki::add_field( 'mjlah_config', [
+			'type'        => 'background',
+			'settings'    => 'background_block_footer',
+			'label'       => esc_html__( 'Background Block Footer', 'mjlah' ),
+			'description' => esc_html__( 'Set background Footer', 'mjlah' ),
+			'section'     => 'footer_color',
+			'default'     => [
+				'background-color'      => '#333333',
+				'background-image'      => '',
+				'background-repeat'     => 'repeat',
+				'background-position'   => 'center center',
+				'background-size'       => 'cover',
+				'background-attachment' => 'scroll',
+			],
+			'transport'   => 'auto',
+			'output'      => [
+				[
+					'element' => array('.block-footer'),
+				],
+			],
+		] );		
+		Kirki::add_field( 'mjlah_config', [
+			'type'        => 'multicolor',
+			'settings'    => 'link_footer',
+			'label'       => esc_html__( 'Color Link footer', 'mjlah' ),
+			'section'     => 'footer_color',
+			'priority'    => 10,
+			'choices'     => [
+				'link'    => esc_html__( 'Color', 'mjlah' ),
+				'hover'   => esc_html__( 'Hover', 'mjlah' ),
+				'active'  => esc_html__( 'Active', 'mjlah' ),
+			],
+			'default'     => [
+				'link'    => '#ffffff',
+				'hover'   => '#f5f5f5',
+				'active'  => '#ffffff',
+			],
+			'output'    => [
+				[
+					'choice'    => 'link',
+					'element'   => '#wrapper-footer a',
+					'property'  => 'color',
+				],
+				[
+					'choice'    => 'hover',
+					'element'   => '#wrapper-footer a:hover',
+					'property'  => 'color',
+				],
+				[
+					'choice'    => 'active',
+					'element'   => '#wrapper-footer a:active',
+					'property'  => 'color',
+				],
+			],
+		] );
 
-Kirki::add_field( 'mjlah_config', [
-	'type'        => 'select',
-	'settings'    => 'lebar_container_footer',
-	'label'       => esc_html__( 'Lebar Konten Footer', 'mjlah' ),
-	'section'     => 'footer_section',
-	'default'     => 'fixed',
-	'description' => esc_html__( 'lebar footer', 'mjlah' ),
-	'priority'    => 10,
-	'multiple'    => 1,
-	'choices'     => [
-		'fixed' => esc_html__( 'Fixed', 'mjlah' ),
-		'full' 	=> esc_html__( 'Full', 'mjlah' ),
-	],
-] ); 
+	//add field to footer widget
+	Kirki::add_section( 'footer_widget', array(
+		'panel'    => 'panel_footer',
+		'title'    => __( 'Widget', 'mjlah' ),
+		'priority' => 10,
+	) );
+		Kirki::add_field( 'mjlah_config', [
+			'type'        => 'select',
+			'settings'    => 'reg_widget_footer',
+			'label'       => esc_html__( 'Widget Footer', 'mjlah' ),
+			'section'     => 'footer_widget',
+			'default'     => '3',
+			'description' => esc_html__( 'Number of footer widgets', 'mjlah' ),
+			'priority'    => 10,
+			'multiple'    => 1,
+			'choices'     => [
+				'1' => esc_html__( '1', 'mjlah' ),
+				'2' => esc_html__( '2', 'mjlah' ),
+				'3' => esc_html__( '3', 'mjlah' ),
+				'4' => esc_html__( '4', 'mjlah' ),
+				'5' => esc_html__( '5', 'mjlah' ),
+			],
+		] ); 
 
-Kirki::add_field( 'mjlah_config', [
-	'type'        => 'background',
-	'settings'    => 'background_block_footer',
-	'label'       => esc_html__( 'Background Block Footer', 'mjlah' ),
-	'description' => esc_html__( 'Atur background Footer', 'mjlah' ),
-	'section'     => 'footer_section',
-	'default'     => [
-		'background-color'      => '#333333',
-		'background-image'      => '',
-		'background-repeat'     => 'repeat',
-		'background-position'   => 'center center',
-		'background-size'       => 'cover',
-		'background-attachment' => 'scroll',
-	],
-	'transport'   => 'auto',
-	'output'      => [
-		[
-			'element' => array('.block-footer'),
-		],
-	],
-] );
+	//add field to footer width
+	Kirki::add_section( 'footer_width', array(
+		'panel'    => 'panel_footer',
+		'title'    => __( 'Width', 'mjlah' ),
+		'priority' => 10,
+	) );
+		Kirki::add_field( 'mjlah_config', [
+			'type'        => 'select',
+			'settings'    => 'lebar_container_footer',
+			'label'       => esc_html__( 'Width Container', 'mjlah' ),
+			'section'     => 'footer_width',
+			'default'     => 'fixed',
+			'description' => esc_html__( 'Width Container Footer', 'mjlah' ),
+			'priority'    => 10,
+			'multiple'    => 1,
+			'choices'     => [
+				'fixed' => esc_html__( 'Fixed', 'mjlah' ),
+				'full' 	=> esc_html__( 'Full', 'mjlah' ),
+			],
+		] ); 
 
-Kirki::add_field( 'mjlah_config', [
-	'type'        => 'typography',
-	'settings'    => 'typography_footer',
-	'label'       => esc_html__( 'Typography Footer', 'mjlah' ),
-	'section'     => 'footer_section',
-	'default'     => [
-		'font-family'    => '',
-		'variant'        => '',
-		'font-size'      => '',
-		'line-height'    => '',
-		'letter-spacing' => '',
-		'color'          => '#ffffff',
-		'text-transform' => 'none',
-		'text-align'     => 'left',
-	],
-	'priority'    => 10,
-	'transport'   => 'auto',
-	'output'      => [
-		[
-			'element' => '#wrapper-footer',
-		],
-	],
-] );
+	//add field to footer typography
+	Kirki::add_section( 'footer_typography', array(
+		'panel'    => 'panel_footer',
+		'title'    => __( 'Typography', 'mjlah' ),
+		'priority' => 10,
+	) );
+		Kirki::add_field( 'mjlah_config', [
+			'type'        => 'typography',
+			'settings'    => 'typography_footer',
+			'label'       => esc_html__( 'Typography', 'mjlah' ),
+			'section'     => 'footer_typography',
+			'default'     => [
+				'font-family'    => '',
+				'variant'        => '',
+				'font-size'      => '',
+				'line-height'    => '',
+				'letter-spacing' => '',
+				'color'          => '#ffffff',
+				'text-transform' => 'none',
+				'text-align'     => 'left',
+			],
+			'priority'    => 10,
+			'transport'   => 'auto',
+			'output'      => [
+				[
+					'element' => '#wrapper-footer',
+				],
+			],
+		] );
 
-Kirki::add_field( 'mjlah_config', [
-    'type'        => 'multicolor',
-    'settings'    => 'link_footer',
-    'label'       => esc_html__( 'Warna Link footer', 'mjlah' ),
-    'section'     => 'footer_section',
-    'priority'    => 10,
-    'choices'     => [
-        'link'    => esc_html__( 'Color', 'mjlah' ),
-        'hover'   => esc_html__( 'Hover', 'mjlah' ),
-        'active'  => esc_html__( 'Active', 'mjlah' ),
-    ],
-    'default'     => [
-        'link'    => '#ffffff',
-        'hover'   => '#f5f5f5',
-        'active'  => '#ffffff',
-	],
-	'output'    => [
-		[
-			'choice'    => 'link',
-			'element'   => '#wrapper-footer a',
-			'property'  => 'color',
-		],
-		[
-			'choice'    => 'hover',
-			'element'   => '#wrapper-footer a:hover',
-			'property'  => 'color',
-		],
-		[
-			'choice'    => 'active',
-			'element'   => '#wrapper-footer a:active',
-			'property'  => 'color',
-		],
-	],
-] );
-
-Kirki::add_field( 'mjlah_config', [
-	'type'        => 'select',
-	'settings'    => 'scrolltotop_footer',
-	'label'       => esc_html__( 'Tampilkan Tombol Scroll ke atas', 'mjlah' ),
-	'section'     => 'footer_section',
-	'default'     => 'ya',
-	'description' => esc_html__( 'Tampilkan Tombol Scroll ke atas', 'mjlah' ),
-	'priority'    => 10,
-	'multiple'    => 1,
-	'choices'     => [
-		'ya' 		=> esc_html__( 'Ya', 'mjlah' ),
-		'tidak' 	=> esc_html__( 'Tidak', 'mjlah' ),
-	],
-] );
+	//add field to footer scrolltop
+	Kirki::add_section( 'footer_scrolltop', array(
+		'panel'    => 'panel_footer',
+		'title'    => __( 'Scroll to top', 'mjlah' ),
+		'priority' => 10,
+	) );
+		Kirki::add_field( 'mjlah_config', [
+			'type'        => 'select',
+			'settings'    => 'scrolltotop_footer',
+			'label'       => esc_html__( 'Scroll up button', 'mjlah' ),
+			'section'     => 'footer_scrolltop',
+			'default'     => 'ya',
+			'description' => esc_html__( 'Activate the Scroll up button', 'mjlah' ),
+			'priority'    => 10,
+			'multiple'    => 1,
+			'choices'     => [
+				'on' 		=> esc_html__( 'On', 'mjlah' ),
+				'off' 		=> esc_html__( 'Off', 'mjlah' ),
+			],
+		] );
