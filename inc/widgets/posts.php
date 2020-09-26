@@ -57,7 +57,7 @@ class mjlah_posts_widget extends WP_Widget {
             // The Loop
             $i = 1;
             if ( $the_query->have_posts() ) {
-                $class  = ($instance['layout']=='gallery')?'row':'';
+                $class  = ($instance['layout']=='gallery')?'row px-2':'';
                 echo '<div class="list-posts '.$class.'">';
                     while ( $the_query->have_posts() ) {
                         $the_query->the_post();
