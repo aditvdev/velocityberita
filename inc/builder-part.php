@@ -27,7 +27,7 @@ function mjlah_the_header_content() {
 								<?php mjlah_date_today(); ?>
 							</div>	
 							<div class="header-sosmed">
-								tes
+								<?php mjlah_socialmedia(); ?>
 							</div>	
 						</div>
 						

@@ -608,7 +608,7 @@ Kirki::add_panel('panel_sosmed', [
 			'settings' 		=> 'facebook_sosmed_link',
 			'label'    		=> __( 'Facebook', 'mjlah' ),
 			'section'  		=> 'sosmed_link',
-			'default'  		=> '',
+			'default'  		=> 'https://facebook.com',
 			'description' 	=> esc_html__( 'Link Facebook, use https://', 'mjlah' ),
 			'priority' 		=> 10,
 		] ); 
@@ -617,7 +617,7 @@ Kirki::add_panel('panel_sosmed', [
 			'settings' 		=> 'twitter_sosmed_link',
 			'label'    		=> __( 'Twitter', 'mjlah' ),
 			'section'  		=> 'sosmed_link',
-			'default'  		=> '',
+			'default'  		=> 'https://twitter.com',
 			'description' 	=> esc_html__( 'Link Twitter, use https://', 'mjlah' ),
 			'priority' 		=> 10,
 		] ); 
@@ -626,7 +626,7 @@ Kirki::add_panel('panel_sosmed', [
 			'settings' 		=> 'instagram_sosmed_link',
 			'label'    		=> __( 'Instagram', 'mjlah' ),
 			'section'  		=> 'sosmed_link',
-			'default'  		=> '',
+			'default'  		=> 'https://instagram.com',
 			'description' 	=> esc_html__( 'Link Instagram, use https://', 'mjlah' ),
 			'priority' 		=> 10,
 		] ); 
@@ -635,7 +635,7 @@ Kirki::add_panel('panel_sosmed', [
 			'settings' 		=> 'youtube_sosmed_link',
 			'label'    		=> __( 'Youtube', 'mjlah' ),
 			'section'  		=> 'sosmed_link',
-			'default'  		=> '',
+			'default'  		=> 'https://youtube.com',
 			'description' 	=> esc_html__( 'Link Youtube, use https://', 'mjlah' ),
 			'priority' 		=> 10,
 		] );

@@ -336,7 +336,6 @@ function mjlah_sharing($list = '') {
 
 /**
  * function to get date today, indonesia
- * use $list as array social media , ['facebook','twitter'] 
  */
 function mjlah_date_today() {
     //array hari
@@ -352,4 +351,53 @@ function mjlah_date_today() {
     $num        = date('N', strtotime($today));
 
     echo $hari[$num] . ' ' . $output;
+}
+
+/**
+ * function to get scial media button from Customizer
+ */
+function mjlah_socialmedia() {
+
+    //array social media
+    $arraynetwork    = [
+        'facebook'  => [
+            'color' => '#4065ad',
+        ],
+        'twitter'  => [
+            'color' => '#1c9ceb',            
+        ],
+        'instagram'  => [
+            'color' => '#c353a0', 
+        ],
+        'youtube'  => [
+            'color' => '#ea4436', 
+        ],
+        'rss'  => [
+            'color' => '#f48120', 
+        ],
+    ];
+
+    $button = [];
+
+    //looping
+    foreach($arraynetwork as $network => $attr) {
+        $metaname   = $network.'_sosmed_link';
+        $link       = $network=='rss'?''.home_url().'/rss':get_theme_mod($metaname);
+
+        $color      = 'style="background: '.$attr['color'].';border-color: '.$attr['color'].'"';
+
+        $outputlink = '<a href="%1$s" title="%2$s" target="_blank" class="btn btn-sm btn-secondary mr-1 mb-1 rounded-0 py-1 px-2" %3$s><i class="fa fa-%4$s"></i></a>';		
+		$outputlink = sprintf(
+			$outputlink,
+			$link,
+            $network,
+            $color,
+            $network,
+        );
+
+        $button[] = $outputlink;
+
+    }
+
+    printf("<div class='social-media-button'>%s</div>",implode('',$button));
 }
