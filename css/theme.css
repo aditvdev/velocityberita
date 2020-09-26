@@ -246,3 +246,14 @@ blockquote:before {
 .widget_tabs_posts_widget .list-post .thumb-post a {
    width: 70px;
 }
+.social-media-button > a {
+   width: 2rem;
+   height: 2rem;
+   border-radius: 0;
+   font-size: .8rem;
+   line-height: 1.4rem;
+   text-align: center;
+}
+.social-media-button > a:not(:last-child) {
+   margin: 0 .3rem 0 0;
+}
