@@ -46,9 +46,10 @@ add_filter( 'manage_page_posts_columns', 'mjlah_posts_column_views' );
 add_action( 'manage_page_posts_custom_column', 'mjlah_posts_custom_column_views' );
 
 /*
-* Add function for button scroll to top
+* Add function for footer
 */
-function mjlah_scrolltotop() {
+function mjlah_actionfooter() {
+    //scroll up button
     $scrollfooter 	= get_theme_mod('scrolltotop_footer');
     if($scrollfooter=='on'): ?>
         <span class="scrolltoTop" onClick="window.scrollTo({top: 100,left: 100,behavior: 'smooth'});">
@@ -56,8 +57,27 @@ function mjlah_scrolltotop() {
         </span>
     <?php
     endif;
+
+    //Wa footer
+    $wafooter 	    = get_theme_mod('whatsapp_footer');
+    $wafooterpos 	= get_theme_mod('whatsapp_footer_position');
+    $nowafooter     = get_theme_mod('whatsapp_sosmed_number');
+    $msgwafooter    = get_theme_mod('whatsapp_sosmed_message');
+
+    if (substr($nowafooter, 0, 1) === '0') {
+        $nowafooter    = '62' . substr($nowafooter, 1);
+    } else if (substr($nowafooter, 0, 1) === '+') {
+        $nowafooter    = '' . substr($nowafooter, 1);
+    }
+
+    if($wafooter=='on' && $nowafooter): ?>
+        <a class="wa-floating wa-floating-<?php echo $wafooterpos; ?>" href="https://wa.me/<?php echo $nowafooter; ?>?text=<?php echo $msgwafooter; ?>" target="_blank">
+            <i class="fa fa-whatsapp" aria-hidden="true"></i>
+        </a>
+    <?php
+    endif;
 }
-add_action('wp_footer', 'mjlah_scrolltotop');
+add_action('wp_footer', 'mjlah_actionfooter');
 
 /*
 *get content of post

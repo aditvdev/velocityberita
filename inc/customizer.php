@@ -581,12 +581,123 @@ Kirki::add_panel('panel_footer', [
 			'settings'    => 'scrolltotop_footer',
 			'label'       => esc_html__( 'Scroll up button', 'mjlah' ),
 			'section'     => 'footer_scrolltop',
-			'default'     => 'ya',
+			'default'     => 'on',
 			'description' => esc_html__( 'Activate the Scroll up button', 'mjlah' ),
 			'priority'    => 10,
 			'multiple'    => 1,
 			'choices'     => [
 				'on' 		=> esc_html__( 'On', 'mjlah' ),
 				'off' 		=> esc_html__( 'Off', 'mjlah' ),
+			],
+		] );
+
+// Add Panel Social Media
+Kirki::add_panel('panel_sosmed', [
+	'priority'    => 10,
+	'title'       => esc_html__('Social Media', 'mjlah'),
+	'description' => esc_html__('', 'mjlah'),
+]);
+	// Add field to sosmed link
+	Kirki::add_section( 'sosmed_link', array(
+		'panel'    => 'panel_sosmed',
+		'title'    => __( 'Link', 'mjlah' ),
+		'priority' => 10,
+	) );
+		Kirki::add_field( 'mjlah_config', [
+			'type'     		=> 'link',
+			'settings' 		=> 'facebook_sosmed_link',
+			'label'    		=> __( 'Facebook', 'mjlah' ),
+			'section'  		=> 'sosmed_link',
+			'default'  		=> '',
+			'description' 	=> esc_html__( 'Link Facebook, use https://', 'mjlah' ),
+			'priority' 		=> 10,
+		] ); 
+		Kirki::add_field( 'mjlah_config', [
+			'type'     		=> 'link',
+			'settings' 		=> 'twitter_sosmed_link',
+			'label'    		=> __( 'Twitter', 'mjlah' ),
+			'section'  		=> 'sosmed_link',
+			'default'  		=> '',
+			'description' 	=> esc_html__( 'Link Twitter, use https://', 'mjlah' ),
+			'priority' 		=> 10,
+		] ); 
+		Kirki::add_field( 'mjlah_config', [
+			'type'     		=> 'link',
+			'settings' 		=> 'instagram_sosmed_link',
+			'label'    		=> __( 'Instagram', 'mjlah' ),
+			'section'  		=> 'sosmed_link',
+			'default'  		=> '',
+			'description' 	=> esc_html__( 'Link Instagram, use https://', 'mjlah' ),
+			'priority' 		=> 10,
+		] ); 
+		Kirki::add_field( 'mjlah_config', [
+			'type'     		=> 'link',
+			'settings' 		=> 'youtube_sosmed_link',
+			'label'    		=> __( 'Youtube', 'mjlah' ),
+			'section'  		=> 'sosmed_link',
+			'default'  		=> '',
+			'description' 	=> esc_html__( 'Link Youtube, use https://', 'mjlah' ),
+			'priority' 		=> 10,
+		] );
+		Kirki::add_field( 'mjlah_config', [
+			'type'     		=> 'checkbox',
+			'settings' 		=> 'rss_sosmed_link',
+			'label'    		=> __( 'RSS', 'mjlah' ),
+			'section'  		=> 'sosmed_link',
+			'default'  		=> true,
+			'description' 	=> esc_html__( 'Activate to display', 'mjlah' ),
+			'priority' 		=> 10,
+		] );  
+
+	// Add field to header width
+	Kirki::add_section( 'sosmed_whatsapp', array(
+		'panel'    => 'panel_sosmed',
+		'title'    => __( 'Whatsapp', 'mjlah' ),
+		'priority' => 10,
+	) );
+		Kirki::add_field( 'mjlah_config', [
+			'type'     		=> 'text',
+			'settings' 		=> 'whatsapp_sosmed_number',
+			'label'    		=> __( 'Whatsapp Number', 'mjlah' ),
+			'section'  		=> 'sosmed_whatsapp',
+			'default'  		=> '',
+			'description' 	=> esc_html__( 'Number Whatsapp, use +62', 'mjlah' ),
+			'priority' 		=> 10,
+		] ); 
+		Kirki::add_field( 'mjlah_config', [
+			'type'     		=> 'textarea',
+			'settings' 		=> 'whatsapp_sosmed_message',
+			'label'    		=> __( 'Whatsapp message', 'mjlah' ),
+			'section'  		=> 'sosmed_whatsapp',
+			'default'  		=> 'Hai...',
+			'description' 	=> esc_html__( 'Whatsapp message', 'mjlah' ),
+			'priority' 		=> 10,
+		] ); 
+		Kirki::add_field( 'mjlah_config', [
+			'type'        => 'select',
+			'settings'    => 'whatsapp_footer',
+			'label'       => esc_html__( 'Whatsapp button', 'mjlah' ),
+			'section'     => 'sosmed_whatsapp',
+			'default'     => 'off',
+			'description' => esc_html__( 'Enable the floating Whatsapp button in the footer', 'mjlah' ),
+			'priority'    => 10,
+			'multiple'    => 1,
+			'choices'     => [
+				'on' 		=> esc_html__( 'On', 'mjlah' ),
+				'off' 		=> esc_html__( 'Off', 'mjlah' ),
+			],
+		] );
+		Kirki::add_field( 'mjlah_config', [
+			'type'        => 'select',
+			'settings'    => 'whatsapp_footer_position',
+			'label'       => esc_html__( 'Whatsapp button position', 'mjlah' ),
+			'section'     => 'sosmed_whatsapp',
+			'default'     => 'right',
+			'description' => esc_html__( 'Position the floating Whatsapp button in the footer', 'mjlah' ),
+			'priority'    => 10,
+			'multiple'    => 1,
+			'choices'     => [
+				'right' 	=> esc_html__( 'right', 'mjlah' ),
+				'left' 		=> esc_html__( 'left', 'mjlah' ),
 			],
 		] );
