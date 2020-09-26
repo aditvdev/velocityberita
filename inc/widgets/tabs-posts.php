@@ -77,14 +77,13 @@ class tabs_posts_widget extends WP_Widget {
                             $query_args['meta_key']             = 'post_views_count';
                             // The Query
                             $the_query = new WP_Query( $query_args );
-                            // The Loop
-                            $i = 1;
+                            // The Loop                            
                             if ( $the_query->have_posts() ) {                                
                                 echo '<div class="list-posts">';
                                     while ( $the_query->have_posts() ) {
                                         $the_query->the_post();
                                         ?>
-                                        <div class="list-post list-post-<?= $i;?>">
+                                        <div class="list-post">
                                             <div class="d-flex border-bottom pb-2 mb-2">
                                                 <div class="thumb-post">
                                                     <?php echo mjlah_thumbnail( get_the_ID(),array(70,70), array( 'class' => 'w-100 img-fluid','class-link' => 'd-block mr-2' ) );?>                            
@@ -97,8 +96,7 @@ class tabs_posts_widget extends WP_Widget {
                                                 </div>
                                             </div>
                                         </div>
-                                        <?php                        
-                                        $i++;
+                                        <?php
                                     }
                                 echo '</div>';
                             } else {

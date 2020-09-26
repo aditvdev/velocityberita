@@ -222,7 +222,7 @@ function mjlah_sharing($list = '') {
 	if ( '' !== $post_link ) {
 		$permalink = $post_link;
 	} else {
-		$permalink = ( class_exists( 'WooCommerce' ) && is_checkout() || is_front_page() ) ? get_bloginfo( 'url' ) : get_permalink();
+		$permalink = ( class_exists( 'WooCommerce' ) && is_checkout() || is_front_page() ) ? home_url() : get_permalink();
 
 		if ( class_exists( 'BuddyPress' ) && is_buddypress() ) {
 			$permalink = bp_get_requested_url();
