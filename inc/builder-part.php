@@ -24,7 +24,7 @@ function mjlah_the_header_content() {
 
 						<div class="header-secondary col-12 bg-primary text-white py-2 d-flex justify-content-between">
 							<div class="header-tanggal">
-								tes
+								<?php mjlah_date_today(); ?>
 							</div>	
 							<div class="header-sosmed">
 								tes

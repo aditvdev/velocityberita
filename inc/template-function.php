@@ -333,3 +333,23 @@ function mjlah_sharing($list = '') {
     printf("<div class='sharing-button'>%s</div>",implode('',$button));
 
 }
+
+/**
+ * function to get date today, indonesia
+ * use $list as array social media , ['facebook','twitter'] 
+ */
+function mjlah_date_today() {
+    //array hari
+    $hari       = ['Senin','Selasa','Rabu','Kamis','Jumat','Sabtu','Minggu'];
+    //array bulan
+    $bulan      = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+    //today
+    $today      = date( 'Y-m-d', current_time( 'timestamp', 0 ) );
+    
+    $split 	    = explode('-', $today);
+    $output     = $split[2] . ' ' . $bulan[(int)$split[1]] . ' ' . $split[0];
+
+    $num        = date('N', strtotime($today));
+
+    echo $hari[$num] . ' ' . $output;
+}
