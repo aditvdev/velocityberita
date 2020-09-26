@@ -22,7 +22,7 @@ function mjlah_the_header_content() {
 
 					<div class="row align-items-center">
 
-						<div class="header-secondary col-12 bg-primary text-white py-2 d-flex justify-content-between">
+						<div class="header-secondary col-12 bg-primary text-white py-2 d-flex justify-content-between align-items-center">
 							<div class="header-tanggal">
 								<?php mjlah_date_today(); ?>
 							</div>	
