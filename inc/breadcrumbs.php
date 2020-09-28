@@ -95,7 +95,7 @@ function mjlah_breadcrumbs() {
       elseif ( is_singular( 'post' ) ) {
         $categories = get_the_category();
         
-        if ( $categories[0] ) {
+        if ( isset($categories[0]) && $categories[0] ) {
           $html .= custom_get_category_parents($categories[0]);
         }
         
