@@ -22,8 +22,8 @@ $container = get_theme_mod( 'mjlah_container_type' );
 
 		<div class="row">
 
-			<!-- Do the left sidebar check and opens the primary div -->
-			<?php get_template_part( 'global-templates/left-sidebar-check' ); ?>
+			<!-- Do the Before content and opens the primary div -->
+			<?php do_action( 'mjlah_before_content'); ?>
 
 			<main class="site-main" id="main">
 
@@ -68,8 +68,8 @@ $container = get_theme_mod( 'mjlah_container_type' );
 			<!-- The pagination component -->
 			<?php mjlah_pagination(); ?>
 
-			<!-- Do the right sidebar check -->
-			<?php get_template_part( 'global-templates/right-sidebar-check' ); ?>
+			<!-- Do the After content -->
+			<?php do_action( 'mjlah_after_content'); ?>
 
 		</div><!-- .row -->
 

@@ -98,23 +98,13 @@ if ( ! function_exists( 'mjlah_widgets_init' ) ) {
 	 * Initializes themes widgets.
 	 */
 	function mjlah_widgets_init() {
-		register_sidebar(
-			array(
-				'name'          => __( 'Right Sidebar', 'mjlah' ),
-				'id'            => 'right-sidebar',
-				'description'   => __( 'Right sidebar widget area', 'mjlah' ),
-				'before_widget' => '<aside id="%1$s" class="block-customizer widget %2$s">',
-				'after_widget'  => '</aside>',
-				'before_title'  => '<h3 class="widget-title"><span>',
-				'after_title'   => '</span></h3>',
-			)
-		);
 
+		//Reister Main Sidebar
 		register_sidebar(
 			array(
-				'name'          => __( 'Left Sidebar', 'mjlah' ),
-				'id'            => 'left-sidebar',
-				'description'   => __( 'Left sidebar widget area', 'mjlah' ),
+				'name'          => __( 'Main Sidebar', 'mjlah' ),
+				'id'            => 'main-sidebar',
+				'description'   => __( 'Sidebar widget area', 'mjlah' ),
 				'before_widget' => '<aside id="%1$s" class="block-customizer widget %2$s">',
 				'after_widget'  => '</aside>',
 				'before_title'  => '<h3 class="widget-title"><span>',

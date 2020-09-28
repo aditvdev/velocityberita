@@ -701,3 +701,25 @@ Kirki::add_panel('panel_sosmed', [
 				'left' 		=> esc_html__( 'left', 'mjlah' ),
 			],
 		] );
+
+		
+// Add Sidebar Setting
+Kirki::add_section( 'sidebar_section', array(
+	'title'    => __( 'Sidebar', 'mjlah' ),
+	'priority' => 10,
+) );
+	Kirki::add_field( 'mjlah_config', [
+		'type'        => 'select',
+		'settings'    => 'mjlah_sidebar_position',
+		'label'       => esc_html__( 'Default Position Sidebar', 'mjlah' ),
+		'section'     => 'sidebar_section',
+		'default'     => 'right',
+		'placeholder' => esc_html__( 'Right Sidebar', 'justg' ),
+		'priority'    => 10,
+		'multiple'    => 1,
+		'choices'     => [
+			'no' 		=> esc_html__( 'No Sidebar', 'mjlah' ),
+			'left'  	=> esc_html__( 'Left Sidebar', 'mjlah' ),
+			'right' 	=> esc_html__( 'Right Sidebar', 'mjlah' ),
+		],
+	] );

@@ -130,3 +130,41 @@ function mjlah_the_footer_content() {
     // endif;
 }
 add_action( 'mjlah_do_footer', 'mjlah_the_footer_content' );
+
+
+///Before Content
+function mjlah_the_before_content() {
+
+	$sidebar_pos = get_theme_mod( 'mjlah_sidebar_position' );
+	?>
+
+	<?php if ( 'left' === $sidebar_pos && is_active_sidebar( 'main-sidebar' )  ) : ?>
+		<div class="col-md-4 widget-area" id="left-sidebar" role="complementary">
+			<?php dynamic_sidebar( 'main-sidebar' ); ?> 
+		</div>
+	<?php endif; ?>
+
+	<div class="col-md content-area" id="primary">	
+
+	<?php
+}
+add_action( 'mjlah_before_content', 'mjlah_the_before_content' );
+
+
+///After Content
+function mjlah_the_after_content() {
+
+	$sidebar_pos = get_theme_mod( 'mjlah_sidebar_position' );
+	?>
+
+	</div><!-- End #primary -->
+
+	<?php if ( 'right' === $sidebar_pos && is_active_sidebar( 'main-sidebar' )  ) : ?>
+		<div class="col-md-4 widget-area" id="right-sidebar" role="complementary">
+			<?php dynamic_sidebar( 'main-sidebar' ); ?> 
+		</div>
+	<?php endif; ?>	
+
+	<?php
+}
+add_action( 'mjlah_after_content', 'mjlah_the_after_content' );

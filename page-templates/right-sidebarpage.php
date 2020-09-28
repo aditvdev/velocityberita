@@ -20,7 +20,7 @@ $container = get_theme_mod( 'mjlah_container_type' );
 
 		<div class="row">
 
-			<div class="<?php echo is_active_sidebar( 'right-sidebar' ) ? 'col-md-8' : 'col-md-12'; ?> content-area" id="primary">
+			<div class="<?php echo is_active_sidebar( 'main-sidebar' ) ? 'col-md-8' : 'col-md-12'; ?> content-area" id="primary">
 
 				<main class="site-main" id="main" role="main">
 
@@ -41,7 +41,11 @@ $container = get_theme_mod( 'mjlah_container_type' );
 
 			</div><!-- #primary -->
 
-			<?php get_template_part( 'sidebar-templates/sidebar', 'right' ); ?>
+			<?php if ( is_active_sidebar( 'main-sidebar' )  ) : ?>
+				<div class="col-md-4 widget-area" id="right-sidebar" role="complementary">
+					<?php dynamic_sidebar( 'main-sidebar' ); ?> 
+				</div>
+			<?php endif; ?>	
 
 		</div><!-- .row -->
 
