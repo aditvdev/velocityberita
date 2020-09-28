@@ -99,7 +99,7 @@ if ( ! function_exists( 'mjlah_entry_footer' ) ) {
 		}
 
 		if ( ! is_single() ) {			
-			$more = '<span class="readmore"><a href="%1$s" rel="bookmark" class="btn btn-sm btn-primary">Read more</a></span>';		
+			$more = '<span class="readmore"><a href="%1$s" rel="bookmark" class="btn btn-sm btn-primary">more</a></span>';		
 			$more = sprintf(
 				$more,
 				esc_url( get_permalink() )
