@@ -71,7 +71,7 @@ function mjlah_actionfooter() {
     }
 
     if($wafooter=='on' && $nowafooter): ?>
-        <a class="wa-floating wa-floating-<?php echo $wafooterpos; ?>" href="https://wa.me/<?php echo $nowafooter; ?>?text=<?php echo $msgwafooter; ?>" target="_blank">
+        <a class="wa-floating wa-floating-<?php echo $wafooterpos; ?>" href="https://wa.me/<?php echo $nowafooter; ?>?text=<?php echo $msgwafooter; ?>" target="_blank" rel="noreferrer">
             <i class="fa fa-whatsapp" aria-hidden="true"></i>
         </a>
     <?php
