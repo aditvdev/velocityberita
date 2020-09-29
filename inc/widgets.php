@@ -99,7 +99,7 @@ if ( ! function_exists( 'mjlah_widgets_init' ) ) {
 	 */
 	function mjlah_widgets_init() {
 
-		//Reister Main Sidebar
+		//Register Main Sidebar
 		register_sidebar(
 			array(
 				'name'          => __( 'Main Sidebar', 'mjlah' ),
@@ -141,3 +141,4 @@ require_once get_template_directory() . '/inc/widgets/tags.php';
 require_once get_template_directory() . '/inc/widgets/posts.php';
 require_once get_template_directory() . '/inc/widgets/popular-posts.php';
 require_once get_template_directory() . '/inc/widgets/tabs-posts.php';
+require_once get_template_directory() . '/inc/widgets/big-posts.php';
