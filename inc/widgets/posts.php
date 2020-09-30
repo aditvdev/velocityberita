@@ -33,10 +33,15 @@ class mjlah_posts_widget extends WP_Widget {
         echo $args['before_widget'];
         echo '<div class="widget-'.$idwidget.' posts-widget-'.$instance['layout'].'">';
 
-            if ( ! empty( $title ) )
-            $title = $instance['kategori']?'<a href="'.get_category_link($instance['kategori']).'">'.$title.'</a>':$title;
-            echo $args['before_title'] . $title . $args['after_title'];
+            if ( ! empty( $title ) ):
 
+                if($instance['kategori']) {
+                    $title = '<a href="'.get_category_link($instance['kategori']).'">'.$title.'</a>';
+                    $title .= '<a href="'.get_category_link($instance['kategori']).'feed" class="feed-cat float-right h5 mt-2" target="_blank" title="Technology RSS Feed"><i class="fa fa-rss"></i></a>';
+                }             
+                echo $args['before_title'] . $title . $args['after_title'];
+
+            endif;
             // This is where you run the code and display the output
             //The Query args
             $query_args                         = array();
