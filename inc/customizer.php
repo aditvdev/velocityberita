@@ -290,7 +290,7 @@ Kirki::add_panel('panel_header', [
 			'type'        => 'select',
 			'settings'    => 'lebar_container_header',
 			'label'       => esc_html__( 'Width Container Header', 'mjlah' ),
-			'section'     => 'panel_header',
+			'section'     => 'header_width',
 			'default'     => 'fixed',
 			'description' => esc_html__( 'Container header', 'mjlah' ),
 			'priority'    => 10,
