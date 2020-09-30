@@ -317,7 +317,7 @@ function mjlah_sharing($list = '') {
         $icon   = $icon?$icon:$network;
         $color  = $color?'style="background: '.$color.';border-color: '.$color.';"':'';
 
-        $outputlink = '<a href="%1$s" title="%2$s" target="_blank" class="btn btn-sm btn-secondary mr-1 mb-1 rounded-0 py-1 px-2" %3$s><i class="fa fa-%4$s"></i></a>';		
+        $outputlink = '<a href="%1$s" title="%2$s" target="_blank" class="btn btn-sm btn-secondary mr-1 mb-1 rounded-0 py-1 px-2" %3$s rel="noreferrer"><i class="fa fa-%4$s"></i></a>';		
 		$outputlink = sprintf(
 			$outputlink,
 			$link,
@@ -386,7 +386,7 @@ function mjlah_socialmedia() {
 
         $color      = 'style="background: '.$attr['color'].';border-color: '.$attr['color'].'"';
 
-        $outputlink = '<a href="%1$s" title="%2$s" target="_blank" class="btn btn-sm btn-secondary" %3$s><i class="fa fa-%4$s"></i></a>';		
+        $outputlink = '<a href="%1$s" title="%2$s" target="_blank" class="btn btn-sm btn-secondary" %3$s rel="noreferrer"><i class="fa fa-%4$s"></i></a>';		
 		$outputlink = sprintf(
 			$outputlink,
 			$link,
