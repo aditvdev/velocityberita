@@ -106,7 +106,7 @@ function mjlah_generated_schema($idpost=null){
         }
 
         $author_id  = get_post_field( 'post_author', $idpost );
-
+        $schema     .= '<div>';
         $schema     .= '<meta itemscope="" itemprop="mainEntityOfPage" itemtype="https://schema.org/WebPage" itemid="'.get_permalink($idpost).'" content="'.get_the_title($idpost).'">';
         $schema     .= '<meta itemprop="datePublished" content="'.get_the_date( 'Y-m-d', $idpost ).'">';
         $schema     .= '<meta itemprop="dateModified" content="'.get_the_modified_date('Y-m-d', $idpost).'">';
@@ -125,6 +125,7 @@ function mjlah_generated_schema($idpost=null){
         $schema     .= '<div itemprop="interactionStatistic" itemscope="" itemtype="https://schema.org/InteractionCounter">';
             $schema .= '<meta itemprop="interactionType" content="https://schema.org/CommentAction">';
             $schema .= '<meta itemprop="userInteractionCount" content="'.wp_count_comments($idpost)->total_comments.'">';
+        $schema     .= '</div>';
         $schema     .= '</div>';
     endif;
     return $schema;

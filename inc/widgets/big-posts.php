@@ -55,6 +55,11 @@ class mjlah_bigposts_widget extends WP_Widget {
                 $query_args['meta_key']         = 'post_views_count';
             }
 
+            //jumlah post
+            if($instance['layout']=="layout1") {
+                $query_args['posts_per_page']   = 5;
+            }
+
             // The Query
             $the_query = new WP_Query( $query_args );
             
@@ -62,10 +67,10 @@ class mjlah_bigposts_widget extends WP_Widget {
             $i = 1;
             if ( $the_query->have_posts() ) {
 
-                echo '<div class="list-posts">';
+                echo '<div class="list-posts" data-count="'.$the_query->post_count.'">';
                     while ( $the_query->have_posts() ) {
                         $the_query->the_post();
-                        $this->layoutpost($instance['layout'],$instance,$i);
+                            $this->layoutpost($instance['layout'],$instance,$i,$the_query->post_count);
                         $i++;
                     }
                 echo '</div>';
@@ -81,53 +86,74 @@ class mjlah_bigposts_widget extends WP_Widget {
     }
 
     //widget Layout Post
-    public function layoutpost( $layout='layout1',$instance,$i=null) {
+    public function layoutpost( $layout='layout1',$instance,$i=null,$count) {
 
-        echo '<div class="list-post list-post-'.$i.'">';        
-        echo mjlah_generated_schema(get_the_ID());
+        //Layout 1
+        if($layout=='layout1'):
 
-            //Layout 1
-            if($layout=='layout1'):
-                ?>            
-                <div class="d-flex border-bottom pb-2 mb-2">
-                    <div class="thumb-post">
-                        <?php echo mjlah_thumbnail( get_the_ID(),'thumbnail', array( 'class' => 'w-100 img-fluid','class-link' => 'd-block mr-3' ) );?>
+            if($i==1) {
+                echo '<div class="row">';
+                echo '<div class="col-md-6">';
+            }
+
+            if($i==2) {
+                echo '</div>';
+                echo '<div class="col-md-6">';
+            }
+
+            echo '<div class="list-post list-post-'.$i.'">'; 
+                echo mjlah_generated_schema(get_the_ID());
+
+                //first loop
+                if($i == 1) :
+                ?>    
+
+                    <div class="row">
+                        <div class="col-12 thumb-post">
+                            <?php echo mjlah_thumbnail( get_the_ID(),array(300,200), array( 'class' => 'w-100 img-fluid','class-link' => 'd-block' ) );?>
+                        </div>
+                        <div class="col-12 content-post">
+                            <a href="<?php echo get_the_permalink(); ?>" class="title-post font-weight-bold h4 d-block"><?php echo get_the_title(); ?></a>
+                            
+                            <small class="d-block text-muted meta-post">
+                                <span class="date-post"><?php echo get_the_date('F j, Y'); ?></span>
+                                <span class="mx-1 separator">/</span>
+                                <span class="view-post"><?php echo mjlah_get_post_view(); ?> views</span>
+                            </small>
+                            <div class="exceprt-post"><?php echo mjlah_getexcerpt(100,get_the_ID()); ?></div>
+                        </div>
                     </div>
-                    <div class="content-post">
-                        <a href="<?php echo get_the_permalink(); ?>" class="title-post font-weight-bold h4 d-block"><?php echo get_the_title(); ?></a>
-                        
-                        <small class="d-block text-muted meta-post">
-                            <span class="date-post"><?php echo get_the_date('F j, Y'); ?></span>
-                            <span class="mx-1 separator">/</span>
-                            <span class="view-post"><?php echo mjlah_get_post_view(); ?> views</span>
-                        </small>
-                    </div>
-                </div>
+
+                <?php else : ?>
+
+                    <div class="row mb-3">
+                        <div class="col-4 pr-0 thumb-post">
+                            <?php echo mjlah_thumbnail( get_the_ID(),array(125,70), array( 'class' => 'w-100 img-fluid','class-link' => 'd-block' ) );?>
+                        </div>
+                        <div class="col-8 content-post">
+                            <a href="<?php echo get_the_permalink(); ?>" class="title-post font-weight-bold h4 d-block"><?php echo get_the_title(); ?></a>
+                            
+                            <small class="d-block text-muted meta-post">
+                                <span class="date-post"><?php echo get_the_date('F j, Y'); ?></span>
+                                <span class="mx-1 separator">/</span>
+                                <span class="view-post"><?php echo mjlah_get_post_view(); ?> views</span>
+                            </small>
+                        </div>
+                    </div> 
+
+                <?php endif; ?>
+
             <?php
-            //Layout 2    
-            elseif($layout=='layout2'):
-                ?>            
-                <div class="border-bottom pb-2 mb-2">
-                    <div class="thumb-post">
-                        <?php echo mjlah_thumbnail( get_the_ID(),'thumbnail', array( 'class' => 'w-100 img-fluid','class-link' => 'd-block' ) );?>                           
-                    </div>
-                    <div class="content-post">
-                        <a href="<?php echo get_the_permalink(); ?>" class="title-post font-weight-bold h4 d-block"><?php echo get_the_title(); ?></a>
-                        <small class="d-block text-muted meta-post">
-                            <span class="date-post"><?php echo get_the_date('F j, Y'); ?></span>
-                            <span class="mx-1 separator">/</span>
-                            <span class="view-post"><?php echo mjlah_get_post_view(); ?> views</span>
-                        </small>
-                    </div>
-                    <div class="exceprt-post"><?php echo mjlah_getexcerpt($kutipan,get_the_ID()); ?></div>
-                    </div>
-                </div>
+            
+            echo '</div>';
 
-            <?php
-            //Endif layout    
-            endif;
-        
-        echo '</div>';
+            if($i==$count) {
+                echo '</div>';
+                echo '</div>';
+            }
+
+        //Endif layout    
+        endif;
     }
 
     // Widget Backend 
@@ -136,13 +162,8 @@ class mjlah_bigposts_widget extends WP_Widget {
         $title          = isset( $instance[ 'title' ])?$instance[ 'title' ]:'New Post';
         $layout         = isset( $instance[ 'layout' ])?$instance[ 'layout' ]:'';
         $kategori       = isset( $instance[ 'kategori' ])?$instance[ 'kategori' ]:'';
-        $lebar_img      = isset( $instance[ 'lebar_img' ])?$instance[ 'lebar_img' ]:'70';
-        $tinggi_img     = isset( $instance[ 'tinggi_img' ])?$instance[ 'tinggi_img' ]:'70';
-        $kutipan        = isset( $instance[ 'kutipan' ])?$instance[ 'kutipan' ]:'50';
         $orderby        = isset( $instance[ 'orderby' ])?$instance[ 'orderby' ]:'';
         $order          = isset( $instance[ 'order' ])?$instance[ 'order' ]:'';
-        $viewers        = isset( $instance[ 'viewers' ])?$instance[ 'viewers' ]:'';
-        $viewdate       = isset( $instance[ 'viewdate' ])?$instance[ 'viewdate' ]:'ya';
 
         // Widget admin form
         ?>
