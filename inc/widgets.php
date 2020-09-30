@@ -138,6 +138,7 @@ if ( ! function_exists( 'mjlah_widgets_init' ) ) {
 */
 //Widget Tags
 require_once get_template_directory() . '/inc/widgets/tags.php';
+require_once get_template_directory() . '/inc/widgets/social-media.php';
 require_once get_template_directory() . '/inc/widgets/posts.php';
 require_once get_template_directory() . '/inc/widgets/popular-posts.php';
 require_once get_template_directory() . '/inc/widgets/tabs-posts.php';

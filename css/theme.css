@@ -257,3 +257,9 @@ blockquote:before {
 .social-media-button > a:not(:last-child) {
    margin: 0 .3rem 0 0;
 }
+.widget_mjlah_sosmed_widget .social-media-button > a {
+   width: 2.5rem;
+   height: 2.5rem;
+   font-size: 1.2rem;
+   line-height: 1.8rem;
+}
