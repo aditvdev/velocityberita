@@ -33,10 +33,15 @@ class mjlah_bigposts_widget extends WP_Widget {
         echo $args['before_widget'];
         echo '<div class="widget-'.$idwidget.' posts-widget-'.$instance['layout'].'">';
 
-            if ( ! empty( $title ) )
-            $title = $instance['kategori']?'<a href="'.get_category_link($instance['kategori']).'">'.$title.'</a>':$title;
+        if ( ! empty( $title ) ):
+
+            if($instance['kategori']) {
+                $title = '<a href="'.get_category_link($instance['kategori']).'">'.$title.'</a>';
+                $title .= '<a href="'.get_category_link($instance['kategori']).'feed" class="feed-cat float-right h5 mt-2" target="_blank" title="Technology RSS Feed"><i class="fa fa-rss"></i></a>';
+            }             
             echo $args['before_title'] . $title . $args['after_title'];
 
+        endif;
             // This is where you run the code and display the output
             //The Query args
             $query_args                         = array();
@@ -56,8 +61,8 @@ class mjlah_bigposts_widget extends WP_Widget {
             // The Loop
             $i = 1;
             if ( $the_query->have_posts() ) {
-                $class  = ($instance['layout']=='gallery')?'row px-2':'';
-                echo '<div class="list-posts '.$class.'">';
+
+                echo '<div class="list-posts">';
                     while ( $the_query->have_posts() ) {
                         $the_query->the_post();
                         $this->layoutpost($instance['layout'],$instance,$i);
@@ -78,9 +83,7 @@ class mjlah_bigposts_widget extends WP_Widget {
     //widget Layout Post
     public function layoutpost( $layout='layout1',$instance,$i=null) {
 
-        $class      = ($layout=='gallery')?'col-md-6 col-12 p-2 pt-0':'';
-
-        echo '<div class="list-post list-post-'.$i.' '.$class.'">';        
+        echo '<div class="list-post list-post-'.$i.'">';        
         echo mjlah_generated_schema(get_the_ID());
 
             //Layout 1
@@ -92,24 +95,12 @@ class mjlah_bigposts_widget extends WP_Widget {
                     </div>
                     <div class="content-post">
                         <a href="<?php echo get_the_permalink(); ?>" class="title-post font-weight-bold h4 d-block"><?php echo get_the_title(); ?></a>
+                        
                         <small class="d-block text-muted meta-post">
-
-                            <?php if($viewdate == 'ya'): ?>
-                                <span class="date-post"><?php echo get_the_date('F j, Y'); ?></span>
-                            <?php endif; ?>
-
-                            <?php if($viewers == 'ya' && $viewdate == 'ya'): ?>
-                                <span class="mx-1 separator">/</span>
-                            <?php endif; ?>
-
-                            <?php if($viewers == 'ya'): ?>
-                                <span class="view-post"><?php echo mjlah_get_post_view(); ?> views</span>
-                            <?php endif; ?>
-
+                            <span class="date-post"><?php echo get_the_date('F j, Y'); ?></span>
+                            <span class="mx-1 separator">/</span>
+                            <span class="view-post"><?php echo mjlah_get_post_view(); ?> views</span>
                         </small>
-                        <?php if($kutipan != 0): ?>
-                            <div class="exceprt-post"><?php echo mjlah_getexcerpt($kutipan,get_the_ID()); ?></div>
-                        <?php endif; ?>
                     </div>
                 </div>
             <?php
@@ -123,77 +114,12 @@ class mjlah_bigposts_widget extends WP_Widget {
                     <div class="content-post">
                         <a href="<?php echo get_the_permalink(); ?>" class="title-post font-weight-bold h4 d-block"><?php echo get_the_title(); ?></a>
                         <small class="d-block text-muted meta-post">
-
-                            <?php if($viewdate == 'ya'): ?>
-                                <span class="date-post"><?php echo get_the_date('F j, Y'); ?></span>
-                            <?php endif; ?>
-
-                            <?php if($viewers == 'ya' && $viewdate == 'ya'): ?>
-                                <span class="mx-1 separator">/</span>
-                            <?php endif; ?>
-
-                            <?php if($viewers == 'ya'): ?>
-                                <span class="view-post"><?php echo mjlah_get_post_view(); ?> views</span>
-                            <?php endif; ?>
-
+                            <span class="date-post"><?php echo get_the_date('F j, Y'); ?></span>
+                            <span class="mx-1 separator">/</span>
+                            <span class="view-post"><?php echo mjlah_get_post_view(); ?> views</span>
                         </small>
-                        <?php if($kutipan != 0): ?>
-                            <div class="exceprt-post"><?php echo mjlah_getexcerpt($kutipan,get_the_ID()); ?></div>
-                        <?php endif; ?>
                     </div>
-                </div>
-
-            <?php
-            //Layout gallery    
-            elseif($layout=='gallery'): ?>
-
-                <div class="gallery-posts position-relative">
-                        <?php echo mjlah_thumbnail( get_the_ID(),array($lebar_img,$tinggi_img), array( 'class' => 'w-100 img-fluid','class-link' => 'd-block' ) );?>
-                        <a href="<?php echo get_the_permalink(); ?>" class="mask-post"><span><?php echo get_the_title(); ?></span></a>
-                </div>
-
-           <?php
-            //Layout list    
-            elseif($layout=='list'): ?>
-
-                <div class="d-flex align-items-baseline border-bottom pb-2 mb-2">
-                    <i class="fa fa-file-text-o text-muted mr-2" aria-hidden="true"></i>
-                    <a href="<?php echo get_the_permalink(); ?>" class="d-inline-block">
-                        <?php echo get_the_title(); ?>
-                    </a>                            
-                </div>
-
-            
-            <?php
-            //Layout 3    
-            elseif($layout=='layout3'):
-                ?>            
-                <div class="border-bottom pb-2 mb-2">
-                    <?php if($i==1):?>
-                    <div class="thumb-post"> 
-                        <?php echo mjlah_thumbnail( get_the_ID(),'medium', array( 'class' => 'w-100 img-fluid','class-link' => 'd-block' ) );?>                         
-                    </div>
-                    <?php endif;?>
-                    <div class="content-post">
-                        <a href="<?php echo get_the_permalink(); ?>" class="title-post font-weight-bold h4 d-block"><?php echo get_the_title(); ?></a>
-                        <small class="d-block text-muted meta-post">
-
-                            <?php if($viewdate == 'ya'): ?>
-                                <span class="date-post"><?php echo get_the_date('F j, Y'); ?></span>
-                            <?php endif; ?>
-
-                            <?php if($viewers == 'ya' && $viewdate == 'ya'): ?>
-                                <span class="mx-1 separator">/</span>
-                            <?php endif; ?>
-
-                            <?php if($viewers == 'ya'): ?>
-                                <span class="view-post"><?php echo mjlah_get_post_view(); ?> views</span>
-                            <?php endif; ?>
-
-                        </small>
-                        <?php if($kutipan != 0): ?>
-                            <div class="exceprt-post"><?php echo mjlah_getexcerpt($kutipan,get_the_ID()); ?></div>
-                        <?php endif; ?>
+                    <div class="exceprt-post"><?php echo mjlah_getexcerpt($kutipan,get_the_ID()); ?></div>
                     </div>
                 </div>
 
@@ -229,9 +155,6 @@ class mjlah_bigposts_widget extends WP_Widget {
             <select class="widefat" name="<?php echo $this->get_field_name( 'layout' ); ?>">
                 <option value="layout1"<?php selected($layout, "layout1"); ?>>Layout 1</option>
                 <option value="layout2"<?php selected($layout, "layout2"); ?>>Layout 2</option>
-                <option value="layout3"<?php selected($layout, "layout3"); ?>>Layout 3</option>
-                <option value="gallery"<?php selected($layout, "gallery"); ?>>Gallery</option>
-                <option value="list"<?php selected($layout, "list"); ?>>List</option>
             </select>
 		</p>
         <p>
