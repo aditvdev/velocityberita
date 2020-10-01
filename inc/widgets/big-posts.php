@@ -56,12 +56,15 @@ class mjlah_bigposts_widget extends WP_Widget {
             }
 
             //jumlah post
-            if($instance['layout']=="layout1") {
-                $query_args['posts_per_page']   = 5;
-            }
-            if($instance['layout']=="layout2") {
-                $query_args['posts_per_page']   = 6;
-            }
+            $layoutpost    = [
+                'layout1'   => 5,
+                'layout2'   => 6,
+                'layout3'   => 9,
+                'layout4'   => 3,
+                'gallery1'  => 4,
+                'gallery2'  => 5,
+            ];
+            $query_args['posts_per_page']   = $layoutpost[$instance['layout']];
 
             // The Query
             $the_query = new WP_Query( $query_args );
@@ -219,6 +222,154 @@ class mjlah_bigposts_widget extends WP_Widget {
                 echo '</div>';
             }
 
+         ///Layout 3
+        } else if($layout=='layout3') {
+
+            if($i==1) {
+                echo '<div class="row">';
+                echo '<div class="col-md-6 first-column">';
+            }
+
+            if($i==2) {
+                echo '</div>';
+                echo '<div class="col-md-6 second-column">';
+            }
+
+            echo '<div class="list-post list-post-'.$i.'">'; 
+                echo mjlah_generated_schema(get_the_ID());
+
+                //first loop
+                if($i == 1){
+                ?>    
+
+                    <div class="row mb-3 mb-md-0">
+                        <div class="col-12 thumb-post">
+                            <?php echo mjlah_thumbnail( get_the_ID(),array(300,200), array( 'class' => 'w-100 img-fluid','class-link' => 'd-block' ) );?>
+                        </div>
+                        <div class="col-12 content-post">
+                            <a href="<?php echo get_the_permalink(); ?>" class="title-post font-weight-bold h3 d-block"><?php echo get_the_title(); ?></a>
+                            
+                            <small class="d-block text-muted meta-post">
+                                <span class="date-post"><?php echo get_the_date('F j, Y'); ?></span>
+                                <span class="mx-1 separator">/</span>
+                                <span class="view-post"><?php echo mjlah_get_post_view(); ?> views</span>
+                            </small>
+
+                            <div class="exceprt-post"><?php echo mjlah_getexcerpt(100,get_the_ID()); ?></div>
+                        </div>
+                    </div>
+
+                <?php } else { ?>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="content-post border-bottom py-2 px-3 bg-secondary">
+                            <a href="<?php echo get_the_permalink(); ?>" class="title-post font-weight-bold text-white d-block"><?php echo get_the_title(); ?></a>
+                            </div>
+                        </div>
+                    </div> 
+
+                <?php } ?>
+
+            <?php
+            
+            echo '</div>';
+
+            if($i==$count) {
+                echo '</div>';
+                echo '</div>';
+            }
+
+        ///Layout 4
+        } else if($layout=='layout4') {
+
+            if($i==1) {
+                echo '<div class="row">';
+                    echo '<div class="col-md-6 first-column">';
+                        echo '<div class="thumb-post list-post-'.$i.'">';
+                            echo mjlah_thumbnail( get_the_ID(),array(300,200), array( 'class' => 'w-100 img-fluid','class-link' => 'd-block' ) );
+                        echo '</div>';
+                    echo '</div>';
+                    echo '<div class="col-md-6 second-column">';
+                        echo '<div class="content-post list-post-'.$i.' mb-3">';
+                            echo '<a href="'.get_the_permalink().'" class="title-post font-weight-bold h3 mt-2 d-block">'.get_the_title().'</a>';
+                            echo '<div class="exceprt-post">'.mjlah_getexcerpt(100,get_the_ID()).'</div>';
+                        echo '</div>';
+            }
+
+                    if($i==2) {
+                        echo '<div class="row">';
+                            echo '<div class="col-6 list-post-'.$i.'">';
+                            echo '<a href="'.get_the_permalink().'" class="title-post font-weight-bold d-block">'.get_the_title().'</a>';
+                            echo '</div>';
+                        
+                    }
+                    if($i==3) {
+                            echo '<div class="col-6 list-post-'.$i.'">';
+                            echo '<a href="'.get_the_permalink().'" class="title-post font-weight-bold d-block">'.get_the_title().'</a>';
+                            echo '</div>';                        
+                        echo '</div>';
+                    }
+
+            if($i==$count) {
+                    echo '</div>';
+                echo '</div>';
+            }
+            
+        //Gallery 1
+        } else if($layout=='gallery1') {
+
+            if($i==1) {
+                echo '<div class="row">';
+                echo '<div class="col-md-6 first-column">';
+            }
+
+            if($i==2) {
+                echo '</div>';
+                echo '<div class="col-md-6 second-column">';
+            }
+
+            echo '<div class="list-post list-post-'.$i.'">'; 
+                echo mjlah_generated_schema(get_the_ID());
+
+                //first loop
+                if($i == 1){
+                ?>    
+
+                    <div class="row mb-3 mb-md-0">
+                        <div class="col-12 thumb-post">
+                            <?php echo mjlah_thumbnail( get_the_ID(),array(300,200), array( 'class' => 'w-100 img-fluid','class-link' => 'd-block' ) );?>
+                        </div>
+                        <div class="col-12 content-post">
+                            <a href="<?php echo get_the_permalink(); ?>" class="title-post font-weight-bold h4 mt-2 d-block"><?php echo get_the_title(); ?></a>
+                            
+                            <small class="d-block text-muted meta-post">
+                                <span class="date-post"><?php echo get_the_date('F j, Y'); ?></span>
+                                <span class="mx-1 separator">/</span>
+                                <span class="view-post"><?php echo mjlah_get_post_view(); ?> views</span>
+                            </small>
+                            <div class="exceprt-post"><?php echo mjlah_getexcerpt(100,get_the_ID()); ?></div>
+                        </div>
+                    </div>
+
+                <?php } else { ?>
+
+                    <div class="gallery-posts position-relative">
+                        <?php echo mjlah_thumbnail( get_the_ID(),array(140,140), array( 'class' => 'w-100 img-fluid','class-link' => 'd-block' ) );?>
+                        <a href="<?php echo get_the_permalink(); ?>" class="mask-post"><span><?php echo get_the_title(); ?></span></a>
+                    </div>
+
+                <?php } ?>
+
+            <?php
+            
+            echo '</div>';
+
+            if($i==$count) {
+                echo '</div>';
+                echo '</div>';
+            }
+
         //Endif layout    
         };
     }
@@ -243,6 +394,10 @@ class mjlah_bigposts_widget extends WP_Widget {
             <select class="widefat" name="<?php echo $this->get_field_name( 'layout' ); ?>">
                 <option value="layout1"<?php selected($layout, "layout1"); ?>>Layout 1</option>
                 <option value="layout2"<?php selected($layout, "layout2"); ?>>Layout 2</option>
+                <option value="layout3"<?php selected($layout, "layout3"); ?>>Layout 3</option>
+                <option value="layout4"<?php selected($layout, "layout4"); ?>>Layout 4</option>
+                <option value="gallery1"<?php selected($layout, "gallery1"); ?>>Gallery 1</option>
+                <option value="gallery2"<?php selected($layout, "gallery2"); ?>>Gallery 2</option>
             </select>
 		</p>
         <p>
